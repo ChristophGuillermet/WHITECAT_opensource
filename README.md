@@ -1,8 +1,6 @@
-<<<<<<< HEAD
-WhiteCat Lighting Board isa free lighting desk for windows, based on LGPL.
-=======
-WhiteCat Lighting Board is a free lighting desk for windows, based on LGPL.
->>>>>>> Minor fix
+
+WhiteCat Lighting Board is a free lighting desk for Windows, based on GPL (GNU PUBLIC LICENSE).
+
 
 First release open source ! version 0.8.4.
 
