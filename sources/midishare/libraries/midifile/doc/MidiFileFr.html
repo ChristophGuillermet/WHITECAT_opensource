@@ -1,0 +1,1507 @@
+<!--Fichier crŽŽ par le filtre ClarisWorks HTML Filter 2.0-->
+<HTML>  
+<HEAD>
+  <META NAME="GENERATOR" CONTENT="Adobe PageMill 3.0 Mac">
+  <META NAME="GENERATOR" CONTENT="ClarisWorks HTML Filter 2.0">
+  <TITLE>MidiFileFr</TITLE>
+</HEAD>
+<BODY>
+
+<H3>&nbsp;</H3>
+
+<H3><CENTER>Utilisation<BR>
+de la librairie MidiShare<BR>
+MIDI Files</CENTER></H3>
+
+<H3><CENTER><FONT SIZE="+4"><BR>
+</FONT><FONT SIZE="+0"><HR><BR>
+</FONT></CENTER></H3>
+
+<P><CENTER><FONT SIZE="+1">Table des mati&egrave;res<BR>
+</FONT></CENTER></P>
+
+<P><FONT SIZE="-1"><BR>
+<BR>
+</FONT>1. Introduction. <BR>
+2. Composition de la librairie MFAPI (Midi File API)&nbsp;<BR>
+2.1. Fonction MFAPI de gestion de lecture MidiFile&nbsp;<BR>
+2.1.1. Ouverture de fichier&nbsp; <BR>
+2.1.2. Lecture de pistes cons&eacute;cutives&nbsp;:<BR>
+2.1.3. Lecture d'une piste &eacute;v&eacute;nement par &eacute;v&eacute;nement&nbsp;
+<BR>
+2.1.4. Fermeture de fichier&nbsp; <BR>
+2.2. Fonction MFAPI de gestion d'&eacute;criture MidiFile&nbsp;:<BR>
+2.2.1. Cr&eacute;ation / ouverture de fichier&nbsp; <BR>
+2.2.2. Ecriture d'une s&eacute;quence&nbsp;compl&egrave;te vers
+une piste<BR>
+2.2.3. Ecriture d'un piste &eacute;v&eacute;nement par &eacute;v&eacute;nement&nbsp;<BR>
+2.2.4. Fermeture de fichier&nbsp;<BR>
+3. Date des &eacute;v&egrave;nements <BR>
+3.1. Date des &eacute;v&egrave;nements dans un fichier Midi <BR>
+3.1.1. Repr&eacute;sentation des unit&eacute; de temps des dates
+des &eacute;v&eacute;nement MIDIFile <BR>
+3.1.2. Unit&eacute;: fraction de seconde <BR>
+3.1.3. Unit&eacute;: nombre d'impulsions par Noire (PPQN) <BR>
+3.2. Date de l'&eacute;v&egrave;nement retourn&eacute; par MidiFileReadEv<BR>
+3.3. Date de l'&eacute;v&egrave;nement &eacute;crit par MidiFileWriteEv<BR>
+4. Composition d&eacute;taill&eacute;e de la librairie MFAPI (Midi
+File API) <BR>
+4.1. D&eacute;tails des fonctions MFAPI de lecture MidiFile&nbsp;<BR>
+4.1.1. Ouverture fermeture de fichier <BR>
+4.1.2. Lecture de pistes cons&eacute;cutives&nbsp;<BR>
+4.1.3. Lecture d'un piste &eacute;v&eacute;nement par &eacute;v&eacute;nement&nbsp;<BR>
+4.2. D&eacute;tails des fonctions MFAPI de gestion d'&eacute;criture
+MidiFile:<BR>
+4.2.1. Cr&eacute;ation /Ouverture fermeture de fichier&nbsp; <BR>
+4.2.2. Ecriture d'une s&eacute;quence&nbsp;compl&egrave;te vers
+une piste<BR>
+4.2.3. Ecriture d'un piste &eacute;v&eacute;nement par &eacute;v&eacute;nement&nbsp;<BR>
+4.3. D&eacute;tails des fonctions internes de lecture d'&eacute;v&eacute;nements<BR>
+4.3.1. Proc&eacute;dures de lecture des m&eacute;ta &eacute;v&eacute;nements
+<BR>
+4.3.2. D&eacute;tails des proc&eacute;dures de lecture des &eacute;v&eacute;nements
+Midi <BR>
+4.4. D&eacute;tails des fonctions internes d'&eacute;criture d'&eacute;v&eacute;nements<BR>
+4.4.1. Proc&eacute;dures d'&eacute;criture des m&eacute;ta &eacute;v&eacute;nements<BR>
+4.4.2. Proc&eacute;dures d'&eacute;criture des &eacute;v&eacute;nements
+Midi<BR>
+<FONT SIZE="-1"><HR ALIGN=LEFT><BR>
+</FONT><B><FONT SIZE="+1">1. Introduction.<BR>
+<BR>
+</FONT></B><FONT SIZE="-1"><BR>
+Cette note permet de comprendre la composition et le comportement
+des proc&eacute;dures des sources de la librairie Midifile. Ce
+document est utile au d&eacute;veloppeur d&eacute;sirant utiliser
+la librairie. Un descriptif d&eacute;taill&eacute; de la composition
+est &eacute;galement utile seulement aux d&eacute;veloppeurs d&eacute;sirant
+faire &eacute;voluer la librairie.<BR>
+<BR>
+</FONT><B><FONT SIZE="+1">2. Composition de la librairie MFAPI
+(Midi File API)&nbsp;:<BR>
+<BR>
+</FONT></B><FONT SIZE="-1">La librairie est compos&eacute; d'un
+jeu de proc&eacute;dures pour la gestion en lecture et d'un autre
+jeu pour la gestion en &eacute;criture.<BR>
+<BR>
+</FONT><B><I><U>2.1. Fonction MFAPI de gestion de lecture MidiFile&nbsp;:<BR>
+</U></I></B><U>2.1.1. Ouverture de fichier&nbsp;:<BR>
+</U><FONT SIZE="-1">Pour lire un fichier , le fichier doit exister
+d&eacute;j&agrave;. Il suffit de d'ouvrir &agrave; l'aide de <B>MidiFileOpen</B>
+dans le mode <B>MidiFileRead</B>. Seules les op&eacute;rations
+de lecture sont possibles.<BR>
+<BR>
+</FONT><U>2.1.2. Lecture de pistes cons&eacute;cutives&nbsp;:<BR>
+</U><FONT SIZE="-1">Apr&egrave;s un appel &agrave; <B>MidifileOpen</B>,
+(avec le mode <B><I>MidifileAppend</I></B>), il est possible de
+lire enti&egrave;rement une piste vers une s&eacute;quence avec
+<B>MidiFileReadTrack</B> qui retourne la s&eacute;quence. La s&eacute;quence
+retourn&eacute;e est allou&eacute;e par <B>MidiFileReadTrack</B>.
+d'appelant doit exploiter et lib&eacute;rer la s&eacute;quence
+avec <B>MidiFreeSeq</B>.<BR>
+Lorsque <B>MidiFileReadTrack</B> est utilis&eacute;e, les &eacute;v&egrave;nements
+de la piste du premier au dernier sont plac&eacute;s dans le m&ecirc;me
+ordre dans la s&eacute;quence. Plusieurs pistes cons&eacute;cutives
+peuvent &ecirc;tre lues en utilisant plusieurs appels cons&eacute;cutifs
+&agrave; <B>MidiFileReadTrack</B>.<BR>
+<BR>
+</FONT><U>2.1.3. Lecture d'une piste &eacute;v&eacute;nement par
+&eacute;v&eacute;nement&nbsp;:<BR>
+</U><FONT SIZE="-1">Alternativement pour lire les &eacute;v&egrave;nements
+d'une piste un par un on peut utiliser les fonctions <B>MidiFileChooseTrack,</B>
+<B>MidiFileOpenTrack</B>,<B>MidiFileReadEv</B> et <B>MidiFileCloseTrack</B>.<BR>
+<BR>
+<B>MidiFileChooseTrack</B> positionne le pointeur de fichier au
+d&eacute;but de la piste d&eacute;sign&eacute;.<BR>
+<BR>
+<B>MidFileOpenTrack</B> ouvre la piste et doit &ecirc;tre utilis&eacute;
+apr&egrave;s <B>MidiFileChooseTrack</B> ou apr&egrave;s <B>MidiFileCloseTrack</B>.<BR>
+<BR>
+<B>MidiFileReadEv</B> lit un &eacute;v&eacute;nement dans la piste
+courante. La piste doit &ecirc;tre ouverte avec <B>MidFileOpenTrack</B>
+avant la lecture du premier &eacute;v&eacute;nement. Plusieurs
+&eacute;v&eacute;nements cons&eacute;cutifs peuvent &ecirc;tre
+lus en utilisant plusieurs appels cons&eacute;cutifs &agrave;
+<B>MidiFileReadEv</B>.<BR>
+<BR>
+Lorsque d'&eacute;v&eacute;nement lu est le dernier de la piste,
+un prochain appel &agrave; <B>MidiFileReadEv</B> ferme automatiquement
+la piste courante. La macro <B>IsTrackOpen</B> permet de savoir
+si la piste courante est toujours ouverte. Par cons&eacute;quent
+si une fin de piste &eacute;t&eacute; d&eacute;tect&eacute; gr&acirc;ce
+&agrave; <B>MidiFileReadEv</B>, il n'est pas n&eacute;cessaire
+d'utiliser <B>MidiFileCloseTrack.<BR>
+<BR>
+MidiFileCloseTrack</B> cl&ocirc;ture la lecture de la piste courante
+et initialise le pointeur de fichier au d&eacute;but de la piste
+suivante. <B>MidiFileCloseTrack</B> est utile en cours de lecture
+d'une piste pour pointer imm&eacute;diatement sur la piste suivante.<BR>
+<BR>
+</FONT><U>2.1.4. Fermeture de fichier&nbsp;:<BR>
+</U><FONT SIZE="-1">Pour cl&ocirc;turer d'enregistrement du fichier
+<B>MidiFileClose</B> doit &ecirc;tre utilis&eacute;. <BR>
+<BR>
+</FONT><B><I><U>2.2. Fonction MFAPI de gestion d'&eacute;criture
+MidiFile&nbsp;:<BR>
+</U></I></B><U>2.2.1. Cr&eacute;ation / ouverture de fichier&nbsp;:<BR>
+</U><B><FONT SIZE="-1">MidiFileCreate</FONT></B><FONT SIZE="-1">
+doit &ecirc;tre utilis&eacute; pour construire un nouveau fichier.
+Si le fichier existe d&eacute;j&agrave; il suffit de d'ouvrir
+&agrave; d'aide de <B>MidiFileOpen</B> dans le mode <B><I>MidiFileAppend</I></B>.
+Dans les 2 cas, seules les op&eacute;rations d'&eacute;critures
+sont possibles.<BR>
+<BR>
+</FONT><U>2.2.2. Ecriture d'une s&eacute;quence&nbsp;compl&egrave;te
+vers une piste:<BR>
+</U><FONT SIZE="-1">Apr&egrave;s un appel &agrave; <B>MidiFileCreate</B>
+(ou <B>MidifileOpen</B>, dans le mode <B><I>MidifileAppend</I></B>),
+il est possible d'&eacute;crire enti&egrave;rement une s&eacute;quence
+sur une piste avec <B>MidiFileWriteTrack</B> qui &eacute;crit
+une nouvelle piste &agrave; la fin du fichier.<BR>
+<BR>
+Lorsque <B>MidiFileWriteTrack</B> est utilis&eacute;e, les &eacute;v&egrave;nements
+de la s&eacute;quence du premier au dernier sont enregistr&eacute;s
+dans le m&ecirc;me ordre sur la piste. Plusieurs pistes cons&eacute;cutives
+peuvent &ecirc;tre &eacute;crites en utilisant plusieurs appels
+cons&eacute;cutifs &agrave; <B>MidiFileWriteTrack</B>.<BR>
+<BR>
+</FONT><U>2.2.3. Ecriture d'un piste &eacute;v&eacute;nement par
+&eacute;v&eacute;nement&nbsp;:<BR>
+</U><FONT SIZE="-1">Alternativement pour &eacute;crire une nouvelle
+piste on peut utiliser les fonctions <B>MidiFileNewTrack</B>,<B>MidiFileWriteEv</B>
+et <B>MidiFileCloseTrack</B>.<BR>
+<BR>
+<B>MidFileNewTrack</B> cr&eacute;e un nouvel ent&ecirc;te de piste
+en fin de fichier et doit &ecirc;tre utilis&eacute; apr&egrave;s
+<B>MidiFileCloseTrack</B>. <B>MidiFileWriteEv</B> &eacute;crit
+un &eacute;v&eacute;nement dans la piste courante. Plusieurs &eacute;v&eacute;nements
+cons&eacute;cutifs peuvent &ecirc;tre &eacute;crit en utilisant
+plusieurs appels cons&eacute;cutifs &agrave; <B>MidiFileWriteEv</B>.
+<B>MidiFileCloseTrack</B> cl&ocirc;ture d'&eacute;criture de la
+piste courante.<BR>
+<BR>
+</FONT><U>2.2.4. Fermeture de fichier&nbsp;:<BR>
+</U><FONT SIZE="-1">Pour cl&ocirc;turer d'enregistrement du fichier
+<B>MidiFileClose</B> doit &ecirc;tre utilis&eacute;. <BR>
+<BR>
+</FONT><B><FONT SIZE="+1">3. Date des &eacute;v&egrave;nements<BR>
+<BR>
+</FONT></B><FONT SIZE="-1">Le paragraphe suivant explique la datation
+des &eacute;v&egrave;nements dans les fichiers standard MidiFile
+et la datation utilis&eacute; par les fonctions de la librairie.<BR>
+<BR>
+</FONT><B><I><U>3.1. Date des &eacute;v&egrave;nements dans un
+fichier Midi:<BR>
+</U></I></B><FONT SIZE="-1"><BR>
+Dans un fichier Midi la date d'un &eacute;v&eacute;nement est
+repr&eacute;sent&eacute; par une valeur relative &agrave; celle
+de l'&eacute;v&eacute;nement pr&eacute;c&eacute;dent.<BR>
+La date du premier &eacute;v&eacute;nement est relative &agrave;
+0.<BR>
+<BR>
+Exemple:<BR>
+Soit une piste compos&eacute; de 3 &eacute;v&egrave;nements suivants
+avec leur date relative &agrave; l'&eacute;v&eacute;nement pr&eacute;c&eacute;dent.<BR>
+<BR>
+ev1: date relative: 10 <BR>
+ev2: date relative: 25 <BR>
+ev3: date relative: 5 <BR>
+<BR>
+L'&eacute;v&eacute;nement ev1 doit &ecirc;tre jou&eacute; &agrave;
+la date 10 relativement au d&eacute;but de piste.<BR>
+L'&eacute;v&eacute;nement ev2 doit &ecirc;tre jou&eacute; &agrave;
+la date 10+25=35 relativement au d&eacute;but de piste.<BR>
+L'&eacute;v&eacute;nement ev3 doit &ecirc;tre jou&eacute; &agrave;
+la date 35+5=40 relativement au d&eacute;but de piste.<BR>
+<BR>
+</FONT><U>3.1.1. Repr&eacute;sentation des unit&eacute; de temps
+des dates des &eacute;v&eacute;nement MIDIFile<BR>
+</U><FONT SIZE="-1"><BR>
+L'unit&eacute; de temps pour repr&eacute;senter la valeur relative
+des dates est indiqu&eacute;e par le champ <B>time</B> situ&eacute;
+dans le descripteur MIDIFile (retourn&eacute; par <B>MidiFileOpen</B>
+ou <B>MidiFileCreate</B>). Le sandard MIDIFile adopte de 2 mode
+de repr&eacute;sentation de l'unit&eacute; de temps. L'unit&eacute;
+de temps peut &ecirc;tre exprim&eacute;e en <B>fraction de secondes</B>
+cod&eacute;s dans une repr&eacute;sentation correspondant au syst&egrave;me
+SMPTE.<BR>
+<BR>
+Ce mode est utile pour repr&eacute;senter une suite d'&eacute;v&egrave;nements
+dans le syst&egrave;me SMPTE tel que les &eacute;v&egrave;nements
+Cue Point qui sont combin&eacute;s avec des filmes vid&eacute;os.<BR>
+<BR>
+L'unit&eacute; de temps peut &ecirc;tre exprim&eacute;e en <B>nombre
+d'impulsions par Noire</B> (PPQN). Ce mode de repr&eacute;sentation
+associ&eacute; au m&eacute;ta &eacute;v&eacute;nement de <B>tempo</B>
+est adapt&eacute; pour dater une suite d'&eacute;v&egrave;nements
+musicaux. <BR>
+<BR>
+</FONT><U>3.1.2. Unit&eacute;: fraction de seconde<BR>
+</U><FONT SIZE="-1">La macro <B>smpte(f)</B> retourne <B>true</B>
+lorsque time repr&eacute;sente l'unit&eacute; de temps en fraction
+de seconde<BR>
+La <B>macro frame_par_sec(f)</B> retourne le nombre de trames
+par secondes, (Le nombre retourn&eacute; est n&eacute;gatif).<BR>
+</FONT></P>
+
+<UL>
+  <LI TYPE="disc"><FONT SIZE="-1">-24: correspond &agrave; 24 trames
+  par secondes</FONT>
+  <LI TYPE="disc"><FONT SIZE="-1">-25: correspond &agrave; 25 trames
+  par secondes</FONT>
+  <LI TYPE="disc"><FONT SIZE="-1">-29: correspond &agrave; 30 (drop)
+  trames par secondes</FONT>
+  <LI TYPE="disc"><FONT SIZE="-1">-30: correspond &agrave; 30 trames
+  par secondes<BR>
+  </FONT>
+</UL>
+
+<P><FONT SIZE="-1"><BR>
+La macro <B>ticks_par_frame(f)</B> retourne le nombre d'impulsions
+par trame, f est le pointeur sur le descripteur MIDIFile. Sachant
+que la date d'un &eacute;v&eacute;nement est exprim&eacute; en
+nombre d'impulsion par trame, le couple les macro frame_par_sec
+et ticks_par_frame permette d'&eacute;valuer la date de l'&eacute;v&eacute;nement
+en fraction de seconde.<BR>
+<BR>
+</FONT><U>3.1.3. Unit&eacute;: nombre d'impulsions par Noire (PPQN)<BR>
+</U><FONT SIZE="-1"><BR>
+La macro <B>smpte(f)</B> retourne <B>false</B> lorsque time repr&eacute;sente
+l'unit&eacute; de temps en nombre d'impulsion par Noire. La macro
+ticks_par_quarterNote(f) retourne le nombre d'impulsion par Noire
+(PPQN). f est le pointeur sur le descripteur MIDIFile.<BR>
+<BR>
+</FONT><B><I><U>3.2. Date de l'&eacute;v&egrave;nement retourn&eacute;
+par MidiFileReadEv:<BR>
+</U></I></B><FONT SIZE="-1"><BR>
+La fonction <B>MidiFileReadEv</B> retourne un &eacute;v&eacute;nement
+avec sa date calcul&eacute;e ainsi:<BR>
+<BR>
+La date est la somme de toutes les <U>dates relatives</U> aux
+&eacute;v&egrave;nements pr&eacute;c&eacute;dents. Le <U>r&eacute;sultat</U>
+est une <U>date relative &agrave; 0</U>. C'est la date par rapport
+au d&eacute;but de la piste. C'est la date &agrave; laquelle l'&eacute;v&eacute;nement
+doit &ecirc;tre jou&eacute;.<BR>
+<BR>
+Exemple:<BR>
+Soit une piste compos&eacute; de 3 &eacute;v&egrave;nements suivants
+avec leur date relative &agrave; l'&eacute;v&eacute;nement pr&eacute;c&eacute;dent.<BR>
+ev1: date: 10 ev2: date: 25 ev3: date : 5 <BR>
+<BR>
+La lecture du 1er &eacute;v&egrave;nement ,ev1 retourne un &eacute;v&eacute;nement
+avec la date: 10<BR>
+La lecture du 2&eacute;me &eacute;v&egrave;nement ,ev2 retourne
+un &eacute;v&eacute;nement avec la date: 35 (10+25)<BR>
+La lecture du 1er &eacute;v&egrave;nement ,ev1 retourne un &eacute;v&eacute;nement
+avec la date: 40 (35+5)<BR>
+<BR>
+L'unit&eacute; de date est indiqu&eacute; par la variable <B>time</B>
+accessible par les macros d&eacute;crites dans le paragraphe pr&eacute;c&eacute;dent.
+Pour obtenir un &eacute;v&eacute;nement il est n&eacute;cessaire
+de lire les &eacute;v&eacute;nement pr&eacute;c&eacute;dents &agrave;
+partir du d&eacute;but de la piste. <BR>
+<BR>
+</FONT><B><I><U>3.3. Date de l'&eacute;v&egrave;nement &eacute;crit
+par MidiFileWriteEv:<BR>
+</U></I></B><FONT SIZE="-1"><BR>
+La fonction <B>MidiFileWriteEv</B> &eacute;crit l'&eacute;v&eacute;nement
+sur le fichier avec <U>une date relative &agrave; l'&eacute;v&eacute;nement
+pr&eacute;c&eacute;demment</U> &eacute;crit.<BR>
+<BR>
+La fonction <U>consid&egrave;re</U> que <U>la date port&eacute;
+par l'&eacute;v&eacute;nement &agrave; &eacute;crire est relative
+&agrave;</U> <U>0</U>. Il s'agit d'une date suppos&eacute;e relative
+au d&eacute;but de la piste.<BR>
+<BR>
+La date de l'&eacute;v&eacute;nement &eacute;crit (ev_ecrit)est
+calcul&eacute; ainsi en fonction de la date l'&eacute;v&eacute;nement
+&agrave; &eacute;crire (ev_a_ecrire) et de celle de l'&eacute;v&eacute;nement
+pr&eacute;c&eacute;dent &agrave; &eacute;crire: <BR>
+(ev_prec_a_ecrire). <BR>
+date (ev_ecrit) = date (ev_a_ecrire) - date (ev_prec_a_ecrire)<BR>
+<BR>
+Exemple:<BR>
+Soit une s&eacute;quence compos&eacute; des 3 &eacute;v&egrave;nements
+suivants avec leur date relative au d&eacute;but de la piste.<BR>
+ev1: date: 10 ev2: date: 35 ev3: date: 40 <BR>
+La date du 1er &eacute;v&egrave;nement &eacute;crit,ev1 est: 10<BR>
+La date du 2&egrave;me &eacute;v&egrave;nement &eacute;crit,ev2
+est: 25 (35 - 10)<BR>
+La date du 3&egrave;me &eacute;v&egrave;nement &eacute;crit,ev3
+est: 5 (40 - 35)<BR>
+<BR>
+La fonction <U>consid&egrave;re</U> que l'unit&eacute; de temps
+de la date de l'&eacute;v&eacute;nement &agrave; &eacute;crire
+est celle <U>indiqu&eacute;</U> par la variable <B><U>time</U></B></FONT>
+<FONT SIZE="-1">accessible par les macros d&eacute;crites dans
+le paragraphe pr&eacute;c&eacute;dent. Si cela est n&eacute;cessaire,
+l'appelant doit normaliser la variable <B>time</B> et date de
+l'&eacute;v&eacute;nement &agrave; &eacute;crire avant l'appel
+&agrave; <B>MidiFileWriteEv.<BR>
+<BR>
+</B></FONT><B><FONT SIZE="+1">4. Composition d&eacute;taill&eacute;e
+de la librairie MFAPI (Midi File API)&nbsp;:<BR>
+</FONT></B><FONT SIZE="-1"><BR>
+Le source de la librairie est compos&eacute; des proc&eacute;dures
+export&eacute;es et des proc&eacute;dures internes non export&eacute;es.
+Les proc&eacute;dures export&eacute;es constituent d'interface
+de programmation MFAPI (Midi File API). Les proc&eacute;dures
+internes sont appel&eacute;es par les proc&eacute;dures MFAPI.
+Le paragraphe suivant d&eacute;crit les proc&eacute;dures MFAPI
+et les proc&eacute;dures internes appel&eacute;es.<BR>
+<BR>
+</FONT><B><I><U>4.1. D&eacute;tails des fonctions MFAPI de lecture
+MidiFile&nbsp;:<BR>
+</U></I></B><U>4.1.1. Ouverture fermeture de fichier&nbsp;:<BR>
+<BR>
+</U></P>
+
+<UL>
+  <LI TYPE="disc"><B><U><FONT SIZE="-1">MidiFileOpen :<BR>
+<BR>
+  </FONT></U></B>Ouvre un fichier Midi existant en lecture ou en
+  &eacute;criture. <BR>
+  Au retour s'il n'y &agrave; pas erreur&nbsp;:<BR>
+  - le descripteur MIDIFile est initialis&eacute;&nbsp;&agrave;
+  partir du fichier:<BR>
+  <LI TYPE="disc">fd = ptr. descripteur MIDIFile
+  <LI TYPE="disc">mode = false ( ouverture en lecture ).
+  <LI TYPE="disc">ntrks = 0
+  <LI TYPE="disc">format = format fichier.
+  <LI TYPE="disc">time = time d&eacute;finition.
+  <LI TYPE="disc">opened = false.
+  <LI TYPE="disc">curDate = 0<BR>
+</UL>
+
+<P>- Le pointeur de fichier MIDIFile est positionn&eacute; sur
+d'ent&ecirc;te de la premi&egrave;re piste &agrave; lire.<BR>
+<BR>
+<U>Proc&eacute;dures internes appel&eacute;es:<BR>
+</U>- stdInit , init du descripteur MIDIFile<BR>
+- mdf_getStdMode d&eacute;termine le mode d'acc&egrave;s au fichier<BR>
+- ReadMdfHeader , lecture de l'ent&ecirc;te MThd du fichier.<BR>
+- ErrOpen, erreur d'ouverture (d&eacute;-allocation).<BR>
+<BR>
+<BR>
+</P>
+
+<UL>
+  <LI TYPE="disc"><B><U>MidiFileClose</U></B>:<BR>
+  ferme la piste courante si elle est ouverte.<BR>
+<BR>
+  <U>Proc&eacute;dures MFAPI appel&eacute;es:<BR>
+  </U>- MidiFileCloseTrack.<BR>
+  <U>Proc&eacute;dures MidiShare appel&eacute;es:<BR>
+  </U>- MidiFreeSeq , lib&eacute;ration de la s&eacute;quence interne.<BR>
+<BR>
+  <U>4.1.2. Lecture de pistes cons&eacute;cutives&nbsp;:<BR>
+  </U>
+  <LI TYPE="disc"><B><U><FONT SIZE="-1">MidiFileReadTrack</FONT></U></B><FONT
+   SIZE="-1">:<BR>
+  </FONT>
+</UL>
+
+<P>lecture d'une piste vers une s&eacute;quence.<BR>
+<U><BR>
+Proc&eacute;dures MidiShare appel&eacute;es:<BR>
+</U>- MidiNewSeq, allocation d'une s&eacute;quence<BR>
+<U>Proc&eacute;dures MFAPI appel&eacute;es:<BR>
+</U>- MidiFileOpenTrack , ouverture d'une piste<BR>
+- MidiFileReadEv, lecture d'un &eacute;v&egrave;nement<BR>
+<U>Proc&eacute;dures MidiShare appel&eacute;es:<BR>
+</U>- MidiFreeSeq , lib&eacute;ration de la s&eacute;quence interne.<BR>
+<BR>
+<U>4.1.3. Lecture d'un piste &eacute;v&eacute;nement par &eacute;v&eacute;nement&nbsp;:<BR>
+<BR>
+</U></P>
+
+<UL>
+  <LI TYPE="disc"><B><U><FONT SIZE="-1">MidiFileChooseTrack</FONT></U></B><FONT
+   SIZE="-1">:<BR>
+  </FONT>
+</UL>
+
+<P><FONT SIZE="-1">D&eacute;placement du pointeur de fichier.<BR>
+Aucune fonction interne n'est appel&eacute;e.<BR>
+<BR>
+</FONT></P>
+
+<UL>
+  <LI TYPE="disc"><B><U><FONT SIZE="-1">MidiFileOpenTrack</FONT></U></B><FONT
+   SIZE="-1">:<BR>
+  </FONT>
+</UL>
+
+<P><FONT SIZE="-1">Ouverture d'une piste<BR>
+Au retour s'il n'y &agrave; pas erreur&nbsp;:<BR>
+L'ent&ecirc;te de la piste &agrave; &eacute;t&eacute; luedans
+le descripteur de fichier midiFile.<BR>
+- _cnt = nombre d'octet de donn&eacute;e dans la piste.<BR>
+- curDate = 0 <BR>
+- opened = true<BR>
+Le pointeur de fichier est positionn&eacute; sur le 1er &eacute;v&eacute;nement
+&agrave; lire.<BR>
+<BR>
+<U>Proc&eacute;dures internes appel&eacute;es:<BR>
+</U>- ReadTrkHeader, lit l'ent&ecirc;te de piste &agrave; partir
+du fichier<BR>
+<BR>
+<BR>
+</FONT></P>
+
+<UL>
+  <LI TYPE="disc"><B><U><FONT SIZE="-1">MidiFileReadEv<BR>
+  </FONT></U></B>
+</UL>
+
+<P><FONT SIZE="-1">Lecture d'une &eacute;v&eacute;nement (Midi
+ou M&eacute;ta &eacute;v&eacute;nement).<BR>
+<BR>
+<U>Proc&eacute;dures internes appel&eacute;es:<BR>
+</U>- mdf_GetDate, retourne la date de l'&eacute;v&eacute;nement.<BR>
+- ReadVarLen, lecture du valeur: Variable Length Quantity<BR>
+- ReadEv , lecture d'un &eacute;v&egrave;nement<BR>
+- mdf_read_meta , lecture d'un m&eacute;ta-&eacute;v&eacute;nement.<BR>
+- lecture d'un &eacute;v&eacute;nement midi.<BR>
+<BR>
+</FONT></P>
+
+<UL>
+  <LI TYPE="disc"><B><U><FONT SIZE="-1">MidiFileCloseTrack</FONT></U></B><FONT
+   SIZE="-1">:<BR>
+  </FONT>
+</UL>
+
+<P><FONT SIZE="-1">En lecture positionne le pointeur de fichier
+sur l'ent&ecirc;te de la piste suivante.<BR>
+Au retour s'il n'y &agrave; pas erreur&nbsp;:<BR>
+- Le descripteur MIDIFile est actualis&eacute;:<BR>
+- opened = false<BR>
+<BR>
+</FONT><B><I><U>4.2. D&eacute;tails des fonctions MFAPI de gestion
+d'&eacute;criture MidiFile&nbsp;:<BR>
+</U></I></B><U>4.2.1. Cr&eacute;ation /Ouverture fermeture de
+fichier&nbsp;:<BR>
+<BR>
+</U></P>
+
+<UL>
+  <LI TYPE="disc"><B><U><FONT SIZE="-1">MidiFileCreate</FONT></U></B><FONT
+   SIZE="-1">&nbsp;:<BR>
+  Cr&eacute;e un fichier Midi. Si le fichier existe d&eacute;j&agrave;,
+  il est d&eacute;truit.<BR>
+  Le fichier cr&eacute;&eacute; est ouvert en &eacute;criture.<BR>
+  Au retour s'il n'y &agrave; pas erreur :<BR>
+  - le descripteur MIDIFile est initialis&eacute; :<BR>
+  - fd = ptr. descripteur MIDIfile<BR>
+  - mode = true (ouverture en &eacute;criture)<BR>
+  - ntrks = 0<BR>
+  - format = format fichier.<BR>
+  - time = time d&eacute;finition.<BR>
+  - opened = false.<BR>
+  - curDate = 0<BR>
+  - KeyOff = ptr. Sequence interne pour les &eacute;v&egrave;nements
+  Note Off<BR>
+  - d' ent&ecirc;te MThd est enregistr&eacute;e sur le fichier.<BR>
+  - Le pointeur de fichier MIDIFest positionn&eacute; sur d'ent&ecirc;te
+  de la premi&egrave;re piste qui sera &eacute;crite.<BR>
+<BR>
+  <U>Proc&eacute;dures internes appel&eacute;es</U>:<BR>
+  - stdInit , init du descripteur MIDIFile<BR>
+  - MidiNewSeq (ouverture en &eacute;criture)<BR>
+  - Create_mdfHeader ,&eacute;criture de l'ent&ecirc;te MThd sur
+  le fichier.<BR>
+  - ErrOpen, erreur d'ouverture (d&eacute;-allocation).<BR>
+  - MidiFreeSeq , lib&eacute;ration de la s&eacute;quence interne.<BR>
+<BR>
+<BR>
+  </FONT>
+  <LI TYPE="disc"><B><U><FONT SIZE="-1">MidiFileOpen</FONT></U></B><FONT
+   SIZE="-1">&nbsp;:<BR>
+  Ouvre un fichier Midi existant (en &eacute;criture). <BR>
+  Au retour s'il n'y &agrave; pas erreur&nbsp;:<BR>
+  - le descripteur MIDIFile est initialis&eacute;&nbsp;&agrave;
+  partir du fichier:<BR>
+  </FONT>
+  <LI TYPE="disc"><FONT SIZE="-1">fd = ptr. descripteur MIDIFile</FONT>
+  <LI TYPE="disc"><FONT SIZE="-1">mode = true (ouverture en &eacute;criture)
+  .</FONT>
+  <LI TYPE="disc"><FONT SIZE="-1">ntrks = 0</FONT>
+  <LI TYPE="disc"><FONT SIZE="-1">format = format fichier.</FONT>
+  <LI TYPE="disc"><FONT SIZE="-1">time = time d&eacute;finition.</FONT>
+  <LI TYPE="disc"><FONT SIZE="-1">opened = false.</FONT>
+  <LI TYPE="disc"><FONT SIZE="-1">curDate = 0<BR>
+  </FONT>
+</UL>
+
+<P><FONT SIZE="-1">- Le pointeur de fichier MIDIFile est positionn&eacute;
+sur d'ent&ecirc;te de la premi&egrave;re piste &agrave; lire.<BR>
+<BR>
+<U>Proc&eacute;dures internes appel&eacute;es:<BR>
+</U>- stdInit , init du descripteur MIDIFile<BR>
+- MidiNewSeq (ouverture en &eacute;criture )<BR>
+<BR>
+- mdf_getStdMode d&eacute;termine le mode d'acc&egrave;s au fichier<BR>
+- ReadMdfHeader , lecture de l'ent&ecirc;te MThd du fichier.<BR>
+- ErrOpen, erreur d'ouverture (d&eacute;-allocation).<BR>
+- MidiFreeSeq , lib&eacute;ration de la s&eacute;quence interne
+(mode &eacute;criture).<BR>
+<BR>
+</FONT></P>
+
+<UL>
+  <LI TYPE="disc"><B><U><FONT SIZE="-1">MidiFileClose</FONT></U></B><FONT
+   SIZE="-1">:<BR>
+  ferme la piste courante si elle est ouverte.<BR>
+<BR>
+  <U>Proc&eacute;dures MFAPI appel&eacute;es:<BR>
+  </U>- MidiFileCloseTrack, fermeture de la piste<BR>
+<BR>
+  <U>Proc&eacute;dures MidiShare appel&eacute;es:<BR>
+  </U>- MidiFreeSeq , lib&eacute;ration de la s&eacute;quence interne
+  (mode &eacute;criture).<BR>
+<BR>
+<BR>
+  </FONT><U>4.2.2. Ecriture d'une s&eacute;quence&nbsp;compl&egrave;te
+  vers une piste:<BR>
+<BR>
+  </U>
+  <LI TYPE="disc"><B><U><FONT SIZE="-1">MidiFileWriteTrack</FONT></U></B><FONT
+   SIZE="-1">, &eacute;criture d'une s&eacute;quence sur une piste.<BR>
+  <U><BR>
+  Proc&eacute;dures MFAPI appel&eacute;es:<BR>
+  </U>- MidiFileNewTrack , cr&eacute;ation d'une piste<BR>
+  - MidiFileWriteEv, Ecriture d'un &eacute;v&eacute;nement.<BR>
+  - MidiFileCloseTrack, fermeture de la piste<BR>
+<BR>
+  </FONT><U>4.2.3. Ecriture d'un piste &eacute;v&eacute;nement
+  par &eacute;v&eacute;nement&nbsp;:<BR>
+  </U>
+  <LI TYPE="disc"><B><U><FONT SIZE="-1">MidFileNewTrack</FONT></U></B><FONT
+   SIZE="-1"> cr&eacute;e un nouvel ent&ecirc;te de piste en fin
+  de fichier.<BR>
+  </FONT>
+</UL>
+
+<P>- L'ent&ecirc;te de piste &quot;MTrk&quot; est enregistr&eacute;
+sur le fichier.<BR>
+- Le descripteur MIDIFile est initialis&eacute;:<BR>
+</P>
+
+<UL>
+  <LI TYPE="disc">trkHeadOffset = position d'un premier octet de
+  donn&eacute;es.
+  <LI TYPE="disc">curDate = 0.
+  <LI TYPE="disc">opened = true <BR>
+</UL>
+
+<P><U><BR>
+Proc&eacute;dures MFAPI appel&eacute;es:<BR>
+</U>- MidiFileCloseTrack , si une piste est couramment ouverte.<BR>
+<BR>
+<U>Proc&eacute;dures internes appel&eacute;es:<BR>
+</U>- Create_trkHeader, cr&eacute;ation d'un ent&ecirc;te de piste.
+<BR>
+<BR>
+</P>
+
+<UL>
+  <LI TYPE="disc"><B><U>MidiFileWriteEv</U></B><BR>
+  Ecrit un &eacute;v&eacute;nement dans la piste courante.<BR>
+  Les &eacute;v&egrave;nements situ&eacute;s dans la s&eacute;quence
+  interne keyOff et de date plus r&eacute;cente sont retir&eacute;s
+  de la s&eacute;quence et &eacute;crit sur la piste avant l'&eacute;v&eacute;nement
+  pass&eacute; en param&egrave;tre. <BR>
+  Les composants de l'&eacute;v&eacute;nement sont &eacute;crits:<BR>
+  - Dur&eacute;e relative &agrave; l'&eacute;v&eacute;nement pr&eacute;c&eacute;demment
+  &eacute;crit.<BR>
+  - Ecriture des donn&eacute;es de l' &eacute;v&eacute;nement.
+<BR>
+  <U><BR>
+  Proc&eacute;dures internes appel&eacute;es:<BR>
+  </U>- WriteVarLen, &eacute;criture du valeur Variable Length
+  Quantity<BR>
+  - WriteEv, &eacute;criture d'un &eacute;v&eacute;nement Midi
+  ou M&eacute;ta-&eacute;v&eacute;nement.<BR>
+  <LI TYPE="disc">Ecriture d'un &eacute;v&eacute;nement Midi.
+  <LI TYPE="disc">Ecriture d'un m&eacute;ta-&eacute;v&eacute;nement.
+<BR>
+  <LI TYPE="disc"><B><U>MidiFileCloseTrack </U></B>, en &eacute;criture
+  cl&ocirc;ture l'enregistrement de la piste<BR>
+</UL>
+
+<P>- Vidage de la s&eacute;quence interne KeyOff.<BR>
+- Mise &agrave; jour du champs 'longueur de piste' sur l'ent&ecirc;te
+de 'MTrk'.<BR>
+- Mise &agrave; jour du champs 'nombre de piste' sur l'ent&ecirc;te
+'MThd'<BR>
+<BR>
+Au retour s'il n'y &agrave; pas erreur&nbsp;:<BR>
+-Actualise le descripteur MIDIFile:<BR>
+- opened = false<BR>
+<U>Proc&eacute;dures internes appel&eacute;es:<BR>
+</U>-FlushKeyOff, vidage de la s&eacute;quence interne keyOff.<BR>
+<BR>
+<B><I><U>4.3. D&eacute;tails des fonctions internes de lecture
+d'&eacute;v&eacute;nements &nbsp;:<BR>
+</U></I></B><FONT SIZE="-1"><BR>
+Les 2 familles d'&eacute;v&eacute;nements sont&nbsp;:<BR>
+Les &eacute;v&egrave;nements Midi&nbsp;: Note on, Note off etc.<BR>
+Les m&eacute;ta &eacute;v&eacute;nements&nbsp;: Tempo, Key signature,
+Lyric etc<BR>
+<BR>
+C'est la proc&eacute;dure interne ReadEv qui permet la lecture
+d'un &eacute;v&eacute;nement Midi ou d'un meta &eacute;v&eacute;nement.La
+lecture d'un m&eacute;ta &eacute;v&eacute;nement est effectu&eacute;
+par un appel &agrave; la mdf_read_meta. La lecture d'un &eacute;v&eacute;nement
+midi est directement effectu&eacute; par ReadEv. A chaque &eacute;v&eacute;nement
+Midi ou m&eacute;ta &eacute;v&eacute;nement correspond une proc&eacute;dure
+de lecture dont le r&ocirc;le est d'allouer un &eacute;v&eacute;nement
+(MidiNewEv) &agrave; partir des donn&eacute;es de l'&eacute;v&eacute;nement
+de la piste. <BR>
+<BR>
+</FONT><U>4.3.1. Proc&eacute;dures de lecture des m&eacute;ta
+&eacute;v&eacute;nements:<BR>
+</U><FONT SIZE="-1"><BR>
+Les param&egrave;tres en entr&eacute;e et en sortie sont les m&ecirc;mes
+pour toutes les proc&eacute;dures.<BR>
+<BR>
+<U>Les param&egrave;tres en entr&eacute;es sont:<BR>
+</U>- Le pointeur sur le descripteur MIDIFile.<BR>
+- Le nombre d'octet de donn&eacute;es &agrave; lire.<BR>
+<BR>
+Les param&egrave;tres en sortie sont:<BR>
+- l'adresse de l'&eacute;v&eacute;nement allou&eacute;.<BR>
+- nil, dans les cas suivant:<BR>
+- L' &eacute;v&eacute;nement lu a &eacute;t&eacute; ignor&eacute;.<BR>
+- Erreur d'allocation &eacute;v&eacute;nement (MidiFile_errno=MidiFileErrEvs).<BR>
+<BR>
+Au retour l'appelant doit tester le compte rendu qui doit &ecirc;tre
+un des cas suivant:<BR>
+1) Les erreurs:<BR>
+- erreurs d'allocation &eacute;v&egrave;nement.<BR>
+- erreur de lecture fichier .<BR>
+2) L'&eacute;v&eacute;nement est ignor&eacute;.<BR>
+3) Lecture r&eacute;ussi.<BR>
+<BR>
+Tableau des types de meta &eacute;v&eacute;nement et des proc&eacute;dures
+internes utilis&eacute;es:<BR>
+<BR>
+</FONT><TABLE BORDER="1" WIDTH="594" HEIGHT="342" CELLSPACING="2"
+CELLPADDING="0">
+  <TR>
+    <TD ALIGN="CENTER"><B>MIDI file 1.0</B></TD> 
+    <TD ALIGN="CENTER">MidiShare</TD> 
+    <TD></TD>
+    <TD></TD>
+    <TD></TD>
+  </TR>
+  <TR>
+    <TD><B><FONT SIZE="-1">Name meta events</FONT></B></TD> 
+    <TD>Code</TD> 
+    <TD>Id type MidiSare</TD> 
+    <TD>code type</TD> 
+    <TD>proc&eacute;dures</TD> 
+  </TR>
+  <TR>
+    <TD>Sequence Number</TD> 
+    <TD>0</TD> 
+    <TD>typeSeqNum</TD> 
+    <TD>134</TD> 
+    <TD>read_seqNum</TD> 
+  </TR>
+  <TR>
+    <TD>Text</TD> 
+    <TD>1</TD> 
+    <TD>typeText</TD> 
+    <TD>135</TD> 
+    <TD>read_text</TD> 
+  </TR>
+  <TR>
+    <TD>Copyright</TD> 
+    <TD>2</TD> 
+    <TD>typeCopyright</TD> 
+    <TD>136</TD> 
+    <TD>read_text</TD> 
+  </TR>
+  <TR>
+    <TD>Sequence/Track Name</TD> 
+    <TD>3</TD> 
+    <TD>typeSeqName</TD> 
+    <TD>137</TD> 
+    <TD>read_text</TD> 
+  </TR>
+  <TR>
+    <TD>Instrument Name</TD> 
+    <TD>4</TD> 
+    <TD>typeInstrName</TD> 
+    <TD>138</TD> 
+    <TD>read_text</TD> 
+  </TR>
+  <TR>
+    <TD>Lyric</TD> 
+    <TD>5</TD> 
+    <TD>typeLyric</TD> 
+    <TD>139</TD> 
+    <TD>read_text</TD> 
+  </TR>
+  <TR>
+    <TD>Marker</TD> 
+    <TD>6</TD> 
+    <TD>typeMarker</TD> 
+    <TD>140</TD> 
+    <TD>read_text</TD> 
+  </TR>
+  <TR>
+    <TD>Cue Point</TD> 
+    <TD>7</TD> 
+    <TD>typeCuePoint</TD> 
+    <TD>141</TD> 
+    <TD>read_text</TD> 
+  </TR>
+  <TR>
+    <TD>MIDI Channel</TD> 
+    <TD>32(20H)</TD> 
+    <TD>typeChanPrefix</TD> 
+    <TD>142</TD> 
+    <TD>read_chanPref</TD> 
+  </TR>
+  <TR>
+    <TD>MIDI port</TD> 
+    <TD>33(21H)</TD> 
+    <TD>Ignored</TD> 
+    <TD>mdf_ignoreEv</TD> 
+    <TD></TD>
+  </TR>
+  <TR>
+    <TD><FONT SIZE="-1">End of Track</FONT></TD> 
+    <TD>47(2FH)</TD> 
+    <TD>typeEndTrack</TD> 
+    <TD>143</TD> 
+    <TD>read_endTrack</TD> 
+  </TR>
+  <TR>
+    <TD>Tempo</TD> 
+    <TD>81(51H)</TD> 
+    <TD>typeTempo</TD> 
+    <TD>144</TD> 
+    <TD>read_tempo</TD> 
+  </TR>
+  <TR>
+    <TD>SMPTE Offset</TD> 
+    <TD>84(54H)</TD> 
+    <TD>typeSMPTEOffset</TD> 
+    <TD>145</TD> 
+    <TD>read_smpte</TD> 
+  </TR>
+  <TR>
+    <TD>Time Signature</TD> 
+    <TD>88(58H)</TD> 
+    <TD>typeTimeSign</TD> 
+    <TD>146</TD> 
+    <TD>read_timeSign</TD> 
+  </TR>
+  <TR>
+    <TD>Key Signature</TD> 
+    <TD>89(59H)</TD> 
+    <TD>typeKeySign</TD> 
+    <TD>147</TD> 
+    <TD>read_KeySign</TD> 
+  </TR>
+  <TR>
+    <TD>Proprietary Event</TD> 
+    <TD>127(7FH)</TD> 
+    <TD>typeSp&eacute;cific</TD> 
+    <TD>148</TD> 
+    <TD>read_text</TD> 
+  </TR>
+</TABLE><BR>
+<BR>
+<U>4.3.2. D&eacute;tails des proc&eacute;dures de lecture des
+&eacute;v&eacute;nements Midi:<BR>
+</U><FONT SIZE="-1">Les param&egrave;tres en entr&eacute;e et
+en sortie sont les m&ecirc;mes pour toutes les proc&eacute;dures.<BR>
+<BR>
+<U>Les param&egrave;tres en entr&eacute;es sont:<BR>
+</U>- Le pointeur sur le descripteur MIDIFile.<BR>
+- Le status de l'&eacute;v&eacute;nement &agrave; lire.<BR>
+<BR>
+<U>Les param&egrave;tres en sortie</U> sont les m&ecirc;me que
+pour les proc&eacute;dure de lecture de meta &eacute;v&eacute;nement:<BR>
+- l'adresse de l'&eacute;v&eacute;nement allou&eacute;.<BR>
+- nil, dans les cas suivant:<BR>
+- L' &eacute;v&eacute;nement lu a &eacute;t&eacute; ignor&eacute;.<BR>
+- Erreur d'allocation &eacute;v&eacute;nement (MidiFile_errno=MidiFileErrEvs).<BR>
+<BR>
+Au retour l'appelant doit tester le compte rendu qui doit &ecirc;tre
+un des cas suivant:<BR>
+1) Les erreurs:<BR>
+- erreurs d'allocation &eacute;v&egrave;nement.<BR>
+- erreur de lecture fichier .<BR>
+2) L'&eacute;v&eacute;nement est ignor&eacute;.<BR>
+2) Lecture r&eacute;ussi.<BR>
+<BR>
+Tableau des types d'&eacute;v&eacute;nements Midi et des proc&eacute;dures
+internes utilis&eacute;es:<BR>
+<BR>
+</FONT><TABLE BORDER="1" WIDTH="770" HEIGHT="513" CELLSPACING="2"
+CELLPADDING="0">
+  <TR>
+    <TD ALIGN="CENTER"><B>MIDI file 1.0</B></TD> 
+    <TD ALIGN="CENTER">MidiShare</TD> 
+    <TD></TD>
+    <TD></TD>
+    <TD></TD>
+  </TR>
+  <TR>
+    <TD ALIGN="CENTER"><B><FONT SIZE="-1">Canal oriented events</FONT></B></TD> 
+    <TD></TD>
+    <TD></TD>
+    <TD></TD>
+    <TD></TD>
+  </TR>
+  <TR>
+    <TD><B><FONT SIZE="-1">Name MIDI events</FONT></B></TD> 
+    <TD>status</TD> 
+    <TD>Id type MidiSare</TD> 
+    <TD>code type</TD> 
+    <TD>proc&eacute;dures</TD> 
+  </TR>
+  <TR>
+    <TD>Key On</TD> 
+    <TD>80H</TD> 
+    <TD>typeKeyOff</TD> 
+    <TD>2</TD> 
+    <TD>read_2DataEv</TD> 
+  </TR>
+  <TR>
+    <TD>Key Off</TD> 
+    <TD>90h</TD> 
+    <TD>typeKeyOn</TD> 
+    <TD>1</TD> 
+    <TD>read_2DataEv</TD> 
+  </TR>
+  <TR>
+    <TD>Poly Key Pressure</TD> 
+    <TD>A0H</TD> 
+    <TD>typeKeyPress</TD> 
+    <TD>3</TD> 
+    <TD>read_2DataEv</TD> 
+  </TR>
+  <TR>
+    <TD>Control Change</TD> 
+    <TD>B0H</TD> 
+    <TD>typeCtrlChange</TD> 
+    <TD>4</TD> 
+    <TD>read_2DataEv</TD> 
+  </TR>
+  <TR>
+    <TD>Program Change</TD> 
+    <TD>C0H</TD> 
+    <TD>typeProgChange</TD> 
+    <TD>5</TD> 
+    <TD>read_1DataEv</TD> 
+  </TR>
+  <TR>
+    <TD>Channel Pressure</TD> 
+    <TD>D0H</TD> 
+    <TD>typeChanPress</TD> 
+    <TD>6</TD> 
+    <TD>read_1DataEv</TD> 
+  </TR>
+  <TR>
+    <TD>Pith Bend Change</TD> 
+    <TD>E0H</TD> 
+    <TD>typePitchWheel</TD> 
+    <TD>7</TD> 
+    <TD>read_2DataEv</TD> 
+  </TR>
+  <TR>
+    <TD ALIGN="CENTER"><B>Non canal oriented events</B></TD> 
+    <TD></TD>
+    <TD></TD>
+    <TD></TD>
+    <TD></TD>
+  </TR>
+  <TR>
+    <TD><FONT SIZE="-1">System Exclusive</FONT></TD> 
+    <TD>F0H</TD> 
+    <TD>typeSysEx</TD> 
+    <TD>17</TD> 
+    <TD>read_sysex</TD> 
+  </TR>
+  <TR>
+    <TD>MTC quarter frame</TD> 
+    <TD>F1H</TD> 
+    <TD>typeQuarterFrame</TD> 
+    <TD>130</TD> 
+    <TD>read_1DataEv</TD> 
+  </TR>
+  <TR>
+    <TD>Song Position Pointer</TD> 
+    <TD>F2H</TD> 
+    <TD>typeSongPos</TD> 
+    <TD>8</TD> 
+    <TD>read_2DataEv</TD> 
+  </TR>
+  <TR>
+    <TD>Song Select</TD> 
+    <TD>F3H</TD> 
+    <TD>typeSongSel</TD> 
+    <TD>9</TD> 
+    <TD>read_1DataEv</TD> 
+  </TR>
+  <TR>
+    <TD>Undefined</TD> 
+    <TD>F4H</TD> 
+    <TD>ignored</TD> 
+    <TD></TD>
+    <TD>read_undef</TD> 
+  </TR>
+  <TR>
+    <TD>Undefined</TD> 
+    <TD>F5H</TD> 
+    <TD>ignored</TD> 
+    <TD></TD>
+    <TD>read_undef</TD> 
+  </TR>
+  <TR>
+    <TD>Tune Request</TD> 
+    <TD>F6H</TD> 
+    <TD>typeTune</TD> 
+    <TD>14</TD> 
+    <TD>read_0DataEv</TD> 
+  </TR>
+  <TR>
+    <TD>Data Stream</TD> 
+    <TD>F7H</TD> 
+    <TD>typeStream</TD> 
+    <TD>18</TD> 
+    <TD>read_sysex</TD> 
+  </TR>
+  <TR>
+    <TD>Timing Midi Clock</TD> 
+    <TD>F8H</TD> 
+    <TD>typeClock</TD> 
+    <TD>10</TD> 
+    <TD>read_0DataEv</TD> 
+  </TR>
+  <TR>
+    <TD>Undefined</TD> 
+    <TD>F9H</TD> 
+    <TD>ignored</TD> 
+    <TD></TD>
+    <TD>read_undef</TD> 
+  </TR>
+  <TR>
+    <TD>Start</TD> 
+    <TD>FAH</TD> 
+    <TD>typeStart</TD> 
+    <TD>11</TD> 
+    <TD>read_0DataEv</TD> 
+  </TR>
+  <TR>
+    <TD>Continue</TD> 
+    <TD>FBH</TD> 
+    <TD>typeContinue</TD> 
+    <TD>12</TD> 
+    <TD>read_0DataEv</TD> 
+  </TR>
+  <TR>
+    <TD>Stop</TD> 
+    <TD>FCH</TD> 
+    <TD>typeStop</TD> 
+    <TD>13</TD> 
+    <TD>read_0DataEv</TD> 
+  </TR>
+  <TR>
+    <TD></TD>
+    <TD>FDH</TD> 
+    <TD>ignored</TD> 
+    <TD></TD>
+    <TD>read_undef</TD> 
+  </TR>
+  <TR>
+    <TD>Active Sensing</TD> 
+    <TD>FEH</TD> 
+    <TD>typeActiveSens</TD> 
+    <TD>15</TD> 
+    <TD>read_0DataEv</TD> 
+  </TR>
+  <TR>
+    <TD>System Reset</TD> 
+    <TD>FFH</TD> 
+    <TD>typeReset</TD> 
+    <TD>16</TD> 
+    <TD>read_undef</TD> 
+  </TR>
+</TABLE><BR>
+<B><I><U>4.4. <HR ALIGN=LEFT>D&eacute;tails des fonctions internes
+d'&eacute;criture d'&eacute;v&eacute;nements &nbsp;:<BR>
+</U></I></B><FONT SIZE="-1"><BR>
+Les 2 familles d'&eacute;v&eacute;nements sont&nbsp;:<BR>
+Les &eacute;v&egrave;nements Midi&nbsp;: Note on, Note off etc.<BR>
+Les m&eacute;ta &eacute;v&eacute;nements&nbsp;: Tempo, Key signature,
+Lyric etc<BR>
+<BR>
+C'est la proc&eacute;dure interne WriteEv qui permet l'&eacute;criture
+d'un &eacute;v&eacute;nement midi ou meta &eacute;v&eacute;nement.<BR>
+<BR>
+A chaque &eacute;v&eacute;nement Midi ou m&eacute;ta &eacute;v&eacute;nement
+correspond une proc&eacute;dure de d'&eacute;criture dont le r&ocirc;le
+d'&eacute;crire un &eacute;v&eacute;nement sur le piste courante
+du fichier MIDIFile. <BR>
+</FONT><U>4.4.1. Proc&eacute;dures d'&eacute;criture des m&eacute;ta
+&eacute;v&eacute;nements:<BR>
+</U><FONT SIZE="-1"><BR>
+Les param&egrave;tres en entr&eacute;e et en sortie sont les m&ecirc;mes
+pour toutes les proc&eacute;dures.<BR>
+<BR>
+<U>Les param&egrave;tres en entr&eacute;es sont:<BR>
+</U><BR>
+- Le pointeur sur le descripteur MIDIFile.<BR>
+- Le pointeur sur l' &eacute;v&eacute;nement MidiShare &agrave;
+&eacute;crire.<BR>
+- type MIDIFile du meta &eacute;v&egrave;nement.<BR>
+<BR>
+Les param&egrave;tres en sortie sont:<BR>
+<BR>
+- true si &eacute;criture r&eacute;ussie.<BR>
+- False si erreur d'&eacute;criture fichier:<BR>
+<BR>
+Tableau des types de meta &eacute;v&eacute;nement et des proc&eacute;dures
+internes utilis&eacute;es:<BR>
+<BR>
+</FONT><TABLE BORDER="1" WIDTH="587" HEIGHT="342" CELLSPACING="2"
+CELLPADDING="0">
+  <TR>
+    <TD ALIGN="CENTER"><B>MIDI file 1.0</B></TD> 
+    <TD ALIGN="CENTER">MidiShare</TD> 
+    <TD></TD>
+    <TD></TD>
+    <TD></TD>
+  </TR>
+  <TR>
+    <TD><B><FONT SIZE="-1">Name meta events</FONT></B></TD> 
+    <TD>Code</TD> 
+    <TD>Id type MidiSare</TD> 
+    <TD>code type</TD> 
+    <TD>proc&eacute;dures</TD> 
+  </TR>
+  <TR>
+    <TD>Sequence Number</TD> 
+    <TD>0</TD> 
+    <TD>typeSeqNum</TD> 
+    <TD>134</TD> 
+    <TD>write_seqNum</TD> 
+  </TR>
+  <TR>
+    <TD>Text</TD> 
+    <TD>1</TD> 
+    <TD>typeText</TD> 
+    <TD>135</TD> 
+    <TD>write_text</TD> 
+  </TR>
+  <TR>
+    <TD>Copyright</TD> 
+    <TD>2</TD> 
+    <TD>typeCopyright</TD> 
+    <TD>136</TD> 
+    <TD>write_text</TD> 
+  </TR>
+  <TR>
+    <TD>Sequence/Track Name</TD> 
+    <TD>3</TD> 
+    <TD>typeSeqName</TD> 
+    <TD>137</TD> 
+    <TD>write_text</TD> 
+  </TR>
+  <TR>
+    <TD>Instrument Name</TD> 
+    <TD>4</TD> 
+    <TD>typeInstrName</TD> 
+    <TD>138</TD> 
+    <TD>write_text</TD> 
+  </TR>
+  <TR>
+    <TD>Lyric</TD> 
+    <TD>5</TD> 
+    <TD>typeLyric</TD> 
+    <TD>139</TD> 
+    <TD>write_text</TD> 
+  </TR>
+  <TR>
+    <TD>Marker</TD> 
+    <TD>6</TD> 
+    <TD>typeMarker</TD> 
+    <TD>140</TD> 
+    <TD>write_text</TD> 
+  </TR>
+  <TR>
+    <TD>Cue Point</TD> 
+    <TD>7</TD> 
+    <TD>typeCuePoint</TD> 
+    <TD>141</TD> 
+    <TD>write_text</TD> 
+  </TR>
+  <TR>
+    <TD>MIDI Channel</TD> 
+    <TD>32 (20H)</TD> 
+    <TD>typeChanPrefix</TD> 
+    <TD>142</TD> 
+    <TD>write_chanPref</TD> 
+  </TR>
+  <TR>
+    <TD>MIDI port</TD> 
+    <TD>33 (21H)</TD> 
+    <TD>Ignored</TD> 
+    <TD></TD>
+    <TD></TD>
+  </TR>
+  <TR>
+    <TD><FONT SIZE="-1">End of Track</FONT></TD> 
+    <TD>47 (2FH)</TD> 
+    <TD>typeEndTrack</TD> 
+    <TD>143</TD> 
+    <TD>write_endTrack</TD> 
+  </TR>
+  <TR>
+    <TD>Tempo</TD> 
+    <TD>81 (51H)</TD> 
+    <TD>typeTempo</TD> 
+    <TD>144</TD> 
+    <TD>write_tempo</TD> 
+  </TR>
+  <TR>
+    <TD>SMPTE Offset</TD> 
+    <TD>84 (54H)</TD> 
+    <TD>typeSMPTEOffset</TD> 
+    <TD>145</TD> 
+    <TD>write_smpte</TD> 
+  </TR>
+  <TR>
+    <TD>Time Signature</TD> 
+    <TD>88 (58H)</TD> 
+    <TD>typeTimeSign</TD> 
+    <TD>146</TD> 
+    <TD>write_timeSign</TD> 
+  </TR>
+  <TR>
+    <TD>Key Signature</TD> 
+    <TD>89 (59H)</TD> 
+    <TD>typeKeySign</TD> 
+    <TD>147</TD> 
+    <TD>write_KeySign</TD> 
+  </TR>
+  <TR>
+    <TD>Proprietary Event</TD> 
+    <TD>127 (7FH)</TD> 
+    <TD>typeSp&eacute;cific</TD> 
+    <TD>148</TD> 
+    <TD>write_text</TD> 
+  </TR>
+</TABLE><U>4.4.2. Proc&eacute;dures d'&eacute;criture des &eacute;v&eacute;nements
+Midi:<BR>
+</U><FONT SIZE="-1">Les param&egrave;tres en entr&eacute;e et
+en sortie sont les m&ecirc;mes pour toutes les proc&eacute;dures.<BR>
+<BR>
+Les param&egrave;tres en entr&eacute;e sont:<BR>
+<BR>
+- Le pointeur sur le descripteur MIDIFile.<BR>
+- Le pointeur sur l' &eacute;v&eacute;nement MidiShare &agrave;
+&eacute;crire.<BR>
+- status de l'&eacute;v&eacute;nement Midi.<BR>
+<BR>
+Les param&egrave;tres en sortie sont:<BR>
+- true si &eacute;criture r&eacute;ussie.<BR>
+- False si erreur d'&eacute;criture fichier:<BR>
+<HR ALIGN=LEFT>Tableau des types d'&eacute;v&eacute;nement Midi
+et des proc&eacute;dures internes utilis&eacute;es:<BR>
+<BR>
+</FONT><TABLE BORDER="1" WIDTH="749" HEIGHT="528" CELLSPACING="2"
+CELLPADDING="0">
+  <TR>
+    <TD ALIGN="CENTER"><B>MIDI file 1.0</B></TD> 
+    <TD ALIGN="CENTER">MidiShare</TD> 
+    <TD></TD>
+    <TD></TD>
+    <TD></TD>
+  </TR>
+  <TR>
+    <TD ALIGN="CENTER"><B><FONT SIZE="-1">Canal oriented events</FONT></B></TD> 
+    <TD></TD>
+    <TD></TD>
+    <TD></TD>
+    <TD></TD>
+  </TR>
+  <TR>
+    <TD><FONT SIZE="-1">Name MIDI events</FONT></TD> 
+    <TD>status</TD> 
+    <TD>Id type MidiSare</TD> 
+    <TD>code type</TD> 
+    <TD>proc&eacute;dures</TD> 
+  </TR>
+  <TR>
+    <TD>voir note 1</TD> 
+    <TD>90H</TD> 
+    <TD>typeNote</TD> 
+    <TD>0</TD> 
+    <TD>write_note</TD> 
+  </TR>
+  <TR>
+    <TD>Key On</TD> 
+    <TD>90H</TD> 
+    <TD>typeKeyOn</TD> 
+    <TD>1</TD> 
+    <TD>write_2DataEv</TD> 
+  </TR>
+  <TR>
+    <TD>Key Off</TD> 
+    <TD>80h</TD> 
+    <TD>typeKeyOff</TD> 
+    <TD>2</TD> 
+    <TD>write_2DataEv</TD> 
+  </TR>
+  <TR>
+    <TD>Poly Key Pressure</TD> 
+    <TD>A0H</TD> 
+    <TD>typeKeyPress</TD> 
+    <TD>3</TD> 
+    <TD>write_2DataEv</TD> 
+  </TR>
+  <TR>
+    <TD>Control Change</TD> 
+    <TD>B0H</TD> 
+    <TD>typeCtrlChange</TD> 
+    <TD>4</TD> 
+    <TD>write_2DataEv</TD> 
+  </TR>
+  <TR>
+    <TD>Program Change</TD> 
+    <TD>C0H</TD> 
+    <TD>typeProgChange</TD> 
+    <TD>5</TD> 
+    <TD>write_1DataEv</TD> 
+  </TR>
+  <TR>
+    <TD>Channel Pressure</TD> 
+    <TD>D0H</TD> 
+    <TD>typeChanPress</TD> 
+    <TD>6</TD> 
+    <TD>write_1DataEv</TD> 
+  </TR>
+  <TR>
+    <TD>Pith Bend Change</TD> 
+    <TD>E0H</TD> 
+    <TD>typePitchWheel</TD> 
+    <TD>7</TD> 
+    <TD>write_2DataEv</TD> 
+  </TR>
+  <TR>
+    <TD ALIGN="CENTER"><B>Non canal oriented events</B></TD> 
+    <TD></TD>
+    <TD></TD>
+    <TD></TD>
+    <TD></TD>
+  </TR>
+  <TR>
+    <TD><FONT SIZE="-1">Song Position Pointer</FONT></TD> 
+    <TD>F2H</TD> 
+    <TD>typeSongPos</TD> 
+    <TD>8</TD> 
+    <TD>write_2DataEv</TD> 
+  </TR>
+  <TR>
+    <TD>Song Select</TD> 
+    <TD>F3H</TD> 
+    <TD>typeSongSel</TD> 
+    <TD>9</TD> 
+    <TD>write_1DataEv</TD> 
+  </TR>
+  <TR>
+    <TD>Timing Midi Clock</TD> 
+    <TD>F8H</TD> 
+    <TD>typeClock</TD> 
+    <TD>10</TD> 
+    <TD>write_0DataEv</TD> 
+  </TR>
+  <TR>
+    <TD>Start</TD> 
+    <TD>FAH</TD> 
+    <TD>typeStart</TD> 
+    <TD>11</TD> 
+    <TD>write_0DataEv</TD> 
+  </TR>
+  <TR>
+    <TD>Continue</TD> 
+    <TD>FBH</TD> 
+    <TD>typeContinue</TD> 
+    <TD>12</TD> 
+    <TD>write_0DataEv</TD> 
+  </TR>
+  <TR>
+    <TD>Stop</TD> 
+    <TD>FCH</TD> 
+    <TD>typeStop</TD> 
+    <TD>13</TD> 
+    <TD>write_0DataEv</TD> 
+  </TR>
+  <TR>
+    <TD>Active Sensing</TD> 
+    <TD>FEH</TD> 
+    <TD>typeActiveSens</TD> 
+    <TD>15</TD> 
+    <TD>write_0DataEv</TD> 
+  </TR>
+  <TR>
+    <TD>System Reset</TD> 
+    <TD>FFH</TD> 
+    <TD>typeReset</TD> 
+    <TD>16</TD> 
+    <TD>dont_write</TD> 
+  </TR>
+  <TR>
+    <TD>System Exclusive</TD> 
+    <TD>F0H</TD> 
+    <TD>typeSysEx</TD> 
+    <TD>17</TD> 
+    <TD>write_sysex</TD> 
+  </TR>
+  <TR>
+    <TD>Tune Request</TD> 
+    <TD>F6H</TD> 
+    <TD>typeTune</TD> 
+    <TD>14</TD> 
+    <TD>write_0DataEv</TD> 
+  </TR>
+  <TR>
+    <TD>Data Stream</TD> 
+    <TD>F7H</TD> 
+    <TD>typeStream</TD> 
+    <TD>18</TD> 
+    <TD>write_sysex</TD> 
+  </TR>
+  <TR>
+    <TD>MTC quarter frame</TD> 
+    <TD>F1H</TD> 
+    <TD>typeQuarterFrame</TD> 
+    <TD>130</TD> 
+    <TD>write_1DataEv</TD> 
+  </TR>
+  <TR>
+    <TD>voir note 2</TD> 
+    <TD>B0H</TD> 
+    <TD>typeCtrl14b</TD> 
+    <TD>131</TD> 
+    <TD>write_Ctrl14b</TD> 
+  </TR>
+  <TR>
+    <TD>voir note 3</TD> 
+    <TD>B0H</TD> 
+    <TD>typeNonRegParam</TD> 
+    <TD>132</TD> 
+    <TD>write_NRegP</TD> 
+  </TR>
+  <TR>
+    <TD>voir note 4</TD> 
+    <TD>B0H</TD> 
+    <TD>typeRegParam</TD> 
+    <TD>133</TD> 
+    <TD>write_RegP</TD> 
+  </TR>
+</TABLE><BR>
+<BR>
+<BR>
+<U><FONT SIZE="-1">Notes 1,2,3,4<BR>
+</FONT></U><FONT SIZE="-1"><BR>
+Les &eacute;v&egrave;nements <B>typeNote</B>,<B>typeCtrl14b</B>,<B>typeNonRegParam</B>
+et <B>typeRegParm</B></FONT> <FONT SIZE="-1">sont des &eacute;v&eacute;nement
+MidiShare qui sont compos&eacute;s de plusieurs &eacute;v&eacute;nements
+Midi.<BR>
+<BR>
+<B>typeNote<BR>
+</B><BR>
+L'&eacute;v&eacute;nement typeNote est un &eacute;v&egrave;nement
+MidiShare de m&ecirc;me status que l'&eacute;v&eacute;nement midi
+Key On. Cet &eacute;v&eacute;nement indique un d&eacute;but de
+note et est porteur de la dur&eacute;e de la note . Lorsqu'il
+est pass&eacute; &agrave; <B>write_note</B>, une copie de d'&eacute;v&eacute;nement
+avec le type typeKeyOff est ajout&eacute;e &agrave; la s&eacute;quence
+interne keyOff. La date de l'&eacute;v&eacute;nement Key Off ajout&eacute;
+est calcul&eacute; &agrave; partir de la date de typeNote et de
+la dur&eacute;e de la note:<BR>
+<BR>
+date(typeKeyOff)= date (typeNote) + dur&eacute;e (typeNote)<BR>
+<BR>
+Cet &eacute;v&eacute;nement sera &eacute;crit ult&eacute;rieurement
+par la proc&eacute;dure MFAPI <B>MidiFileWriteEv</B>.<BR>
+<BR>
+<BR>
+<B>typeCtrl14b</B><BR>
+<BR>
+Contr&ocirc;leur continu avec valeur MSB et LSB sur 14 bits.<BR>
+<BR>
+Cet &eacute;v&eacute;nement est compos&eacute; ainsi:<BR>
+Ev&egrave;nement 'Control Change'<BR>
+-num&eacute;ro de contr&ocirc;leur MSB + valeur (7 bits) du contr&ocirc;leur
+MSB.<BR>
+Suivi d'un &eacute;v&eacute;nement 'Contol Change' dans le mode
+'status courant'<BR>
+-num&eacute;ro de contr&ocirc;leur LSB + valeur (7 bits) du contr&ocirc;leur
+LSB.<BR>
+<BR>
+<BR>
+<BR>
+<B>typeNonRegParam</B>:<BR>
+<BR>
+Contr&ocirc;leur: Non Registered Parameter Number.<BR>
+<BR>
+<U>Cet &eacute;v&eacute;nement est compos&eacute; ainsi:<BR>
+</U>Ev&eacute;nement 'Control Change'<BR>
+-num&eacute;ro de contr&ocirc;leur NRPN MSB(99) + num&eacute;ro
+MSB du param&egrave;tre(7 bits).<BR>
+Suivi d'un &eacute;v&eacute;nement 'Contol Change' dans le mode
+'status courant'<BR>
+-num&eacute;ro de contr&ocirc;leur NRPN LSB(98) + num&eacute;ro
+LSB du param&egrave;tre(7 bits).<BR>
+Suivi d'un &eacute;v&eacute;nement 'Contol Change' dans le mode
+'status courant'<BR>
+-num&eacute;ro de contr&ocirc;leur DATA ENTRY MSB (6) + valeur
+MSB du param&egrave;tre<BR>
+(7 bits).<BR>
+Suivi d'un &eacute;v&eacute;nement 'Contol Change' dans le mode
+'status courant'<BR>
+-num&eacute;ro de contr&ocirc;leur DATA ENTRY LSB (38) + valeur
+LSB du param&egrave;tre<BR>
+(7 bits).<BR>
+<BR>
+<BR>
+<BR>
+<B>typeRegParam</B>:<BR>
+<BR>
+Contr&ocirc;leur: Registered Parameter Number.<BR>
+<BR>
+<U>Cet &eacute;v&eacute;nement est compos&eacute; ainsi:<BR>
+</U><BR>
+Ev&eacute;nement 'Control Change'<BR>
+-num&eacute;ro de contr&ocirc;leur RPN MSB(101) + num&eacute;ro
+MSB du param&egrave;tre(7 bits).<BR>
+Suivi d'un &eacute;v&eacute;nement 'Contol Change' dans le mode
+'status courant'<BR>
+-num&eacute;ro de contr&ocirc;leur NRPN LSB(100) + num&eacute;ro
+LSB du param&egrave;tre(7 bits).<BR>
+Suivi d'un &eacute;v&eacute;nement 'Contol Change' dans le mode
+'status courant'<BR>
+-num&eacute;ro de contr&ocirc;leur DATA ENTRY MSB (6) + valeur
+MSB du param&egrave;tre(7 bits).<BR>
+Suivi d'un &eacute;v&eacute;nement 'Contol Change' dans le mode
+'status courant'<BR>
+-num&eacute;ro de contr&ocirc;leur DATA ENTRY LSB (38) + valeur
+LSB du param&egrave;tre(7 bits).<BR>
+<BR>
+<BR>
+</FONT></P>
+
+<HR ALIGN=LEFT>
+
+</BODY>
+</HTML>

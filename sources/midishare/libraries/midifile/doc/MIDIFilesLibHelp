@@ -1,0 +1,394 @@
+¾KY CopyrightNotice
+¾C  Copyright GRAME, Inc. 1989-1992, All rights reserved.
+411 - MidiShare Help - MPW 3.2 Beta Release.
+Friday, January 24, 1992 9:57:37 AM
+
+¾KY Help
+MIDIFilesLibHelp
+¾KL Summary
+
+isTrackOpen
+MidiFileChooseTrack
+MidiFileClose
+MidiFileCloseTrack
+MidiFileCreate
+MidiFileGetVersion
+MidiFileNewTrack
+MidiFileOpen
+MidiFileOpenTrack
+MidiFileReadEv
+MidiFileReadTrack
+MidiFileWriteEv
+MidiFileWriteTrack
+MidiFileGetMFErrno
+MidiFileGetErrno
+
+
+¾KY Summary
+¾C :
+
+               Functions to read and write MIDIFile format files
+______________________________________________________________________________
+MidiFileGetVersion       * return the version numbers (src and format)    *
+
+MidiFileOpen             * open an existing MIDI file                     *
+MidiFileClose            * close a file opened with MidiFileOpen          *
+MidiFileCreate           * create a MIDI file                             *
+
+MidiFileOpenTrack        * open an existing track                         *
+MidiFileNewTrack         * create a new track                             *
+MidiFileCloseTrack       * close a track                                  *
+MidiFileSetPos           * locate to the beginning of a track             *
+
+MidiFileReadEv           * read an event within the current track         *
+MidiFileReadTrack        * read a track                                   *
+
+MidiFileWriteEv          * write an event to the current track            *
+MidiFileWriteTrack       * write a sequence to a track                    *
+
+MidiFileGetMFErrno       * returns the MidiFile_errno code                *
+MidiFileGetErrno         * returns the errno code                         *
+
+Warning: these functions doesn't check for the consistency of the datas, 
+according to the MIDIFile specifications, they write the datas without 
+worring about the format (tempo map for the format 1, for example)
+
+
+
+¾KY isTrackOpen
+¾C macro
+
+File {CIncludes}MidiFile.h
+
+#ifdef __cplusplus
+inline Boolean isTrackOpen( midiFILE *fd) { return (fd->trkHeadOffset > 0) }
+#else
+#define isTrackOpen(fd)	(fd->trkHeadOffset > 0)
+#endif
+
+                           Description
+Returns the current track state: closed or opened.
+
+¾KY MidiFileChooseTrack
+¾T Function
+¾DT Boolean ret= MidiFileChooseTrack( (midiFILE *)fd, (short)numPiste);
+¾C File {CIncludes}MidiFile.h
+Synopsis
+
+#include <MidiFile.h>
+Boolean MidiFileChooseTrack( midiFILE *fd, short numTrack);
+
+                           Description
+
+Locate at the beginning of the track numTrack within the file pointed to by fd.
+An error occur if the function returns false:
+  it is a MidiShare error if MidiFile_errno is not equal to MidiFileNoErr,
+  otherwise, the error code is in errno.
+
+¾KY MidiFileClose
+¾T Function
+¾DT Boolean ret= MidiFileClose( (midiFILE *)fd);
+¾C File {CIncludes}MidiFile.h
+Synopsis
+
+#include <MidiFile.h>
+Boolean MidiFileClose( midiFILE *fd);
+
+                           Description
+
+Close the file pointed to by fd, previously opened with MidiFileOpen
+or MidiFileCreate. If a track is still opened, the function closes it
+by calling MidiFileCloseTrack.
+
+see also : MidiFileOpen MidiFileCreate
+
+¾KY MidiFileCloseTrack
+¾T Function
+¾DT Boolean ret= MidiFileCloseTrack( (midiFILE *)fd);
+¾C File {CIncludes}MidiFile.h
+Synopsis
+
+#include <MidiFile.h>
+Boolean   MidiFileCloseTrack( midiFILE *fd);
+
+                           Description
+
+Close a track previously opened with MidiFileOpenTrack or created with
+MidiFileNewTrack.
+If the file is opened for reading, MidiFileCloseTrack locate the file
+pointeur at the beginning of the next track.
+If the file is opened for writing, MidiFileCloseTrack flush the KeyOff
+sequence (coming from typeNote events), update the track header and the
+file header.
+The function does nothing and returns true if the track is still closed.
+
+An error occur if the function returns false:
+  it is a MidiShare error if MidiFile_errno is not equal to MidiFileNoErr,
+  otherwise, the error code is in errno.
+
+see also : MidiFileOpenTrack MidiFileNewTrack
+
+¾KY MidiFileCreate
+¾T Function
+¾DT midiFILE *myFile= MidiFileCreate( (const char *)filename, (short)format, (short)timeDef, (short)ticks);
+¾C File {CIncludes}MidiFile.h
+Synopsis
+
+#include <MidiFile.h>
+midiFILE *MidiFileCreate( const char *filename, short format, short timeDef, short ticks);
+
+                           Description
+
+Create a MIDIFile format file. The function parameters are as follow:
+     filename :  name of the file to create.
+	 format   :  MIDIFile format of the file, it can takes the
+	 			 following values:
+				 - midifile0 : format 0 (one track)
+				 - midifile1 : format 1 (several tracks, to read according
+				               to the tempo map contained in the track #0)
+				 - midifile2 : format 2 (several independant patterns
+				               one per track, every track contains its
+							   own tempo map)
+     timeDef  : specify the time representation, it can takes the
+	 			 following values:
+                - TicksPerQuarterNote : MIDI measured time.
+                - Smpte24             : smpte time 24 frame/sec.
+                - Smpte25             : smpte time 25 frame/sec.
+                - Smpte29             : smpte time 29 frame/sec.
+                - Smpte30             : smpte time 30 frame/sec.
+     ticks    : for MIDI time: represents the tick count per quarter note.
+				for smpte time: represents the tick count per frame.
+
+The function returns a pointer to the following structure:
+	typedef struct midiFILE{
+		short 	format;					/* file format                          */
+		unsigned short ntrks;			/* track count                          */
+		short	time;					/* time representation :				*/
+						/* for MIDI time: tick count per quarter note           */
+						/* for smpte time: b. 15  = 1                           */
+						/*                 b.8-14 = frame count per sec         */
+						/*			       b.0-7  = tick count per frame        */
+		FILE 	*fd;					/* standard file descriptor             */	
+		fpos_t  trkHeadOffset;			/* track header offset                  */
+										/* nil if the track is closed           */
+		long	_cnt;
+		MidiSeqPtr keyOff;				/* keyOff coming from typeNote events   */
+		long 	curDate;				/* current date                         */
+		Boolean mode;					/* 0/1 : reading/writing                */
+	}midiFILE;
+
+
+An error occur if the function returns null:
+  it is a MidiShare error if MidiFile_errno is not equal to MidiFileNoErr,
+  otherwise, the error code is in errno.
+
+see also : MidiFileOpen MidiFileClose
+
+¾KY MidiFileGetVersion
+¾T Function
+¾DT const MDF_versions *myPtr= MidiFileGetVersion();
+¾C File {CIncludes}MidiFile.h
+Synopsis
+
+#include <MidiFile.h>
+const MDF_versions *MidiFileGetVersion(void);
+
+                           Description
+
+Return the version number of the implemented MIDIFile format and of 
+the source code.
+
+MidiFileGetVersion returns a pointer on the following structure:
+	typedef struct MDF_versions{
+		short	src;				/* source code version              */
+		short 	MidiFile;			/* MIDIFile format version          */
+	}MDF_versions;
+
+¾KY MidiFileNewTrack
+¾T Function
+¾DT Boolean ret= MidiFileNewTrack( (midiFILE *)fd);
+¾C File {CIncludes}MidiFile.h
+Synopsis
+
+#include <MidiFile.h>
+Boolean  MidiFileNewTrack( midiFILE *fd);
+
+                           Description
+
+MidiFileNewTrack adds a new track header at the end of the file and open the 
+corresponding track. You can use this function only if the file is opened for
+writing. A previously opened track will first been closed.
+
+An error occur if the function returns false:
+  it is a MidiShare error if MidiFile_errno is not equal to MidiFileNoErr,
+  otherwise, the error code is in errno.
+
+see also : MidiFileOpenTrack MidiFileCloseTrack
+
+¾KY MidiFileOpen
+¾T Function
+¾DT midiFILE *myFile= MidiFileOpen( (const char *)filename, (short)mode);
+¾C File {CIncludes}MidiFile.h
+Synopsis
+
+#include <MidiFile.h>
+midiFILE *MidiFileOpen( const char *filename, short mode);
+
+                           Description
+
+Open an existing MIDI file. The function parameters are as follow:
+     filename :  name of the file.
+     mode     :  can takes the following values :
+                 - MidiFileRead   : to read the file
+                 - MidiFileAppend : to append to the file
+
+The function returns a pointer to the following structure:
+	typedef struct midiFILE{
+		short 	format;					/* file format                          */
+		unsigned short ntrks;			/* track count                          */
+		short	time;					/* reprŽsentation du temps :			*/
+						/* for MIDI time: tick count per quarter note           */
+						/* for smpte time: b. 15  = 1                           */
+						/*                 b.8-14 = frame count per sec         */
+						/*			       b.0-7  = tick count per frame        */
+		FILE 	*fd;					/* standard file descriptor             */	
+		fpos_t  trkHeadOffset;			/* track header offset                  */
+										/* nil if the track is closed           */
+		long	_cnt;
+		MidiSeqPtr keyOff;				/* keyOff coming from typeNote events   */
+		long 	curDate;				/* current date                         */
+		Boolean mode;					/* 0/1 : reading/writing                */
+	}midiFILE;
+
+An error occur if the function returns nil:
+  it is a MidiShare error if MidiFile_errno is not equal to MidiFileNoErr,
+  otherwise, the error code is in errno.
+
+see also : MidiFileClose MidiFileCreate
+
+¾KY MidiFileOpenTrack
+¾T Function
+¾DT Boolean ret= MidiFileOpenTrack( (midiFILE *)fd);
+¾C File {CIncludes}MidiFile.h
+Synopsis
+
+#include <MidiFile.h>
+Boolean  MidiFileOpenTrack( midiFILE *fd);
+
+                           Description
+
+Open the track if the file is opened for reading, otherwise the function returns
+false and MidiFile_errno is set to MidiFileErrNoTrack. 
+The function does nothing and returns true if the track is still opened.
+The purpose of this function consists essentially in data initialization
+to facilitate the track handling.
+
+
+see also : MidiFileNewTrack MidiFileCloseTrack
+
+¾KY MidiFileReadEv
+¾T Function
+¾DT MidiEvPtr ev= MidiFileReadEv( (midiFILE *)fd);
+¾C File {CIncludes}MidiFile.h
+Synopsis
+
+#include <MidiFile.h>
+MidiEvPtr  MidiFileReadEv( midiFILE *fd);
+
+                           Description
+
+MidiFileReadEv returns the next event within the current track. The track
+must be opened using MidiFileOpenTrack before reading an event. When you
+reach the end of the current track, it is automaticaly closed and the function 
+returns nil.
+
+An error occur if the function returns nil when the track is still opened:
+  it is a MidiShare error if MidiFile_errno is not equal to MidiFileNoErr,
+  otherwise, the error code is in errno.
+
+see also : MidiFileReadTrack isTrackOpen
+
+¾KY MidiFileReadTrack
+¾T Function
+¾DT MidiSeqPtr mySeq= MidiFileReadTrack( (midiFILE *)fd);
+¾C File {CIncludes}MidiFile.h
+Synopsis
+
+#include <MidiFile.h>
+MidiSeqPtr MidiFileReadTrack( midiFILE *fd);
+
+                           Description
+
+The function reads the current track from the file and returns the result in
+a MidiShare sequence. MidiFileReadTrack automaticaly opens and closes the track
+to read.
+
+An error occur if the function returns nil when the track is still opened:
+  it is a MidiShare error if MidiFile_errno is not equal to MidiFileNoErr,
+  otherwise, the error code is in errno.
+
+Warning: in case of error, the track remains opened.
+
+¾KY MidiFileWriteEv
+¾T Function
+¾DT Boolean ret= MidiFileWriteEv( (midiFILE *)fd, (MidiEvPtr)ev);
+¾C File {CIncludes}MidiFile.h
+Synopsis
+
+#include <MidiFile.h>
+Boolean    MidiFileWriteEv( midiFILE *fd, MidiEvPtr ev);
+
+                           Description
+
+MidiFileWriteEv writes the event ev to the current track. The track must be
+previously opened using the MidiFileNewTrack function.
+
+An error occur if the function returns false:
+  it is a MidiShare error if MidiFile_errno is not equal to MidiFileNoErr,
+  otherwise, the error code is in errno.
+
+see also : MidiFileWriteTrack
+
+¾KY MidiFileWriteTrack
+¾T Function
+¾DT Boolean ret= MidiFileWriteTrack( (midiFILE *)fd, (MidiSeqPtr)seq);
+¾C File {CIncludes}MidiFile.h
+Synopsis
+
+#include <MidiFile.h>
+Boolean MidiFileWriteTrack( midiFILE *fd, MidiSeqPtr seq);
+
+                           Description
+
+Writes in order all the events of the sequence seq to the file pointed to 
+by fd. MidiFileWriteTrack automaticaly create and close the written track. 
+
+An error occur if the function returns false:
+  it is a MidiShare error if MidiFile_errno is not equal to MidiFileNoErr,
+  otherwise, the error code is in errno.
+
+
+¾KY MidiFileGetMFErrno
+¾T Function
+¾DT int ret= MidiFileGetMFErrno();
+¾C File {CIncludes}MidiFile.h
+Synopsis
+
+#include <MidiFile.h>
+int MidiFileGetMFErrno( void);
+
+                           Description
+returns the MidiFile_errno code
+
+
+¾KY MidiFileGetErrno
+¾T Function
+¾DT int ret= MidiFileGetMFErrno();
+¾C File {CIncludes}MidiFile.h
+Synopsis
+
+#include <MidiFile.h>
+int MidiFileGetErrno( void);
+
+                           Description
+returns the errno code

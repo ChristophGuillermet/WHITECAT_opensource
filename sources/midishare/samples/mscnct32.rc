@@ -1,0 +1,206 @@
+//Microsoft Developer Studio generated resource script.
+//
+#include "resource.h"
+
+#define APSTUDIO_READONLY_SYMBOLS
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 2 resource.
+//
+#include "afxres.h"
+#include "mscnct.h"
+
+/////////////////////////////////////////////////////////////////////////////
+#undef APSTUDIO_READONLY_SYMBOLS
+
+/////////////////////////////////////////////////////////////////////////////
+// Neutral resources
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_FRA)
+#ifdef _WIN32
+LANGUAGE LANG_NEUTRAL, SUBLANG_NEUTRAL
+#pragma code_page(1252)
+#endif //_WIN32
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Bitmap
+//
+
+1800                    BITMAP  FIXED IMPURE    "bmp1800.bmp"
+1811                    BITMAP  FIXED IMPURE    "bmp1811.bmp"
+1812                    BITMAP  FIXED IMPURE    "bmp1812.bmp"
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Dialog
+//
+
+ABOUTDLG DIALOG FIXED IMPURE  43, 28, 130, 125
+STYLE WS_POPUP | WS_CAPTION
+CAPTION "About msConnect"
+FONT 10, "Times New Roman"
+BEGIN
+    CTEXT           "A freeware MidiShare application.",IDC_STATIC,9,72,112,
+                    9
+    PUSHBUTTON      "OK",1,100,103,23,15
+    CONTROL         1811,IDC_STATIC,"Static",SS_BITMAP,8,2,114,32
+    CTEXT           "msConnect is used to control the connections between different MidiShare applications.",
+                    IDC_STATIC,12,41,106,25
+    LTEXT           "MidiShare Version :",IDC_STATIC,28,80,61,8
+    LTEXT           "1.00",Version,91,80,19,8
+    CTEXT           "Email : msh@rd.grame.fr",IDC_STATIC,22,87,86,9
+    LTEXT           "Copyright GRAME 1995",IDC_STATIC,28,102,61,16
+    CONTROL         1812,IDC_STATIC,"Static",SS_BITMAP,7,102,18,17
+    GROUPBOX        "",IDC_STATIC,3,33,125,36
+END
+
+CNCTDLG DIALOG FIXED IMPURE  43, 60, 207, 79
+STYLE WS_MINIMIZEBOX | WS_POPUP | WS_VISIBLE | WS_CAPTION | WS_SYSMENU
+CAPTION "msConnect"
+FONT 9, "Times New Roman"
+BEGIN
+    LISTBOX         IDD_LB_SRC,3,11,65,67,LBS_MULTIPLESEL | WS_VSCROLL
+    LISTBOX         IDD_LB_APL,71,11,65,46,WS_VSCROLL
+    LISTBOX         IDD_LB_DST,139,11,65,67,LBS_MULTIPLESEL | WS_VSCROLL
+    CTEXT           "Sources",-1,13,2,46,8
+    CTEXT           "Applications",-1,79,2,48,8
+    CTEXT           "Destinations",-1,148,2,45,8
+    PUSHBUTTON      "",AboutButton,76,58,19,17,BS_BITMAP
+    PUSHBUTTON      "Exit",IDD_QUITTER,102,59,29,15,NOT WS_TABSTOP
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Icon
+//
+
+// Icon with lowest ID value placed first to ensure application icon
+// remains consistent on all systems.
+ICON                    ICON    DISCARDABLE     "icon.ico"
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// DESIGNINFO
+//
+
+#ifdef APSTUDIO_INVOKED
+GUIDELINES DESIGNINFO DISCARDABLE 
+BEGIN
+    "CNCTDLG", DIALOG
+    BEGIN
+        LEFTMARGIN, 3
+        RIGHTMARGIN, 204
+    END
+END
+#endif    // APSTUDIO_INVOKED
+
+#endif    // Neutral resources
+/////////////////////////////////////////////////////////////////////////////
+
+
+/////////////////////////////////////////////////////////////////////////////
+// Neutral (Default) resources
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_FRA)
+#ifdef _WIN32
+LANGUAGE LANG_NEUTRAL, SUBLANG_DEFAULT
+#pragma code_page(1252)
+#endif //_WIN32
+
+#ifndef _MAC
+/////////////////////////////////////////////////////////////////////////////
+//
+// Version
+//
+
+VS_VERSION_INFO VERSIONINFO
+ FILEVERSION 1,0,0,0
+ PRODUCTVERSION 1,0,0,0
+ FILEFLAGSMASK 0x3fL
+#ifdef _DEBUG
+ FILEFLAGS 0x1L
+#else
+ FILEFLAGS 0x0L
+#endif
+ FILEOS 0x4L
+ FILETYPE 0x1L
+ FILESUBTYPE 0x0L
+BEGIN
+    BLOCK "StringFileInfo"
+    BEGIN
+        BLOCK "000004b0"
+        BEGIN
+            VALUE "CompanyName", "GRAME\0"
+            VALUE "FileDescription", "MidiShare Connections Management Tool\0"
+            VALUE "FileVersion", "1.0\0"
+            VALUE "InternalName", "msConnect32\0"
+            VALUE "LegalCopyright", "Copyright © Grame 1996\0"
+            VALUE "OriginalFilename", "msConnect32.exe\0"
+            VALUE "ProductName", "msConnections\0"
+            VALUE "ProductVersion", "1.0\0"
+        END
+    END
+    BLOCK "VarFileInfo"
+    BEGIN
+        VALUE "Translation", 0x0, 1200
+    END
+END
+
+#endif    // !_MAC
+
+#endif    // Neutral (Default) resources
+/////////////////////////////////////////////////////////////////////////////
+
+
+/////////////////////////////////////////////////////////////////////////////
+// French (France) resources
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_FRA)
+#ifdef _WIN32
+LANGUAGE LANG_FRENCH, SUBLANG_FRENCH
+#pragma code_page(1252)
+#endif //_WIN32
+
+#ifdef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// TEXTINCLUDE
+//
+
+1 TEXTINCLUDE DISCARDABLE 
+BEGIN
+    "resource.h\0"
+END
+
+2 TEXTINCLUDE DISCARDABLE 
+BEGIN
+    "#include ""afxres.h""\r\n"
+    "#include ""mscnct.h""\r\n"
+    "\0"
+END
+
+3 TEXTINCLUDE DISCARDABLE 
+BEGIN
+    "\r\n"
+    "\0"
+END
+
+#endif    // APSTUDIO_INVOKED
+
+#endif    // French (France) resources
+/////////////////////////////////////////////////////////////////////////////
+
+
+
+#ifndef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 3 resource.
+//
+
+
+/////////////////////////////////////////////////////////////////////////////
+#endif    // not APSTUDIO_INVOKED
+

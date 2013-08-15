@@ -1,0 +1,71 @@
+diff -ru4w openlayer-2.1\include\OpenLayer\Settings.hpp openlayer-2.1_borderless\include\OpenLayer\Settings.hpp
+--- openlayer-2.1\include\OpenLayer\Settings.hpp	Sun Jan 14 04:41:00 2007
++++ openlayer-2.1_borderless\include\OpenLayer\Settings.hpp	Sun May 17 22:02:41 2009
+@@ -69,8 +69,15 @@
+    static float GetCollisionPolyAlphaLimit() {
+       return float( collisionPolyAlphaLimit )/255.0;
+    }
+    
++   static bool GetWindowBorder() {
++      return windowBorder;
++   }
++   static void SetWindowBorder(bool border) {
++      windowBorder = border;
++   }
++   
+    friend class GfxRend;
+    friend class Bitmap;
+ private:
+    
+@@ -81,8 +88,10 @@
+    
+    static bool useAntiAlias;
+    static bool useTextures;
+    static bool storeMemoryBitmaps;
++   
++   static bool windowBorder;
+ };
+ 
+ 
+ 
+diff -ru4w openlayer-2.1\src\GlDriver.cpp openlayer-2.1_borderless\src\GlDriver.cpp
+--- openlayer-2.1\src\GlDriver.cpp	Thu Nov 23 04:40:04 2006
++++ openlayer-2.1_borderless\src\GlDriver.cpp	Sun May 17 22:06:08 2009
+@@ -61,9 +61,22 @@
+ 	if( refreshRate > 0 ) {
+       request_refresh_rate( refreshRate );
+    }
+ 
+-	if( set_gfx_mode( GFX_OPENGL, w, h, 0, 0) != 0 ) {
++	int result = -1;
++#ifdef GFX_OPENGL_WINDOWED_BORDERLESS
++	if (Settings::GetWindowBorder()) {
++		result = set_gfx_mode( GFX_OPENGL, w, h, 0, 0);
++	}
++	else {
++		result = set_gfx_mode( GFX_OPENGL_WINDOWED_BORDERLESS, w, h, 0, 0);
++	}
++#else
++	result = set_gfx_mode( GFX_OPENGL, w, h, 0, 0);
++#endif
++
++
++	if( result != 0 ) {
+       std::string errorText = std::string( "Couldn't up the screen! (Width: ") + ToString( w )
+                          + ", Height: " + ToString( h ) + ", "
+                          + ((fullscreen)? "Fullscreen" : "Windowed")
+                          + ", Color depth: " + ToString( colorDepth )
+diff -ru4w openlayer-2.1\src\Settings.cpp openlayer-2.1_borderless\src\Settings.cpp
+--- openlayer-2.1\src\Settings.cpp	Sun Oct 01 15:20:32 2006
++++ openlayer-2.1_borderless\src\Settings.cpp	Sun May 17 22:07:33 2009
+@@ -19,9 +19,9 @@
+ bool Settings::useAntiAlias = true;
+ bool Settings::useTextures = true;
+ bool Settings::storeMemoryBitmaps = false;
+ 
+-
++bool Settings::windowBorder = true;
+ 
+ // GENERAL FUNCTIONS //
+ 
+ 

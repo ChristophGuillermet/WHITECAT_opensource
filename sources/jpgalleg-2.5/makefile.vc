@@ -1,0 +1,143 @@
+#
+#	JPGalleg 2.5, by Angelo Mottola, 2000-2004
+#
+#	MSVC specific makefile rules
+#       written by Lothar May
+#
+
+
+PLATFORM = MSVC
+PLATFORM_PATH = msvc
+EXE = .exe
+OBJ = .obj
+
+NO_ASSEMBLER = 1
+
+ifdef ALLEGRO_USE_CYGWIN
+  UNIX = 1
+endif
+
+ifdef UNIX
+
+  ECHO = @echo $(1)
+  CP = cp
+  MV = mv
+  RM = rm -f
+    
+else
+
+  ifeq "$(COMSPEC)" ""
+  ifdef ComSpec
+  COMSPEC = $(ComSpec)
+  endif
+  endif
+  SHELL = $(COMSPEC)
+  
+  ECHO = @$(COMSPEC) /C echo $(1)
+  CP = @$(COMSPEC) /C copy
+  MV = @$(COMSPEC) /C move
+  RM = @$(COMSPEC) /C del
+  
+endif
+
+CC = cl
+OFLAGS = -Gd -Ox -GB -MD
+CFLAGS = -nologo -I./include $(OFLAGS) -c -W2
+
+LIB_NAME = libjpgal.lib
+
+ifdef STATICLINK
+  LIBS = alleg_s.lib kernel32.lib user32.lib gdi32.lib comdlg32.lib ole32.lib dinput.lib ddraw.lib dxguid.lib winmm.lib dsound.lib
+  CFLAGS += -DALLEGRO_STATICLINK
+else
+  LIBS = alleg.lib
+endif
+
+ifdef UNIX
+  LIB_NAME_IN_DIR = lib/msvc/$(LIB_NAME)
+else
+  LIB_NAME_IN_DIR = lib\msvc\$(LIB_NAME)
+endif
+
+
+
+COMPILE = $(CC) $(CFLAGS) $(1) -Fo$(2)
+LINK = link -nologo -OPT:REF -OPT:ICF -INCREMENTAL:NO -MACHINE:IX86 -subsystem:windows -OUT:$(2) $(1) $(LIB_NAME_IN_DIR) $(LIBS)
+CREATE_LIB = lib -nologo -OUT:$(1) $(2)
+
+
+.PHONY: badmsvc badspaces
+
+# -------- check that the MSVCDir environment variable is set --------
+
+ifdef MSVCDIR
+   MSVCDir_U = $(subst \,/,$(MSVCDIR))
+   MSVCDir_D = "$(subst /,\,$(MSVCDIR))"
+else
+ifdef MSVCDir
+   MSVCDir_U = $(subst \,/,$(MSVCDir))
+   MSVCDir_D = "$(subst /,\,$(MSVCDir))"
+else
+badmsvc:
+	$(call ECHO,Your MSVCDir environment variable is not set!)
+	$(call ECHO,Please run "vcvars32.bat" in your MSVC-bin directory.)
+endif
+endif
+
+
+NULLSTRING :=
+SPACE := $(NULLSTRING) # special magic to get an isolated space character
+
+ifneq ($(findstring $(SPACE),$(MSVCDIR)),)
+badspaces:
+	$(call ECHO,There are spaces in your MSVCDIR environment variable:)
+	$(call ECHO,please change it to the 8.3 short filename version)
+	$(call ECHO,or move your compiler to a different directory.)
+endif
+
+
+.PHONY: _all
+
+_all: all
+
+
+
+$(MSVCDir_U)/lib/$(LIB_NAME): lib/msvc/$(LIB_NAME)
+ifdef UNIX
+	$(CP) lib/msvc/$(LIB_NAME) $(MSVCDir_U)/lib
+else
+	$(CP) lib\msvc\$(LIB_NAME) $(MSVCDir_D)\lib
+endif
+
+$(MSVCDir_U)/include/jpgalleg.h: include/jpgalleg.h
+ifdef UNIX
+	$(CP) include/jpgalleg.h $(MSVCDir_U)/include
+else
+	$(CP) include\jpgalleg.h $(MSVCDir_D)\include
+endif
+
+INSTALL_FILES = $(MSVCDir_U)/lib/$(LIB_NAME) $(MSVCDir_U)/include/jpgalleg.h
+
+install: $(INSTALL_FILES)
+	$(call ECHO,JPGalleg for $(PLATFORM) has been successfully installed.)
+
+uninstall:
+	$(RM) $(MSVCDir_D)\lib\$(LIB_NAME)
+	$(RM) $(MSVCDir_D)\include\jpgalleg.h
+ifdef ALLEGRO
+	$(call REMOVE_PLUGIN_DOS)
+else
+	$(call ECHO,Cannot remove grabber plugin: ALLEGRO environmental variable not set)
+endif
+	$(call ECHO,All gone!)
+
+
+include/mmx.h:
+	$(call ECHO,Currently no MMX Assembler support available for MSVC...)
+ifdef UNIX
+	- @echo > include/mmx.h
+	- @echo #undef JPGALLEG_MMX > include\mmx.h
+else
+	- $(call ECHO,\> include/mmx.h)
+	$(call ECHO,\#undef JPGALLEG_MMX \> include\mmx.h)
+endif

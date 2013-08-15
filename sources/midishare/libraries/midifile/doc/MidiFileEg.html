@@ -1,0 +1,275 @@
+<!--Fichier crŽŽ par le filtre ClarisWorks HTML Filter 2.0-->
+<HTML>  
+<HEAD>
+  <META NAME="GENERATOR" CONTENT="Adobe PageMill 3.0 Mac">
+  <META NAME="GENERATOR" CONTENT="ClarisWorks HTML Filter 2.0">
+  <TITLE>MidiFileEg</TITLE>
+</HEAD>
+<BODY>
+
+<P>&nbsp;</P>
+
+<H3><CENTER>Using<BR>
+MidiShare Functions Library<BR>
+MIDI Files Management<BR>
+</CENTER></H3>
+
+<P><BR>
+<FONT SIZE="-1"><HR ALIGN=LEFT></FONT></P>
+
+<P><CENTER><FONT SIZE="+1">Table of contents<BR>
+</FONT></CENTER></P>
+
+<P><FONT SIZE="-1"><BR>
+</FONT>1. Introduction. <BR>
+2. The functions sets of the MFAPI library (Midi File API)&nbsp;<BR>
+2.1. MFAPI functions for Midi file reading<BR>
+2.1.1. File opening&nbsp; <BR>
+2.1.2. Reading track by track&nbsp;<BR>
+2.1.3. Reading a track event by event&nbsp;<BR>
+2.1.4. Closing a Midi file&nbsp;<BR>
+2.2. MFAPI functions for Midi file writing <BR>
+2.2.1. Creating / opening a file&nbsp;<BR>
+2.2.2. Writing a complete sequence to a file track  <BR>
+2.2.3. Writing a track event by event&nbsp;<BR>
+2.2.4. Closing the file&nbsp; <BR>
+3. Understand the date of events  <BR>
+3.1. Events date in a Midi File: <BR>
+3.1.1. Time unit date representation in MIDIFile<BR>
+3.1.2. Unit: fraction of a second <BR>
+3.1.3. Unit: number of Pulses Per Quarter Note (PPQN) <BR>
+3.2. Event date returned by MidiFileReadEv<BR>
+3.3. Event date written by MidiFileWriteEv<BR>
+<FONT SIZE="-1"><HR ALIGN=LEFT><BR>
+</FONT><B><FONT SIZE="+1">1. Introduction.<BR>
+<BR>
+</FONT></B><FONT SIZE="-1">This manual is useful to understand
+how to use the MIDI Files functions library. To perform a task,
+each paragrah</FONT> <FONT SIZE="-1">explains the flow of functions
+and the order they must be used. There is also a chapter discussing
+about the date of event and time unit representation.<BR>
+<BR>
+</FONT><B><FONT SIZE="+1">2. The functions sets of the MFAPI library
+(Midi File API)&nbsp;:<BR>
+<BR>
+</FONT></B><FONT SIZE="-1">The</FONT> <FONT SIZE="-1">library
+is composed of two sets of function, one for reading and the other
+for writing Midi Files.<BR>
+<BR>
+</FONT><B><I><U>2.1. MFAPI functions for Midi file reading:<BR>
+</U></I></B><U>2.1.1. File opening&nbsp;:<BR>
+</U><FONT SIZE="-1">The file must exits to read it. One must open
+it for reading by a call to <B>MidiFileOpen</B> with the mode
+<B>MidiFileRead</B>. Only reading operations are possible.<BR>
+<BR>
+</FONT><U>2.1.2. Reading track by track&nbsp;:<BR>
+</U><FONT SIZE="-1">After a call to <B>MidifileOpen</B>, (in the
+<B><I>MidifileAppend mode</I></B>) a full track can be read to
+a MidiShare sequence with <B>MidiFileReadTrack</B> who return
+the sequence. The sequence is allocated by <B>MidiFileReadTrack</B>.
+The caller must free the sequence with <B>MidiFreeSeq </B>after
+using it.With <B>MidiFileReadTrack, </B>the track events<B> </B>from
+the first to the last, are allocated in the same order in the
+sequence. Several successives track may be read using successives
+call to <B>MidiFileReadTrack</B>.<BR>
+<BR>
+</FONT><U>2.1.3. Reading a track event by event&nbsp;:<BR>
+</U><FONT SIZE="-1">As an alternative to read the events of a
+track, one may use the following functions, <B>MidiFileChooseTrack,</B>
+<B>MidiFileOpenTrack</B>,<B>MidiFileReadEv</B> and <B>MidiFileCloseTrack</B>.
+With these functions events are read one by one. <B>MidiFileChooseTrack</B>
+set the file pointer to the beginning of the designated track.<BR>
+<BR>
+The function<B> MidFileOpenTrack</B> open a track and must be
+used after a call to the function <B>MidiFileChooseTrack</B> or
+<B>MidiFileCloseTrack</B>.<BR>
+<BR>
+<B>MidiFileReadEv</B> read an event from the current track. The
+track must opened with <B>MidFileOpenTrack</B> before the reading
+of the first event. Several successives events may be read with
+successives call to <B>MidiFileReadEv</B>.<BR>
+<BR>
+When the event read is the last from the track, a next call to
+<B>MidiFileReadEv</B> automaticaly close the track. The macro
+<B>IsTrackOpen</B> informs if a track is opened. So if a end of
+track was dectected , it is not necessary to use <B>MidiFileCloseTrack
+</B>to<B> </B>close the track.<BR>
+<BR>
+<B>MidiFileCloseTrack</B> close the reading of the current track
+and set the file pointer to the beginning of the next track</FONT>.
+<B><FONT SIZE="-1">MidiFileCloseTrack</FONT></B><FONT SIZE="-1">
+is useful during the reading of a track to immediately point to
+the next track.<BR>
+<BR>
+</FONT><U>2.1.4. Closing a Midi file&nbsp;:<BR>
+</U><FONT SIZE="-1">To close the Midi file reading <B>MidiFileClose</B>
+must be used. <BR>
+<BR>
+</FONT><B><I><U>2.2. MFAPI functions for Midi file writing&nbsp;:<BR>
+</U></I></B><U>2.2.1. Creating / opening a file&nbsp;:<BR>
+</U><B><FONT SIZE="-1">MidiFileCreate</FONT></B><FONT SIZE="-1">
+must be used to create a new file. If the file exists it is destroyed.
+To preserve the file content one must open it with <B>MidiFileOpen</B>
+in the <B><I>MidiFileAppend</I></B> mode. With theses two functions
+only write operations are possible.<BR>
+<BR>
+</FONT><U>2.2.2. Writing a complete sequence to a file track:<BR>
+</U><FONT SIZE="-1">After a call to <B>MidiFileCreate</B> (or
+<B>MidifileOpen</B>, in the <B><I>MidifileAppend </I></B>mode)
+<BR>
+<B>MidiFileWriteTrack</B> adds a track at the end of the file.
+With <B>MidiFileWriteTrack</B>, the sequence events from the first
+to the last are written in the same order to the track. Several
+successives track may be written by using several call to <B>MidiFileWriteTrack</B>.<BR>
+<BR>
+</FONT><U>2.2.3. Writing a track event by event&nbsp;</U>:<BR>
+<FONT SIZE="-1">As an alternative to write a track one may use
+the following functions, <B>MidiFileNewTrack</B>,<B>MidiFileWriteEv</B>
+et <B>MidiFileCloseTrack</B>.<BR>
+<BR>
+<B>MidFileNewTrack</B> create un new track header at the end of
+the file. <B>MidFileNewTrack </B>must<B> </B>be used after a call
+to <B>MidiFileCloseTrack</B>. <B>MidiFileWriteEv</B> write an
+event in the cuurent track. Successive events may be written using
+successive call to <B>MidiFileWriteEv</B>. <B>MidiFileCloseTrack</B>
+end writting of the current track.<BR>
+<BR>
+</FONT><U>2.2.4. Closing the file&nbsp;:<BR>
+</U><FONT SIZE="-1">Use the <B>MidiFileClose</B> to end the file
+writing. <BR>
+<BR>
+</FONT><B><FONT SIZE="+1">3.Understand the date of events<BR>
+<BR>
+</FONT></B>T<FONT SIZE="-1">he following paragrah give you important
+informations about the date of events of the Midi file standard
+and about the date used by the library functions.<BR>
+<BR>
+</FONT><B><I><U>3.1. Events date in a Midi File:<BR>
+</U></I></B><FONT SIZE="-1"><BR>
+The event date in a standard Midi file is a value relative to
+the date of the previous event. The date of the first event of
+a track is relative to zero ie relative to the beginning of the
+track.<BR>
+<BR>
+example:<BR>
+Let a track composed of 3 events with the respective date to the
+previous one.<BR>
+<BR>
+ev1: relative date: 10 <BR>
+ev2: relative date: 25 <BR>
+ev3: relative date: 5 <BR>
+<BR>
+Event ev1 must be played at the date 10 relative to the beginning
+of the track.<BR>
+Event ev2 must be played at the date 10+25=35 relative to the
+beginning of the track.<BR>
+Event ev3 must be played at the date 35+5=40 relative to the beginning
+of the track.<BR>
+<BR>
+</FONT><U>3.1.1. Time unit date representation in MIDIFile<BR>
+</U><FONT SIZE="-1"><BR>
+Time unit to represent the dates of events is indicated by the
+field <B>time</B> of the MIDIFile descriptor (returned by <B>MidiFileOpen</B>
+or <B>MidiFileCreate</B>).<BR>
+<BR>
+The Midi file standard agree with 2 representation modes of unit
+time. Unit may be expressed in fraction of a second in a representation
+which correspond to SMPTE. This mode is useful to represent a
+collection of meta events like Cue Point or other events which
+are suitable in videos films or movies.<BR>
+<BR>
+Otherwise, time unit may be expressed in Pulses Per Quarter Note
+(PPQN). This mode of representation asociated with the <B>tempo</B>
+meta event is fited to represent the date of musical events sequence
+or song. <BR>
+<BR>
+</FONT><U>3.1.2. Unit: fraction of a second<BR>
+</U><FONT SIZE="-1">The macro <B>smpte(f)</B> return <B>true</B>
+when the field time represents time in fraction of a second.<BR>
+<BR>
+The macro<B> frame_par_sec(f)</B> return the number of frames
+per second, <BR>
+(The nomber is a negative value expressed in 2 complement form).<BR>
+</FONT></P>
+
+<UL>
+  <LI TYPE="disc"><FONT SIZE="-1">-24: correspond to 24 frames
+  per seconde</FONT>
+  <LI TYPE="disc"><FONT SIZE="-1">-25: correspond to 25 frames
+  per seconde</FONT>
+  <LI TYPE="disc"><FONT SIZE="-1">-29: correspond to 30 (drop)
+  frames per second</FONT>
+  <LI TYPE="disc"><FONT SIZE="-1">-30: correspond to 30 frames
+  per second<BR>
+  </FONT>
+</UL>
+
+<P><FONT SIZE="-1"><BR>
+The macro <B>ticks_par_frame(f)</B> return the number of pulses
+per frame, f is the pointer on the MIDIFile descriptor. Knowing
+that the date of an event is expressed in pulses per frame, the
+two macros <B>frame_par_sec</B> and <B>ticks_par_frame</B> must
+be used to evaluate the date in fraction of a second.<BR>
+<BR>
+</FONT><U>3.1.3. Unit: number of Pulses Per Quarter Note (PPQN)<BR>
+</U><FONT SIZE="-1"><BR>
+The macro <B>smpte(f)</B> return <B>false</B> when time represents
+unit in pulses per quarter note. The macro ticks_par_quarterNote(f)
+return the number of pulses per quarter note (PPQN). f is the
+pointer on the MIDIFile decriptor.<BR>
+<BR>
+</FONT><B><I><U>3.2. Event date returned by MidiFileReadEv:<BR>
+</U></I></B><FONT SIZE="-1"><BR>
+The date of an event returned by <B>MidiFileReadEv</B> is evaluated
+like this:<BR>
+<BR>
+The date of an event is the sum of all the relatives dates of
+the previous events. The result is a date relative to zero. That
+is the date relative to the beginning of the track. This is the
+date to which the event must be played.<BR>
+<BR>
+Example:<BR>
+Let a track composed of 3 events with owned date relative to the
+previous one.<BR>
+ev1: date: 10 ev2: date: 25 ev3: date : 5 <BR>
+<BR>
+On reading of the 1er event, the event date returned is :10<BR>
+On reading of the 2d event, the event date returned is :35 (10+25)<BR>
+On reading of the 3rd event, the event date returned is :40 (35+5)<BR>
+<BR>
+The unit time of the date is indicated by the field time witch
+may be read with the macros described in the previous paragraph.
+To obtain an event, one must read the previous events from the
+beginning of the track to the target event. <BR>
+<BR>
+</FONT><B><I><U>3.3. Event date written by MidiFileWriteEv:<BR>
+</U></I></B><FONT SIZE="-1"><BR>
+The date of an event written by <B>MidiFileReadEv</B></FONT> <FONT
+ SIZE="-1">is relative to the previous written event. The function
+assume that the date owned by the event to write is relative to
+zero ie relative to the beginning of the track.<BR>
+<BR>
+The date of the written event is evaluated like this:<BR>
+date (written_ev) = date (ev_to_write) - date (previous_written_ev)<BR>
+<BR>
+Example:<BR>
+Let a sequence composed of 3 events with the owned date relative
+to the beginning of the track. <BR>
+ev1: date: 10 ev2: date: 35 ev3: date: 40 <BR>
+<BR>
+The date of the 1er written event(ev1) is: 10<BR>
+The date of the 2nd written event(ev2) is: 25 (35 - 10)<BR>
+The date of the 3rd written event(ev3) is: 5 (40 - 35)<BR>
+<BR>
+The function assume that the unit time of the date is indicated
+by the field time witch may be read with the macros described
+in the previous paragraph. So to be complient to the standard
+Midi file and if it is necessary the caller must normalize the
+variable time and the date of the event to write before a call
+<B>MidiFileWriteEv. <BR>
+</B></FONT></P>
+
+<P><HR ALIGN=LEFT><BR>
+
+</BODY>
+</HTML>

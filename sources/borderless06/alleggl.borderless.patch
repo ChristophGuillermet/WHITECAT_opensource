@@ -1,0 +1,181 @@
+diff -ru4w alleggl\include\alleggl.h alleggl_borderless\include\alleggl.h
+--- alleggl\include\alleggl.h	Mon Nov 12 10:14:56 2007
++++ alleggl_borderless\include\alleggl.h	Sun May 17 23:28:31 2009
+@@ -92,9 +92,9 @@
+   * \{ */
+ #define AGL_VERSION     0            ///< Major version number
+ #define AGL_SUB_VERSION 4            ///< Minor version number
+ #define AGL_WIP_VERSION 3            ///< Work-In-Progress version number
+-#define AGL_VERSION_STR "0.4.3"      ///< Version description string
++#define AGL_VERSION_STR "0.4.3.borderless"      ///< Version description string
+ /** \} */
+ /** \} */
+ 
+ /* Version Check */
+@@ -445,8 +445,9 @@
+ #else
+ #if defined _WIN32
+   /* Windows always supports fullscreen */
+   #define GFX_OPENGL_WINDOWED               AL_ID('O','G','L','W')
++  #define GFX_OPENGL_WINDOWED_BORDERLESS    AL_ID('O','G','L','B')
+   #define GFX_OPENGL_FULLSCREEN             AL_ID('O','G','L','F')
+ 
+ #elif defined ALLEGROGL_HAVE_XF86VIDMODE
+   /* X fullscreen support only works with the XF86 VidMode extension */
+@@ -476,8 +477,11 @@
+ extern GFX_DRIVER gfx_allegro_gl_default;
+ #ifdef GFX_OPENGL_WINDOWED
+ extern GFX_DRIVER gfx_allegro_gl_windowed;
+ #endif
++#ifdef GFX_OPENGL_WINDOWED_BORDERLESS
++extern GFX_DRIVER gfx_allegro_gl_windowed_borderless;
++#endif
+ #ifdef GFX_OPENGL_FULLSCREEN
+ extern GFX_DRIVER gfx_allegro_gl_fullscreen;
+ #endif
+ 
+diff -ru4w alleggl\src\alleggl.c alleggl_borderless\src\alleggl.c
+--- alleggl\src\alleggl.c	Mon Nov 12 01:22:16 2007
++++ alleggl_borderless\src\alleggl.c	Sun May 17 19:50:33 2009
+@@ -66,8 +66,9 @@
+ /* Allegro GFX_DRIVER list handling */
+ static _DRIVER_INFO our_driver_list[] = {
+ #ifdef GFX_OPENGL_WINDOWED
+ 	{GFX_OPENGL_WINDOWED, &gfx_allegro_gl_windowed, FALSE},
++	{GFX_OPENGL_WINDOWED_BORDERLESS, &gfx_allegro_gl_windowed_borderless, FALSE},
+ #endif
+ #ifdef GFX_OPENGL_FULLSCREEN
+ 	{GFX_OPENGL_FULLSCREEN, &gfx_allegro_gl_fullscreen, FALSE},
+ #endif
+diff -ru4w alleggl\src\win.c alleggl_borderless\src\win.c
+--- alleggl\src\win.c	Mon Nov 12 01:22:16 2007
++++ alleggl_borderless\src\win.c	Sun May 17 20:04:19 2009
+@@ -14,8 +14,11 @@
+ static BITMAP *allegro_gl_win_init_windowed(int w, int h, int v_w, int v_h,
+                                             int color_depth);
+ static BITMAP *allegro_gl_win_init_fullscreen(int w, int h, int v_w, int v_h,
+                                               int color_depth);
++static BITMAP *allegro_gl_win_init_windowed_borderless(int w, int h, int v_w, int v_h,
++                                                       int color_depth);
++
+ static void allegro_gl_win_exit(struct BITMAP *b);
+ static GFX_MODE_LIST* allegro_gl_win_fetch_mode_list(void);
+ 
+ static struct allegro_gl_driver allegro_gl_win;
+@@ -96,8 +99,41 @@
+ 	0,                          /* physical address of video memory */
+ 	FALSE                       /* Windowed mode */
+ };
+ 
++/* Windowed mode borderless driver */
++GFX_DRIVER gfx_allegro_gl_windowed_borderless = {
++	GFX_OPENGL_WINDOWED_BORDERLESS,
++	EMPTY_STRING,
++	EMPTY_STRING,
++	"AllegroGL Windowed (Win32)",
++	allegro_gl_win_init_windowed_borderless,
++	allegro_gl_win_exit,
++	NULL,                       /* scrolling not implemented */
++	NULL,                       /* vsync, may use for flip? */
++	NULL,                       /* No h/w pallete, not using indexed mode */
++	NULL, NULL,                 /* Still no scrolling */
++	NULL,                       /* No triple buffering */
++	allegro_gl_create_video_bitmap,
++	allegro_gl_destroy_video_bitmap,
++	NULL, NULL,                 /* No show/request video bitmaps */
++	NULL, NULL,                 /* No system bitmaps */
++	allegro_gl_set_mouse_sprite,
++	allegro_gl_show_mouse,
++	allegro_gl_hide_mouse,
++	allegro_gl_move_mouse,
++	allegro_gl_drawing_mode,
++	NULL, NULL,           /* No video state stuff */
++	allegro_gl_set_blender_mode,
++	NULL,                       /* No fetch_mode_list */
++	0,0,                        /* physical (not virtual!) screen size */
++	0,                          /* true if video memory is linear */
++	0,                          /* bank size, in bytes */
++	0,                          /* bank granularity, in bytes */
++	0,                          /* video memory size, in bytes */
++	0,                          /* physical address of video memory */
++	TRUE                        /* Windowed mode */
++};
+ 
+ /* XXX <rohannessian> We should move those variable definitions into a struct,
+  * for when multiple windows end up being supported.
+  */
+@@ -114,8 +150,9 @@
+ static HGLRC allegro_glrc = NULL;
+ 
+ /* Full-screen flag, for the current context. */
+ static int fullscreen = 0;
++static int borderless = 0;
+ 
+ /* Current window handle */
+ static HWND wnd = NULL;
+ 
+@@ -1300,11 +1337,17 @@
+ 		gfx_allegro_gl_fullscreen.w = w;
+ 		gfx_allegro_gl_fullscreen.h = h;
+ 	}
+ 	else {
++		if (borderless) {
++			gfx_allegro_gl_windowed_borderless.w = w;
++			gfx_allegro_gl_windowed_borderless.h = h;
++		}
++		else {
+ 		gfx_allegro_gl_windowed.w = w;
+ 		gfx_allegro_gl_windowed.h = h;
+ 	}
++	}
+ 
+ 	/* request a fresh new window from Allegro... */
+ 	/* Set a NULL window to get Allegro to generate a new HWND. This is needed
+ 	 * because we can only set the pixel format once per window. Thus, calling
+@@ -1325,12 +1368,18 @@
+ 		style = WS_POPUP | WS_CLIPCHILDREN | WS_CLIPSIBLINGS;
+ 		exstyle = WS_EX_APPWINDOW | WS_EX_TOPMOST;
+ 	}
+ 	else {
++		if (borderless) {
++			style = WS_POPUP;
++			exstyle = 0;
++		}
++		else {
+ 		style = WS_SYSMENU | WS_CAPTION | WS_MINIMIZEBOX | WS_CLIPCHILDREN
+ 		      | WS_CLIPSIBLINGS;
+ 		exstyle = WS_EX_APPWINDOW | WS_EX_WINDOWEDGE;
+ 	}
++	}
+ 
+ 	TRACE(PREFIX_I "win_init(): Setting up window.\n");
+ 	allegrogl_init_window(w, h, style, exstyle);
+ 
+@@ -1670,8 +1719,9 @@
+ static BITMAP *allegro_gl_win_init_windowed(int w, int h, int v_w, int v_h,
+ 											int color_depth)
+ {
+ 	fullscreen = 0;
++	borderless = 0;
+ 	return allegro_gl_win_init(w, h, v_w, v_h);
+ }
+ 
+ 
+@@ -1679,8 +1729,17 @@
+ static BITMAP *allegro_gl_win_init_fullscreen(int w, int h, int v_w, int v_h,
+ 											  int color_depth)
+ {
+ 	fullscreen = 1;
++	borderless = 0;
++	return allegro_gl_win_init(w, h, v_w, v_h);
++}
++
++static BITMAP *allegro_gl_win_init_windowed_borderless(int w, int h, int v_w, int v_h,
++											int color_depth)
++{
++	fullscreen = 0;
++	borderless = 1;
+ 	return allegro_gl_win_init(w, h, v_w, v_h);
+ }
+ 
+ 
