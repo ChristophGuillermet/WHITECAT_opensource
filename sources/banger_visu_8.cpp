@@ -799,7 +799,31 @@ case 11://set channel
       break; 
       case 7:
       sprintf(bangers_type_action,"Macro OFF");
-      break;           
+      break;      
+      case 8:
+      sprintf(bangers_type_action,"FromTo Macro1 ON");
+      break;    
+      case 9:
+      sprintf(bangers_type_action,"FromTo Macro2 ON");
+      break;  
+      case 10:
+      sprintf(bangers_type_action,"FromTo Macro3 ON");
+      break;  
+      case 11:
+      sprintf(bangers_type_action,"FromTo Macro4 ON");
+      break;     
+      case 12:
+      sprintf(bangers_type_action,"FromTo Macro1 OFF");
+      break;    
+      case 13:
+      sprintf(bangers_type_action,"FromTo Macro2 OFF");
+      break;  
+      case 14:
+      sprintf(bangers_type_action,"FromTo Macro3 OFF");
+      break;  
+      case 15:
+      sprintf(bangers_type_action,"FromTo Macro4 OFF");
+      break;   
       default:
       sprintf(bangers_type_action,"-");
       break;

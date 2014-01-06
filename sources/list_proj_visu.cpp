@@ -55,10 +55,16 @@ petitchiffre.Print(titlemacro,xlist+5, ylist+38+(25*i));
 Rect lev_B(Vec2D(xlist+90, ylist+25+(25*i)),Vec2D(40,20));
 lev_B.SetRoundness(4);
 lev_B.Draw(CouleurBleuProcedure.WithAlpha(0.5));
+
 switch (dmx_view)
 {
 case 0:
-sprintf(titlemacro,"%d", (int) (((float)(channel_macro_val[last_ch_selected][i][0]) /2.55)));
+if(channel_macro_reaction[last_ch_selected][i]<7)
+{sprintf(titlemacro,"%d", (int) (((float)(channel_macro_val[last_ch_selected][i][0]) /2.55)));}
+else
+{
+sprintf(titlemacro,"%d",channel_macro_val[last_ch_selected][i][0]);    
+}
 break;
 case 1:
 sprintf(titlemacro,"%d",channel_macro_val[last_ch_selected][i][0]);
@@ -114,20 +120,26 @@ case 10:
 sprintf(titlemacro,"Pitch A.Pl");
 break;          
 case 11:        
-sprintf(titlemacro, "Midi Ch15 CC");
+sprintf(titlemacro, "MidiCh15 CC");
 break; 
 case 12:        
-sprintf(titlemacro, "Midi Ch15 KOn");
+sprintf(titlemacro, "MidiCh15 KOn");
 break;  
 case 13:        
-sprintf(titlemacro, "Midi Ch15 KOff");
+sprintf(titlemacro, "MidiCh15 KOff");
 break;        
 case 14:
 sprintf(titlemacro, "Fader Level");
 break; 
 case 15:
-sprintf(titlemacro, "Fader LFOSpeed");
-break;                         
+sprintf(titlemacro, "FaderLFOSpeed");
+break;                     
+case 16:
+sprintf(titlemacro, "Ch>Fader Num");     
+break;    
+case 17:
+sprintf(titlemacro, "Ch>Stage %");     
+break;    
 default:
 break;
 }

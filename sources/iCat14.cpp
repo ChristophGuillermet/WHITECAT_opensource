@@ -2202,7 +2202,7 @@ for(int bt=1;bt<iCat_nbre_de_boutons[iCatPageis]+1;bt++)
 
 fsTestX2=(iCat_pos_bouton[iCatPageis][bt][0]*2)+(largueur_bouton*ratio_iCat_button[iCatPageis][bt]);
 fsTestY2=(iCat_pos_bouton[iCatPageis][bt][1]*2)+(largueur_bouton*ratio_iCat_button[iCatPageis][bt]);
-
+/* original avec appui = action
 if (  fsBx>=(iCat_pos_bouton[iCatPageis][bt][0]*2) && fsBx<=fsTestX2 && fsBy>=(iCat_pos_bouton[iCatPageis][bt][1]*2) && fsBy<=fsTestY2 )
 {                                                                                                   
 button_is_touched[iCatPageis][bt]=1;
@@ -2214,7 +2214,17 @@ button_is_touched[iCatPageis][bt]=0;
 button_is_controlled_by_point[iCatPageis][bt]=tp;
 FS_touch_point_end[0][tp]=-999;FS_touch_point_end[1][tp]=-999;
 }
-
+*/
+//modification janvier 2014 sur enlevage du doigt = action
+if (  fsBx>=(iCat_pos_bouton[iCatPageis][bt][0]*2) && fsBx<=fsTestX2 && fsBy>=(iCat_pos_bouton[iCatPageis][bt][1]*2) && fsBy<=fsTestY2 )
+{                                                                                                   
+button_is_touched[iCatPageis][bt]=0;FS_touch_point_end[0][tp]=-999;FS_touch_point_end[1][tp]=-999;
+}
+if ( fsEx>=(iCat_pos_bouton[iCatPageis][bt][0]*2) && fsEx<=fsTestX2 && fsEy>=(iCat_pos_bouton[iCatPageis][bt][1]*2) && fsEy<=fsTestY2 )
+{                                                                                                   
+button_is_touched[iCatPageis][bt]=1;
+button_is_controlled_by_point[iCatPageis][bt]=tp;
+}
 //do the job///////////////////////////////////////////////////////
 
 
@@ -3093,6 +3103,10 @@ do_action_on_selected_minifaders(action_minif);
 break;       
 //////////////////////////////////////////////////////////////////////////////      
 case 3://sequenciel
+reset_button(iCatPageis,bt, tp);  //reset pour eviter la frappe répétitive
+if(before_check_button_state[bt]==0)
+{    
+before_check_button_state[bt]=1;
 switch(iCat_affectation_bouton_action_is[iCatPageis][bt])
      {
       case 1: //"GO");
@@ -3174,11 +3188,14 @@ switch(iCat_affectation_bouton_action_is[iCatPageis][bt])
       refresh_mem_onpreset(position_preset);  
       reset_numeric_entry();
       numeric_postext=0;
+            reset_button(iCatPageis,bt, tp); 
+      someone_changed_in_sequences=1;
       }
       }           
       break;
 default:
 break;
+}
 }
 break;   
 //fin sequenciel 
@@ -3186,9 +3203,10 @@ break;
 case 4:
 //emulate
 clear_keybuf();
-//reset_button(iCatPageis,bt, tp);  //reset pour eviter la frappe répétitive
+reset_button(iCatPageis,bt, tp);  //reset pour eviter la frappe répétitive
 if(before_check_button_state[bt]==0)
 {    
+before_check_button_state[bt]=1;
      switch(iCat_affectation_bouton_action_is[iCatPageis][bt])
      {
       case 0://"0"); 
@@ -3807,35 +3825,44 @@ if(lockX_on==0 )
 pos_iCat_tracker[iCatPageis][sl][0]=(iCat_pos_trackzone[iCatPageis][sl][0]*2)+(largeur_trackzone*ratio_iCat_trackzone[iCatPageis][sl])-fsMx;
 switch(ratio_iCat_trackzone[iCatPageis][sl])
 {
-case 1:
+case 1: //small
 pos_iCat_tracker[iCatPageis][sl][0]*=2;     
 break;
-case 3:
+//case 2: //ratio 1. pas touche
+//break:
+case 3: //big
 pos_iCat_tracker[iCatPageis][sl][0]=(pos_iCat_tracker[iCatPageis][sl][0]/3)*2;      
 break;       
+case 4: //BIG
+pos_iCat_tracker[iCatPageis][sl][0]=(int)(pos_iCat_tracker[iCatPageis][sl][0]/2);  
+break;
 default:
 break;                                            
 }
 pos_iCat_tracker[iCatPageis][sl][0]=constrain_data_to_dmx_range(pos_iCat_tracker[iCatPageis][sl][0]);
 mover_params[0][0]=255-pos_iCat_tracker[iCatPageis][sl][0];
 }
+
 if(lockY_on==0 ) 
 {
 pos_iCat_tracker[iCatPageis][sl][1]=(iCat_pos_trackzone[iCatPageis][sl][1]*2)+(largeur_trackzone*ratio_iCat_trackzone[iCatPageis][sl])-fsMy;
 switch(ratio_iCat_trackzone[iCatPageis][sl])
 {
-case 1:
+case 1: //small
 pos_iCat_tracker[iCatPageis][sl][1]*=2;      
 break;
-case 3:    
-pos_iCat_tracker[iCatPageis][sl][1]=(pos_iCat_tracker[iCatPageis][sl][1]/3)*2;     
-break;       
+case 3:    //big
+pos_iCat_tracker[iCatPageis][sl][1]=(pos_iCat_tracker[iCatPageis][sl][1]/3)*2;  
+break;     
+case 4: //BIG
+pos_iCat_tracker[iCatPageis][sl][1]=(int)(pos_iCat_tracker[iCatPageis][sl][1]/2);  
+break;
 default:
 break;                                            
 }
 pos_iCat_tracker[iCatPageis][sl][1]=constrain_data_to_dmx_range(pos_iCat_tracker[iCatPageis][sl][1]);
 mover_params[1][0]=255-pos_iCat_tracker[iCatPageis][sl][1];
-
+}
 break;
 case 2://draw activ
 
@@ -3908,7 +3935,7 @@ break;
 }
 //zone touchee end
 }                  
-}
+
 
 
 

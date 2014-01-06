@@ -49,12 +49,9 @@ bufferSaisiesnamp=0;
 */
 
 
-
-
 #include <hpdf.h>
 #include <MidiShare.h>    
 #include <whitecat.h>
-#include <my_window_file_sample.h>//ressources juste après whitecat.h
 #include <patch_splines_2.cpp>//spline pour curves
 
 
@@ -85,8 +82,6 @@ bufferSaisiesnamp=0;
 #include "plot_core9.cpp"
 #include "plot9.cpp"
 
-#include <audio_core5.cpp>
-
 #include <save_show_13.cpp>
 #include <network_artnet_3.cpp> //artnet functions
 
@@ -96,7 +91,7 @@ bufferSaisiesnamp=0;
 #include <wizard.cpp>
 #include <grand_master.cpp>
 #include <faders_core_24.cpp> 
-
+#include <audio_core4.cpp>
 #include <audio_visu4.cpp>
 #include <icat_core14.cpp>
 
@@ -117,8 +112,8 @@ bufferSaisiesnamp=0;
 #include <keyboard_routines2.cpp>
 #include <minifaders_core.cpp>
 #include <minifaders_visu.cpp>
-#include <faders_visuels_26.cpp>
-#include <channels_10_visu.cpp>
+#include <faders_visuels_24.cpp>
+#include <channels_9_visu.cpp>
 #include <video_tracking_core.cpp>
 #include <video_tracking_visu.cpp>
 
@@ -132,13 +127,9 @@ bufferSaisiesnamp=0;
 #include <midi_launchpad.cpp>
 
 #include <grider8.cpp>
-#include <sequentiel_7_visu.cpp>
+#include <sequentiel_6_visu.cpp>
 #include <Draw3.cpp>
 #include <echo3.cpp>
-
-
-#include <my_window_file_sample.cpp>//creation de fenetres utilisateurs, doit être avant proc visuels
-
 
 #include <procs_visuels_rebuild1.cpp>
 #include <dmx_functions_13.cpp>
@@ -147,9 +138,8 @@ bufferSaisiesnamp=0;
 #include <CFG_screen.cpp>
 
 
-#include <arduino_core_6_UNO_anton3.cpp>
+#include <arduino_core_6_UNO_anton2.cpp>
 #include <arduino_6_UNO_anton2.cpp>
-
 
 
 int time_doing()
@@ -227,6 +217,11 @@ for(int pr=0;pr<6;pr++)
 merge_draw_and_grid_player(pr);
 }
 
+if(arduino_device_0_is_ignited==1)
+{
+arduino_do_digital_in_whitecat();arduino_do_analog_in_whitecat();
+arduino__send_config();
+}
 
 //tracker  
 Move_do_crossfade(dock_move_selected);
@@ -266,7 +261,7 @@ END_OF_FUNCTION(ticker);
 
 /////////////////////////////////////////////////////////////////////////////////////////////
 
-#include <CFG_config_panel_8.cpp>
+#include <CFG_config_panel_7.cpp>
 
 #include <chasers_visu.cpp>
 
@@ -425,7 +420,19 @@ sprintf(string_mem_onstage,"%d.%d",position_onstage/10, position_onstage%10);
 sprintf(string_mem_preset,"%d.%d",position_preset/10, position_preset%10);
 
 if(index_inspekt==1){indicate_wich_fader_is_the_highest();}
-
+/*if(mouse_button==1 && mouse_released==0)
+{
+switch(im_moving_a_window)
+{
+case 0:
+check_graphics_mouse_handling();
+break;
+case 1:
+move_window(window_focus_id);
+break;
+}
+}
+*/
 //fenetre confirm always on top
 if(index_ask_confirm==1 && previous_index_ask_confirm==0)
 {previous_window_focus_id=window_focus_id; window_focus_id=W_ASKCONFIRM;add_a_window(window_focus_id);}
@@ -466,13 +473,6 @@ index_enable_edit_echo=1;
 if(right_click_for_menu==1)//sortie du call back pour écrire correctement fermeture fenetres
 {do_mouse_right_click_menu();}
 
-
-if(arduino_device_0_is_ignited==1)
-{
-arduino_do_digital_in_whitecat();arduino_do_analog_in_whitecat();
-arduino__send_config();
-}
-
 }
 END_OF_FUNCTION(dixiemes_de_secondes);
 
@@ -482,7 +482,7 @@ int ticker_full_loop_rate = BPS_TO_TIMER(10000);
 void ticker_full_loop() 
 {
      
-if(core_do_calculations[2]==1 && starting_wcat==0)
+if(core_do_calculations[2]==1)
 {
 for (int i=0;i<core_user_define_nb_bangers;i++){do_bang(i);}
 sound_core_processing();
@@ -517,8 +517,13 @@ if(index_quit==0 && index_is_saving==0)
       
       if(refresh_icatpage_please==1){load_iCat_page ( iCatPageis);do_send_icat_init_page=1; refresh_icatpage_please=0;      }
       } 
-      
-
+ if(old_ticks_arduino!=ticks_arduino && index_is_saving==0 && init_done==1 && index_writing_curve==0 && arduino_device_0_is_ignited==1 && index_quit==0)//procedures de communication
+{
+    arduino_read();
+    arduino_do_digital_out_whitecat(); //ecriture
+    arduino_do_pwm_out_whitecat();
+    serial0.Flush();
+}
  if(allow_artnet_in==1 && artnet_serveur_is_initialized==1 )
       {     
       if(bytesreceived=recvfrom(sock,artnet_message,sizeof(artnet_message),0,(SOCKADDR*)&sinServ,&sinsizeServ)>0)
@@ -827,8 +832,6 @@ reset_all_bangers();
  load_dmx_conf();
  save_load_print_to_screen("Loading Art-net conf");
  load_artnet_conf();
- 
- detection_mise_en_place_carte_reseaux();
  //opening double dmx conf
  if(index_artnet_doubledmx==1)
  {
@@ -854,12 +857,9 @@ reset_all_bangers();
  On_Open_name_of_directory(); 
  Canvas::Fill(CouleurFond); 
  Canvas::Refresh();
- save_load_print_to_screen("Init Sound");
- InitSound();
+
  Load_Show();
  
- init_kbd_custom();
- save_load_print_to_screen("Init Keyboard");
  Show_report_save_load();
  
  save_load_print_to_screen("Init Dmx");
@@ -871,9 +871,10 @@ reset_all_bangers();
  InitVideo();
  }
  
-
+  save_load_print_to_screen("Init Sound");
+  InitSound();
   
-
+scan_audiofolder(); 
 
 scan_importfolder("");
 scan_savesfolder();
@@ -941,72 +942,27 @@ recalculate_draw_sizes(draw_preset_selected);
 
 
 
+
     
    rest(100);
-
-starting_wcat=1;
-for(int i=0;i<4;i++)
-{
- audiofile_selected=player_has_file_coming_from_pos[i]; 
- sprintf(audiofile_name,list_audio_files[audiofile_selected]); 
- if(strcmp (audiofile_name,"")==1)
- {     
- AffectSoundFile(i); 
- }
-rest(10);
-}
-
-
-if(index_loading_a_sound_file==0)
-{
-for(int i=0;i<4;i++)
-{
-//position player
-  if(player_ignited[i]==1 && player_position_on_save[i]<=length_of_file_in_player[i] )
-  {
-  switch(i)
-  {
-  case 0:
-  player1->setPosition(player_position_on_save[i]);  
-  break; 
-  case 1:
-  player2->setPosition(player_position_on_save[i]);  
-  break; 
-  case 2:
-  player3->setPosition(player_position_on_save[i]);  
-  break; 
-  case 3:
-  player4->setPosition(player_position_on_save[i]);  
-  break;    
-  default:
-  break;                                                         
-  }
- position_of_file_in_player[i]=player_position_on_save[i];
-}        
-}
-}
-
-
-
-starting_wcat=0;
-
-
-
+   
 while(index_quit!=1)
 {   
-   
-    
 MemoiresExistantes[0]=1;
 show_im_recording_a_time=0;// met à zéro l'affichage du stock visuel du time
-//remis dans boucle pour bug freeze V8.3 et 8.4
-if(old_ticks_arduino!=ticks_arduino && index_is_saving==0 && init_done==1 && index_writing_curve==0 && arduino_device_0_is_ignited==1 && index_quit==0)//procedures de communication
+/*if(old_ticks_arduino!=ticks_arduino && index_is_saving==0 && init_done==1 && index_writing_curve==0 && arduino_device_0_is_ignited==1 && index_quit==0)//procedures de communication
 {
     arduino_read();
     arduino_do_digital_out_whitecat(); //ecriture
     arduino_do_pwm_out_whitecat();
     serial0.Flush();
 }
-
+ if(allow_artnet_in==1 && artnet_serveur_is_initialized==1 )
+      {     
+      if(bytesreceived=recvfrom(sock,artnet_message,sizeof(artnet_message),0,(SOCKADDR*)&sinServ,&sinsizeServ)>0)
+      {receiving_bytes=1;ReceiveArtDmx();}  
+      else {receiving_bytes=0;}
+      }  */
  switch(index_art_polling)
  {
     case 0:                     
@@ -1018,8 +974,8 @@ if(old_ticks_arduino!=ticks_arduino && index_is_saving==0 && init_done==1 && ind
       Procedure("Art-Net Polling","Please wait 3 seconds, polling network ...");
     break;
    }
-//DEBUG
-sprintf(string_debug,"%d",index_my_window);
+
+sprintf(string_debug,"Value Debug: %d ", index_loading_a_sound_file );
 
 if(there_is_change_on_show_save_state==1)
 {

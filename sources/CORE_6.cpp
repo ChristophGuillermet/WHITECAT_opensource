@@ -1400,7 +1400,7 @@ if(bangers_action[index_banger_selected][lp]>2)
 {bangers_action[index_banger_selected][lp]=0;}  
 break;
 case 11://set channel
-if(bangers_action[index_banger_selected][lp]>7)
+if(bangers_action[index_banger_selected][lp]>15)
 {bangers_action[index_banger_selected][lp]=0;} 
 break;
 case 12://set banger 

@@ -1,5 +1,5 @@
 [Project]
-FileName=WhiteCat_OpenVersion.dev
+FileName=whitecat_allegro44.dev
 Name=White_Cat
 UnitCount=3
 Type=0
@@ -14,18 +14,18 @@ Compiler=-Iinclude/borderless -Llib/borderless_@@_
 CppCompiler=-Iinclude/borderless -Llib/borderless_@@__@@_
 Linker=-lopenlayer -lglyph-agl -lfreetype.dll  -lpng -lzdll -lagl  -ljpgal -lalleg  -luser32 -lgdi32 -lglu32 -lopengl32 -lpthreadGC2_@@_../../Dev-Cpp/lib/libwsock32.a_@@_odmxusb_terry/FTD2XX.lib_@@_enttec_pro/ftd2xx.lib_@@_midishare/libraries/mshare32.lib_@@_../../Dev-Cpp/lib/libiphlpapi.a_@@_../../Dev-Cpp/lib/libhpdf.a_@@_../../Dev-Cpp/lib/libz.a_@@_openCV-1.0/lib/libcv.a_@@_openCV-1.0/lib/libcxcore.a_@@_openCV-1.0/lib/libhighgui.a_@@_audiere-1.9.4-win32/lib/audiere.lib_@@_../../Dev-Cpp/lib/libpthreadGC2.a_@@_../../Dev-Cpp/lib/libjpgal.a_@@_
 IsCpp=1
-Icon=WhiteCat_OpenVersion.ico
+Icon=whitecat_opensource.ico
 ExeOutput=..\..\white_cat
 ObjectOutput=..\obj
 OverrideOutput=1
-OverrideOutputName=white_cat_0_8_4_14.exe
+OverrideOutputName=white_cat_0_8_4_opensource.exe
 HostApplication=
 Folders=
 CommandLine=-Iinclude/borderless -Llib/borderless
 UseCustomMakefile=0
 CustomMakefile=
 IncludeVersionInfo=1
-SupportXPThemes=0
+SupportXPThemes=1
 CompilerSet=0
 CompilerSettings=0000000000000000000000
 
@@ -140,7 +140,7 @@ BuildCmd=
 [Unit1]
 FileName=whitecat.h
 CompileCpp=1
-Folder=White_Cat
+Folder=
 Compile=1
 Link=1
 Priority=1000
@@ -148,7 +148,7 @@ OverrideBuildCmd=0
 BuildCmd=
 
 [Unit3]
-FileName=MAIN_nov_2013_opensource_kbd.cpp
+FileName=MAIN_juin_2013_opensource.cpp
 CompileCpp=1
 Folder=White_Cat
 Compile=1

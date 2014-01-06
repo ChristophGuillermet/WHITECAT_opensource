@@ -63,7 +63,7 @@ Curseur_ScrollChannel.SetRoundness(10);
 Curseur_ScrollChannel.SetLineWidth(epaisseur_ligne_fader);
 Curseur_ScrollChannel.DrawOutline(CouleurFader);
 
-if(Midi_Faders_Affectation_Type!=0  && mouse_x>ScrollX-10 && mouse_x<ScrollX+90 && mouse_y>ScrollY+scroll_channelspace && mouse_y<ScrollY+scroll_channelspace+20)
+if(Midi_Faders_Affectation_Type!=0  && mouse_x>ScrollX-10 && mouse_x<ScrollX-10+100 && mouse_y>ScrollY+scroll_channelspace && mouse_y<ScrollY+scroll_channelspace+20)
 {
 Curseur_ScrollChannel.DrawOutline(CouleurBlind);
 show_type_midi(1624,"Channels Handle" );
@@ -74,7 +74,7 @@ refresh_positions_preset_view_poignee();
  return(0);   
 }
 
-int ClassicalChannelSpace( int xchan, int ychan,  int scroll)//les 512 circuits
+int ClassicalChannelSpace( int xchan, int ychan, int interligne, int scroll)//les 512 circuits
 {
 int num_circ=0;
 char chan_is[6];
@@ -86,16 +86,7 @@ int showisup=0;//0 = equal 1= is up 2=is down
 
 float myalpha_channel=0.0;
 int maxchan_per_ligne=13;
-
-
-Rect ChannelRect(Vec2D(xchan,ypos_l),Vec2D(40,65));   
-ChannelRect.SetRoundness(10);  
-ChannelRect.SetLineWidth(epaisseur_ligne_fader);  
-Rect LevelOverdock(Vec2D(xchan,ypos_l),Vec2D(35,13));   
-Rect LevelOverTrack(Vec2D(xchan,ypos_l),Vec2D(35,13)); 
-Rect LevelModified(Vec2D(xchan,ypos_l),Vec2D(20,13)); 
-
-   
+     
 for (int l=0;l<43;l++)
 {
 if (l==42) {maxchan_per_ligne=9;} //derniere ligne à 512
@@ -104,9 +95,9 @@ if (l==42) {maxchan_per_ligne=9;} //derniere ligne à 512
 //sont dans la fenetre de l espace circuit cad si la ligne et son incréments sont inferieurs au y de l espace fader // AFFICHAGE ONLY SELECTION PLUS BAS
 if
 (
-(index_show_faders==0 && ((((ychan*l)+ 40 - (int)((float)(scroll)* Ch_Scroll_Factor))>0)&&(((ychan*l) + 60 - (int)((float)(scroll)* Ch_Scroll_Factor))<hauteur_ecran)))
+(index_show_faders==0 && ((((ychan*l)+ interligne-20 - (int)((float)(scroll)* Ch_Scroll_Factor))>0)&&(((ychan*l) + interligne - (int)((float)(scroll)* Ch_Scroll_Factor))<hauteur_ecran)))
 ||
-(index_show_faders==1 && ((((ychan*l)+ 40 - (int)((float)(scroll)* Ch_Scroll_Factor))>0)&&(((ychan*l) + 60 - (int)((float)(scroll)* Ch_Scroll_Factor))<YFader)))
+(index_show_faders==1 && ((((ychan*l)+ interligne-20 - (int)((float)(scroll)* Ch_Scroll_Factor))>0)&&(((ychan*l) + interligne - (int)((float)(scroll)* Ch_Scroll_Factor))<YFader)))
 )
 {
 for (int c=1; c<maxchan_per_ligne;c++)
@@ -116,11 +107,12 @@ xposch=45*c;
 ypos_ch= (int)((float)(scroll)* Ch_Scroll_Factor);
 ypos_l=ychan*l;
 
-if((ypos_l -ypos_ch)>-140 && ypos_l+ 40 -ypos_ch<hauteur_ecran)//condition d'affichage
+if((ypos_l -ypos_ch)>-140 && ypos_l+ interligne-20 -ypos_ch<hauteur_ecran)//condition d'affichage
 {
 
-ChannelRect.MoveTo(Vec2D(((xchan-5) + (xposch)),((ypos_l)+ 40 -ypos_ch)));   
- 
+Rect ChannelRect(Vec2D(((xchan-5) + (xposch)),((ypos_l)+ interligne-20 -ypos_ch)),Vec2D(40,65));   
+ChannelRect.SetRoundness(10);  
+ChannelRect.SetLineWidth(epaisseur_ligne_fader);  
 unsigned char circuittoshow=bufferSequenciel[num_circ] ;
 showisup=0;
 
@@ -163,12 +155,12 @@ break;
 if(c<100)
 {
 sprintf(chan_is," %d",num_circ);
-petitchiffre.Print(chan_is ,(xchan + (xposch)),((ypos_l) + 50 -ypos_ch ),CENTER); 
+petitchiffre.Print(chan_is ,(xchan + (xposch)),((ypos_l) + interligne -ypos_ch -10),CENTER); 
 }
 else if(c>=100)
 {
 sprintf(chan_is,"%d",num_circ);
-petitchiffre.Print(chan_is ,((xchan + (xposch))-5),((ypos_l) + 50 - ypos_ch ),CENTER); 
+petitchiffre.Print(chan_is ,((xchan + (xposch))-5),((ypos_l) + interligne - ypos_ch -10),CENTER); 
 }     
 
 
@@ -176,10 +168,10 @@ petitchiffre.Print(chan_is ,((xchan + (xposch))-5),((ypos_l) + 50 - ypos_ch ),CE
 switch(showisup)
 {
 case 1:
-petitpetitchiffre.Print("+", (xchan + 15+(xposch)),((ypos_l) + 70 -ypos_ch),RIGHT );
+petitpetitchiffre.Print("+", (xchan + 15+(xposch)),((ypos_l) + interligne+10 -ypos_ch),RIGHT );
 break;
 case 2:
-petitpetitchiffre.Print("-", (xchan + 15+(xposch)),((ypos_l) + 70 -ypos_ch),RIGHT );
+petitpetitchiffre.Print("-", (xchan + 15+(xposch)),((ypos_l) + interligne+10 -ypos_ch),RIGHT );
 break;
 }
 ///////////////////////
@@ -191,18 +183,18 @@ if (show_who_is_in_FADER_DOCK[num_circ]==1 )
 {    
 ChannelRect.DrawOutline(CouleurFader);
 //affichage du niveau du dock survolé
-LevelOverdock.MoveTo(Vec2D(((xchan-5) + (xposch))+15,((ypos_l)+ 92 - ypos_ch)));   
+Rect LevelOverdock(Vec2D(((xchan-5) + (xposch))+15,((ypos_l)+ interligne+32 - ypos_ch)),Vec2D(35,13));   
 LevelOverdock.Draw(CouleurFader);  
 }
 //affichage du master  qui envoie le plus haut niveau au circuit
 if(highest_level_comes_from_fader[num_circ]>0)//si le highest level exist : valeur faders de 1 à 48 quand attribué
 {
-petitdoomInspekt.Print(ol::ToString(highest_level_comes_from_fader[num_circ]) ,((xchan + (xposch))+15),((ypos_l) + 72 - ypos_ch),CENTER); 
+petitdoomInspekt.Print(ol::ToString(highest_level_comes_from_fader[num_circ]) ,((xchan + (xposch))+15),((ypos_l) + interligne+12 - ypos_ch),CENTER); 
 }
 if(i_m_over_a_track==1 && over_track_show_channel[num_circ]>0)
 {
 ChannelRect.DrawOutline(CouleurGreen);    
-LevelOverTrack.MoveTo(Vec2D(((xchan-5) + (xposch))-15,((ypos_l)+ 92 - ypos_ch))); 
+Rect LevelOverTrack(Vec2D(((xchan-5) + (xposch))-15,((ypos_l)+ interligne+32 - ypos_ch)),Vec2D(35,13)); 
 LevelOverTrack.Draw(CouleurGreen);                       
 }
 }
@@ -214,79 +206,66 @@ switch (dmx_view)
 //affichage %
 case 0:
 if(circuittoshow>0) 
-{circuitlevel.Print(ol::ToString((int) (((float)(circuittoshow) /2.55))) ,(xchan + (xposch)),((ypos_l) + 80 - ypos_ch),CENTER ); }
+{circuitlevel.Print(ol::ToString((int) (((float)(circuittoshow) /2.55))) ,(xchan + (xposch)),((ypos_l) + interligne+20 - ypos_ch),CENTER ); }
 //
 if(bufferFaders[num_circ]>0)
-{circuitfaderlevel.Print(ol::ToString((int) (((float)(bufferFaders[num_circ]) /2.55))) ,(xchan + (xposch)),((ypos_l) + 90 - ypos_ch),CENTER );}
+{circuitfaderlevel.Print(ol::ToString((int) (((float)(bufferFaders[num_circ]) /2.55))) ,(xchan + (xposch)),((ypos_l) + interligne+30 - ypos_ch),CENTER );}
 //blind
 if( index_blind==1 && bufferBlind[num_circ]>0) 
-{circuitblindlevel.Print(ol::ToString((int) (((float)(bufferBlind[num_circ]) /2.55))) ,(xchan + (xposch)),((ypos_l) + 100 - ypos_ch),CENTER );}
+{circuitblindlevel.Print(ol::ToString((int) (((float)(bufferBlind[num_circ]) /2.55))) ,(xchan + (xposch)),((ypos_l) + interligne+40 - ypos_ch),CENTER );}
 //affichage niveau inspekt fader
 if(index_inspekt==1 && show_who_is_in_FADER_DOCK[num_circ]==1) 
-{petitpetitchiffre.Print(ol::ToString((int)(((float)(FaderDockContains[over_fader][over_dock][num_circ]) /2.55))) ,(xchan + (xposch))+15,((ypos_l) + 100 -ypos_ch),CENTER );}
+{petitpetitchiffre.Print(ol::ToString((int)(((float)(FaderDockContains[over_fader][over_dock][num_circ]) /2.55))) ,(xchan + (xposch))+15,((ypos_l) + interligne+40 -ypos_ch),CENTER );}
 //inspekt track
 if(index_inspekt==1 && i_m_over_a_track==1 && over_track_show_channel[num_circ]>0) 
-{petitpetitchiffre.Print(ol::ToString((int)(float(over_track_show_channel[num_circ]) /2.55)) ,(xchan + (xposch))-15,((ypos_l) + 100 -ypos_ch),CENTER );} 
+{petitpetitchiffre.Print(ol::ToString((int)(float(over_track_show_channel[num_circ]) /2.55)) ,(xchan + (xposch))-15,((ypos_l) + interligne+40 -ypos_ch),CENTER );} 
 
 
 //freeze
 if(freeze_array[num_circ]==1)
 {
 ChannelRect.Draw(CouleurBlind.WithAlpha(alpha_blinker));
-petitchiffre.Print(ol::ToString((int) (((float)(freeze_state[num_circ]) /2.55))) ,(xchan + (xposch))+10,((ypos_l) + 70 - ypos_ch),CENTER );
+petitchiffre.Print(ol::ToString((int) (((float)(freeze_state[num_circ]) /2.55))) ,(xchan + (xposch))+10,((ypos_l) + interligne+10 - ypos_ch),CENTER );
 }
-
 
 break;
 
 //affichage 255
 case 1:
 if(circuittoshow>0) 
-{circuitlevel.Print(ol::ToString((int)circuittoshow) ,(xchan + (xposch)),((ypos_l) + 80 - ypos_ch),CENTER ); }
+{circuitlevel.Print(ol::ToString((int)circuittoshow) ,(xchan + (xposch)),((ypos_l) + interligne+20 - ypos_ch),CENTER ); }
 if(bufferFaders[num_circ]>0)
-{circuitfaderlevel.Print(ol::ToString((int)(bufferFaders[num_circ])) ,(xchan + (xposch)),((ypos_l) + 90 - ypos_ch),CENTER ); }
+{circuitfaderlevel.Print(ol::ToString((int)(bufferFaders[num_circ])) ,(xchan + (xposch)),((ypos_l) + interligne+30 - ypos_ch),CENTER ); }
 //blind
 if(index_blind==1 && bufferBlind[num_circ]>0 ) 
-{circuitblindlevel.Print(ol::ToString((int)(bufferBlind[num_circ])) ,(xchan + (xposch)),((ypos_l) + 100 - ypos_ch),CENTER ); }
+{circuitblindlevel.Print(ol::ToString((int)(bufferBlind[num_circ])) ,(xchan + (xposch)),((ypos_l) + interligne+40 - ypos_ch),CENTER ); }
 //affichage niveau inspekt fader
 if(index_inspekt==1 && show_who_is_in_FADER_DOCK[num_circ]==1) 
-{petitpetitchiffre.Print(ol::ToString((int)(FaderDockContains[over_fader][over_dock][num_circ])) ,(xchan + (xposch))+15,((ypos_l) + 100 -ypos_ch),CENTER );} 
+{petitpetitchiffre.Print(ol::ToString((int)(FaderDockContains[over_fader][over_dock][num_circ])) ,(xchan + (xposch))+15,((ypos_l) + interligne+40 -ypos_ch),CENTER );} 
 //inspekt track
 if(index_inspekt==1 && i_m_over_a_track==1) 
-{petitpetitchiffre.Print(ol::ToString(over_track_show_channel[num_circ]) ,(xchan + (xposch))-15,((ypos_l) + 100 -ypos_ch),CENTER );} 
+{petitpetitchiffre.Print(ol::ToString(over_track_show_channel[num_circ]) ,(xchan + (xposch))-15,((ypos_l) + interligne+40 -ypos_ch),CENTER );} 
 
 
 //freeze
 if(freeze_array[num_circ]==1)
 {
 ChannelRect.Draw(CouleurBlind.WithAlpha(alpha_blinker));
-petitchiffre.Print(ol::ToString((int)(freeze_state[num_circ])) ,(xchan + (xposch))+10,((ypos_l) + 70 - ypos_ch),CENTER );    
+petitchiffre.Print(ol::ToString((int)(freeze_state[num_circ])) ,(xchan + (xposch))+10,((ypos_l) + interligne+10 - ypos_ch),CENTER );    
 }
 break;   
-}
-
-if(num_circ==go_channel_is && index_go==1 && index_pause==0)
-{
-ChannelRect.Draw(CouleurGreen.WithAlpha(alpha_blinker)); 
-minidoomblanc.Print("GO",(xchan + (xposch)),((ypos_l) + 80 - ypos_ch),CENTER );                      
-}
-
-if(num_circ==pause_channel_is && index_go==1 && index_pause==1)
-{
-ChannelRect.Draw(CouleurYellow.WithAlpha(alpha_blinker));     
-minidoomblanc.Print("PAUSE",(xchan + (xposch))-10,((ypos_l) + 80 - ypos_ch),CENTER );                       
 }
 
 //exclude from GM action
 if(Channels_excluded_from_grand_master[num_circ]==1)
 {
-Circle CircleExcluded(xchan + xposch+26,ypos_l + 52 - ypos_ch, 3); 
+Circle CircleExcluded(xchan + xposch+26,ypos_l + interligne - ypos_ch -8, 3); 
 CircleExcluded.DrawOutline(CouleurBlind);                                                   
 }
 
 if(channel_is_touched_by_fader_fx[num_circ]==1)
 {
-Circle CircleTouchedbyFx(xchan + xposch+26,ypos_l + 61 - ypos_ch , 3); 
+Circle CircleTouchedbyFx(xchan + xposch+26,ypos_l + interligne - ypos_ch +1, 3); 
 switch(channel_is_touched_by_fader_type_fx[num_circ])
 {
 case 0://normal HTP
@@ -310,7 +289,7 @@ break;
 default:
 break;                                          
 }
-minichiffre.Print(ol::ToString(channel_is_touched_by_fader_number[num_circ]+1),xchan + xposch+30,ypos_l + 60 - ypos_ch );
+minichiffre.Print(ol::ToString(channel_is_touched_by_fader_number[num_circ]+1),xchan + xposch+30,ypos_l + interligne - ypos_ch );
 CircleTouchedbyFx.DrawOutline(CouleurLigne);                                                   
 }
 
@@ -321,16 +300,16 @@ if (Selected_Channel[num_circ]==1)
 //etiquette niveau correction
 if(channel_level_mofification_while_crossfade[num_circ]!=0)
 {
-LevelModified.MoveTo(Vec2D(xchan+xposch+20,((ypos_l)+ 70 - ypos_ch))); 
+Rect LevelModified(Vec2D(xchan+xposch+20,((ypos_l)+ interligne+10 - ypos_ch)),Vec2D(20,13)); 
 LevelModified.Draw(CouleurBlind);  
 switch (dmx_view)
 {
 //affichage %
 case 0:
-petitpetitchiffre.Print(ol::ToString((int) (((float)(channel_level_mofification_while_crossfade[num_circ]) /2.55))),(xchan + xposch+25),((ypos_l) + 80 - ypos_ch),RIGHT ); 
+petitpetitchiffre.Print(ol::ToString((int) (((float)(channel_level_mofification_while_crossfade[num_circ]) /2.55))),(xchan + xposch+25),((ypos_l) + interligne+20 - ypos_ch),RIGHT ); 
 break;
 case 1:     
-petitpetitchiffre.Print(ol::ToString(channel_level_mofification_while_crossfade[num_circ]),(xchan + xposch+25),((ypos_l) + 80 - ypos_ch),RIGHT ); 
+petitpetitchiffre.Print(ol::ToString(channel_level_mofification_while_crossfade[num_circ]),(xchan + xposch+25),((ypos_l) + interligne+20 - ypos_ch),RIGHT ); 
 break;
 }
 }
@@ -343,10 +322,10 @@ for(int llo=0;llo<4;llo++)
 {
 if(show_first_dim_array[num_circ][llo]!=0)
 {
-petitdoomrouge.Print(ol::ToString(show_first_dim_array[num_circ][llo]),(xchan + xposch +5),((ypos_l) + 75 - ypos_ch+(llo*10)));  
+petitdoomrouge.Print(ol::ToString(show_first_dim_array[num_circ][llo]),(xchan + xposch +5),((ypos_l) + interligne - ypos_ch+15+(llo*10)));  
 }
 }
-if(show_more_than_one_dim[num_circ]==1){petitdoomrouge.Print("+",(xchan + xposch +20),((ypos_l) + 60 - ypos_ch+2));  }                      
+if(show_more_than_one_dim[num_circ]==1){petitdoomrouge.Print("+",(xchan + xposch +20),((ypos_l) + interligne - ypos_ch+2));  }                      
 }
 
 }//fin condition d'affichage
@@ -426,13 +405,13 @@ break;
  if(mouse_y>ychan && mouse_y<ychan+20  )
  {
  //TITRE VIEW                    
- if(mouse_x> xchan+40 && mouse_x<xchan+250)
+ if(mouse_x> xchan+40 && mouse_x<xchan+40+210)
  {
  Background_title.DrawOutline(CouleurLigne);
  }  
 
  //do build
- else if(mouse_x>  xchan+520 && mouse_x<xchan+575 && prst_v!=0 )
+ else if(mouse_x>  xchan+520 && mouse_x<xchan+520+55 && prst_v!=0 )
  {
  Build.DrawOutline(CouleurFader.WithAlpha(0.5));
   //logique a garder inside sinon ca plante grave !
@@ -468,7 +447,7 @@ break;
 }
 
 
-int Draw_Channel_Preset_View(int xchan, int ychan,  int prst_v)
+int Draw_Channel_Preset_View(int xchan, int ychan, int interligne, int prst_v)
 {
 
 
@@ -484,16 +463,6 @@ float myalpha_channel=0.0;
 int maxchan_per_ligne=12;
 int nbre_lignes=channel_number_of_lines[prst_v];     
      
-     
-
-Rect ChannelRect(Vec2D(xchan, ypos_ch),Vec2D(40,65));   
-ChannelRect.SetRoundness(10);  
-ChannelRect.SetLineWidth(epaisseur_ligne_fader);
-Rect LevelOverdock(Vec2D(xchan, ypos_ch),Vec2D(35,13));   
-Rect LevelOverTrack(Vec2D(xchan,ypos_ch),Vec2D(35,13)); 
-Rect LevelModified(Vec2D(xchan,ypos_ch),Vec2D(20,13)); 
-
-
 //neuromoyen.Print(ol::ToString( nbre_lignes) ,xchan+400,ychan-40);    
 for (int l=0;l<=nbre_lignes;l++)
 {
@@ -508,13 +477,14 @@ if(num_circ!=0 && num_circ<513)
 {
 
 xposch=45*c;
-ypos_ch=ychan+(l*(70));
+ypos_ch=ychan+(l*(interligne+10));
 
 if(ypos_ch>-30 && ypos_ch<hauteur_ecran)//condition affichage
 {
 
-ChannelRect.MoveTo(Vec2D(((xchan-5) + (xposch)), ypos_ch));   
-
+Rect ChannelRect(Vec2D(((xchan-5) + (xposch)), ypos_ch),Vec2D(40,65));   
+ChannelRect.SetRoundness(10);  
+ChannelRect.SetLineWidth(epaisseur_ligne_fader);  
 unsigned char circuittoshow=bufferSequenciel[num_circ] ;
 showisup=0;
 
@@ -585,7 +555,7 @@ if (show_who_is_in_FADER_DOCK[num_circ]==1 )
 {    
 ChannelRect.DrawOutline(CouleurFader);
 //affichage du niveau du dock survolé
-LevelOverdock.MoveTo(Vec2D(((xchan-5) + (xposch))+15, ypos_ch+52));   
+Rect LevelOverdock(Vec2D(((xchan-5) + (xposch))+15, ypos_ch+52),Vec2D(35,13));   
 LevelOverdock.Draw(CouleurFader);  
 }
 //affichage du master  qui envoie le plus haut niveau au circuit
@@ -596,7 +566,7 @@ petitdoomInspekt.Print(ol::ToString(highest_level_comes_from_fader[num_circ]) ,(
 if(i_m_over_a_track==1 && over_track_show_channel[num_circ]>0)
 {
 ChannelRect.DrawOutline(CouleurGreen);    
-LevelOverTrack.MoveTo(Vec2D(((xchan-5) + (xposch))-15,ypos_ch+52)); 
+Rect LevelOverTrack(Vec2D(((xchan-5) + (xposch))-15,ypos_ch+52),Vec2D(35,13)); 
 LevelOverTrack.Draw(CouleurGreen);                       
 }
 }
@@ -658,18 +628,6 @@ petitchiffre.Print(ol::ToString((int)(freeze_state[num_circ])) ,(xchan + (xposch
 break;   
 }
 
-if(num_circ==go_channel_is && index_go==1 && index_pause==0)
-{
-ChannelRect.Draw(CouleurGreen.WithAlpha(alpha_blinker)); 
-minidoomblanc.Print("GO",(xchan + (xposch)),ypos_ch+40,CENTER );                      
-}
-
-if(num_circ==pause_channel_is && index_go==1 && index_pause==1)
-{
-ChannelRect.Draw(CouleurYellow.WithAlpha(alpha_blinker));     
-minidoomblanc.Print("PAUSE",(xchan + (xposch))-10,ypos_ch+40,CENTER );                       
-}
-
 //exclude from GM action
 if(Channels_excluded_from_grand_master[num_circ]==1)
 {
@@ -715,7 +673,7 @@ if (Selected_Channel[num_circ]==1)
 //etiquette niveau correction
 if(channel_level_mofification_while_crossfade[num_circ]!=0)
 {
-LevelModified.MoveTo(Vec2D(xchan+xposch+20,ypos_ch+30)); 
+Rect LevelModified(Vec2D(xchan+xposch+20,ypos_ch+30),Vec2D(20,13)); 
 LevelModified.Draw(CouleurBlind);  
 switch (dmx_view)
 {
@@ -763,7 +721,7 @@ Classical.Draw(CouleurFader.WithAlpha(ClassicalChannelView));
 Classical.DrawOutline(CouleurLigne.WithAlpha(0.4));
 petitchiffre.Print("Classical", chx+75,chy+14);
 
-if(window_focus_id==0 && Midi_Faders_Affectation_Type!=0 && mouse_x>chx+70 && mouse_x<chx+130 && mouse_y>chy+1 && mouse_y<chy+19)
+if(window_focus_id==0 && Midi_Faders_Affectation_Type!=0 && mouse_x>chx+70 && mouse_x<chx+70+60 && mouse_y>chy+1 && mouse_y<chy+1+18)
 {
 Classical.DrawOutline(CouleurBlind);
 show_type_midi(1644,"Classical Channel View");
@@ -780,7 +738,7 @@ ChooseChannelView.MoveTo(Vec2D(chx+140+(i*15),chy+1+(15*lv)));
 ChooseChannelView.Draw(CouleurNiveau.WithAlpha(Channel_View_MODE[i+(lv*8)]));
 ChooseChannelView.DrawOutline(CouleurLigne.WithAlpha(0.4));
 minichiffre.Print(ol::ToString(i+(lv*8)+1),chx+142+(i*15),chy+(15*lv)+8);
-if(window_focus_id==0 && Midi_Faders_Affectation_Type!=0 && mouse_x>chx+140+(i*15) && mouse_x<chx+150+(i*15) && mouse_y>chy+1+(15*lv) && mouse_y<chy+11+(15*lv))
+if(window_focus_id==0 && Midi_Faders_Affectation_Type!=0 && mouse_x>chx+140+(i*15) && mouse_x<chx+140+(i*15)+10 && mouse_y>chy+1+(15*lv) && mouse_y<chy+1+(15*lv)+10)
 {
 ChooseChannelView.DrawOutline(CouleurBlind);
 sprintf(tmp_hain,"Channel View %d",i+(lv*8)+1);

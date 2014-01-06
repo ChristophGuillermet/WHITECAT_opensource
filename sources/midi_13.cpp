@@ -588,16 +588,16 @@ if(player_ignited[bum]==1)
 switch(bum)
 {
 case 0:
-player1->setVolume(((float)player_niveauson[bum]+sqrt((float)player_niveauson[bum]))/127);
+player1->setVolume(((float)player_niveauson[bum])/127);
 break;      
 case 1:
-player2->setVolume(((float)player_niveauson[bum]+sqrt((float)player_niveauson[bum]))/127);
+player2->setVolume(((float)player_niveauson[bum])/127);
 break; 
 case 2:
-player3->setVolume(((float)player_niveauson[bum]+sqrt((float)player_niveauson[bum]))/127);
+player3->setVolume(((float)player_niveauson[bum])/127);
 break; 
 case 3:
-player4->setVolume(((float)player_niveauson[bum]+sqrt((float)player_niveauson[bum]))/127);
+player4->setVolume(((float)player_niveauson[bum])/127);
 break;       
 }            
 }

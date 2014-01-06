@@ -156,7 +156,7 @@ const char file_divers_index[24]={"indexs.whc"};//les indexs dmx_view, fenetres 
 int index_size=128;
 
 const char file_windows[24]={"windows.whc"};
-int windows_size=64;//int window_opened[64];//la liste des fenetres ouvertes
+int windows_size=72;//int window_opened[64];//la liste des fenetres ouvertes
 //POSITIONS FENETRES
 const char file_pos_fenetres[24]={"user_windows.whc"};//position user etc...
 int index_pos_fenetre_size=24*2;
@@ -1064,12 +1064,14 @@ int Load_Sequenciel_Conf()
     else {sprintf(string_save_load_report[idf],"Sequenciel.txt readed");}
 	fscanf( cfg_file , "%d / %d / %d / %d / %d /\n" ,  &position_onstage, &position_preset, &niveauX1, &niveauX2, &crossfade_speed);
     fscanf( cfg_file , "%f /\n" ,  &default_time);
+    fscanf( cfg_file , "%d %d /\n" ,  &go_channel_is, &pause_channel_is);
 	fclose( cfg_file );	
 	}
 midi_levels[491]=niveauX1/2;
 midi_levels[492]=127-(niveauX2/2);
 midi_levels[493]=crossfade_speed; 
-   
+   if(go_channel_is<1 || ( go_channel_is> 512)){go_channel_is=0;} 
+   if(pause_channel_is<1 || ( pause_channel_is> 512)){pause_channel_is=0;} 
 return(0);  
 }
 
@@ -1517,6 +1519,7 @@ if(fpo=fopen("sequenciel.txt","w"))
 fprintf(fpo,"#arguments: mem_on_stage*10 / mem_on_preset*10 / master_stage / master_preset / speed /\n");
 fprintf(fpo,"%d / %d / %d / %d / %d /\n",position_onstage, position_preset,niveauX1,niveauX2,crossfade_speed);
 fprintf(fpo,"%.1f /\n",default_time);
+fprintf(fpo,"%d %d /\n", go_channel_is,pause_channel_is);
 sprintf(string_save_load_report[idf],"Saved sequenciel.txt");
 fclose(fpo); }
 else {sprintf(string_save_load_report[idf],"Error on sequenciel.txt");b_report_error[idf]=1;}

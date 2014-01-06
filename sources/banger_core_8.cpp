@@ -752,7 +752,7 @@ if(param1_is>=0 && param1_is<5)
      {
      player_niveauson[param1_is]=audio_volume_was[param1_is];
      midi_levels[616+param1_is]=audio_volume_was[param1_is];
-     player1->setVolume(((float)player_niveauson[param1_is]+sqrt((float)player_niveauson[param1_is]))/127);
+     player1->setVolume(((float)player_niveauson[param1_is])/127);
      if(midi_send_out[616+param1_is]==1){ index_send_midi_out[616+param1_is]=1;}//VOL
      
      player_pan[param1_is]=audio_pan_was[param1_is];
@@ -795,7 +795,7 @@ if(param1_is>=0 && param1_is<5)
      {
      player_niveauson[param1_is]=audio_volume_was[param1_is];
      midi_levels[616+param1_is]=audio_volume_was[param1_is];
-     player2->setVolume(((float)player_niveauson[param1_is]+sqrt((float)player_niveauson[param1_is]))/127);
+     player2->setVolume(((float)player_niveauson[param1_is])/127);
      if(midi_send_out[616+param1_is]==1){ index_send_midi_out[616+param1_is]=1;}//VOL
      
      player_pan[param1_is]=audio_pan_was[param1_is];
@@ -838,7 +838,7 @@ if(param1_is>=0 && param1_is<5)
      {
      player_niveauson[param1_is]=audio_volume_was[param1_is];
      midi_levels[616+param1_is]=audio_volume_was[param1_is];
-     player3->setVolume(((float)player_niveauson[param1_is]+sqrt((float)player_niveauson[param1_is]))/127);
+     player3->setVolume(((float)player_niveauson[param1_is])/127);
      if(midi_send_out[616+param1_is]==1){ index_send_midi_out[616+param1_is]=1;}//VOL
      
      player_pan[param1_is]=audio_pan_was[param1_is];
@@ -881,7 +881,7 @@ if(param1_is>=0 && param1_is<5)
      {
      player_niveauson[param1_is]=audio_volume_was[param1_is];
      midi_levels[616+param1_is]=audio_volume_was[param1_is];
-     player4->setVolume(((float)player_niveauson[param1_is]+sqrt((float)player_niveauson[param1_is]))/127);
+     player4->setVolume(((float)player_niveauson[param1_is])/127);
      if(midi_send_out[616+param1_is]==1){ index_send_midi_out[616+param1_is]=1;}//VOL
      
      player_pan[param1_is]=audio_pan_was[param1_is];
@@ -1176,14 +1176,14 @@ if(param1_is>=0 && param1_is<5)
      case 0:
      player_niveauson[param1_is]=audio_volume_was[param1_is];
      midi_levels[616]=audio_volume_was[param1_is];
-     player1->setVolume(((float)player_niveauson[param1_is]+sqrt((float)player_niveauson[param1_is]))/127);
+     player1->setVolume(((float)player_niveauson[param1_is])/127);
      if(midi_send_out[616]==1){ index_send_midi_out[616]=1;}//vol   
      sprintf(string_event,"BACK: Player 1 SetVolume at %d", audio_volume_was[param1_is]);
      break;      
      case 1:
      player_niveauson[param1_is]=audio_volume_was[param1_is];
      midi_levels[617]=audio_volume_was[param1_is];
-     player2->setVolume(((float)player_niveauson[param1_is]+sqrt((float)player_niveauson[param1_is]))/127);
+     player2->setVolume(((float)player_niveauson[param1_is])/127);
      if(midi_send_out[617]==1){ index_send_midi_out[617]=1;}//vol   
      sprintf(string_event,"BACK: Player 2 SetVolume at %d", audio_volume_was[param1_is]);
      break; 
@@ -1191,14 +1191,14 @@ if(param1_is>=0 && param1_is<5)
      player_niveauson[param1_is]=audio_volume_was[param1_is];
      midi_levels[618]=audio_volume_was[param1_is];
      if(midi_send_out[618]==1){ index_send_midi_out[618]=1;}//vol   
-     player3->setVolume(((float)player_niveauson[param1_is]+sqrt((float)player_niveauson[param1_is]))/127);
+     player3->setVolume(((float)player_niveauson[param1_is])/127);
      sprintf(string_event,"BACK: Player 3 SetVolume at %d", audio_volume_was[param1_is]);
      break; 
      case 3:
      player_niveauson[param1_is]=audio_volume_was[param1_is];
      midi_levels[619]=audio_volume_was[param1_is];
      if(midi_send_out[619]==1){ index_send_midi_out[619]=1;}//vol   
-     player4->setVolume(((float)player_niveauson[param1_is]+sqrt((float)player_niveauson[param1_is]))/127);
+     player4->setVolume(((float)player_niveauson[param1_is])/127);
      sprintf(string_event,"BACK: Player 4 SetVolume at %d", audio_volume_was[param1_is]);
      break;       
      }                   
@@ -2462,7 +2462,7 @@ if(param1_is>=0 && param1_is<5)
       player1->setPitchShift((((float)player_pitch[param1_is])/64));
       player1->setPan(((float)(player_pan[param1_is]-64))/63);
       player1->setRepeat(false);     
-      player1->setVolume(((float)player_niveauson[param1_is]+sqrt((float)player_niveauson[param1_is]))/127);
+      player1->setVolume(((float)player_niveauson[param1_is])/127);
       break;
       case 1:
       player2->stop();
@@ -2470,7 +2470,7 @@ if(param1_is>=0 && param1_is<5)
       player2->setPitchShift((((float)player_pitch[param1_is])/64));
       player2->setPan(((float)(player_pan[param1_is]-64))/63);
       player2->setRepeat(false);
-      player2->setVolume(((float)player_niveauson[param1_is]+sqrt((float)player_niveauson[param1_is]))/127);
+      player2->setVolume(((float)player_niveauson[param1_is])/127);
       break;
       case 2:
       player3->stop();
@@ -2478,7 +2478,7 @@ if(param1_is>=0 && param1_is<5)
       player3->setPitchShift((((float)player_pitch[param1_is])/64));
       player3->setPan(((float)(player_pan[param1_is]-64))/63);
       player3->setRepeat(false);
-      player3->setVolume(((float)player_niveauson[param1_is]+sqrt((float)player_niveauson[param1_is]))/127);
+      player3->setVolume(((float)player_niveauson[param1_is])/127);
       break;
       case 3:
       player4->stop();
@@ -2486,7 +2486,7 @@ if(param1_is>=0 && param1_is<5)
       player4->setPitchShift((((float)player_pitch[param1_is])/64));
       player4->setPan(((float)(player_pan[param1_is]-64))/63);
       player4->setRepeat(false);
-      player4->setVolume(((float)player_niveauson[param1_is]+sqrt((float)player_niveauson[param1_is]))/127);
+      player4->setVolume(((float)player_niveauson[param1_is])/127);
       break;                   
       }
      
@@ -2722,14 +2722,14 @@ if(param1_is>=0 && param1_is<5)
      case 0:
      player_niveauson[param1_is]=param2_is;
      midi_levels[616]=param2_is;
-     player1->setVolume(((float)player_niveauson[param1_is]+sqrt((float)player_niveauson[param1_is]))/127);
+     player1->setVolume(((float)player_niveauson[param1_is])/127);
      if(midi_send_out[616]==1){ index_send_midi_out[616]=1;}//vol   
      sprintf(string_event,"Player 1 SetVolume at %d", param2_is);
      break;      
      case 1:
      player_niveauson[param1_is]=param2_is;
      midi_levels[617]=param2_is;
-     player2->setVolume(((float)player_niveauson[param1_is]+sqrt((float)player_niveauson[param1_is]))/127);
+     player2->setVolume(((float)player_niveauson[param1_is])/127);
      if(midi_send_out[617]==1){ index_send_midi_out[617]=1;}//vol   
      sprintf(string_event,"Player 2 SetVolume at %d", param2_is);
      break; 
@@ -2737,14 +2737,14 @@ if(param1_is>=0 && param1_is<5)
      player_niveauson[param1_is]=param2_is;
      midi_levels[618]=param2_is;
      if(midi_send_out[618]==1){ index_send_midi_out[618]=1;}//vol   
-     player3->setVolume(((float)player_niveauson[param1_is]+sqrt((float)player_niveauson[param1_is]))/127);
+     player3->setVolume(((float)player_niveauson[param1_is])/127);
      sprintf(string_event,"Player 3 SetVolume at %d", param2_is);
      break; 
      case 3:
      player_niveauson[param1_is]=param2_is;
      midi_levels[619]=param2_is;
      if(midi_send_out[619]==1){ index_send_midi_out[619]=1;}//vol   
-     player4->setVolume(((float)player_niveauson[param1_is]+sqrt((float)player_niveauson[param1_is]))/127);
+     player4->setVolume(((float)player_niveauson[param1_is])/127);
      sprintf(string_event,"Player 4 SetVolume at %d", param2_is);
      break;       
      }                   
@@ -3601,6 +3601,70 @@ if(bang_the_chan_is>0 && bang_the_chan_is<513)
       sprintf(string_event,"SetChan %d - Macro %d OFF",bang_the_chan_is,bang_val_the_chan_is); 
       }
       break; 
+      case 8://"Macro1 from to ON"
+      if(bang_the_chan_is>0 && bang_the_chan_is<=512 && bang_val_the_chan_is>0 && bang_val_the_chan_is<=512)
+      {
+      for (int i=bang_the_chan_is; i<= bang_val_the_chan_is; i++)
+      macro_channel_on[i][0]=1;
+      sprintf(string_event,"SetFrom %d To %d Chan - Macro1 ON",bang_the_chan_is,bang_val_the_chan_is); 
+      }
+      break;
+      case 9://"Macro2 from to ON"
+      if(bang_the_chan_is>0 && bang_the_chan_is<=512 && bang_val_the_chan_is>0 && bang_val_the_chan_is<=512)
+      {
+      for (int i=bang_the_chan_is; i<= bang_val_the_chan_is; i++)
+      macro_channel_on[i][1]=1;
+      sprintf(string_event,"SetFrom %d To %d Chan - Macro2 ON",bang_the_chan_is,bang_val_the_chan_is); 
+      }
+      break;
+      case 10://"Macro3 from to ON"
+      if(bang_the_chan_is>0 && bang_the_chan_is<=512 && bang_val_the_chan_is>0 && bang_val_the_chan_is<=512)
+      {
+      for (int i=bang_the_chan_is; i<= bang_val_the_chan_is; i++)
+      macro_channel_on[i][2]=1;
+      sprintf(string_event,"SetFrom %d To %d Chan - Macro3 ON",bang_the_chan_is,bang_val_the_chan_is); 
+      }
+      break;
+      case 11://"Macro4 from to ON"
+      if(bang_the_chan_is>0 && bang_the_chan_is<=512 && bang_val_the_chan_is>0 && bang_val_the_chan_is<=512)
+      {
+      for (int i=bang_the_chan_is; i<= bang_val_the_chan_is; i++)
+      macro_channel_on[i][3]=1;
+      sprintf(string_event,"SetFrom %d To %d Chan - Macro4 ON",bang_the_chan_is,bang_val_the_chan_is); 
+      }
+      break;
+      case 12://"Macro1 from to Off"
+      if(bang_the_chan_is>0 && bang_the_chan_is<=512 && bang_val_the_chan_is>0 && bang_val_the_chan_is<=512)
+      {
+      for (int i=bang_the_chan_is; i<= bang_val_the_chan_is; i++)
+      macro_channel_on[i][0]=0;
+      sprintf(string_event,"SetFrom %d To %d Chan - Macro1 OFF",bang_the_chan_is,bang_val_the_chan_is); 
+      }
+      break;
+      case 13://"Macro2 from to Off"
+      if(bang_the_chan_is>0 && bang_the_chan_is<=512 && bang_val_the_chan_is>0 && bang_val_the_chan_is<=512)
+      {
+      for (int i=bang_the_chan_is; i< bang_val_the_chan_is; i++)
+      macro_channel_on[i][1]=0;
+      sprintf(string_event,"SetFrom %d To %d Chan - Macro2 OFF",bang_the_chan_is,bang_val_the_chan_is); 
+      }
+      break;
+      case 14://"Macro3 from to Off"
+      if(bang_the_chan_is>0 && bang_the_chan_is<=512 && bang_val_the_chan_is>0 && bang_val_the_chan_is<=512)
+      {
+      for (int i=bang_the_chan_is; i<= bang_val_the_chan_is; i++)
+      macro_channel_on[i][2]=0;
+      sprintf(string_event,"SetFrom %d To %d Chan - Macro3 OFF",bang_the_chan_is,bang_val_the_chan_is); 
+      }
+      break;
+      case 15://"Macro4 from to Off"
+      if(bang_the_chan_is>0 && bang_the_chan_is<=512 && bang_val_the_chan_is>0 && bang_val_the_chan_is<=512)
+      {
+      for (int i=bang_the_chan_is; i<= bang_val_the_chan_is; i++)
+      macro_channel_on[i][3]=0;
+      sprintf(string_event,"SetFrom %d To %d Chan - Macro4 OFF",bang_the_chan_is,bang_val_the_chan_is); 
+      }
+      break;
       default:
       break;
       }

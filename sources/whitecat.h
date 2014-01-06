@@ -1,6 +1,6 @@
 
 ////////////////////////////////////////////////////////////////////////////////
-char versionis[72]={"Beta 0.8.4 - 21 juillet 2013"};
+char versionis[72]={"Beta 0.8.4.14 - 26 dec 2013"};
 char nickname_version[48]={"OPEN VERSION"};
 
 bool init_done=0;//démarrage pour éviter envoyer data pdt procedure d initialisation
@@ -57,9 +57,10 @@ W_MY_WINDOW=927
 int max_window_identity_is=927;
 int index_to_navigate_between_window=0;
 
-int window_opened[64];//la liste des fenetres ouvertes
+int window_opened[72];//la liste des fenetres ouvertes modification en 0.4.1 d un size 64 en size 72,
+//y compris dans save_show.cpp
 int nbre_fenetre_actives=0;
-int temp_report_window[64];
+int temp_report_window[72];
 
 
 volatile int ticks_dixieme_for_icat_and_draw=0;
@@ -1841,6 +1842,9 @@ int mem_after_one=0;
 bool someone_changed_in_sequences=0;
 bool someone_changed_in_time_sequences=0;//specifique affichage du temps de crossfade
 
+int go_channel_is=0;
+int pause_channel_is=0; //pause channel blink on pause in cuelist
+
 bool index_monitor_key_esc=0;
 
 //////////////////
@@ -2015,9 +2019,9 @@ int channel_macro_reaction[514][4];
 int channel_macro_action[514][4];
 int channel_macro_val[514][4][2];
 int max_channel_macro_reaction=8;
-int max_channel_macro_action=15;
+int max_channel_macro_action=17;
 unsigned char previous_state_of_outputted_channels[514];
-
+int chan_to_manipulate=0;
 
 ///window plot
 bool index_plot_window=0;

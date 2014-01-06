@@ -1,37 +1,5 @@
-int init_kbd_custom()
-{
-for(int i=0;i<256;i++)
-{
-kbd_custom[i][0]=i; 
-kbd_custom[i][1]=0;       
-}
-return(0);   
-}
 
-int do_keyboard_config( int x_cfg,int y_cfg, int largeur_cfg, int hauteur_cfg)
-{
-petitchiffre.Print("KEYBOARD MAPPING" ,x_cfg, y_cfg);
-Rect OverKey(Vec2D(x_cfg,y_cfg),Vec2D(60,20));
-OverKey.SetRoundness(1.8);
-Rect Function(Vec2D(x_cfg,y_cfg),Vec2D(120,20));
-Function.SetRoundness(1.8);
-Rect Param(Vec2D(x_cfg,y_cfg),Vec2D(30,20));
-Param.SetRoundness(1.8);
-for(int i=0;i<10;i++)
-{
-OverKey.MoveTo(Vec2D(x_cfg,y_cfg+15+(i*25)));
-OverKey.Draw(CouleurGreen.WithAlpha(0.5));  
-Function.MoveTo(Vec2D(x_cfg+75,y_cfg+15+(i*25)));
-Function.Draw(CouleurBlind.WithAlpha(0.5));  
-Param.MoveTo(Vec2D(x_cfg+205,y_cfg+15+(i*25)));
-Param.Draw(CouleurBlind.WithAlpha(0.5));  
-petitchiffre.Print(kbd_custom[index_liste_kbd_custom+i],x_cfg+10,y_cfg+20+(i*25));       
-}
-return(0);
-}
-
-
-int do_keyboard_conf(int cfgnetw_X, int cfgnetw_Y)//ancienne version
+int do_keyboard_conf(int cfgnetw_X, int cfgnetw_Y)
 {
     
 petitchiffre.Print("Keyboard Mapping: " ,cfgnetw_X, cfgnetw_Y);
@@ -83,8 +51,6 @@ petitpetitchiffre.Print(ol::ToString(mapping_temporaire[oi]),cfgnetw_X+75,cfgnet
 
  return(0);   
 }
-
-
 
 int do_core_config( int x_cfg_sc,int y_cfg_sc, int largeur_cfg_sc, int hauteur_cfg_sc)
 {
@@ -544,7 +510,7 @@ petitchiffre.Print(string_cfg_main,(cfgnetw_X+170), (cfgnetw_Y+280));
 
 ///////////////////DEUXIEME COLONNE
 
-for (int oi=0;oi<8;oi++)
+for (int oi=0;oi<6;oi++)
 {
 Rect UnderParam(Vec2D(cfgnetw_X+365,cfgnetw_Y+55+(oi*30)),Vec2D(50,25));
 UnderParam.SetRoundness(7.5);
@@ -593,16 +559,6 @@ if(nbre_memoires_visualisables_en_preset>25){nbre_memoires_visualisables_en_pres
 hauteur_globale_sequenciel=180+(35*(nbre_memoires_visualisables_en_preset+1))+35;
 reset_numeric_entry();
 break;
-case 6: // on Go light Channel
-go_channel_is=atoi(numeric);
-if(go_channel_is<1 || ( go_channel_is> 512)){go_channel_is=0;} 
-reset_numeric_entry();
-break;
-case 7: // on Pause light Channel
-pause_channel_is=atoi(numeric);
-if(pause_channel_is<1 || ( pause_channel_is> 512)){pause_channel_is=0;} 
-reset_numeric_entry();
-break;
 default:
 break;
 }
@@ -648,19 +604,45 @@ case 5:
 petitchiffre.Print("Cues in Preset:",cfgnetw_X+235,cfgnetw_Y+70+(oi*30));
 petitchiffre.Print(ol::ToString(nbre_memoires_visualisables_en_preset),cfgnetw_X+380,cfgnetw_Y+70+(oi*30));  
 break;
-case 6:
-petitchiffre.Print("Go Channel:",cfgnetw_X+235,cfgnetw_Y+70+(oi*30));
-petitchiffre.Print(ol::ToString(go_channel_is),cfgnetw_X+380,cfgnetw_Y+70+(oi*30));      
-break;
-case 7:
-petitchiffre.Print("Pause Channel:",cfgnetw_X+235,cfgnetw_Y+70+(oi*30));
-petitchiffre.Print(ol::ToString(pause_channel_is),cfgnetw_X+380,cfgnetw_Y+70+(oi*30));  
-break;
 default:
 break;
 }
 
 }
+
+//EXPERT MODE confirmations ou non
+
+Rect ExpertB(Vec2D(cfgnetw_X+365,cfgnetw_Y+240),Vec2D(50,20));
+ExpertB.SetRoundness(7.5);
+ExpertB.SetLineWidth(epaisseur_ligne_fader);  
+ExpertB.Draw(CouleurFond.WithAlpha(0.5));
+ExpertB.Draw(CouleurFader.WithAlpha(expert_mode*alpha_blinker));
+
+if(window_focus_id==W_CFGMENU && mouse_x> cfgnetw_X+365 && mouse_x<cfgnetw_X+365+50 && mouse_y>cfgnetw_Y+240 && mouse_y<cfgnetw_Y+240+20)
+{
+ExpertB.DrawOutline(CouleurLevel);
+if(mouse_button==1 && mouse_released==0)
+{
+expert_mode=toggle(expert_mode);
+ExpertB.Draw(CouleurBlind);
+mouse_released=1;
+}
+}
+
+
+petitchiffre.Print("EXPERT MODE: " ,(cfgnetw_X+225), (cfgnetw_Y+255));
+Line(Vec2D(cfgnetw_X+225,cfgnetw_Y+260),Vec2D(cfgnetw_X+325,cfgnetw_Y+260)).Draw(CouleurLigne);
+switch(expert_mode)
+{
+case 0:
+sprintf(string_cfg_main,"/Off");
+break;
+case 1:
+sprintf(string_cfg_main,"/On");
+break;
+}
+petitchiffre.Print(string_cfg_main,(cfgnetw_X+380), (cfgnetw_Y+255));
+
 
 //quatrieme bloc
 
@@ -838,41 +820,6 @@ petitchiffre.Print(ol::ToString(LargeurEspaceFaderSize),(cfgnetw_X+540), (cfgnet
 
 
 do_keyboard_conf((cfgnetw_X+620), (cfgnetw_Y+40));
-
-
-//EXPERT MODE confirmations ou non
-
-Rect ExpertB(Vec2D(cfgnetw_X+740,cfgnetw_Y+225),Vec2D(50,20));
-ExpertB.SetRoundness(7.5);
-ExpertB.SetLineWidth(epaisseur_ligne_fader);  
-ExpertB.Draw(CouleurFond.WithAlpha(0.5));
-ExpertB.Draw(CouleurFader.WithAlpha(expert_mode*alpha_blinker));
-
-if(window_focus_id==W_CFGMENU && mouse_x> cfgnetw_X+740 && mouse_x<cfgnetw_X+740+50 && mouse_y>cfgnetw_Y+225 && mouse_y<cfgnetw_Y+225+20)
-{
-ExpertB.DrawOutline(CouleurLevel);
-if(mouse_button==1 && mouse_released==0)
-{
-expert_mode=toggle(expert_mode);
-ExpertB.Draw(CouleurBlind);
-mouse_released=1;
-}
-}
-
-
-petitchiffre.Print("EXPERT MODE: " ,(cfgnetw_X+620), (cfgnetw_Y+240));
-switch(expert_mode)
-{
-case 0:
-sprintf(string_cfg_main,"/Off");
-break;
-case 1:
-sprintf(string_cfg_main,"/On");
-break;
-}
-petitchiffre.Print(string_cfg_main,(cfgnetw_X+750), (cfgnetw_Y+240));
-
-
 
 return(0);   
 }
@@ -1404,8 +1351,7 @@ petitchiffre.Print( string_title_panel_config,cfg_X+20, cfg_Y+20);
 else if(index_config_network==1)
 {
 do_network_config(cfg_X,cfg_Y,largeurCFGwindow,hauteurCFGwindow);
-do_keyboard_config(cfg_X+405,cfg_Y+20,largeurCFGwindow,hauteurCFGwindow);
-sprintf(string_title_panel_config,"NETWORK/KBD");
+sprintf(string_title_panel_config,"NETWORK");
 petitchiffre.Print( string_title_panel_config,cfg_X+20, cfg_Y+20);          
 }
 else if (index_config_general==1)

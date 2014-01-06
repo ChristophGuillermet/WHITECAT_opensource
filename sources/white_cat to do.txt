@@ -1,12 +1,32 @@
+Version 0.8.4.14 adds on nouvel an
 
-0.8.4.1:
+débug Arduino cfg et souris
+click souris sur navigation dans les circuits de echo
+débug circuits reortés depuis draw (quand changement d affectation)
 
-Debug du RESCAN dans CFG NETWORK: si le serveur ou le client art net n'est pas ON, fait planter whitecat au rescan ( pb des adresses IP n'apparaissant p as)
-
-Amélioration proc. visuelles séquenciel
+courbe lineaire son
 
 
-//////TO DO////////////////////////////////////////////////////////////
+iCAT: bug des bouton et frappes répétitives : l'action est faite au relachement du bouton.
+iCAT: Tracking Zone BIG mover revu et recalculée
+
+
+
+
+
+//////TO DO///////////////////////////////////////////////
+
+
+wizard logical
+icat logical
+cfg menu logical
+
+
+
+si en mode check dimmers ne pas désolectionner les dimmers apres affectation > revoir check chan et aparition dimmers
+
+
+
 
 to do: rwannoux systemes groupes de device et picker une couleur ou cycler une couleur
 
@@ -56,8 +76,6 @@ damper mode pour contenu fader
 faire proc affichage sur CFG
 
 
-Draw sur iphone: souci
-
 Bugs vus en stage martinique:
 
 draw refresh ipad avec Matrix num. En activ ok, pas en matrix num
@@ -83,9 +101,6 @@ Passer mode BPM sur Chasers + GPL + Tap Tempo
 
 bug plot: nom du plan avec espace fout le bordel dans la lecture des datas de plot/ pb de scanf
 
-bug: aera tracking avec mover en BIG: probleme de taille ou de place
-
-
 
 roue trichromie en relatif
 
@@ -96,7 +111,7 @@ revoir param plot et XML
 se pencher sur les sauvegardes XML
 
 
-pb clavier ipad
+
 
 BUGS:
 
@@ -213,9 +228,6 @@ revoir les affichages de contenu attirb midi de manièr systematique
 
 
 
-wizard logical
-icat logical
-cfg menu logical
 
 
 question de repercussion de memes commandes sur commandes midi grid banger / icat / arduino. 

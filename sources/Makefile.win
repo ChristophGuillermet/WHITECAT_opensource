@@ -5,29 +5,29 @@ CPP  = g++.exe
 CC   = gcc.exe
 WINDRES = windres.exe
 RES  = ../obj/WhiteCat_private.res
-OBJ  = ../obj/MAIN_juin_2013_opensource_kbd.o $(RES)
-LINKOBJ  = ../obj/MAIN_juin_2013_opensource_kbd.o $(RES)
+OBJ  = ../obj/MAIN_nov_2013_opensource_kbd.o $(RES)
+LINKOBJ  = ../obj/MAIN_nov_2013_opensource_kbd.o $(RES)
 LIBS =  -L"C:/Dev-Cpp/lib" -L"C:/Dev-Cpp/lib" -L"C:/white_cat/sources/borderless06/lib/borderless" -L"C:/white_cat/sources/allegro-4.4.2-mingw-3.4.5/lib" -L"C:/white_cat/sources/audiere-1.9.4-win32/lib" -L"C:/white_cat/sources/libharu-2.0.8/mingw32" -L"C:/white_cat/sources/openCV-1.0/lib" -mwindows -lopenlayer -lglyph-agl -lfreetype.dll  -lpng -lzdll -lagl  -ljpgal -lalleg  -luser32 -lgdi32 -lglu32 -lopengl32 -lpthreadGC2 ../../Dev-Cpp/lib/libwsock32.a odmxusb_terry/FTD2XX.lib enttec_pro/ftd2xx.lib midishare/libraries/mshare32.lib ../../Dev-Cpp/lib/libiphlpapi.a ../../Dev-Cpp/lib/libhpdf.a ../../Dev-Cpp/lib/libz.a openCV-1.0/lib/libcv.a openCV-1.0/lib/libcxcore.a openCV-1.0/lib/libhighgui.a audiere-1.9.4-win32/lib/audiere.lib ../../Dev-Cpp/lib/libpthreadGC2.a ../../Dev-Cpp/lib/libjpgal.a  
 INCS =  -I"C:/Dev-Cpp/include"  -I"C:/white_cat/sources"  -I"C:/white_cat/sources/odmxusb_terry"  -I"C:/white_cat/sources/enttec_pro"  -I"C:/white_cat/sources/midishare/include"  -I"C:/white_cat/sources/dashard"  -I"C:/Dev-Cpp/include/haru"  -I"C:/white_cat/sources/borderless06/include/borderless"  -I"C:/white_cat/sources/arduino/Cserial"  -I"C:/white_cat/sources/audiere-1.9.4-win32/include"  -I"C:/white_cat/sources/libharu-2.0.8/include"  -I"C:/white_cat/sources/libharu-2.0.8/include"  -I"C:/white_cat/sources/openCV-1.0/include/opencv"  -I"C:/Dev-Cpp/include" 
 CXXINCS =  -I"C:/Dev-Cpp/lib/gcc/mingw32/3.4.2/include"  -I"C:/Dev-Cpp/include/c++/3.4.2/backward"  -I"C:/Dev-Cpp/include/c++/3.4.2/mingw32"  -I"C:/Dev-Cpp/include/c++/3.4.2"  -I"C:/Dev-Cpp/include"  -I"C:/white_cat/sources"  -I"C:/white_cat/sources/odmxusb_terry"  -I"C:/white_cat/sources/enttec_pro"  -I"C:/white_cat/sources/midishare/include"  -I"C:/white_cat/sources/dashard"  -I"C:/Dev-Cpp/include/haru"  -I"C:/white_cat/sources/borderless06/include/borderless"  -I"C:/white_cat/sources/arduino/Cserial"  -I"C:/white_cat/sources/audiere-1.9.4-win32/include"  -I"C:/white_cat/sources/libharu-2.0.8/include"  -I"C:/white_cat/sources/libharu-2.0.8/include"  -I"C:/white_cat/sources/openCV-1.0/include/opencv"  -I"C:/Dev-Cpp/include" 
-BIN  = ../white_cat_0_8_4_1.exe
+BIN  = ../white_cat_0_8_4_14.exe
 CXXFLAGS = $(CXXINCS) -Iinclude/borderless -Llib/borderless   
 CFLAGS = $(INCS) -Iinclude/borderless -Llib/borderless  
 RM = rm -f
 
 .PHONY: all all-before all-after clean clean-custom
 
-all: all-before ../white_cat_0_8_4_1.exe all-after
+all: all-before ../white_cat_0_8_4_14.exe all-after
 
 
 clean: clean-custom
 	${RM} $(OBJ) $(BIN)
 
 $(BIN): $(OBJ)
-	$(CPP) $(LINKOBJ) -o "..\white_cat_0_8_4_1.exe" $(LIBS)
+	$(CPP) $(LINKOBJ) -o "..\white_cat_0_8_4_14.exe" $(LIBS)
 
-../obj/MAIN_juin_2013_opensource_kbd.o: MAIN_juin_2013_opensource_kbd.cpp
-	$(CPP) -c MAIN_juin_2013_opensource_kbd.cpp -o ../obj/MAIN_juin_2013_opensource_kbd.o $(CXXFLAGS)
+../obj/MAIN_nov_2013_opensource_kbd.o: MAIN_nov_2013_opensource_kbd.cpp
+	$(CPP) -c MAIN_nov_2013_opensource_kbd.cpp -o ../obj/MAIN_nov_2013_opensource_kbd.o $(CXXFLAGS)
 
 ../obj/WhiteCat_private.res: WhiteCat_private.rc 
 	$(WINDRES) -i WhiteCat_private.rc --input-format=rc -o ../obj/WhiteCat_private.res -O coff 

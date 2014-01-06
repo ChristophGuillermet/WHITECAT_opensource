@@ -1,6 +1,7 @@
 int do_the_macro_of_the_channel(int the_chan, int num_macro)
 {
 int the_Abanger_num=0;
+
 switch(channel_macro_action[the_chan][num_macro])
 {    
 case 0://-
@@ -336,6 +337,33 @@ if(midi_send_out[196+num_f]==1)
 { index_send_midi_out[196+num_f]=1;}                                           
 }
 break;
+case 16:// Follow Channel  
+chan_to_manipulate=channel_macro_val[the_chan][num_macro][0];
+if((channel_macro_reaction[the_chan][num_macro]==7 || channel_macro_reaction[the_chan][num_macro]==8) 
+&& channel_macro_val[the_chan][num_macro][0]>0 && channel_macro_val[the_chan][num_macro][0]<512 
+&& channel_macro_val[the_chan][num_macro][1]>0 && channel_macro_val[the_chan][num_macro][1]<49 )//follow pur
+{
+int num_f=(channel_macro_val[the_chan][num_macro][1]-1);
+FaderDockContains[num_f][(dock_used_by_fader_is[num_f])][chan_to_manipulate] = MergerArray[the_chan];
+if(channel_macro_reaction[the_chan][num_macro]==8)
+{
+FaderDockContains[num_f][(dock_used_by_fader_is[num_f])][chan_to_manipulate] = 255-MergerArray[the_chan];
+}
+}  
+break; 
+case 17://follow on seq  with ratio
+chan_to_manipulate=channel_macro_val[the_chan][num_macro][0];
+if((channel_macro_reaction[the_chan][num_macro]==7 || channel_macro_reaction[the_chan][num_macro]==8)
+&& channel_macro_val[the_chan][num_macro][0]>0 && channel_macro_val[the_chan][num_macro][0]<512 
+)//follow pur
+{
+bufferSaisie[chan_to_manipulate] =(unsigned char) (((float)(MergerArray[the_chan])/100) * channel_macro_val[the_chan][num_macro][1]) ;
+if(channel_macro_reaction[the_chan][num_macro]==8)
+{
+bufferSaisie[chan_to_manipulate] = (unsigned char) (255-((float)(MergerArray[the_chan])/100) * channel_macro_val[the_chan][num_macro][1]) ;
+}
+}
+break;    
 default:
 break;
 }
@@ -408,7 +436,8 @@ return(0);
 
 int Channel_macros_core(int xlist, int ylist)
 {
-    
+int temp_mini;
+int temp_limit;    
 if(index_edit_listproj==1 && mouse_released==0 && window_focus_id==914 && last_ch_selected!=0)
 {
 for(int i=0;i<nbre_macros_per_channel;i++)
@@ -424,10 +453,15 @@ if(channel_macro_reaction[last_ch_selected][i]<max_channel_macro_reaction)
 else {channel_macro_reaction[last_ch_selected][i]=0;}
 mouse_released=1;              
 }
+
 //Val 1
 else if(mouse_x>xlist+90 && mouse_x<xlist+90+40 )
 {
+
 int temp_val=atoi(numeric);
+
+if(channel_macro_reaction[last_ch_selected][i]<7)
+{ 
 switch(dmx_view)
 {
 case 0:
@@ -445,7 +479,20 @@ channel_macro_val[last_ch_selected][i][0]=temp_val;
 reset_numeric_entry();
 }
 break;                
+}
+}
+
+else if(channel_macro_reaction[last_ch_selected][i]>=7) //follow channel
+{
+temp_mini=1;
+temp_limit=512;
+if(temp_val>=temp_mini && temp_val<=temp_limit)
+{
+channel_macro_val[last_ch_selected][i][0]=temp_val;
+reset_numeric_entry();
+}     
 }   
+
 mouse_released=1;          
 }
 
@@ -463,8 +510,6 @@ mouse_released=1;
 else if(mouse_x>xlist+230 && mouse_x<xlist+230+40 )
 {
 int temp_val=atoi(numeric);
-int temp_mini;
-int temp_limit;
 switch(channel_macro_action[last_ch_selected][i])
 {
 case 0:
@@ -528,7 +573,15 @@ break;
 case 15:        
 temp_mini=1;
 temp_limit=48;
-break;         
+break;    
+case 16:
+temp_mini=1;
+temp_limit=48;    
+break;
+case 17:
+temp_mini=1;
+temp_limit=100;    
+break;
 default:
 break;
 }

@@ -137,6 +137,7 @@ else
 if(echo_grid_channel_position[echo_selected]>0)
 {
 echo_grid_channel_position[echo_selected]--;
+mouse_released=1;
 }
 }   
 }
@@ -153,6 +154,7 @@ else
 if(echo_grid_channel_position[echo_selected]<(511-14))
 {
 echo_grid_channel_position[echo_selected]++;
+mouse_released=1;
 }
 } 
 }

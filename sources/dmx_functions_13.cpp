@@ -1053,6 +1053,7 @@ index_fader_is_manipulated[f]=1;
           //calcul normal
            for (int ppin=1;ppin<513;ppin++)            
            {
+            FaderDockContains[f][d][ppin]=0;
            for(int p=0;p<500;p++)
            {
            if(draw_preset_channel_routing[(DrawAffectedToDck[f][d])][p]==ppin)
@@ -1154,6 +1155,29 @@ int Merger()
  break;
  }
 
+ //go et pause channel
+ if(index_go==1 && index_pause==0 && go_channel_is>0 && go_channel_is<513)
+ {
+  bufferSequenciel[go_channel_is]=(unsigned char) (255* alpha_blinker);
+  MergerArray[go_channel_is]=(unsigned char)(255* alpha_blinker);                      
+ }
+ 
+  if(index_go==1 && index_pause==1 && pause_channel_is>0 && pause_channel_is<513)
+ {
+  bufferSequenciel[pause_channel_is]=(unsigned char) (255* alpha_blinker);
+  MergerArray[pause_channel_is]=(unsigned char)(255* alpha_blinker);                      
+ }
+ 
+ if(index_go==0 && index_pause==0 )
+ {
+ if(go_channel_is>0 && go_channel_is<513)   
+ {bufferSequenciel[go_channel_is]=0;
+  MergerArray[go_channel_is]=0;}
+ if(pause_channel_is>0 && pause_channel_is<513)
+  {bufferSequenciel[pause_channel_is]=0;
+  MergerArray[pause_channel_is]=0;}               
+ }
+ 
  //Patch
  circrootpatch=Patch[i];
  DmxBlockPatch[i]=(MergerArray[circrootpatch]);
@@ -1174,7 +1198,6 @@ int Merger()
  {
  if(patch_overide[i]==1){DmxBlock[i]=dimmer_check_level;}//75%                          
  }
- 
  
  }
  return(0);   
