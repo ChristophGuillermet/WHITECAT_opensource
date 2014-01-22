@@ -1,0 +1,10 @@
+2014-01-22 forked Audiere from https://github.com/FlyingJester/audiere
+	this version was maintained by  Martin McDonough
+	<FlyingJester at github.com> a few days ago. The diff with the
+	source of the version existing in Debian/lenny shows a few insertions
+	of "#include <ctring>" directives.
+2014-01-22 Georges Khaznadar <georgesk@debian.org>
+	- examples/wxPlayer/DeviceFrame.cpp : fixed an issue with wxString's
+	  constructor
+	- updated all the autotools-generated files and adjusted files
+	  Makefile.am, configure.in (renamed to configure.ac)
