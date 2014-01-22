@@ -1,0 +1,235 @@
+
+0.32 (February 6, 2007)
+  - Glyph Keeper now can produce native Allegro FONT objects. This means
+     that Glyph Keeper now can be used with AllegroGL.
+  - DejaVu Sans 2.14 is now included as example font.
+  - Fixed memory leak introduced in 0.30.
+  - Added API to debug memory usage in Glyph Keeper and FreeType.
+  - Stable centering: Glyph center remains the same when you rotate it.
+  - Improved benchmarks.
+
+0.31 (February 2, 2007)
+  - Bundled FreeType updated to version 2.3.1.
+  - Glyph Keeper now can work with bitmap (raster) fonts.
+  - Bytecode interpreter and sublixel rendering are from now OFF by default.
+  - gk_rend_set_angle() and gk_rend_set_italic() are deprecated. (They are
+     still available if you don't define GK_NO_LEGACY when compiling your
+     program). Instead four new functions are introduced:
+     gk_rend_set_angle_in_radians(), gk_rend_set_angle_in_degrees(),
+     gk_rend_set_italic_angle_in_radians() and
+     gk_rend_set_italic_angle_in_degrees().
+  - New functions for getting renderer properties:
+     gk_rend_get_italic_angle_in_radians(),
+     gk_rend_get_italic_angle_in_degrees(), gk_rend_get_bold_strength().
+  - New function for creating a copy of a renderer object:
+     gk_create_copy_of_renderer().
+  - New functions for finding text dimensions: gk_text_dimensions_utf8(),
+     gk_text_dimensions_utf16(), gk_text_dimensions_utf32().
+  - Dimensions of italic text are now computed correctly.
+  - All files use Windows end of line now.
+  - Examples are improved.
+
+0.30.1
+  - Removed fragments of SDL_gfx code. SDL_gfx is now required to compile
+     Glyph Keeper with SDL.
+  - Fixed compilation with SDL and MinGW.
+  - Fixed angled bold text.
+  - Added two functions: gk_rend_set_before_renderer() and
+     gk_rend_set_after_renderer() for adding a renderer that will always
+     render copy of same character. This can be used for shadows, outlines,
+     underlines, etc.
+
+0.30 (January 15, 2007)
+  - Fixed compilation with FreeType 2.2.1.
+  - Bundled FreeType is updated to version 2.2.1.
+  - Applied 64-bit fixes by Hans de Goede.
+  - New API: gk_rend_set_bold() for making bold text.
+  - Added ability to change font boldness in compare_alleg.c example.
+  - license.txt now includes info about bundled 3-rd party software.
+  - Removed one C++ style variable declaration in OpenGL driver.
+  - Fixed incorrect inclusion of FreeType header in examples/alfont.c,
+      reported by gnolam.
+  - Added 'delete.me' into the obj dirs, for those with buggy archievers.
+  - Fixed "statement with no effect" warning in 'examples/bench_utils.c'.
+
+0.29.1 (July 9, 2005)
+  - Added example font (Bitstream Vera) to the examples/ directory.
+      Hard-coded this font in text-mode and "Hello, World!" examples and
+      set it as default for all other examples.
+  - Added 'demofont.pcx' - example font for Allegro benchmark
+      (bench_bare_alleg).
+  - Minor fixes in Makefiles.
+
+0.29 (July 03, 2005)
+  - FreeType is now bundled with Glyph Keeper.
+  - Added benchmark examples.
+  - Many fixes and improvements in makefiles.
+
+0.28 (June 27, 2005)
+  - Added simple examples.
+  - Updated documentation.
+  - Added install.txt with installation instructions.
+  - Added makefile for MinGW.
+  - Added makefiles for MSVC 7.1 and 8.0.
+  - Changed source indentation: 2 -> 4 spaces. (I did not have a big monitor
+      when I started writing GK).
+
+0.27 (June 14, 2005)
+  - Hopefully fixed problem occuring in case if FreeType renders
+      a 2 or 4-bit glyph (not tested).
+  - Now FreeType v.2.1.10 is required to compile Glyph Keeper.
+  - From now on you can't mix different versions of Glyph Keeper header and
+      library anymore. It will compile and run, just it will never succeed
+      to load a font.
+  - If you manage to compile Glyph Keeper and your program with different
+      targets, it will still not work - it will not load any fonts.
+  - Fixed memory leak in _gk_unload_glyph(), reported by biscuitz.
+  - From now it is necessary to specify GLYPH_TARGET in the command line
+      to compile Glyph Keeper. It will not be set to GLYPH_TARGET_TEXT
+      by default, as it was previously.
+  - Fladimir da Gorf commented out debug macro and added missing glyph
+      deletion in OpenGL driver.
+  - New routine: gk_render_char_center().
+  - GK_MAX_UNICODE made public again.
+  - Fixed gk_render_char() to match documentation.
+
+0.26.2 (May 25, 2005)
+  - Added API gk_face_number_of_own_characters_in_range().
+  - Fladimir da Gorf updated OpenGL driver to remove the limitation on glyph
+      size (or at least making it much greater than it was).
+
+0.26.1 (March 29, 2005)
+  - Fladimir da Gorf fixed angled text output with OpenGL target.
+
+0.26 (March 23, 2005)
+  - Added OpenGL driver made by Fladimir da Gorf. This is work in progress
+      release, OpenGL driver is not finished and has known problems.
+
+0.25 (March 23, 2005)
+  - Restructured source to make more easy to see what and where is included.
+      (glyph.c now does not have any code, but only includes other files).
+
+0.24 (March 22, 2005)
+  - Fixed unclusion of "glyph.h" in glyph.c, pointed by Fladimir da Gorf.
+      (Changed to "../include/glyph.h").
+  - Added more precaching functions, in hope to use them in OpenGL driver:
+      gk_precache_range(), gk_precache_set_utf8(), gk_precache_set_utf16()
+      and gk_precache_set_utf32().
+  - Fixed bug in gk_precache_char().
+
+0.23.1 (March 9, 2005)
+  - Updated documentation.
+  - Switched off GLYPH_SAFE and GLYPH_LOG macros, that should be only used
+      for debugging. They should be off in released versions because they
+      make Glyph Keeper slow. (Forgot to switch them off before the release).
+
+0.23 (March 1, 2005)
+  - It should be compatible with upcoming Allegro 4.2, that has
+      changed FONT_VTABLE structure since 4.1.18.
+  - New function: gk_face_number_of_own_characters().
+  - gk_face_number_of_characters() now does not count surrogates.
+  - New functions: gk_face_has_character() and gk_face_has_own_character().
+  - Added character remapping with API: gk_remap_character(),
+      gk_unmap_character(), gk_remap_range(), gk_unmap_range().
+
+0.22 (February 15, 2005)
+  - SDL driver is fully functional again.
+  - Moved target-specific includes out of extern "C" block, as suggested
+      by Oscar Giner.
+  - New function: gk_rend_set_color_combined().
+  - gk_rend_set_color() is renamed to gk_rend_set_color_rgb(), for clarity.
+  - gk_rend_set_size() is renamed to gk_rend_set_size_subpixel(),
+      so it will not be used with integer pixel sizes by mistake.
+  - Added two macros: gk_makecol(r,g,b) and gk_makeacol(a,r,g,b).
+
+0.21.4 (February 7, 2005)
+  - Fixed font path search, finally.
+  - Restored text target compilation.
+  - Restored C89 compatibility.
+
+0.21.3 (February 7, 2005)
+  - Fixed font path search problem, reported by Ken Seergobin.
+
+0.21.2 (February 6, 2005)
+  - Added functions for measuring a single glyph / single character.
+  - Added gk_set_font_path() function for setting a font search path.
+  - Added background rectangle rendering, working for angled text also.
+  - Optimized Allegro 32-bit antialiased output with background.
+  - Added gk_text_advance_utf8/16/32 functions.
+  - Added macros for enabling/disabling RLE and bitpack glyphs compression.
+      From now a target driver is not required to handle RLE and bitpacked
+      glyphs, linear 8-bit glyph support is enough.
+  - UTF-32 decoder now knows about byte order mark.
+  - Added GK_NO_LAGACY macro.
+  - Minor fixes and changes.
+
+0.21.1 (January 31, 2005)
+  - UTF-16 support added.
+  - Fixed some brain damage effect in "gk_load_face_from_file()",
+      which caused function to fail most of times. (introduced in 0.21)
+  - Centering and text width calculation is finally fixed.
+  - Added GK_LEGACY macro for controlling compatibility defines.
+
+0.21 (January 31, 2005)
+  - All API functions got prefixed with "gk_".
+  - Fixed text width calculation bug, reported by Daniel Schlyder.
+  - Fixed (hopefully) 64-bit porting problems, following Peter Wang's
+      suggestion.
+  - Fixed overflow problem with glyph advance values for very
+      large font sizes (around 1000 pixels).
+  - Fixed Allegro driver's screen access with DJGPP compilation.
+  - Fixed C89 compatibility, broken in 0.20.
+
+0.20.1 (January 23, 2005)
+  - height field of FONT object now can be used.
+  - FONT support works with Allegro 4.1.18.
+  - Increased speed of face_get_number_of_characters().
+
+0.20 (January 9, 2005)
+  - Added support for creating Allegro FONT objects, as suggested
+      by Evert Glebbeek, Serge Semashko, Miran, MattSmith and others.
+
+0.19.1 (December 31, 2004)
+  - Bug fixed: When there are two renderers using same font face, one
+      italic and other not italic, sometimes non-italic renderer was
+      producing italic glyphs. (Reported by Fladimir da Gorf)
+
+0.19 (October 28, 2004)
+  - Added italic text rendering, new API: rend_set_italic().
+  - Allegro driver was trying to release un-acquired bitmap if text alpha was
+      set to 0.
+
+0.18 (October 7, 2004)
+  - Changed function of rend_set_size() and rend_set_size_pixels().
+
+0.17 (October 4, 2004)
+  - Fix for rend_precache_char().
+  - New API function: rend_has_glyph().
+  - New API function: load_face_from_memory().
+  - New API function: rend_set_error_char().
+
+0.16 (September 30, 2004)
+  - Improved drawing speed for Allegro screen bitmap.
+  - Antialiased rendering to 8-bit Allegro bitmap does not crash anymore.
+  - Removed some obsolete code.
+
+0.15 (September 22, 2004)
+  - Some API functions have got better names.
+  - Removed text background rendering. It never worked for angled text anyway.
+  - Added alpha transparency.
+  - Added RLE-like compression for anti-aliased glyphs.
+  - Optimized some of the Allegro-specific routines.
+  - Added initial SDL support. Only monochrome opaque rendering.
+  - Commenting, logging, etc.
+
+Version 0.14 was the first public release (August 22, 2004)
+It already had the following:
+
+  - Works with FreeType 2.1.9
+  - Rendering directly to Allegro BITMAPS
+  - Glyph caching
+  - Angled text rendering
+  - RLE compression of monochrome glyphs
+
+Before that I did not track the history. If you are curious you can
+download Glyph Keeper 0.12 or 0.10 and see what was there.

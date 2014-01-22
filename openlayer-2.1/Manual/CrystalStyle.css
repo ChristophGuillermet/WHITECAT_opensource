@@ -1,0 +1,108 @@
+div.blogentryheader {
+	font-family: trebuchet, sans-serif;
+	text-align: left;
+	font-size: 130%;
+	border-style: dotted;
+	letter-spacing: 3px;
+	border-style: dotted;
+	border-width: 1px;
+	vertical-align: middle;
+	padding-left: 8px;
+	color: #331100
+}
+
+div.blogentrybody {
+	font-family: trebuchet, sans-serif;
+	text-align: left;
+	padding-top: 10px;
+	color: #333333
+}
+
+div.buttonstyle {
+	margin-left: 5px;
+	margin-right: 5px;
+}
+
+div.linkbarstyle {
+	border-bottom-style: dotted;
+	border-bottom-width: 1px;
+}
+
+div.languageselection {
+	font-size: 9px;
+	text-align: right;
+}
+
+div {
+	font-family: trebuchet, sans-serif;
+	color: #333333;
+}
+
+div.SmallHeader {
+	font-style: italic;
+}
+
+div.MediumHeader {
+	font-style: italic;
+	font-size: larger;
+}
+
+div.BigHeader {
+	font-size: 36px;
+}
+
+div.Surrounded {
+	border-style: dotted;
+	border-width: 1px;
+	border-spacing: 10px;
+	padding: 10px;
+}
+
+div.Code {
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: smaller;
+}
+
+div.LargeCode {
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+}
+
+div.FuncDef {
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+}
+
+div.SyntaxColored {
+	color: #777733;
+}
+
+
+div.TopLined {
+	font-family: trebuchet, sans-serif;
+	color: #333333;
+	border-top-style: dotted;
+	border-top-width: 1px;
+}
+
+div.smalltext {
+	font-family: trebuchet, sans-serif;
+	color: #777799;
+	font-size: small;
+}
+
+div.BiggerText {
+	font-size: larger;
+}
+
+a {
+	color: #777777;
+	text-decoration: none;
+}
+
+a.active {
+	color: #8381A3;
+	text-decoration: none;
+}
+
+a:hover {
+	color: #000000;
+}

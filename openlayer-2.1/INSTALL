@@ -1,0 +1,66 @@
+INSTALLATION
+
+Before compiling ensure you have the following installed and in your path:
+- An ANSI C++ compiler
+- OpenGL Library
+- Allegro Library
+- AllegroGL Library
+- Freetype library version 2.1.10 or greater
+- Png library
+- Zlib library
+
+NOTES:
+
+- The build system is currently being moved from cbuild to cmake (http://www.cmake.org)
+
+- You can still use the cbuild system however it's been reported not to work on some systems
+	* For more information on the build utility known as cbuild go to http://awiki.tomasu.org/bin/view/Main/CBUILD
+
+- It is recommended that you use the internal font renderer but if you insist on using GlyphKeeper it should be like this:
+	* GlyphKeeper specifically built for ALLEGROGL
+	* the allegrogl version should be named libglyph-agl.a
+	* The sources have now been included with openlayer in the utils/glyphkeeper directory
+	* You can build it manually or try using cbuild passing 'glyphkeeper' as a param
+
+- For precompiled versions of the library please see http://openlayer.berlios.de for more info.
+
+- If no package exists for your compiler you'll have to compile OpenLayer's source files and
+  include them in the same archive. Also download the required external libraries and follow the
+  installation instructions included with them.
+
+Compilation with cmake:
+
+Create a temporary directory in the root directory of where OpenLayer is.
+Change into it then do the following from the command line:
+
+Linux/Unix/OSX:
+ccmake ../
+cofigure it to your hearts content and then generate the makefiles.
+Then you can proceed to do make && make install
+
+Windows:
+you can run cmakesetup from anywhere as long as you point the source
+directory to where OpenLayer is and the binary directory to the temporary
+location you made above.
+You can have the setup create makefiles for MinGW or MSYS 
+(CYGWIN generated makefiles will be worked on later).
+Or you can choose to do MSVC project files (which is currently WIP).
+Then just configure and then hit ok.
+You can then proceed to compile them via make or use msvc to open the openlayer.sln if you created msvc
+project files.
+
+To Use:
+
+- Read the provided documentation found in the Manual folder to know how to use the library
+
+- #include <OpenLayer.hpp> in your project's sources
+
+	LINUX/*NIX and MACOSX
+- Link your projects with: `openlayer-config --libs` if you need the flags do `openlayer-config --cflags`
+	
+	WINDOWS
+- Link your projects with:
+	"-lopenlayer -lglyph-agl -lfreetype -lpng -lz -lagl -lalleg -luser32 -lgdi32 -lglu32 -lopengl32"
+	If you have issues with freetype and get messages like: .... #include expects "FILENAME" or <FILENAME>
+	you need to pass in the freetype2 dir location when building, ie: "-I%MINGDIR%\include\freetype2"
+	

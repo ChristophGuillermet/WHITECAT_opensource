@@ -1,0 +1,39 @@
+--OpenLayer 2.1--
+
+For installation please see INSTALL
+
+Requirements:
+-# GNU Tools
+-# OpenGL library
+-# Allegro library
+-# AllegroGL library
+-# Glyph Keeper Library (Both Allegro and AllegroGL TARGETS)
+-# Freetype library
+-# Png library
+-# Zlib library
+    
+Introduction:
+
+OpenLayer is a hardware accelerated 2D Graphics library. 
+It specifies a new api to be used alongside of Allegro and takes control of how
+the contents of the screen are rendered and uses OpenGL functions 
+through AllegroGL to allow hardware acceleration.
+    
+Implementation:
+
+Multi-Platform: Windows / Linux / Unix / Mac OS
+Language: C++
+
+Written by: Esa Tanskanen (Fladimir da Gorf)
+Additional: 
+			10/27/2005 by juvinious (Miguel Gavidia)
+			10/27/2005 by Peter Hull (MACOSX Support)
+Changes:
+			15/01/2014 Georges Khaznadar <georgesk@debian.org>
+			 made a few modifications to allow a compilation
+			 with g++4.8. This release is identical to the
+			 Debian package:
+			 http://packages.debian.org/sid/libopenlayer2
+
+Website:
+http://openlayer.berlios.de

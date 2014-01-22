@@ -1,0 +1,392 @@
+# Replacement to OpenLayers dying Makefile
+
+# check verbose output
+ifopt verbose verbose 1
+
+# check for building utilities
+ifopt glyphkeeper invoke build/gk-build.cbd
+
+# Lets force configuration
+ifopt configure configure = "true"
+
+# Display Help
+do ifopt help
+	echo "This builds the OpenLayer 2.0 library. 
+To compile run:"
+	do ifplat win32
+		echo "buildme.bat [OPT] ..."
+	else
+		echo "cbuild.c [OPT] ..."
+	done
+	echo "
+[OPTIONS]
+help      	- Prints this information
+verbose   	- Enable verbose output
+configure 	- Force configuration prompts
+clean     	- Clean up resources
+install   	- installs the library
+uninstall 	- uninstalls the library
+glyphkeeper 	- Builds (AllegroGL specific) glyphkeeper and installs"
+	exit 0
+done
+
+# Display Make help
+do ifopt makehelp
+	echo "This builds the OpenLayer 2.0 library. 
+To compile run:
+make [TARGET]
+[TARGETS]
+help      	- Prints this information
+verbose   	- Compiles the libray with verbose output
+clean     	- Clean up resources
+install   	- installs the library
+uninstall 	- uninstalls the library
+glyphkeeper 	- Builds (AllegroGL specific) glyphkeeper and installs"
+	exit 0
+done
+
+# need to setup variables and directories beforehand
+AR = ar
+AR_OPT = rcs
+OBJ_DIR = obj
+DEP_DIR = dep
+LIB_PRE = lib/
+LIB_EXT = .a
+LIB_SOURCES = $(ls src)
+
+LIB_SOURCES -= src/
+src_paths src
+
+# Goto target clean
+ifopt clean goto clean
+
+# Remove temporary cbuild file
+ifopt rmcbuild goto rmcbuild
+
+# Goto target install
+ifopt install goto install
+
+# Goto target uninstall
+ifopt uninstall goto uninstall
+
+# Check whether forcing configuration
+do if $(tolower ${'configure'})='true'
+	goto checktarget
+done
+
+# If we have a prior configuration load it and commence build
+do ifexist build/options
+	setinput build/options
+	read tempstr
+	CPPFLAGS = ${'tempstr'}
+	read tempstr
+	LDFLAGS = ${'tempstr'}
+	read tempstr
+	CONFIGFLAGS = ${'tempstr'}
+	read tempstr
+	CONFIGLIBS = ${'tempstr'}
+	read tempstr
+	DROPPNG = ${'tempstr'}
+	read tempstr
+	DROPTTF = ${'tempstr'}
+	read tempstr
+	USENEWTTF = ${'tempstr'}
+	read tempstr
+	DROPOLDAPI = ${'tempstr'}
+	read tempstr
+	DROPSTATECHANGE = ${'tempstr'}
+	setinput
+	goto build
+done
+
+# Platform precheck
+do ifplat linux
+	echo "Seting up for linux environment"
+	CPPFLAGS+=-O2 -Wall -Iinclude -Iinclude/OpenLayer `freetype-config --cflags` -fexpensive-optimizations
+	LDFLAGS=-lglyph-agl `freetype-config --libs` `libpng-config --libs` -lagl `allegro-config --libs` -lGL -lGLU
+else ifplat win32
+	echo "Seting up for msys environment"
+	do ifexist ${'MINGDIR'}/include/freetype2
+		CPPFLAGS+=-O2 -Wall -Iinclude -Iinclude/OpenLayer -I%MINGDIR%/include/freetype2 -fexpensive-optimizations
+	else ifexist ${'MINGDIR'}/local/include/freetype2
+		CPPFLAGS+=-O2 -Wall -Iinclude -Iinclude/OpenLayer -I%MINGDIR%/local/include/freetype2 -fexpensive-optimizations
+	else
+:gkloc
+		echo "Can't find freetype do you have it installed?"
+		echo "Please specify where its located:"
+		echo "example: c:/\mingw (make sure lib/\libfreetype.a and include/\freetype2/\freetype exist in the directory)"
+		echo "Enter ignore to disable ttf support or exit if you don't have it and quit setup."
+		read LOCATION
+		do if $(tolower ${'LOCATION'})='ignore'
+			CPPFLAGS+=-O2 -Wall -Iinclude -Iinclude/OpenLayer -fexpensive-optimizations
+			LDFLAGS=-lpng -lagl -lalleg -luser32 -lgdi32 -lglu32 -lopengl32
+			DROPTTF='true'
+			goto NOPNG
+		else if $(tolower ${'LOCATION'})='exit'
+			exit 0
+		else if ${'LOCATION'}='' goto gkloc
+		else ifexist ${'LOCATION'}/lib/libfreetype.a
+			do ifexist ${'LOCATION'}/include/freetype2
+				CFLAGS+=-O2 -Wall -Iinclude/OpenLayer -I${'LOCATION'}/include/freetype2 -fexpensive-optimizations
+			else ifnexist ${'LOCATION'}/include/freetype2
+				echo "${'LOCATION'} is an invalid library location."
+				goto gkloc
+			done
+		else ifnexist ${'LOCATION'}/lib/libfreetype.a ifnexist ${'LOCATION'}/include/freetype2
+			echo "${'LOCATION'} is an invalid library location."
+			goto gkloc
+		done
+	done
+	LDFLAGS=-lglyph-agl -lfreetype -lpng -lz -lagl -lalleg -luser32 -lgdi32 -lglu32 -lopengl32
+else ifplat macosx
+	echo "Seting up for macosx environment"
+	CPPFLAGS+=-O2 -Wall -Iinclude -Iinclude/OpenLayer `freetype-config --cflags` -fexpensive-optimizations
+	LDFLAGS=-lglyph-agl `freetype-config --libs` `libpng-config --libs` -lagl `allegro-config --libs` -framework OpenGL -framework Carbon
+done
+
+# Prompt user for preprocessor support
+
+:NOTTF
+echo "Do you wish to drop TTF support? [y/N]"
+read TTF
+do if $(tolower ${'TTF'})='y'
+	CPPFLAGS += " -DOL_NO_TTF"
+	LDFLAGS -= "-lglyph-agl "
+	CONFIGLIBS-="-lglyph-agl "
+	DROPTTF='true'
+	goto NOPNG
+else ifnot $(tolower ${'TTF'})='n' ifnot ${'TTF'}='' goto NOTTF
+done
+
+CONFIGFLAGS += "`freetype-config --cflags` "
+CONFIGLIBS += "`freetype-config --libs` -lglyph-agl "
+
+:NONEWTTF
+echo "Do you wish to use FreeType directly and drop GlyphKeeper? [y/N]"
+read NEWTTF
+do if $(tolower ${'NEWTTF'})='y'
+	CPPFLAGS += " -DUSE_NEW_TTF"
+	LDFLAGS -= "-lglyph-agl "
+	CONFIGLIBS-="-lglyph-agl "
+	USENEWTTF='true'
+else ifnot $(tolower ${'NEWTTF'})='n' ifnot ${'NEWTTF'}='' goto NONEWTTF
+done
+
+:NOPNG
+echo "Do you wish to drop PNG support? [y/N]"
+read PNG
+do if $(tolower ${'PNG'})='y'
+	CPPFLAGS += " -DOL_NO_PNG"
+	DROPPNG='true'
+else ifnot $(tolower ${'PNG'})='n' ifnot ${'PNG'}='' goto NOPNG
+done
+
+do if ${'DROPPNG'}=''
+	CONFIGFLAGS += "`libpng-config --cflags` "
+	CONFIGLIBS += "`libpng-config --libs` "
+done
+	
+:NOOLDAPI
+echo "Do you wish to drop old API Support? [y/N]"
+read OLDAPI
+do if $(tolower ${'OLDAPI'})='y'
+	CPPFLAGS += " -DOL_NO_OLD_API"
+	DROPOLDAPI='true'
+else ifnot $(tolower ${'OLDAPI'})='n' ifnot ${'OLDAPI'}='' goto NOOLDAPI
+done
+:NOSTATECHANGE
+echo "Do you wish to drop State Changes? [y/N]"
+read STATECHANGE
+do if $(tolower ${'STATECHANGE'})='y'
+	CPPFLAGS += " -DOL_NO_STATE_CHANGE"
+	DROPSTATECHANGE='true'
+else ifnot $(tolower ${'STATECHANGE'})='n' ifnot ${'STATECHANGE'}='' goto NOSTATECHANGE
+done
+
+# Finishing touches on the openlayer-config script
+do ifplat linux
+	CONFIGFLAGS += "`allegro-config --cflags` "
+	CONFIGLIBS += "-lagl `allegro-config --libs` -lGL -lGLU "
+else ifplat macosx
+	CONFIGFLAGS += "`allegro-config --cflags` "
+	CONFIGLIBS += "-lagl `allegro-config --libs` -framework OpenGL -framework Carbon "
+done
+
+# Create options file and retain users choices
+writefile build/options ${'CPPFLAGS'}
+appendfile build/options ${'LDFLAGS'}
+appendfile build/options ${'CONFIGFLAGS'}
+appendfile build/options ${'CONFIGLIBS'}
+appendfile build/options ${'DROPPNG'}
+appendfile build/options ${'DROPTTF'}
+appendfile build/options ${'USENEWTTF'}
+appendfile build/options ${'DROPOLDAPI'}
+appendfile build/options ${'DROPSTATECHANGE'}
+goto build
+
+# Start building library
+:build
+echo "- Creating required directories -"
+ifnexist obj -mkdir obj
+ifnexist dep -mkdir dep
+ifnexist lib -mkdir lib
+echo "- Starting compilation -"
+compile ${LIB_SOURCES}
+echo "- Assembling library -"
+-rm lib/libopenlayer.a
+linklib libopenlayer
+# Do the header
+invoke build/header.cbd
+
+echo "- Compiling demos -"
+LIBFLAG = "lib/libopenlayer.a "
+LIBFLAG += ${LDFLAGS}
+LDFLAGS = ${LIBFLAG}
+CPPFLAGS -= "-DUSE_NEW_TTF"
+LD = g++
+
+# Collision demo
+src_paths demos/collisiondemo
+-compile main.cpp
+-linkexec demos/collisiondemo/collisiondemo
+-rmobj main.cpp
+
+# gamedemo
+src_paths demos/gamedemo
+-compile Demo.cpp
+-linkexec demos/gamedemo/gamedemo
+-rmobj Demo.cpp
+
+# gameloop
+src_paths demos/gameloop
+-compile Main.cpp
+-linkexec demos/gameloop/gameloop
+-rmobj Main.cpp
+
+# Line strip demo
+src_paths demos/linestripdemo
+-compile Main.cpp
+-linkexec demos/linestripdemo/linestripdemo
+-rmobj Main.cpp
+
+# Render bitmap
+src_paths demos/renderbitmap
+-compile Main.cpp
+-linkexec demos/renderbitmap/renderbitmap
+-rmobj Main.cpp
+
+# Shape demo
+src_paths demos/shapedemo
+-compile Main.cpp
+-linkexec demos/shapedemo/shapedemo
+-rmobj Main.cpp
+
+# Text demo
+src_paths demos/textdemo
+-compile Main.cpp
+-linkexec demos/textdemo/textdemo
+-rmobj Main.cpp
+
+echo "
+- Compilation completed -
+
+You can now install the lib by passing install."
+exit 0
+
+# Install library
+:install
+do ifexist lib/libopenlayer.a
+:installask
+	echo "Where do you wish to install OpenLayer?"
+	do ifplat win32
+		echo "example: c:\mingw (make sure lib and include exist in the directory)"
+	else
+		echo "example: /usr/local (make sure lib and include exist in the directory)"
+	done
+	echo "Enter exit or cancel if you don't want to install at this time."
+	read LOCATION
+	do if $(tolower ${'LOCATION'})='cancel' exit 0
+	else if $(tolower ${'LOCATION'})='exit' exit 0
+	else if ${'LOCATION'}='' goto installask
+	else ifexist ${'LOCATION'}/lib ifexist ${'LOCATION'}/include
+		echo "Installing OpenLayer to ${'LOCATION'}"
+		LIB_HEADERS = $(ls include/OpenLayer/)
+		
+		-mkdir ${'LOCATION'}/include/OpenLayer
+		ifnplat win32 -call chmod 755 ${'LOCATION'}/include/OpenLayer
+:copystart
+		HEADER = $(word 1, ${LIB_HEADERS})
+		popfront LIB_HEADERS
+		if ${'HEADER'}='' goto copyend
+		copy ${'HEADER'} ${'LOCATION'}/include/OpenLayer/
+		goto copystart	
+:copyend
+		copy include/OpenLayer.hpp ${'LOCATION'}/include/
+		copy lib/libopenlayer.a ${'LOCATION'}/lib/
+		writefile installdir ${'LOCATION'}
+		ifnplat win32 invoke build/ol-config.cbd
+:libinstallfinish
+		echo ""
+		echo "Install completed"
+		exit 0
+	else ifnexist ${'LOCATION'}/lib ifnexist ${'LOCATION'}/include
+		echo ""
+		echo "${'LOCATION'} is an invalid install location."
+		echo ""
+		goto installask
+	done
+else ifnexist lib/libopenlayer.a
+	echo "Please compile OpenLayer first."
+	exit 1
+done
+
+exit 1
+
+:uninstall
+do ifexist installdir
+	setinput installdir
+	read tempstr
+	LOCATION = ${'tempstr'}
+	setinput
+	goto uninstallok
+done
+echo "It seems there is no install history."
+:uninstallask
+echo "Provide the location of where OpenLayer is installed.
+Enter exit or cancel if you don't want to uninstall at this time."
+read LOCATION
+do if $(tolower ${'LOCATION'})='exit' exit 0
+else if $(tolower ${'LOCATION'})='cancel' exit 0
+else ifnexist ${'LOCATION'}/lib/libopenlayer.a ifnexist ${'LOCATION'}/include/OpenLayer.hpp
+	echo ""
+	echo "There seems to be no OpenLayer installation at ${'LOCATION'}"
+	echo ""
+	goto uninstallask
+done
+:uninstallok
+echo "Uninstalling OpenLayer from ${'LOCATION'}"
+-rm ${'LOCATION'}/lib/libopenlayer.a
+-rm ${'LOCATION'}/include/OpenLayer.hpp
+HEADERS = $(ls ${'LOCATION'}/include/OpenLayer/)
+
+:uninststart
+	HEADER = $(word 1, ${HEADERS})
+	popfront HEADERS
+	if ${'HEADER'}='' goto uninstend
+	-rm ${'HEADER'}
+	goto uninststart
+:uninstend
+-rm ${'LOCATION'}/include/OpenLayer
+-rm ${'LOCATION'}/bin/openlayer-config
+-rm installdir
+exit 0
+
+# clean up library
+:clean
+echo "- Cleaning up -"
+ifplat win32 EXE_EXT='.exe'	
+-rmobj ${LIB_SOURCES}
+-rm lib/libopenlayer.a demos/collisiondemo/collisiondemo${'EXE_EXT'} demos/gamedemo/gamedemo${'EXE_EXT'} demos/gameloop/gameloop${'EXE_EXT'} demos/linestripdemo/linestripdemo${'EXE_EXT'} demos/renderbitmap/renderbitmap${'EXE_EXT'} demos/shapedemo/shapedemo${'EXE_EXT'} demos/textdemo/textdemo${'EXE_EXT'} build/options obj lib dep
+:rmcbuild
+@-rmexec cbuild
+exit 0

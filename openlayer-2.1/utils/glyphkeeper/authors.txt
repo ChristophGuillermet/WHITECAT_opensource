@@ -1,0 +1,39 @@
+
+Glyph Keeper is written and currently mantained
+by Kirill Kryukov <kkryukov@gmail.com>
+
+These people contributed to Glyph Keeper development in various ways,
+including bug-reports, patches, suggestions and active discussion.
+Thanks a lot!
+
+(Contact me if you have any corrections, or if I forgot to mention someone)
+
+-------------------------
+
+   Daniel Schlyder reported text centering bug (fixed in 0.21.1), and gave me
+   many other comments and suggestions.
+
+   Esa Tanskanen (aka Fladimir da Gorf) spotted an italic glyph rendering bug
+   (fixed in 0.19.1) and wrong "glyph.h" inclusion in glyph.c (fixed in 0.24).
+   Besides that he contributed Glyph Keeper's OpenGL driver.
+
+   Peter Wang helped making Glyph Keeper 64-bit safe.
+
+   Ken Seergobin noticed a font path search bug (fixed in 0.21.3).
+
+   Evert Glebbeek helped with better integration of Glyph Keeper and Allegro,
+   providing advice about Allegro's FONT and FONT_VTABLE structures.
+
+   Oscar Giner suggested to move target-specific includes out of extern "C"
+   block.
+
+   biscuitz reported a memory leak (fixed in 0.27).
+
+   Hans de Goede helped making Glyph Keeper 64-bit safe and improved SDL
+   header inclusion (merged in 0.30).
+
+   Matthew Leverton reported a memory leak (fixed in 0.32).
+
+   Also I recieved useful comments and suggestions from Steve Terry,
+   Miran Amon, Serge Semashko, Elias Pschernig, Matt Smith, Robert Ohannessian
+   and gnolam.
