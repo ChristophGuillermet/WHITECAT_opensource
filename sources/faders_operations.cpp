@@ -63,7 +63,7 @@ int ClearDock(int fad, int dk)
   {   
   fgroup[fad][dk][fg]=0;
   }  
-  //remise à plat de view
+  //remise Ã  plat de view
  show_who_is_in_dock (fad, dk);
  //nettoyage temps
    time_minutes=0;
@@ -188,7 +188,7 @@ int DoDock(int fad, int dk)
 {
  ClearDock(fad,dk);
      
- if(numeric_postext==0)//si pas de chaine de caracteres tapés
+ if(numeric_postext==0)//si pas de chaine de caracteres tapÃ©s
  {
  DockTypeIs[fad][dk]=0;//le type est 0, circuits normaux
  if(index_blind==0)

@@ -2382,13 +2382,13 @@ break;
 case 5:    //fresnel 5kw
 plot_draw_symbol_fresnel(plotx, ploty , size_symbol[s], 0, 0, 0);
 break;
-case 6: //dec 30°
+case 6: //dec 30Â°
 plot_draw_symbol_decoupe_etc_1(plotx, ploty , size_symbol[s], 0, 0, 0);
 break;
-case 7: //dec 40°
+case 7: //dec 40Â°
 plot_draw_symbol_decoupe_etc_2(plotx, ploty , size_symbol[s], 0, 0, 0);
 break;
-case 8: //dec 50°
+case 8: //dec 50Â°
 plot_draw_symbol_decoupe_etc_3(plotx, ploty , size_symbol[s], 0, 0, 0);
 break;
 case 9: //dec 1kw longue
@@ -2487,7 +2487,7 @@ break;
 case 40://Proj diapo
 plot_draw_symbol_slideprojector(plotx, ploty , size_symbol[s], 0, 0, 0);
 break;
-case 41://Rétro Proj 
+case 41://RÃ©tro Proj 
 plot_draw_symbol_retroprojector(plotx, ploty , size_symbol[s], 0, 0, 0);
 break;
 case 42://volets
@@ -3920,7 +3920,7 @@ Rect PresetBox(Vec2D(0,0),Vec2D(10,10));
 for(int pr=0;pr<8;pr++)
 {
 PresetBox.MoveTo(Vec2D(plotx+30+(20*pr),ploty+430));
-PresetBox.Draw(CouleurFader.WithAlpha(plot_light_preset_on_click[pr]));     //visu de la sélection du preset  
+PresetBox.Draw(CouleurFader.WithAlpha(plot_light_preset_on_click[pr]));     //visu de la sÃ©lection du preset  
 if(last_xyrelativ_preset==pr){if(plot_light_preset_on_click[pr]>0.0){plot_light_preset_on_click[pr]-=0.2;}}
 PresetBox.DrawOutline(CouleurPlotLine.WithAlpha(0.5)); 
 
@@ -4240,7 +4240,7 @@ for (int y=0;y<8;y++)
 {
 Rect OverFile(Vec2D(xrep+5,(yrep+185+(y*20)-10)),Vec2D(180,20));
 OverFile.SetRoundness(7.5);
-//affichage qui est selectionné
+//affichage qui est selectionnÃ©
 if(strcmp( Name_of_plane_is,list_import_plans[importplan_selected])==0 && (importplan_selected==(y+line_importplan)))
 {OverFile.Draw(CouleurFond.WithAlpha(0.5));}
 
@@ -5181,7 +5181,7 @@ plot_symbol_edition(plotx+10, ploty+200);//editeur de symbol
 symbol_edition_options(plotx+10,ploty+275);
 //logical_symbol_edition_options(plotx+10, ploty+275);
 break;
-case 3://légende
+case 3://lÃ©gende
 plot_legend_menu(plotx+10,ploty+50);
 break;
 default:

@@ -460,7 +460,7 @@ for(int sz=s;sz<=nbre_shapes_on_plot;sz++)
 if(snap_shape_selected[sz]==0)  
 {
 copy_shape_to_emply_slot(s,sz);     
-//break; enlevé pour permettre destruction sans virer un shape en dernier de la liste                              
+//break; enlevÃ© pour permettre destruction sans virer un shape en dernier de la liste                              
 }     
 }                                 
 }        
@@ -1212,7 +1212,7 @@ if( symbol_is_linked_to[calc][i]>0){ do_ungroup=1;break;}
 else
 {    
 int leading_symbol=0;
-int leading_channel=0;// le premier symbole trouvé est celui qui permet le groupe
+int leading_channel=0;// le premier symbole trouvÃ© est celui qui permet le groupe
 for(int i=1;i<= nbre_symbols_on_plot[calc];i++)
 {
 if(symbol_is_selected[calc][i]==1 && symbol_channel_is[calc][i]>0)
@@ -1325,7 +1325,7 @@ symbol_selected_type=symbol_type[calc][i];
 last_ch_selected=symbol_channel_is[calc][i];
 }
 
-//selection déselection channels
+//selection dÃ©selection channels
 if((symbol_channel_is[calc][i])!=0)
 {
 Selected_Channel[(symbol_channel_is[calc][i])]=symbol_is_selected[calc][i];
@@ -1333,7 +1333,7 @@ Selected_Channel[(symbol_channel_is[calc][i])]=symbol_is_selected[calc][i];
 //check group
 for(int gr=1;gr<=nbre_symbols_on_plot[calc] ;gr++)
 {
-if(symbol_channel_is[calc][gr]!=0 && symbol_channel_is[calc][gr]==symbol_channel_is[calc][is_manipulated] )//ismanipulated si déselection 
+if(symbol_channel_is[calc][gr]!=0 && symbol_channel_is[calc][gr]==symbol_channel_is[calc][is_manipulated] )//ismanipulated si dÃ©selection 
 {
 if( symbol_is_linked_to[calc][gr]==is_manipulated || symbol_is_linked_to[calc][is_manipulated ]==gr )
 {
@@ -1452,7 +1452,7 @@ pos_symbol[calc][i][1]=the_value;
 
 int plot_ventilate_x(int calc)
 {
-//si souci de ventilation parce que les symboles pas les uns après les autres. il faudrait faire un tableau intermédiaire où stocker les données et redistribuer après
+//si souci de ventilation parce que les symboles pas les uns aprÃ¨s les autres. il faudrait faire un tableau intermÃ©diaire oÃ¹ stocker les donnÃ©es et redistribuer aprÃ¨s
 int the_highest_value=0;
 int the_lowest_value=0;
 int the_value=0;
@@ -2564,7 +2564,7 @@ for(int u=1;u<=nbre_symbols_on_plot[l];u++)
 if  (symbol_dimmer_is[l][u]== tnum && (symbol_channel_is[l][u] != symbol_channel_is[view_plot_calc_number_is][the_symb]) ) {symbol_dimmer_is[l][u]=0;}                                                                                       
 }   
 }
-//fin check des gradas affectés à d autres
+//fin check des gradas affectÃ©s Ã  d autres
 symbol_dimmer_is[view_plot_calc_number_is][the_symb]= tnum;  
 }    
 }           
@@ -3275,7 +3275,7 @@ else if(numeric_postext==0)//drag souris
  
   
    
-   switch(editing_plan_data_type)//décalé de +1
+   switch(editing_plan_data_type)//dÃ©calÃ© de +1
    {
    case 1:
    position_relative_plan_theatre[0]=old_position_relative_plan_theatre[0]-moving_plan_relativ_y;
@@ -3481,7 +3481,7 @@ logical_plot_symbol_list(plotx+10, ploty+50);
 logical_plot_symbol_edition(plotx+10, ploty+200);//editeur de symbol
 logical_symbol_edition_options(plotx+10, ploty+275);
 break;
-case 3://légende
+case 3://lÃ©gende
 break;
 case 4://plan seul
 break;

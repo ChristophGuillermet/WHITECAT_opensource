@@ -630,7 +630,7 @@ HPDF_REAL haut=draw_hauteur_case[pr]/1.2;
     }
 
 
-//previsu niveau laissé à l'enregistrement
+//previsu niveau laissÃ© Ã  l'enregistrement
 
 int the_ch=0;
 float val=0.0;
@@ -679,7 +679,7 @@ draw_info(page, 104+(larg*co), debut_lignes -(position_ligne1+(cmptline_pdf*12))
 }
 HPDF_Page_SetFontAndSize (page, def_font, 10);
 
-//fin du récap circuit
+//fin du rÃ©cap circuit
 saut_de_page();  
 }
 
@@ -754,7 +754,7 @@ draw_info(page, 104+(16*co), debut_lignes -(position_ligne1+(cmptline_pdf*12))-(
 }
 HPDF_Page_SetFontAndSize (page, def_font, 10);
 
-//fin du récap circuit
+//fin du rÃ©cap circuit
 cmptline_pdf+=grider_nb_row;
 
 
@@ -996,7 +996,7 @@ for(int c=1;c<513;c++)
 {
 if(TrackContains[chaser_num][t][c]!=0)       
 {
-if(comptch==0){cmptline_pdf++; sprintf(header_export,"");}//retour ligne après 10 circuits
+if(comptch==0){cmptline_pdf++; sprintf(header_export,"");}//retour ligne aprÃ¨s 10 circuits
 
 switch(dmx_view)
 {
@@ -1033,7 +1033,7 @@ draw_info(page, 100, debut_lignes -(position_ligne1 +(cmptline_pdf*12)),header_e
 sprintf(header_export,"");
 cmptline_pdf++; 
 }//fin si quelqu un dedans en mode circuits
-else if( TrackTypeIs[chaser_num][t]==1)//si mémoire affectée à piste
+else if( TrackTypeIs[chaser_num][t]==1)//si mÃ©moire affectÃ©e Ã  piste
 {
 sprintf(header_export,"Track: %d  / Description: %s",t+1,chaser_track_name[chaser_num][t]);
 draw_title(page, 100, debut_lignes -(position_ligne1 +(cmptline_pdf*12)),header_export);            
@@ -1209,7 +1209,7 @@ sprintf(list_midi_affect[741],"Banger Page -");
 sprintf(list_midi_affect[742],"Banger Page +");
 for (int l=0;l<127;l++)
 {
-sprintf(list_midi_affect[1343+l],"Banger N°%d",l+1);    
+sprintf(list_midi_affect[1343+l],"Banger NÂ°%d",l+1);    
 }
 /////////////////GRANDES FONCTIONS///////////////////////////
 
@@ -1650,7 +1650,7 @@ sprintf(header_export,"iCAT preset %d", prst+1);
 draw_title(page, 50, debut_lignes -(position_ligne1 +(cmptline_pdf*12)),header_export);
 cmptline_pdf++;
 
-//recalcul rapport à l orientation et au format
+//recalcul rapport Ã  l orientation et au format
 switch(surface_type)
 {
 case 0://iPOD
@@ -2470,7 +2470,7 @@ for(int c=1;c<513;c++)
 {
 if(Memoires[m][c]>0)       
 {
-if(comptch==0){cmptline_pdf++; sprintf(header_export,"");}//retour ligne après 10 circuits
+if(comptch==0){cmptline_pdf++; sprintf(header_export,"");}//retour ligne aprÃ¨s 10 circuits
 sprintf(little_header,"%d=%d   ",c,(int)((float)(Memoires[m][c])/2.55));
 strcat(header_export,little_header);
 comptch++;                           
@@ -2527,7 +2527,7 @@ for(int chm=0;chm<513;chm++)
 if(check_presence_of_A_channel_in_A_view(v,chm)==1)
 {
                                                    
- if(comptch==0){cmptline_pdf++; sprintf(header_export,"");}//retour ligne après 10 circuits
+ if(comptch==0){cmptline_pdf++; sprintf(header_export,"");}//retour ligne aprÃ¨s 10 circuits
  if(chm<100)  {sprintf(little_header,"%d  -  ",chm);}
  else {sprintf(little_header,"%d - ",chm);} 
  strcat(header_export,little_header);
@@ -2565,7 +2565,7 @@ verification_fin_de_page();
        
 
 ///////////////////////////////////////////////////////////////////////////////
-////////////////LISTE couplée à PLOT //////////////////////////////////////////////////////////
+////////////////LISTE couplÃ©e Ã  PLOT //////////////////////////////////////////////////////////
 ///////////////////////////////////////////////////////////////////////////////
                             
 if(specify_who_to_save_PDF[2]==1)
@@ -2655,7 +2655,7 @@ draw_section (page, 100,debut_lignes -(position_ligne1 +(cmptline_pdf*12)), "Pat
 int cmptdim=0;
 for (int cpatch=1; cpatch<513; cpatch++)
 { 
-if(cmptdim==0){cmptline_pdf++; sprintf(header_export,"");}//retour ligne après 10 circuits
+if(cmptdim==0){cmptline_pdf++; sprintf(header_export,"");}//retour ligne aprÃ¨s 10 circuits
 sprintf(little_header,"Dim.%d=Ch.%d [%d]    ",cpatch, Patch[cpatch], curves[cpatch]+1);
 strcat(header_export,little_header);
 cmptdim++;                                               
@@ -3737,7 +3737,7 @@ draw_title(page, 50, debut_lignes -(position_ligne1 +(cmptline_pdf*12)),header_e
 cmptline_pdf++;
 verification_fin_de_page();
 sprintf(header_export,"");//clean
-///////////////////////////paramétrages actuels du fader/////////////////////////////////
+///////////////////////////paramÃ©trages actuels du fader/////////////////////////////////
 sprintf(header_export,"Curve [%d] ",FaderCurves[f]+1);     
 draw_info(page, 50, debut_lignes -(position_ligne1 +(cmptline_pdf*12)),header_export);
 cmptline_pdf++;
@@ -3853,7 +3853,7 @@ if(comptch==0)
 {
 cmptline_pdf++; 
 sprintf(header_export,"");
-}//retour ligne après 10 circuits
+}//retour ligne aprÃ¨s 10 circuits
 
 sprintf(little_header,"%d=%d   ",c,(int)((float)(FaderDockContains[f][d][c])/2.55));
 strcat(header_export,little_header);
@@ -4369,7 +4369,7 @@ draw_title(page, 50, debut_lignes -(position_ligne1 +(cmptline_pdf*12)),header_e
 cmptline_pdf++;
 for (int pr=0;pr<12;pr++)
 { 
-//test de l affectation d un circuit à la ROI
+//test de l affectation d un circuit Ã  la ROI
 there_is_a_roi_preset_affected=0;
 for (int prp=0;prp<12;prp++)
 { 
@@ -4644,10 +4644,10 @@ switch(arduino_digital_function_output[i][0])
 case 0://desafected
 sprintf(little_header,"-");
 break;
-case 1: //relié à un circuit  
+case 1: //reliÃ© Ã  un circuit  
 sprintf(little_header,"Channel %d >10", arduino_digital_function_output[i][1]);            
 break;
-case 2://relié à un fader
+case 2://reliÃ© Ã  un fader
 sprintf(little_header,"Fader %d >10", arduino_digital_function_output[i][1]);
 break;
 }
@@ -4661,10 +4661,10 @@ switch(arduino_digital_function_output[i][0])
 case 0://desafected
 sprintf(little_header,"-");
 break;
-case 1: //relié à un circuit  
+case 1: //reliÃ© Ã  un circuit  
 sprintf(little_header,"Channel %d >10", arduino_digital_function_output[i][1]);            
 break;
-case 2://relié à un fader
+case 2://reliÃ© Ã  un fader
 sprintf(little_header,"Fader %d >10", arduino_digital_function_output[i][1]);   
 break;
 }

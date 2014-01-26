@@ -226,7 +226,7 @@ for (int y=0;y<8;y++)
 Rect OverFile(Vec2D(xrep+5,(yrep+185+(y*20)-10)),Vec2D(200,20));
 OverFile.SetRoundness(7.5);
 
-//affichage qui est selectionné
+//affichage qui est selectionnÃ©
 if(strcmp(importfile_name,list_import_files[importfile_selected])==0 && (importfile_selected==(y+line_import)))
 {OverFile.Draw(CouleurFond.WithAlpha(0.5));}
 
@@ -485,7 +485,7 @@ for (int y=0;y<8;y++)
 {
 Rect OverFile(Vec2D(xrep+5,(yrep+185+(y*20)-10)),Vec2D(200,20));
 OverFile.SetRoundness(7.5);
-//affichage quiest selectionné
+//affichage quiest selectionnÃ©
 if(strcmp(savefile_name,list_save_files[savefile_selected])==0 && (savefile_selected==(y+line_save)))
 {OverFile.Draw(CouleurFond.WithAlpha(0.5));}
 

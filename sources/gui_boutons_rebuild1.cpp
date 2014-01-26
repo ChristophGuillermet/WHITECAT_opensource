@@ -839,7 +839,7 @@ case 44://quit
 index_ask_confirm=1;index_do_quit_with_save=1;
 break;
 /////////////////////////////////////////////////////////////////////////////////
-//extras hors menus déroulants ext
+//extras hors menus dÃ©roulants ext
 case 100:
      plot_index_show_levels=toggle(plot_index_show_levels);
 break;

@@ -1,3 +1,37 @@
+/*-------------------------------------------------------------------------------------------------------------
+                                 |
+          CWWWWWWWW              | Copyright (C) 2009-2014  Christoph Guillermet
+       WWWWWWWWWWWWWWW           | 
+     WWWWWWWWWWWWWWWWWWW         | This file is part of White Cat.
+    WWWWWWWWWWWWWWWWWCWWWW       | 
+   WWWWWWWWWWWWWWWWW tWWWWW      | White Cat is free software: you can redistribute it and/or modify
+  WWWW   WWWWWWWWWW  tWWWWWW     | it under the terms of the GNU General Public License as published by
+ WWWWWt              tWWWWWWa    | the Free Software Foundation, either version 3 of the License, or
+ WWWWWW               WWWWWWW    | (at your option) any later version.
+WWWWWWWW              WWWWWWW    | 
+WWWWWWWW               WWWWWWW   | White Cat is distributed in the hope that it will be useful,
+WWWWWWW               WWWWWWWW   | but WITHOUT ANY WARRANTY; without even the implied warranty of
+WWWWWWW      CWWW    W WWWWWWW   | MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+WWWWWWW            aW  WWWWWWW   | GNU Lesser General Public License for more details.
+WWWWWWWW           C  WWWWWWWW   | 
+ WWWWWWWW            CWWWWWWW    | You should have received a copy of the GNU General Public License
+ WWWWWWWWW          WWWWWWWWW    | along with White Cat.  If not, see <http://www.gnu.org/licenses/>. 
+  WWWWWWWWWWC    CWWWWWWWWWW     |   
+   WWWWWWWWWWWWWWWWWWWWWWWW      | 
+    WWWWWWWWWWWWWWWWWWWWWW       |    
+      WWWWWWWWWWWWWWWWWWa        |     
+        WWWWWWWWWWWWWWW          |     
+           WWWWWWWWt             |
+                                 |
+---------------------------------------------------------------------------------------------------------------*/
+/**
+ * @file MAIN_nov_2013_opensource_kbd.cpp
+ * @brief the main file
+ * @author Christoph Guillermet
+ * 
+ * White Cat - cat√©gorie - sous cat√©gorie - sous cat√©gorie
+ * Description d√©taill√©e
+ **/
 #include <allegro.h>
 #include <winalleg.h>
 #include <OpenLayer.hpp>
@@ -37,6 +71,12 @@ volatile bool calculation_on_faders_done=0;//pour snap des faders depuis Echo
 //////////////////////////////////////////////////////////////////////////////
 
 ////////////////////REMPLACEMENT DU GCC 3.4 >? //////////////////////////////////
+/**
+ * implementation of a general "max" function
+ * @param a an element to compare
+ * @param b another element to compare
+ * @return the greater element, provided class T has an operator "<".
+ **/
 template <class T> const T& Tmax ( const T& a, const T& b ) {
   return (b<a)?a:b;     // or: return comp(b,a)?a:b; for the comp version
 }
@@ -54,7 +94,7 @@ bufferSaisiesnamp=0;
 #include <hpdf.h>
 #include <MidiShare.h>    
 #include <whitecat.h>
-#include <my_window_file_sample.h>//ressources juste aprËs whitecat.h
+#include <my_window_file_sample.h>//ressources juste apr√®s whitecat.h
 #include <patch_splines_2.cpp>//spline pour curves
 
 
@@ -137,7 +177,7 @@ bufferSaisiesnamp=0;
 #include <echo3.cpp>
 
 
-#include <my_window_file_sample.cpp>//creation de fenetres utilisateurs, doit Ítre avant proc visuels
+#include <my_window_file_sample.cpp>//creation de fenetres utilisateurs, doit √™tre avant proc visuels
 
 
 #include <procs_visuels_rebuild1.cpp>
@@ -151,7 +191,13 @@ bufferSaisiesnamp=0;
 #include <arduino_6_UNO_anton2.cpp>
 
 
-
+/**
+ * Function designed to animate some details, by side effects.
+ * This function increments the variables ticks, actual_time
+ * it increments also actual_tickers_chrono when index_play_chrono is true;
+ * it cycles the variable alpha_blinker between 0.2 and 1
+ * return always 0
+ **/
 int time_doing()
 {
 if (index_play_chrono==1){++actual_tickers_chrono;}
@@ -162,7 +208,10 @@ if(alpha_blinker>1){alpha_blinker=0.2;}
 return(0);
 }
 /////////////////TIMER POUR DATA ET REFRESH RATE////////////////////////////////
-void ticker_dmxIn() // nettoyage des ticker pour verifier stabilitÈ
+/**
+ * Clears the tickers to check stability
+ **/
+void ticker_dmxIn() // nettoyage des ticker pour verifier stabilit√©
 {
 Receive_DMX_IN();      
 }
@@ -171,7 +220,9 @@ END_OF_FUNCTION(ticker_dmxIn);
 /////////////////////////////////////////////
   
 
-
+/**
+ * implements a set of routines which are called during the main loop of the program.
+ **/
 void ticker() 
 {
 time_doing();
@@ -197,8 +248,8 @@ switch (i)
       // for (int i=0;i<core_user_define_nb_bangers;i++){do_bang(i);}// dans full loop
        break;
        case 3:
-       //trichro_back_buffer(315/2,550/2,125,15);//calcul trichro ( triangle et saturation dans buffer separÈ)
-       break;//obligÈ dans main loop
+       //trichro_back_buffer(315/2,550/2,125,15);//calcul trichro ( triangle et saturation dans buffer separ√©)
+       break;//oblig√© dans main loop
        case 4:
        ventilation_video_trackers();
        break;
@@ -274,6 +325,12 @@ END_OF_FUNCTION(ticker);
 
 //////////////////////////////////MOUSE/////////////////////////////////////////
 
+/**
+ * Callback function invoked when a right-click event occurs.
+ * a window is added or removed based on the global toggle index_show_main_menu
+ * global variables x_mainmenu and y_mainmenu are copied from the mouse's position
+ * @return always 0
+ **/
 int do_mouse_right_click_menu()
 {
  x_mainmenu=mouse_x, y_mainmenu=mouse_y;     
@@ -284,6 +341,9 @@ int do_mouse_right_click_menu()
  return(0);   
 }
 
+/**
+ * Callback function for mouse events.
+ **/
 void my_callback(int flags) {
 
     if (flags & MOUSE_FLAG_LEFT_DOWN )
@@ -364,7 +424,9 @@ END_OF_FUNCTION(my_callback);
 int ticker_dixiemes_de_secondes_check = BPS_TO_TIMER(10);//10eme de secondes
 
 
-
+/**
+ * Callback function to be called ten times per second
+ **/
 void dixiemes_de_secondes() 
 {
 ticks_dixieme_for_icat_and_draw++;
@@ -378,7 +440,7 @@ dock_used_by_fader_is[yr]=detect_dock_used(yr);
  
 do_sprintf_job();//include time_left calculs       
 refresh_minifader_state_view_core(position_minifader_selected);//les infos dock temps etc dans fenetre minifaders
-match_minifaders();//verif du preset en cours: correspond ou pas ‡ un des 8 preset
+match_minifaders();//verif du preset en cours: correspond ou pas √† un des 8 preset
 nbre_fenetre_actives=check_nbre_opened_windows(); 
   
       if(index_do_quick_save==1)
@@ -415,7 +477,7 @@ sprintf(string_last_copy_mem,"Mem to copy: %d.%d", CTRLC_mem_to_copy/10,CTRLC_me
 switch(index_patch_window)
 {
 case 0:
-sprintf(string_secondary_feeback,string_last_over_dock);//last over dock: permet de savoir quelle selection orange est allumÈe
+sprintf(string_secondary_feeback,string_last_over_dock);//last over dock: permet de savoir quelle selection orange est allum√©e
 break;
 case 1:
 sprintf(string_secondary_feeback,string_monitor_patch);
@@ -445,7 +507,7 @@ if (enable_iCat==1 && iCat_serveur_is_initialized==1 && index_quit==0 && index_i
       refresh_continuously_iCat_buttons();
       refresh_continuously_iCat_trackerzones();
       }
-      /*for(int nbr=0;nbr<12;nbr++)//sensibilitÈ clavier
+      /*for(int nbr=0;nbr<12;nbr++)//sensibilit√© clavier
       {
       FS_sensibilite_touche[nbr]-=1;
       if( FS_sensibilite_touche[nbr]<0){ FS_sensibilite_touche[nbr]=0;}
@@ -463,7 +525,7 @@ index_edit_light_plot=1;
 index_enable_edit_Draw=1;
 index_enable_edit_echo=1;                  
 }
-if(right_click_for_menu==1)//sortie du call back pour Ècrire correctement fermeture fenetres
+if(right_click_for_menu==1)//sortie du call back pour √©crire correctement fermeture fenetres
 {do_mouse_right_click_menu();}
 
 
@@ -479,6 +541,10 @@ END_OF_FUNCTION(dixiemes_de_secondes);
 
 ///////////////FULL LOOP FUNCTION/////////////////////////////////////////////
 int ticker_full_loop_rate = BPS_TO_TIMER(10000);
+
+/**
+ * Callback function linked to the fastest timer
+ **/
 void ticker_full_loop() 
 {
      
@@ -536,6 +602,10 @@ END_OF_FUNCTION(ticker_full_loop);
 
 volatile int ticks_for_artnet=0;
 int ticker_artnet_rate = BPS_TO_TIMER(1);
+
+/**
+ * Callback function called once by second
+ **/
 void ticker_artnet() 
 {
  ticks_for_artnet++;
@@ -553,7 +623,9 @@ END_OF_FUNCTION(ticker_artnet);
 
 
 
-
+/**
+ * function to load miscellaneous fonts
+ **/
 void Load_Fonts()
 {
    doom.Load( "Fonts/doom.ttf",25,25, CouleurLigne );  
@@ -688,14 +760,17 @@ void Load_Fonts()
 
 
 ////////////////////////////////////////////////////////////////////////////////
+/**
+ * This function performs visible actions on the screen
+ **/
 int main_actions_on_screen()
 {
       Canvas::Fill(CouleurFond);       
       if(index_writing_curve==0){Boxes();}
       if(core_do_calculations[3]==1)
       {
-      trichro_back_buffer(315/2,550/2,125,15);//calcul trichro ( triangle et saturation dans buffer separÈ)
-      do_colors();//ventilation des niveaux pickÈs ainsi que distrib dans faders et docks
+      trichro_back_buffer(315/2,550/2,125,15);//calcul trichro ( triangle et saturation dans buffer separ√©)
+      do_colors();//ventilation des niveaux pick√©s ainsi que distrib dans faders et docks
       }
       DoMouse();
       previous_ch_selected=last_ch_selected;  
@@ -703,6 +778,11 @@ int main_actions_on_screen()
 }
 
 
+/**
+ * The main function : top level of the program.
+ * make initializations, then run the program interactively
+ * @return the exit satus of the program.
+ **/
 int main() {
    
 load_screen_config();  
@@ -817,7 +897,7 @@ reset_all_bangers();
 // generation_Tableau_noms_fonctions() ;
  save_load_print_to_screen("Init Midi");
  InitMidi();//init avant les appels de fichiers	
- midi_init_sepecial_case_key_on();//pour rÈgler pb de cle flashs et key on key off
+ midi_init_sepecial_case_key_on();//pour r√©gler pb de cle flashs et key on key off
  ////////////////////////////////////////////////////////////
 
  load_onstart_config();
@@ -902,7 +982,7 @@ if(there_is_an_error_on_save_load==1){index_show_save_load_report=1;there_is_cha
 
  mouse_released=0;
  entered_main=1;
-//launchpad sÈparÈ
+//launchpad s√©par√©
 if(enable_launchpad==1)
 {reset_launchpad();}
  
@@ -997,7 +1077,7 @@ while(index_quit!=1)
    
     
 MemoiresExistantes[0]=1;
-show_im_recording_a_time=0;// met ‡ zÈro l'affichage du stock visuel du time
+show_im_recording_a_time=0;// met √† z√©ro l'affichage du stock visuel du time
 //remis dans boucle pour bug freeze V8.3 et 8.4
 if(old_ticks_arduino!=ticks_arduino && index_is_saving==0 && init_done==1 && index_writing_curve==0 && arduino_device_0_is_ignited==1 && index_quit==0)//procedures de communication
 {

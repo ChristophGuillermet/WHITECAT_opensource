@@ -1,6 +1,6 @@
 int clear_wizard_store_ch_in()
 {
-//la grande ligne non splitée  
+//la grande ligne non splitÃ©e  
 for (int p=0;p<2160;p++)
 {tmp_wizbuffer[p]=' ';}
 
@@ -26,7 +26,7 @@ return(0);
 
 int clear_wizard_store_ch_out()
 {
-//la grande ligne non splitée  
+//la grande ligne non splitÃ©e  
 for (int p=0;p<2160;p++)
 {tmp_wizbuffer[p]=' ';}
 

@@ -206,7 +206,7 @@ break;
 
 
 
-//2ème colonne Circuit relatif
+//2Ã¨me colonne Circuit relatif
 for(int cl=0;cl<6;cl++)
 {
 switch(cl)
@@ -247,7 +247,7 @@ sprintf(raccourci_commande,"");
 stae=index_do_exclude;
 break;
 case 5://my window
-IDmidi=2047; // c est la derniere commande midi, a changer et  définir voir tableau affectations midi
+IDmidi=2047; // c est la derniere commande midi, a changer et  dÃ©finir voir tableau affectations midi
 IDcommand=cl+10;
 sprintf(nom_commande,"MY WINDOW");
 sprintf(raccourci_commande,"");
@@ -260,7 +260,7 @@ command_button_logical(xmenu+80,ymenu+50+(cl*25),stae,nom_commande,raccourci_com
 }     
 
 
-//3ème colonne grands blocs
+//3Ã¨me colonne grands blocs
 for(int cl=0;cl<5;cl++)
 {
 switch(cl)
@@ -309,7 +309,7 @@ command_button_logical(xmenu+150,ymenu+50+(cl*25),stae,nom_commande,raccourci_co
 
 
 
-//4ème colonne grands blocs
+//4Ã¨me colonne grands blocs
 for(int cl=0;cl<6;cl++)
 {
 switch(cl)
@@ -363,7 +363,7 @@ command_button_logical(xmenu+220,ymenu+50+(cl*25),stae,nom_commande,raccourci_co
 
 
 
-//5ème colonne grands blocs
+//5Ã¨me colonne grands blocs
 for(int cl=0;cl<5;cl++)
 {
 switch(cl)
@@ -494,7 +494,7 @@ break;
 command_button_view(xmenu+10,ymenu+50+(cl*25),stae,nom_commande,raccourci_commande,IDmidi);// int x, inty ,bool state, char *textedesc, int midiaffectation
 } 
 
-//2ème colonne Circuit relatif
+//2Ã¨me colonne Circuit relatif
 for(int cl=0;cl<6;cl++)
 {
 switch(cl)
@@ -535,7 +535,7 @@ sprintf(raccourci_commande,"");
 stae=index_do_exclude;
 break;
 case 5://my window
-IDmidi=2047; //a re définir voir tableau affectations midi
+IDmidi=2047; //a re dÃ©finir voir tableau affectations midi
 IDcommand=cl+10;
 sprintf(nom_commande,"MY WINDOW");
 sprintf(raccourci_commande,"");
@@ -548,7 +548,7 @@ command_button_view(xmenu+80,ymenu+50+(cl*25),stae,nom_commande,raccourci_comman
 } 
 
 
-//3ème colonne grands blocs
+//3Ã¨me colonne grands blocs
 for(int cl=0;cl<5;cl++)
 {
 switch(cl)
@@ -596,7 +596,7 @@ command_button_view(xmenu+150,ymenu+50+(cl*25),stae,nom_commande,raccourci_comma
 } 
 
 
-//4ème colonne grands blocs
+//4Ã¨me colonne grands blocs
 for(int cl=0;cl<6;cl++)
 {
 switch(cl)
@@ -649,7 +649,7 @@ break;
 command_button_view(xmenu+220,ymenu+50+(cl*25),stae,nom_commande,raccourci_commande,IDmidi);// int x, inty ,bool state, char *textedesc, int midiaffectation
 } 
 
-//5ème colonne grands blocs
+//5Ã¨me colonne grands blocs
 for(int cl=0;cl<5;cl++)
 {
 switch(cl)

@@ -8,7 +8,7 @@ case 0://relatif
      if(levelwheelis<64){ simulate_keypress(KEY_UP<<8);}
      else if(levelwheelis>64){ simulate_keypress(KEY_DOWN<<8);}
 break;
-case 1://absolute , on récupère de toute facon le niveau midi comme base
+case 1://absolute , on rÃ©cupÃ¨re de toute facon le niveau midi comme base
 unsigned char your_level_is=(int)((((float)levelwheelis)/127)*255);
 switch(index_do_hipass)
 {
@@ -31,7 +31,7 @@ for (int i=1;i<513;i++)
  if(Selected_Channel[i]==1)
  {
   FaderManipulating=highest_level_comes_from_fader[i]-1;
-  if(DockTypeIs[FaderManipulating][dock_used_by_fader_is[FaderManipulating]]==0)//pas les contenus dynamiques, juste les circuits enregistrés on the fly                          
+  if(DockTypeIs[FaderManipulating][dock_used_by_fader_is[FaderManipulating]]==0)//pas les contenus dynamiques, juste les circuits enregistrÃ©s on the fly                          
   {
    FaderDockContains[FaderManipulating][dock_used_by_fader_is[FaderManipulating]][i]  =your_level_is;                                                                                   
   }

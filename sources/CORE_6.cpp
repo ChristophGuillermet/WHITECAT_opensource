@@ -159,7 +159,7 @@ sprintf(string_alarm[bg],"");
 for(int dd=0;dd<6;dd++)
 {
 bangers_type[bg][dd]=0;//127 bangers // 6 events par banger 
-bangers_action[bg][dd]=0;//num action demandée
+bangers_action[bg][dd]=0;//num action demandÃ©e
 bangers_params[bg][dd][0]=0;//0 param1 / 1 param2
 bangers_params[bg][dd][1]=0;
 bangers_delay[bg][dd]=0.0;//delays 
@@ -219,7 +219,7 @@ echo_way[ech][i]=0;
 tmp_falling_from_level[ech][i]=0.0;
 snap_echo_to_recall[ech][i]=0.0;
 }
-do_bounce[ech]=0;//déclencheur
+do_bounce[ech]=0;//dÃ©clencheur
 
 for (int f=0;f<48;f++)
 {
@@ -293,7 +293,7 @@ index_do_dock=0;
 mouse_released=1;                    
 }                    
 }
-//désaffectation des circuits
+//dÃ©saffectation des circuits
 else if(index_do_dock==0 && index_main_clear==1 )
 {
 if(index_enable_edit_Draw==1 && mouse_released==0)
@@ -526,7 +526,7 @@ int reset_indexs_confirmation()
   //direct ch
   index_do_record_direct_ch=0;
 
-  //affectation courbe à un fader
+  //affectation courbe Ã  un fader
   index_ask_curv_to_fader=0;
   index_re_init_client_artnet=0;
   index_re_init_serveur_artnet=0;
@@ -1070,7 +1070,7 @@ temp_selv[i]=toggle(temp_selv[i]);
 clear_selection_in(view_is);   
     
 int index_ch=0;
-//clear d'un circuit existant sélectionné
+//clear d'un circuit existant sÃ©lectionnÃ©
 for(int i=1;i<514;i++)
 {
 if(temp_selv[i]==1)
@@ -1440,7 +1440,7 @@ break;
 
 int reset_banger_params( int banger_selected, int event)
 {
-//bangers_params[banger_selected][ event][0]=0;//0 param1 pas reseté pour garder le fader
+//bangers_params[banger_selected][ event][0]=0;//0 param1 pas resetÃ© pour garder le fader
 bangers_params[banger_selected][ event][1]=0;//1 param2
 bangers_delay[banger_selected][ event]=0.0;//delays 
 return(0);   
@@ -1628,7 +1628,7 @@ miditable[0][i]=999;miditable[1][i]=999; miditable[2][i]=999;midi_launchpad_stat
 }
 }                 
 }
-// 8 en ordre numérique    
+// 8 en ordre numÃ©rique    
 else if(typaction==2 )
 {
 switch(toggle_numerical_midi_way)
@@ -2140,7 +2140,7 @@ int minifader_lockselection_record(int mf_preset_is)
 {
  for(int f=0;f<core_user_define_nb_faders;f++)
  {
- FaderLocked_Preset[ mf_preset_is][f]=0;        //reset des états avant stockage
+ FaderLocked_Preset[ mf_preset_is][f]=0;        //reset des Ã©tats avant stockage
  StateOfFaderBeforeLock_Preset[ mf_preset_is][f]=0; 
  LockFader_is_FullLevel_Preset[ mf_preset_is][f]=0;      
  if ( FaderLocked[f]==1)
@@ -2202,7 +2202,7 @@ return(0);
 
 int button_midi_out_visu(int xmi, int ymi, int control)
 {
-//midi out enclenché ou pas FADER
+//midi out enclenchÃ© ou pas FADER
 Circle BMidiOut( xmi,ymi, 10);//box du fader
 BMidiOut.SetLineWidth(epaisseur_ligne_fader);
 
@@ -2686,7 +2686,7 @@ int do_lock_preset(int num_preset)
  lock_preset[num_preset]=1; 
  for (int f=0;f<core_user_define_nb_faders;f++)
  {
- /*ancienne version: le master fader pas mis à full
+ /*ancienne version: le master fader pas mis Ã  full
  FaderLocked[f]=FaderLocked_Preset[ num_preset][f];
  StateOfFaderBeforeLock[f]=StateOfFaderBeforeLock_Preset[num_preset][f];
  LockFader_is_FullLevel[f]=LockFader_is_FullLevel_Preset[num_preset][f];*/
@@ -3125,7 +3125,7 @@ circuitlevel.SetColor(Rgba::WHITE);
 circuitfaderlevel.SetColor(CouleurGrisAnthracite);
 }
 
-else if(config_color_style_is==2)//bleuté
+else if(config_color_style_is==2)//bleutÃ©
 {
 CouleurFond=CouleurBleu1;  
 CouleurLigne=CouleurBlanc;
@@ -3849,10 +3849,10 @@ switch(DockTypeIs[cmptfader][dokmin])
  sprintf(str_tmp_minidock_dock,"Channels");   
  break;
 //types des docks 
- case 1://si le doc est relié aux trichro
+ case 1://si le doc est reliÃ© aux trichro
  sprintf(str_tmp_minidock_dock,"Color");                                    
  break;
- case 2://si le doc est relié à un artnet
+ case 2://si le doc est reliÃ© Ã  un artnet
  sprintf(str_tmp_minidock_dock, "Art-%d",DockNetIs[cmptfader][dokmin]);                     
  break;
  case 3://si le doc recoit le dmxIN
@@ -3951,7 +3951,7 @@ return(0);
 int do_action_on_selected_minifaders(int action)
 {
 //variables pas incluable ds double boucle
-bool index_choose_mode_dkloop=0;//0 toggle tt le monde / 1 copie l etat du dck selctionné dans tt le monde
+bool index_choose_mode_dkloop=0;//0 toggle tt le monde / 1 copie l etat du dck selctionnÃ© dans tt le monde
 int tpdkval=0;
 int dockused=0;
 
@@ -3981,7 +3981,7 @@ case 1://lock
    break; 
    case 1:
    FaderLocked[cmptfader]=0;
-   //remise à plat du niveau
+   //remise Ã  plat du niveau
    Fader[cmptfader]=(unsigned char)((((float)(StateOfFaderBeforeLock[cmptfader]))/255)*locklevel);
    midi_levels[cmptfader]=(int)(((float)Fader[cmptfader])/2);
    sprintf(string_Last_Order,">> UNLOCKED Fader %d",cmptfader+1);
@@ -4065,7 +4065,7 @@ for(int op=0;op<core_user_define_nb_docks;op++)
 }
 break;
 case 1:
-//tout le monde prend la valeur du dock selectionné
+//tout le monde prend la valeur du dock selectionnÃ©
 for(int j=0;j<core_user_define_nb_docks;j++)
 {
 if(DockIsSelected[cmptfader][j]==1)
@@ -4399,7 +4399,7 @@ chaser_is_playing[the_chaser]=toggle(chaser_is_playing[the_chaser]);
 if(chaser_is_playing[the_chaser]==1)//snap du temps at beg
 {
 chaser_start_time[the_chaser]=actual_time;
-//bug olivier marche arriere arrière ligne
+//bug olivier marche arriere arriÃ¨re ligne
 if(chaser_step_is[chaser_selected]<0){chaser_step_is[chaser_selected]=0;}
 else if(chaser_step_is[chaser_selected]>35){chaser_step_is[chaser_selected]=35;}
 }
@@ -4488,7 +4488,7 @@ int affect_time_entry_to_mem(int index_t,int mem_set_to_time)
  return(0);   
 }
 
-int do_sprintf_job()//report du calcul des affichages de temps dans la boucle des 10ème de scondes
+int do_sprintf_job()//report du calcul des affichages de temps dans la boucle des 10Ã¨me de scondes
 {
     
 if (MemoiresExistantes[mem_before_one]==1)
@@ -4509,8 +4509,8 @@ affichage_time_format(Times_Memoires[position_onstage][3]);//in
 sprintf(string_time_memonstage[3],string_conversion_timeis);
 affichage_time_format(Times_Memoires[position_onstage][1]);//out
 sprintf(string_time_memonstage[1],string_conversion_timeis);
-//positionpreset > cross à venir
-//temps d entree( enregistré dans le préset) 
+//positionpreset > cross Ã  venir
+//temps d entree( enregistrÃ© dans le prÃ©set) 
 if(Times_Memoires[position_preset][0]>0.00)
 {
  if(crossfade_speed<64)
@@ -4527,7 +4527,7 @@ sprintf(cross_din,string_conversion_timeis);
 else {sprintf(cross_din,"");}
 
 
-//temps de delay sortie ( enregistré dans le préset) 
+//temps de delay sortie ( enregistrÃ© dans le prÃ©set) 
 if(Times_Memoires[position_preset][2]>0.00)
 {
 if(crossfade_speed<64)
@@ -5089,7 +5089,7 @@ DrawAffectedToDck[in][dd]=0;
 for(int c=0;c<514;c++)
 {FaderDockContains[in][dd][c]=0;}
 }
-DockIsSelected[in][0]=1;//dock 1 enclenché
+DockIsSelected[in][0]=1;//dock 1 enclenchÃ©
 dock_used_by_fader_is[in]=0;
 }
 }
@@ -5197,7 +5197,7 @@ for(int mi=0;mi<2048;mi++)
   miditable[1][mi]=999;   
   miditable[2][mi]=999; 
   midi_levels[mi]=0;
-  midi_send_out[mi]=0;//atribué ou pas
+  midi_send_out[mi]=0;//atribuÃ© ou pas
   index_send_midi_out[mi]=0;       
   is_raccrochage_midi_remote[mi]=0;    
   val_raccrochage_midi[mi]=0;                       
@@ -5473,13 +5473,13 @@ size_symbol[5]=1.0;//fersnel 5kw
 sprintf(symbol_nickname[5],"Fresnel 5kw");
 plot_ecartement_legende[5]=40;
 size_symbol[6]=0.4;//source four
-sprintf(symbol_nickname[6],"SourceFour 26°");
+sprintf(symbol_nickname[6],"SourceFour 26Â°");
 plot_ecartement_legende[6]=80;
 size_symbol[7]=0.4;//source four
-sprintf(symbol_nickname[7],"Source Four 36°");
+sprintf(symbol_nickname[7],"Source Four 36Â°");
 plot_ecartement_legende[7]=80;
 size_symbol[8]=0.4;//source four
-sprintf(symbol_nickname[8],"Source Four 50°");
+sprintf(symbol_nickname[8],"Source Four 50Â°");
 plot_ecartement_legende[8]=80;
 size_symbol[9]=0.7;//dec 1kw longue
 sprintf(symbol_nickname[9],"Dec 611SX");
@@ -5577,7 +5577,7 @@ plot_ecartement_legende[39]=75;
 size_symbol[40]=0.8;//Slide Projector
 sprintf(symbol_nickname[40],"Slide Projector");
 plot_ecartement_legende[40]=40;
-size_symbol[401]=0.9;//rétro projecteur
+size_symbol[401]=0.9;//rÃ©tro projecteur
 sprintf(symbol_nickname[41],"OverHead");
 plot_ecartement_legende[41]=60;
 
@@ -5611,10 +5611,10 @@ size_symbol[50]=0.3;//accessoire
 sprintf(symbol_nickname[50],"Motorized mirror");
 plot_ecartement_legende[50]=50;
 
-size_symbol[51]=0.5;//Machine à fumée
+size_symbol[51]=0.5;//Machine Ã  fumÃ©e
 sprintf(symbol_nickname[51],"Smoke machine");
 plot_ecartement_legende[51]=30;
-size_symbol[52]=0.5;//Machine à fumée
+size_symbol[52]=0.5;//Machine Ã  fumÃ©e
 sprintf(symbol_nickname[52],"Fog machine");
 plot_ecartement_legende[52]=20;
 
@@ -5640,7 +5640,7 @@ plot_ecartement_legende[58]=200;
 size_symbol[59]=0.5;//Barre de couplage
 sprintf(symbol_nickname[59],"Cross Bar");
 plot_ecartement_legende[59]=20;
-size_symbol[60]=0.7;//échelle
+size_symbol[60]=0.7;//Ã©chelle
 sprintf(symbol_nickname[60],"Ladder");
 plot_ecartement_legende[60]=240;
 

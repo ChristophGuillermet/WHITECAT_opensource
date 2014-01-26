@@ -333,7 +333,7 @@ dock_move_actual_step[move_selected]=1;
 dock_moves_contains_steps[move_selected]=1;
 Moves_Inpoint[move_selected]=1;
 
-//remise à plat de l index
+//remise Ã  plat de l index
 index_main_clear=0;
 return(0);   
 }
@@ -360,7 +360,7 @@ temp_asservis_list[cp][dd]=dock_asservis[move_selected][cp][dd];//iris zoom etc
 }   
 }    
 
-//insertion et décalages sont intégrés dès le départ
+//insertion et dÃ©calages sont intÃ©grÃ©s dÃ¨s le dÃ©part
 if(dock_moves_contains_steps[move_selected]<48)
 {
 dock_moves_contains_steps[move_selected]+=1;  
@@ -414,7 +414,7 @@ return(0);
 
 int Move_DelStep(int move_selected)
 {
-//destruction et décalages sont intégrés dès le départ
+//destruction et dÃ©calages sont intÃ©grÃ©s dÃ¨s le dÃ©part
 if(dock_moves_contains_steps[move_selected]>0)
 {
 for (int mv=dock_move_actual_step[move_selected]; mv<dock_moves_contains_steps[move_selected];mv++)
@@ -1140,7 +1140,7 @@ if( window_focus_id==W_MOVER && mouse_x>x_track+20 && mouse_x<x_track+20+60 && m
  {
  if(index_move_back==0 )
  {
- if(index_move_forward==1)//si dejà cross en cours, permet de recaler la position
+ if(index_move_forward==1)//si dejÃ  cross en cours, permet de recaler la position
  {  index_move_forward=0;
     dock_move_actual_step[dock_move_selected]++;
     if(dock_move_actual_step[dock_move_selected]>dock_moves_contains_steps[dock_move_selected])
@@ -1332,7 +1332,7 @@ param_editor(x_track+530,y_track);
 
 
 /////////////////////////////////////////////////////////////////////////////////
-//mis ici pour cause de visibilité avec splines
+//mis ici pour cause de visibilitÃ© avec splines
 if(index_show_points==1)
 {                        
 Print_Points(dock_move_selected);
@@ -1538,7 +1538,7 @@ int Move_do_crossfade(int move_selected)//crossfades
  {
  if(index_spline==0)
  {
- //égalités
+ //Ã©galitÃ©s
  if(x_val_at_beg[move_selected]==x_val_at_end[move_selected])
  {
  mover_params[0][0]=(int)x_val_at_end[move_selected];                   
@@ -1582,7 +1582,7 @@ int Move_do_crossfade(int move_selected)//crossfades
  {
  if(index_spline==0)
  {
- //égalités
+ //Ã©galitÃ©s
  if(x_val_at_beg[move_selected]==x_val_at_end[move_selected])
  {
  mover_params[0][0]=((int)x_val_at_end[move_selected])>>8;    
@@ -1631,7 +1631,7 @@ int Move_do_crossfade(int move_selected)//crossfades
  
  
  //la suite des datas normaux
- //egalités
+ //egalitÃ©s
   if(iris_at_beg[move_selected]==iris_at_end[move_selected])
  {
  mover_params[2][0]=(int)iris_at_end[move_selected];                   

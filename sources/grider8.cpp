@@ -105,7 +105,7 @@ if(actual_time<(grid_crossfade_start_time[num_grid_player]+grid_delay_in[num_gri
 BackPreset.Draw(CouleurBlind.WithAlpha(alpha_blinker)); 
 }
 }
- //accélérometer du player
+ //accÃ©lÃ©rometer du player
  Rect AcelGrid(Vec2D(xb,yb+30),Vec2D(127,10));
  AcelGrid.DrawOutline(CouleurLigne.WithAlpha(0.5));
  Rect AccelB(Vec2D(xb+grid_crossfade_speed[num_grid_player]-5,yb+30),Vec2D(10,10));
@@ -434,7 +434,7 @@ else if(grid_levels[grid_selected][gr_st_selected][tempfu]>0 && grid_levels[grid
 {
 QuadCh.Draw(CouleurGreen.WithAlpha(3*(1.0/255.0)*(grid_levels[grid_selected][gr_st_selected][tempfu])));                                                                                                        
 }
-//step précedent, info
+//step prÃ©cedent, info
 if(grid_levels[grid_selected][gr_st_selected-1][tempfu]>0)
 {
 Rect QuadPrev(Vec2D(tmpx,tmpy),Vec2D(5,5));
@@ -451,7 +451,7 @@ QuadNext.Draw(CouleurLigne);
 Rect ShowOffset(Vec2D(0,0),Vec2D(15,15));
 for(int pr=0;pr<6;pr++)
 {
- if( draw_brush_type[pr]==1 && draw_get_gpl[pr]==num_grid_player+1)//si GPL tracké depuis DRAW
+ if( draw_brush_type[pr]==1 && draw_get_gpl[pr]==num_grid_player+1)//si GPL trackÃ© depuis DRAW
  {
  ShowOffset.MoveTo(Vec2D(xb+ (((draw_offset_gpl[pr]-1)%grider_nb_col)*15) , yb+ (((draw_offset_gpl[pr]-1)/grider_nb_col)*15)   ));
  ShowOffset.SetLineWidth(2.0);
@@ -649,7 +649,7 @@ if(window_focus_id==W_GRID && mouse_x>xb+150 && mouse_x<xb+200 && mouse_y>yb+10 
 GriderSt.DrawOutline(CouleurLigne);
 }
 
-//déplacement dans les pas
+//dÃ©placement dans les pas
 previous_button_view(xb+220,yb+10,0);
 next_button_view(xb+250,yb+10,0);
 

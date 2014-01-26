@@ -97,7 +97,7 @@ for (int cm=0;cm<2;cm++)
  {
  for(int f=0;f<core_user_define_nb_faders;f++)
  {
- FaderLocked_Preset[calcul_lock][f]=0;        //reset des états avant stockage
+ FaderLocked_Preset[calcul_lock][f]=0;        //reset des Ã©tats avant stockage
  StateOfFaderBeforeLock_Preset[calcul_lock][f]=0; 
  LockFader_is_FullLevel_Preset[calcul_lock][f]=0;      
  if ( FaderLocked[f]==1)
@@ -632,7 +632,7 @@ else
 {
 if(mouse_released==0)
 {
-bool index_choose_mode_dkloop=0;//0 toggle tt le monde / 1 copie l etat du dck selctionné dans tt le monde
+bool index_choose_mode_dkloop=0;//0 toggle tt le monde / 1 copie l etat du dck selctionnÃ© dans tt le monde
 
 for (int ck=0;ck<core_user_define_nb_docks-1;ck++)
 {
@@ -648,7 +648,7 @@ for(int op=0;op<core_user_define_nb_docks;op++)
 }
 break;
 case 1:
-//tout le monde prend la valeur du dock selectionné
+//tout le monde prend la valeur du dock selectionnÃ©
 for(int j=0;j<core_user_define_nb_docks;j++)
 {
 if(DockIsSelected[cmptfader][j]==1)
@@ -763,7 +763,7 @@ if(index_moving_fader_space==0)
 {
 for (int cmptfader=0;cmptfader<nbr_fader;cmptfader++)
 {
-//on affiche et actionne que si les données sont dans l espace de l ecran
+//on affiche et actionne que si les donnÃ©es sont dans l espace de l ecran
 if(((x+(cmptfader*espacement)+espacement)>0)&& ((x+(cmptfader*espacement)+largeur)< LargeurEspaceFaderSize))
 {        
 //route FX
@@ -791,7 +791,7 @@ mouse_released=1;
 //////////////AU DESSUS FADER////////////////////////////////////////////////////                                                    
 if(mouse_x>x+(cmptfader*espacement) && mouse_x<x+(cmptfader*espacement)+largeur && mouse_y>=y && mouse_y<=y+255)
 {
- //affichage qui dans dock si VIEW activé             
+ //affichage qui dans dock si VIEW activÃ©             
 show_who_is_in_dock( cmptfader,   detect_dock_used(cmptfader));
 set_mouse_range(x+(cmptfader*espacement), y, x+(cmptfader*espacement)+largeur, y+255);//pour pas deborder
 //click niveau fader
@@ -890,7 +890,7 @@ if(mouse_x>=(x+(cmptfader*espacement)+(largeur+30)) && mouse_x<=(x+(cmptfader*es
    && mouse_y>=(y + (dd*40)) && mouse_y<=(y + (dd*40)+20)
    && index_over_function_call==0 )
  {
-// show_who_is_in_dock(cmptfader,dd);  //mise en affichage sélection de qui est dans le dock  
+// show_who_is_in_dock(cmptfader,dd);  //mise en affichage sÃ©lection de qui est dans le dock  
  
  
  //selection dock
@@ -1156,7 +1156,7 @@ if(Midi_Faders_Affectation_Type!=0)
    break; 
    case 1:
    FaderLocked[cmptfader]=0;
-   //remise à plat du niveau
+   //remise Ã  plat du niveau
    Fader[cmptfader]=(unsigned char)((((float)(StateOfFaderBeforeLock[cmptfader]))/255)*locklevel);
    midi_levels[cmptfader]=(int)(((float)Fader[cmptfader])/2);
    sprintf(string_Last_Order,">> UNLOCKED Fader %d",cmptfader+1);
@@ -1406,7 +1406,7 @@ chaser_is_playing[the_chaser]=toggle(chaser_is_playing[the_chaser]);
 if(chaser_is_playing[the_chaser]==1)//snap du temps at beg
 {
 chaser_start_time[the_chaser]=actual_time;
-//bug olivier marche arriere arrière ligne
+//bug olivier marche arriere arriÃ¨re ligne
 if(chaser_step_is[chaser_selected]<0){chaser_step_is[chaser_selected]=0;}
 else if(chaser_step_is[chaser_selected]>35){chaser_step_is[chaser_selected]=35;}
 }

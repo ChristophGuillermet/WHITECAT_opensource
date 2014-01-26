@@ -86,7 +86,7 @@ int close_sunlite()
               sprintf(string_display_dmx_params,"Sunlite close dll access=Ok"); 
          }    
          
- //déchargement dll       
+ //dÃ©chargement dll       
  if (hLibSunlite != NULL)
      {     FreeLibrary(hLibSunlite);
         hLibSunlite = NULL;
@@ -143,7 +143,7 @@ if(dasusbcommand >0 && index_quit==0 && index_allow_sunlite_dmxIN==1)
 int Reto=dasusbcommand(DHC_DMX2IN,512,dmxINsunlite);   
 for (int p=0;p<512;p++)
 {
- dmxIN[p+2]=dmxINsunlite[p];   //ok +2 fonctionne tres bien de 1 à 512 compris
+ dmxIN[p+2]=dmxINsunlite[p];   //ok +2 fonctionne tres bien de 1 Ã  512 compris
 }
 }
 return(0);

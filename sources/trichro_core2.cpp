@@ -27,7 +27,7 @@ int CounterClockWise ( double Pt0_X, double Pt0_Y, double Pt1_X, double Pt1_Y, d
  dy1 = Pt1_Y - Pt0_Y ;
  dx2 = Pt2_X - Pt0_X ;
  dy2 = Pt2_Y - Pt0_Y ; 
- /* Verifie si les chiffres sont des zéros */
+ /* Verifie si les chiffres sont des zÃ©ros */
  if ( fabs(dx1) < ACCURACY_DOUBLE )
     dx1 = 0.0 ;
  if ( fabs(dx2) < ACCURACY_DOUBLE )
@@ -144,7 +144,7 @@ angle1=CounterClockWise(mouse_x,mouse_y,xtrichro_window+vxd, ytrichro_window+vyd
 angle2=CounterClockWise(mouse_x,mouse_y,xtrichro_window+vxh, ytrichro_window+vyh,xtrichro_window+vxw, ytrichro_window+vyw);//Pa2 - Pa3
 angle3=CounterClockWise(mouse_x,mouse_y,xtrichro_window+vxw, ytrichro_window+vyw, xtrichro_window+vxd, ytrichro_window+vyd);//Pa3-Pa1
 
-if((angle1*angle2*angle3) <=0 ) //dans le triangle formé par la souris et les 3 points du triangle
+if((angle1*angle2*angle3) <=0 ) //dans le triangle formÃ© par la souris et les 3 points du triangle
 {                 
 
 
@@ -455,7 +455,7 @@ if(mouse_x> xchroma+140-10 && mouse_x< xchroma+140+10 && mouse_y>ychroma+110-10 
 
 raccrochage_midi_logical_circulaire (xchroma-6, ychroma, 497, 125, 125);
 
-do_colors();//ventilation des niveaux pickés ainsi que distrib dans faders et docks
+do_colors();//ventilation des niveaux pickÃ©s ainsi que distrib dans faders et docks
 
 //premiere rangee de dock colors
 
@@ -478,7 +478,7 @@ mouse_released=1;
 }
 }
 }
-//deuxième rangee de dockcolors
+//deuxiÃ¨me rangee de dockcolors
 for (int dock_colortwo=0;dock_colortwo<4;dock_colortwo++)
 {
 if(mouse_x>xchroma-130+(65*dock_colortwo) && mouse_x<xchroma-80+(65*dock_colortwo) && mouse_y>ychroma+255 && mouse_y<ychroma+275)

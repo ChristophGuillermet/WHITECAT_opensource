@@ -39,7 +39,7 @@ if ( keypressed())
 
 int chi = readkey(); 
 scan_ascii_is=(chi & 0xff);//prend pas en compte touches fonctions
-scan_allegro_key_is=(chi >> 8);//prend en compte tout le monde mais à redistribuer fr et anglais
+scan_allegro_key_is=(chi >> 8);//prend en compte tout le monde mais Ã  redistribuer fr et anglais
 
 
 switch (chi >> 8)  
@@ -78,7 +78,7 @@ sprintf(string_key_id,list_keyname[0]);
 key_switch_window_down();
 break; 
 //////////////////SPECIAL KEYS ////////////////////////////////////////////////
-case  KEY_TILDE://carré
+case  KEY_TILDE://carrÃ©
 if(window_focus_id==W_PLOT) {index_move_plot_view_port=toggle(index_move_plot_view_port);}
 break;
 
@@ -172,7 +172,7 @@ reset_indexs_confirmation();
 index_ask_confirm=1; 
 index_do_overecord_mem_plus_faders=1;               
 }     
-else if (key_shifts & KB_SHIFT_FLAG || index_false_shift==1) //creation mémoires en mode merge Faders / seq
+else if (key_shifts & KB_SHIFT_FLAG || index_false_shift==1) //creation mÃ©moires en mode merge Faders / seq
 {
 index_do_dock=0;
 index_do_modify=0; 
@@ -703,7 +703,7 @@ case KEY_SPACE:
             {
             channel_paste();
             }
-            else//si chiffre de mem tapée
+            else//si chiffre de mem tapÃ©e
             {
             index_copy_mem_in=1; 
             index_ask_confirm=1;

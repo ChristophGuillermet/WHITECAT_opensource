@@ -1,7 +1,7 @@
 
 int lfo_fader_functions (int cmptfader, int x, int y, int espacement)
 {    
-Rect GlobalBut(Vec2D(x, y),Vec2D( 25,25 ));//une seule décla pour un bouton // plus rapide !
+Rect GlobalBut(Vec2D(x, y),Vec2D( 25,25 ));//une seule dÃ©cla pour un bouton // plus rapide !
 GlobalBut.SetRoundness(5);
 GlobalBut.SetLineWidth(epaisseur_ligne_fader);
 
@@ -474,7 +474,7 @@ Canvas::SetClipping(0,y-80,LargeurEspaceFaderSize,hauteur_ecran);
 
 for (int cmptfader=0;cmptfader<core_user_define_nb_faders;cmptfader++)
 {
-//on affiche et actionne que si les données sont dans l espace de l ecran
+//on affiche et actionne que si les donnÃ©es sont dans l espace de l ecran
 if(((x+(cmptfader*espacement)+espacement)>0)&& ((x+(cmptfader*espacement))<LargeurEspaceFaderSize))
 {                 
 int niveau=(int)Fader[cmptfader];
@@ -499,7 +499,7 @@ switch(fader_fx_route[cmptfader])
 case 0://espace faders
 RouteMdeFx.Draw(CouleurFader);
 break;  
-case 1://espace séquenciel
+case 1://espace sÃ©quenciel
 RouteMdeFx.Draw(CouleurNiveau.WithAlpha(0.5));
 break;                               
 }
@@ -581,7 +581,7 @@ case 16://echo
 break;
 }
 }
-else//fader locké
+else//fader lockÃ©
 {
 FaderNiveau.Draw(CouleurLock.WithAlpha(myalpha*2));//couleur en vert emeraude
 if(LockFader_is_FullLevel[cmptfader]==1 && actual_master_lock==cmptfader)
@@ -593,12 +593,12 @@ FaderB.DrawOutline(CouleurLigne);
 
 
 ///////////////////////////////////////////////////////////////////////////////
-//Midireceive Midi do order ( attribution des F1 F3 Clear etc par midi sur le dock sélectionné)
+//Midireceive Midi do order ( attribution des F1 F3 Clear etc par midi sur le dock sÃ©lectionnÃ©)
 Rect Midireceive( Vec2D( x+(cmptfader*espacement)+135,y-35), Vec2D ( 15,15));//box du boutton assignation rapide
 Midireceive.SetRoundness(4);  
 Midireceive.SetLineWidth(epaisseur_ligne_fader);  
 
-Midireceive.Draw(CouleurFader.WithAlpha(light_midi_do_order[cmptfader]));//quand midi allumé
+Midireceive.Draw(CouleurFader.WithAlpha(light_midi_do_order[cmptfader]));//quand midi allumÃ©
 if(light_midi_do_order[cmptfader]>0.0){light_midi_do_order[cmptfader]-=0.2;}
 petitpetitchiffre.Print("V",x+(cmptfader*espacement)+138,y-25);
 
@@ -618,7 +618,7 @@ if(window_focus_id==W_FADERS && mouse_x>=(x+(cmptfader*espacement)+70) && mouse_
    && mouse_y>=(y + (dd*40)) && mouse_y<=(y + (dd*40)+20)
    && index_over_function_call==0 )
  {
- show_who_is_in_dock(cmptfader,dd);  //mise en affichage sélection de qui est dans le dock  
+ show_who_is_in_dock(cmptfader,dd);  //mise en affichage sÃ©lection de qui est dans le dock  
 }
 if (DockIsSelected[cmptfader][dd]==1) 
 {
@@ -690,10 +690,10 @@ if (DockIsSelected[cmptfader][dd]==1)
 switch(DockTypeIs[cmptfader][dd])
 {                   
 //types des docks 
-case 1://si le doc est relié aux trichro
+case 1://si le doc est reliÃ© aux trichro
  petitchiffre.Print("Color",x+((cmptfader*espacement)+77),  y +15+ (dd*40));                                    
 break;
-case 2://si le doc est relié à un artnet
+case 2://si le doc est reliÃ© Ã  un artnet
  sprintf( string_docktypnet,"Art-%d",DockNetIs[cmptfader][dd]);
  petitchiffre.Print(string_docktypnet,x+((cmptfader*espacement)+77),  y +15+ (dd*40));                                    
 break;
@@ -811,7 +811,7 @@ LockButton.Draw(CouleurLock.WithAlpha(FaderLocked[cmptfader]));
 
 
 
-//midi out enclenché ou pas FADER
+//midi out enclenchÃ© ou pas FADER
 Circle BMidiOut( x+((cmptfader*espacement)+70),y+250, 10);//box du fader
 BMidiOut.SetLineWidth(epaisseur_ligne_fader);
 BMidiOut.Draw(CouleurBlind.WithAlpha(midi_send_out[cmptfader]));

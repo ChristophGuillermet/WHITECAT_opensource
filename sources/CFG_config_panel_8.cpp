@@ -1330,7 +1330,7 @@ char read_buff[ 512 ] ;
 	cfg_file = fopen("user\\config_network.txt", "rt" );
 	if( !cfg_file )
 	{
-	 printf("\nPb à ouverture de config_network.txt\n");
+	 printf("\nPb Ã  ouverture de config_network.txt\n");
      return 1;
 	}	
 	

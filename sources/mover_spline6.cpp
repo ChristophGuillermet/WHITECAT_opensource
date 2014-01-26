@@ -151,7 +151,7 @@ int Prepare_Cross_Spline(int move_selected)
 
  actual_step_node=dock_move_actual_step[move_selected];
 
- //si tracker pas à l endroit de la memoire
+ //si tracker pas Ã  l endroit de la memoire
  if(mover_params[0][0]!=(dock_move_xy[move_selected][actual_step_node][0]+xmover_window+20) || mover_params[1][0]!=(dock_move_xy[move_selected][actual_step_node][1]+ymover_window+20)) 
  {    nodes[actual_step_node].x=mover_params[0][0]+xmover_window+20;
       nodes[actual_step_node].y=mover_params[1][0]+ymover_window+20;

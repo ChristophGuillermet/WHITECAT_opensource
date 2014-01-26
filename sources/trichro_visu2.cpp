@@ -188,7 +188,7 @@ if( Midi_Faders_Affectation_Type!=0)
 
 
 }
-//deuxième rangee de dockcolors
+//deuxiÃ¨me rangee de dockcolors
 for (int dock_colortwo=0;dock_colortwo<4;dock_colortwo++)
 {
 Rect DockBoxColor2(Vec2D(xchroma-130+(65*dock_colortwo),ychroma+255),Vec2D(50,20));

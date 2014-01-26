@@ -34,7 +34,7 @@ return(0);
 
 int affect_time_from_chrono_to_mem(int mem_to_set_time)
 { 
-//0=DIN 1=IN 2=DOUT 3=OUT    // le out concernant la mémoire précédente
+//0=DIN 1=IN 2=DOUT 3=OUT    // le out concernant la mÃ©moire prÃ©cÃ©dente
 for(int ty=0;ty<4;ty++)
 {
  if(index_type_of_time_to_affect[ty]==1)
@@ -637,7 +637,7 @@ if(((255.0-ratio_X1X2_together)/255)==1.0){niveauX1=(255-niveauX2);}
 else { niveauX1=255-remapX1[niveauX2];     }
 if(niveauX1<0){niveauX1=0;}
 if(niveauX1>255){niveauX1=255;}
-if (niveauX2==255){niveauX1=0;}//report à zero
+if (niveauX2==255){niveauX1=0;}//report Ã  zero
 if(midi_send_out[491]==1){index_send_midi_out[491]=1;}
 }
 }
@@ -653,7 +653,7 @@ mouse_released=1;
 
 
 raccrochage_midi_logical_vertical_dmx ( x_seq+480, (y_seq+80), 491, 45, 255);//X1
-raccrochage_midi_logical_vertical_dmx ( x_seq+580, (y_seq+80), 492, 45, 255);//X2 séparés car inversés pour l'affichage etc
+raccrochage_midi_logical_vertical_dmx ( x_seq+580, (y_seq+80), 492, 45, 255);//X2 sÃ©parÃ©s car inversÃ©s pour l'affichage etc
 
 //TOGETHER
 
@@ -1082,7 +1082,7 @@ mouse_released=1;
 }        
 }
 
-//grid player 1 embarqué
+//grid player 1 embarquÃ©
 if(show_gridplayer_in_seq==1)
 {
 

@@ -275,7 +275,7 @@ sprintf(annotation_memoires[pm],"");
 annotation_memoires[pm][24]='\0';    
 }
 
-//recopie des memoires à insérer
+//recopie des memoires Ã  insÃ©rer
 int index_mem=0;
 int fin_des_memoires=0;
 for(int look=wizard_from_mem;look<=wizard_to_mem;look++)
@@ -296,7 +296,7 @@ fin_des_memoires=variable_wizard_mem+index_mem;
 }
 }
 //le recopiage et decalage du reste
-//arrondissage index_mem pour garder la logique du numérotage des .
+//arrondissage index_mem pour garder la logique du numÃ©rotage des .
 index_mem/=10;
 index_mem+=1;
 index_mem*=10;
@@ -477,7 +477,7 @@ for(int co=1;co<512;co++)
 {
 if(wizard_buffer_in[co]==1)
 {
-if(Memoires[m][co]>0)//on ne rajoute pas sur un circuit à 0%
+if(Memoires[m][co]>0)//on ne rajoute pas sur un circuit Ã  0%
 {
 switch(dmx_view)
 {
@@ -511,7 +511,7 @@ for(int co=1;co<512;co++)
 {
 if(wizard_buffer_in[co]==1)
 {
-if(Memoires[m][co]>0)//on ne retire pas sur un circuit à 0%
+if(Memoires[m][co]>0)//on ne retire pas sur un circuit Ã  0%
 {
 switch(dmx_view)
 {

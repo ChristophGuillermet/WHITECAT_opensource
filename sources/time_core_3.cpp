@@ -358,7 +358,7 @@ if(numeric_postext==0 && index_window_chasers==1)
             {
             set_chaser_tempo_unit(chaser_selected);
             }
-            else//si chiffre de chaser tapé
+            else//si chiffre de chaser tapÃ©
             {
             int chazr=atoi(numeric);
             if(chazr>0 && chazr<128)

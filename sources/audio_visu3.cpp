@@ -372,7 +372,7 @@ for (int y=1;y<(index_nbre_players_visibles*6);y++)
 {
 Rect OverAudioFile(Vec2D(xb+355,(yb+45+(y*20)-10)),Vec2D(200,20));
 OverAudioFile.SetRoundness(7.5);
-//affichage qui est selectionné
+//affichage qui est selectionnÃ©
 if(strcmp(audiofile_name,list_audio_files[audiofile_selected])==0 && (audiofile_selected==(y+line_audio)) )
 {OverAudioFile.Draw(CouleurBlind);}
 

@@ -351,7 +351,7 @@ OverAudioFile.SetRoundness(7.5);
 
 OverAudioFile.Draw(CouleurFond.WithAlpha(0.5*ind));
 ind=toggle(ind);
-//affichage qui est selectionné
+//affichage qui est selectionnÃ©
 if(strcmp(audiofile_name,list_audio_files[audiofile_selected])==0 && (audiofile_selected==(y+line_audio)) )
 {OverAudioFile.Draw(CouleurBlind);}
 

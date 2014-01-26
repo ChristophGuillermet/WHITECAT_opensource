@@ -11,7 +11,7 @@
 #define VER_RELEASE	2
 #define VER_BUILD	8
 #define COMPANY_NAME	"www.le-chat-noir-numerique.fr"
-#define FILE_VERSION	"béta 0.8.2.8"
+#define FILE_VERSION	"bÃ©ta 0.8.2.8"
 #define FILE_DESCRIPTION	"White Cat: a dmx lighting board for theatre dance and music"
 #define INTERNAL_NAME	""
 #define LEGAL_COPYRIGHT	"(c)Christoph Guillermet"

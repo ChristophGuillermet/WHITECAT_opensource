@@ -29,7 +29,7 @@ if((nb)+(lb*8)<core_user_define_nb_bangers)
 {
 Circle BangerFeedback(Vec2D(xvis+(nb*12)+30,yvis+(lb*12)+30),5);
 BangerFeedback.DrawOutline(CouleurLigne.WithAlpha(0.5));
-if(bang_is_sended[(nb)+(lb*8)]==0 && (((nb)+(lb*8))<127))//évenement pas encore fini dans son éxécution
+if(bang_is_sended[(nb)+(lb*8)]==0 && (((nb)+(lb*8))<127))//Ã©venement pas encore fini dans son Ã©xÃ©cution
 {
 BangerFeedback.Draw(CouleurBlind.WithAlpha(alpha_blinker));                                                 
 }

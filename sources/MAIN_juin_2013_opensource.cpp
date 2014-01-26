@@ -154,7 +154,7 @@ if(alpha_blinker>1){alpha_blinker=0.2;}
 return(0);
 }
 /////////////////TIMER POUR DATA ET REFRESH RATE////////////////////////////////
-void ticker_dmxIn() // nettoyage des ticker pour verifier stabilité
+void ticker_dmxIn() // nettoyage des ticker pour verifier stabilitÃ©
 {
 Receive_DMX_IN();      
 }
@@ -189,8 +189,8 @@ switch (i)
       // for (int i=0;i<core_user_define_nb_bangers;i++){do_bang(i);}// dans full loop
        break;
        case 3:
-       //trichro_back_buffer(315/2,550/2,125,15);//calcul trichro ( triangle et saturation dans buffer separé)
-       break;//obligé dans main loop
+       //trichro_back_buffer(315/2,550/2,125,15);//calcul trichro ( triangle et saturation dans buffer separÃ©)
+       break;//obligÃ© dans main loop
        case 4:
        ventilation_video_trackers();
        break;
@@ -375,7 +375,7 @@ dock_used_by_fader_is[yr]=detect_dock_used(yr);
  
 do_sprintf_job();//include time_left calculs       
 refresh_minifader_state_view_core(position_minifader_selected);//les infos dock temps etc dans fenetre minifaders
-match_minifaders();//verif du preset en cours: correspond ou pas à un des 8 preset
+match_minifaders();//verif du preset en cours: correspond ou pas Ã  un des 8 preset
 nbre_fenetre_actives=check_nbre_opened_windows(); 
   
       if(index_do_quick_save==1)
@@ -412,7 +412,7 @@ sprintf(string_last_copy_mem,"Mem to copy: %d.%d", CTRLC_mem_to_copy/10,CTRLC_me
 switch(index_patch_window)
 {
 case 0:
-sprintf(string_secondary_feeback,string_last_over_dock);//last over dock: permet de savoir quelle selection orange est allumée
+sprintf(string_secondary_feeback,string_last_over_dock);//last over dock: permet de savoir quelle selection orange est allumÃ©e
 break;
 case 1:
 sprintf(string_secondary_feeback,string_monitor_patch);
@@ -442,7 +442,7 @@ if (enable_iCat==1 && iCat_serveur_is_initialized==1 && index_quit==0 && index_i
       refresh_continuously_iCat_buttons();
       refresh_continuously_iCat_trackerzones();
       }
-      /*for(int nbr=0;nbr<12;nbr++)//sensibilité clavier
+      /*for(int nbr=0;nbr<12;nbr++)//sensibilitÃ© clavier
       {
       FS_sensibilite_touche[nbr]-=1;
       if( FS_sensibilite_touche[nbr]<0){ FS_sensibilite_touche[nbr]=0;}
@@ -460,7 +460,7 @@ index_edit_light_plot=1;
 index_enable_edit_Draw=1;
 index_enable_edit_echo=1;                  
 }
-if(right_click_for_menu==1)//sortie du call back pour écrire correctement fermeture fenetres
+if(right_click_for_menu==1)//sortie du call back pour Ã©crire correctement fermeture fenetres
 {do_mouse_right_click_menu();}
 
 }
@@ -689,8 +689,8 @@ int main_actions_on_screen()
       if(index_writing_curve==0){Boxes();}
       if(core_do_calculations[3]==1)
       {
-      trichro_back_buffer(315/2,550/2,125,15);//calcul trichro ( triangle et saturation dans buffer separé)
-      do_colors();//ventilation des niveaux pickés ainsi que distrib dans faders et docks
+      trichro_back_buffer(315/2,550/2,125,15);//calcul trichro ( triangle et saturation dans buffer separÃ©)
+      do_colors();//ventilation des niveaux pickÃ©s ainsi que distrib dans faders et docks
       }
       DoMouse();
       previous_ch_selected=last_ch_selected;  
@@ -812,7 +812,7 @@ reset_all_bangers();
 // generation_Tableau_noms_fonctions() ;
  save_load_print_to_screen("Init Midi");
  InitMidi();//init avant les appels de fichiers	
- midi_init_sepecial_case_key_on();//pour régler pb de cle flashs et key on key off
+ midi_init_sepecial_case_key_on();//pour rÃ©gler pb de cle flashs et key on key off
  ////////////////////////////////////////////////////////////
 
  load_onstart_config();
@@ -894,7 +894,7 @@ if(there_is_an_error_on_save_load==1){index_show_save_load_report=1;there_is_cha
 
  mouse_released=0;
  entered_main=1;
-//launchpad séparé
+//launchpad sÃ©parÃ©
 if(enable_launchpad==1)
 {reset_launchpad();}
  
@@ -982,7 +982,7 @@ starting_wcat=0;
 while(index_quit!=1)
 {   
 MemoiresExistantes[0]=1;
-show_im_recording_a_time=0;// met à zéro l'affichage du stock visuel du time
+show_im_recording_a_time=0;// met Ã  zÃ©ro l'affichage du stock visuel du time
 
  switch(index_art_polling)
  {

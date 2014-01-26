@@ -12,7 +12,7 @@ return(0);
 
 int load_curve_in_temp_curve()
 {
-index_curve_spline_level=the_curve_spline_level[curve_selected];   //pixels de l editeur    le float est recalculé dans la boucle
+index_curve_spline_level=the_curve_spline_level[curve_selected];   //pixels de l editeur    le float est recalculÃ© dans la boucle
 return(0);   
 }
 
@@ -228,7 +228,7 @@ int maxchan_per_ligne=7;
 int grad=0;
 for (int l=0;l<86;l++)
 {
-if(l==85){maxchan_per_ligne=3;} //derniere ligne à 512
+if(l==85){maxchan_per_ligne=3;} //derniere ligne Ã  512
 
 for (int c=1; c<maxchan_per_ligne;c++)
 {    
@@ -244,7 +244,7 @@ else if(Dimmers_selected[grad]==1)
 {
 Dimmers_selected[grad]=0;
 } 
-if(index_affect_patch==1)//affectation manuelle à la souris
+if(index_affect_patch==1)//affectation manuelle Ã  la souris
 {
 Patch[grad]=last_ch_selected;
 sprintf(string_Last_Order,">> Dimmer %d affected to Channel %d",grad, last_ch_selected);

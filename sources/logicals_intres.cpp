@@ -417,7 +417,7 @@ break;
 }
 }
 
-else if(index_ask_curv_to_fader==1)//attribution de courbe à un fader
+else if(index_ask_curv_to_fader==1)//attribution de courbe Ã  un fader
 {
  sprintf(string_confirmation,"Affect to Fader %d Curve %d ?",fader_selected_for_record+1,curve_asked_for_fader);       
      

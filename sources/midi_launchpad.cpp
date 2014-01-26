@@ -97,7 +97,7 @@ launchpad_color_defined[1267+yo]=lch_orange_fonce;    //on iCat preset
 
 launchpad_color_defined[1277]=lch_red;    //midi mute general
 
-//appels de fenetres en midi nouveau systeme menu interface générale
+//appels de fenetres en midi nouveau systeme menu interface gÃ©nÃ©rale
 for(int io=0;io<25;io++)
 {
 launchpad_color_defined[io+1329]=lch_orange;
@@ -129,7 +129,7 @@ launchpad_color_defined[1591]=lch_red;//on off reset accelerometre on crossfade 
 
 int launchpad_set_led(int control, int color)
 {
-if(miditable[0][control]<5 && miditable[1][control]<128 && miditable[2][control]<128)//pour éviter d'envoyer une note inexistante et de planter midishare
+if(miditable[0][control]<5 && miditable[1][control]<128 && miditable[2][control]<128)//pour Ã©viter d'envoyer une note inexistante et de planter midishare
 {
 send_my_midi_note(miditable[0][control],miditable[1][control],miditable[2][control],color, 25);  
 }
@@ -413,7 +413,7 @@ define_colors();
 send_my_midi_note(4,0,0,0,10);  
 //maping xy
 send_my_midi_note_delayed(4,0,0,1,10,10);
-//rafraichissement des états des leds à l ouverture    
+//rafraichissement des Ã©tats des leds Ã  l ouverture    
 launchpad_refresh_buffer_led();  
 //mise en palce buffer 1
 //launchpad_buffer=0;

@@ -98,10 +98,10 @@ Rect LevelModified(Vec2D(xchan,ypos_l),Vec2D(20,13));
    
 for (int l=0;l<43;l++)
 {
-if (l==42) {maxchan_per_ligne=9;} //derniere ligne ‡ 512
+if (l==42) {maxchan_per_ligne=9;} //derniere ligne √† 512
 
-//on affiche et actionne que si les donnÈes
-//sont dans la fenetre de l espace circuit cad si la ligne et son incrÈments sont inferieurs au y de l espace fader // AFFICHAGE ONLY SELECTION PLUS BAS
+//on affiche et actionne que si les donn√©es
+//sont dans la fenetre de l espace circuit cad si la ligne et son incr√©ments sont inferieurs au y de l espace fader // AFFICHAGE ONLY SELECTION PLUS BAS
 if
 (
 (index_show_faders==0 && ((((ychan*l)+ 40 - (int)((float)(scroll)* Ch_Scroll_Factor))>0)&&(((ychan*l) + 60 - (int)((float)(scroll)* Ch_Scroll_Factor))<hauteur_ecran)))
@@ -144,14 +144,14 @@ ChannelRect.Draw(CouleurFader.WithAlpha(myalpha_channel/2));
 }
 
 //BLIND
-switch(index_blind)//differencec avec mem enregistrÈe
+switch(index_blind)//differencec avec mem enregistr√©e
 {
 case 0:
 if(bufferSaisie[num_circ]!=Memoires[position_onstage][num_circ] && index_blink_change_memories==1)
 {ChannelRect.Draw(CouleurNiveau.WithAlpha(alpha_blinker));}    
 break;
 case 1:
-//difference avec mem enregistrÈe
+//difference avec mem enregistr√©e
 if(bufferBlind[num_circ]!=Memoires[position_preset][num_circ]  && index_blink_change_memories==1)
 {ChannelRect.Draw(CouleurBlind.WithAlpha(alpha_blinker));}    
 break;
@@ -186,16 +186,16 @@ break;
 
 if(index_inspekt==1)
 {
-//Affiche du dernier dock survolÈ 
+//Affiche du dernier dock survol√© 
 if (show_who_is_in_FADER_DOCK[num_circ]==1 ) 
 {    
 ChannelRect.DrawOutline(CouleurFader);
-//affichage du niveau du dock survolÈ
+//affichage du niveau du dock survol√©
 LevelOverdock.MoveTo(Vec2D(((xchan-5) + (xposch))+15,((ypos_l)+ 92 - ypos_ch)));   
 LevelOverdock.Draw(CouleurFader);  
 }
 //affichage du master  qui envoie le plus haut niveau au circuit
-if(highest_level_comes_from_fader[num_circ]>0)//si le highest level exist : valeur faders de 1 ‡ 48 quand attribuÈ
+if(highest_level_comes_from_fader[num_circ]>0)//si le highest level exist : valeur faders de 1 √† 48 quand attribu√©
 {
 petitdoomInspekt.Print(ol::ToString(highest_level_comes_from_fader[num_circ]) ,((xchan + (xposch))+15),((ypos_l) + 72 - ypos_ch),CENTER); 
 }
@@ -336,7 +336,7 @@ break;
 }
 
 
-//premier dimmer patchÈ
+//premier dimmer patch√©
 if(index_show_first_dim==1)
 {
 for(int llo=0;llo<4;llo++)
@@ -375,7 +375,7 @@ int Draw_Channel_Preset_Title(int xchan, int ychan, int prst_v)
  Rect Build(Vec2D(xchan+520,ychan),Vec2D(55,20));
  Build.SetRoundness(3);
  
-if(prst_v!=0)//pas la vue patchÈe
+if(prst_v!=0)//pas la vue patch√©e
 {
  Rect M(Vec2D(xchan+435,ychan),Vec2D(20,20));
  M.SetRoundness(3);
@@ -538,14 +538,14 @@ ChannelRect.Draw(CouleurFader.WithAlpha(myalpha_channel/2));
 }
 
 //BLIND
-switch(index_blind)//differencec avec mem enregistrÈe
+switch(index_blind)//differencec avec mem enregistr√©e
 {
 case 0:
 if(bufferSaisie[num_circ]!=Memoires[position_onstage][num_circ] && index_blink_change_memories==1)
 {ChannelRect.Draw(CouleurNiveau.WithAlpha(alpha_blinker));}    
 break;
 case 1:
-//difference avec mem enregistrÈe
+//difference avec mem enregistr√©e
 if(bufferBlind[num_circ]!=Memoires[position_preset][num_circ]  && index_blink_change_memories==1)
 {ChannelRect.Draw(CouleurBlind.WithAlpha(alpha_blinker));}    
 break;
@@ -580,16 +580,16 @@ break;
 
 if(index_inspekt==1)
 {
-//Affiche du dernier dock survolÈ 
+//Affiche du dernier dock survol√© 
 if (show_who_is_in_FADER_DOCK[num_circ]==1 ) 
 {    
 ChannelRect.DrawOutline(CouleurFader);
-//affichage du niveau du dock survolÈ
+//affichage du niveau du dock survol√©
 LevelOverdock.MoveTo(Vec2D(((xchan-5) + (xposch))+15, ypos_ch+52));   
 LevelOverdock.Draw(CouleurFader);  
 }
 //affichage du master  qui envoie le plus haut niveau au circuit
-if(highest_level_comes_from_fader[num_circ]>0)//si le highest level exist : valeur faders de 1 ‡ 48 quand attribuÈ
+if(highest_level_comes_from_fader[num_circ]>0)//si le highest level exist : valeur faders de 1 √† 48 quand attribu√©
 {
 petitdoomInspekt.Print(ol::ToString(highest_level_comes_from_fader[num_circ]) ,((xchan + (xposch))+15),ypos_ch+32,CENTER); 
 }
@@ -729,7 +729,7 @@ break;
 }
 }
 
-//premier dimmer patchÈ
+//premier dimmer patch√©
 if(index_show_first_dim==1)
 {
 for(int llo=0;llo<4;llo++)

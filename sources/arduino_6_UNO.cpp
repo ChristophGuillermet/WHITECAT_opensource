@@ -1,7 +1,7 @@
 
 
 /*
-int arduino_decode_keyword_method(char *tmp_ard)//pas genial pour analogiques en simultanné
+int arduino_decode_keyword_method(char *tmp_ard)//pas genial pour analogiques en simultannÃ©
 {
 if(strncmp(tmp_ard,"DG/",3)==0)//3= le code
 {
@@ -66,7 +66,7 @@ arduino_order[0]='S';arduino_order[1]='D';arduino_order[2]='/';arduino_order[3]=
 
 
 int nBytesSendtoArduino=serial0.SendData(arduino_order,4); 
-//capture de l'état précédent
+//capture de l'Ã©tat prÃ©cÃ©dent
 for(int y=0;y<arduino_max_digital;y++)
 {
 previous_digital_data_from_arduino[y]=digital_data_from_arduino[y];        
@@ -341,7 +341,7 @@ if(mouse_button==1 && mouse_released==0)
 int valois=atoi(numeric);
 
 ///INPUT/////////////////////////////////////////////////////////////////////
-//data Val1 range pour un input de type fader ( 0 à 11 )
+//data Val1 range pour un input de type fader ( 0 Ã  11 )
 if(
 arduino_digital_type[position_line_io+y]==1
 && arduino_digital_function_input[position_line_io+y][0]>=0 && arduino_digital_function_input[position_line_io+y][0]<=11 
@@ -350,7 +350,7 @@ arduino_digital_type[position_line_io+y]==1
 {
 arduino_digital_function_input[position_line_io+y][1]=valois;                                                            
 }
-//faire data range pour le picth: 0 à 127
+//faire data range pour le picth: 0 Ã  127
 if(
 arduino_digital_type[position_line_io+y]==1
 && ( arduino_digital_function_input[position_line_io+y][0]>=17 || arduino_digital_function_input[position_line_io+y][0]<=32) 
@@ -606,10 +606,10 @@ switch(arduino_digital_function_output[position_line_io+y][0])
 case 0://desafected
 sprintf(string_temp_familly,"-");
 break;
-case 1: //relié à un circuit  
+case 1: //reliÃ© Ã  un circuit  
 sprintf(string_temp_familly,"Channel >10");            
 break;
-case 2://relié à un fader
+case 2://reliÃ© Ã  un fader
 sprintf(string_temp_familly,"Fader >10");
 break;
 }
@@ -624,10 +624,10 @@ switch(arduino_digital_function_output[position_line_io+y][0])
 case 0://desafected
 sprintf(string_temp_familly,"-");
 break;
-case 1: //relié à un circuit  
+case 1: //reliÃ© Ã  un circuit  
 sprintf(string_temp_familly,"Channel");            
 break;
-case 2://relié à un fader
+case 2://reliÃ© Ã  un fader
 sprintf(string_temp_familly,"Fader");
 break;
 }

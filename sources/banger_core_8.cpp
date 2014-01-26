@@ -94,7 +94,7 @@ if(the_fader_is>=0 && the_fader_is<core_user_define_nb_faders)
      {
      case 0:
      FaderLocked[the_fader_is]=0;
-     //remise à plat du niveau
+     //remise Ã  plat du niveau
      Fader[the_fader_is]=(unsigned char)((((float)(StateOfFaderBeforeLock[the_fader_is]))/255)*locklevel);
      midi_levels[the_fader_is]=(int)(((float)Fader[the_fader_is])/2);
      break;   
@@ -153,7 +153,7 @@ if(the_fader_is>=0 && the_fader_is<core_user_define_nb_faders)
      }  
      sprintf(string_event,"BACK:Saw Fader %d",the_fader_is+1);
      break;               
-     case 4://to prev dock devient inversé
+     case 4://to prev dock devient inversÃ©
       switch(param2_is)
      {
      case 0:
@@ -293,7 +293,7 @@ if(the_fader_is>=0 && the_fader_is<core_user_define_nb_faders)
      }
      }
      break;
-     case 14://paste to stage output of faders annulé et récup de l etat de la memoire
+     case 14://paste to stage output of faders annulÃ© et rÃ©cup de l etat de la memoire
      //no back up
      sprintf(string_event,"NO BACK: Paste Fader %d",the_fader_is+1);
      break;
@@ -339,7 +339,7 @@ if(the_fader_is>=0 && the_fader_is<core_user_define_nb_faders)
      break;
      case 23: // recall n a pas de back 
      break;
-     case 24://LOCKS PRESET inversé
+     case 24://LOCKS PRESET inversÃ©
      param1_is=bangers_params[banger_num][event_num][0]-1;
      do_lock_preset(param1_is);  
      break;
@@ -1423,7 +1423,7 @@ int back_up_fader_if_a_fader_inside(int banger_num)
 
 
 
-int do_send_bang()//remise à zéro du bang concerné pour le lancement depuis une mémoire
+int do_send_bang()//remise Ã  zÃ©ro du bang concernÃ© pour le lancement depuis une mÃ©moire
 {
 if(index_banger_is_on==1 && (Banger_Memoire[position_preset]>0 && Banger_Memoire[position_preset]<128))
 {
@@ -1432,10 +1432,10 @@ back_up_fader_if_a_fader_inside(banger_to_send);
 sprintf(string_Last_Order,">> Banging %d from mem %d.%d",Banger_Memoire[position_preset],position_preset/10,position_preset%10);
 start_time_for_banger[banger_to_send]=actual_time;  
 
-//reset du banger concerné
-for (int o=0;o<6;o++)//reset des évènements
+//reset du banger concernÃ©
+for (int o=0;o<6;o++)//reset des Ã©vÃ¨nements
 {event_sended[banger_to_send][o]=0;}
-bang_is_sended[banger_to_send]=0;//reset de l event si il a été lancé dejà une fois
+bang_is_sended[banger_to_send]=0;//reset de l event si il a Ã©tÃ© lancÃ© dejÃ  une fois
 }
 
 return(0);   
@@ -1473,7 +1473,7 @@ if(the_fader_is>=0 && the_fader_is<core_user_define_nb_faders)
      {
      case 0:
      FaderLocked[the_fader_is]=0;
-     //remise à plat du niveau
+     //remise Ã  plat du niveau
      Fader[the_fader_is]=(unsigned char)((((float)(StateOfFaderBeforeLock[the_fader_is]))/255)*locklevel);
      midi_levels[the_fader_is]=(int)(((float)Fader[the_fader_is])/2);
      sprintf(string_event,"UNLOCKED Fader %d",the_fader_is+1);
@@ -1878,7 +1878,7 @@ if(the_fader_is>=0 && the_fader_is<core_user_define_nb_faders)
       break;
       case 1:
       chaser_start_time[ChaserAffectedToDck[the_fader_is][(dock_used_by_fader_is[param1_is])]]=actual_time;
-      //bug olivier marche arriere arrière ligne
+      //bug olivier marche arriere arriÃ¨re ligne
       if(chaser_step_is[ChaserAffectedToDck[the_fader_is][(dock_used_by_fader_is[param1_is])]]<0){chaser_step_is[ChaserAffectedToDck[the_fader_is][(dock_used_by_fader_is[param1_is])]]=0;}
       else if(chaser_step_is[ChaserAffectedToDck[the_fader_is][(dock_used_by_fader_is[param1_is])]]>35){chaser_step_is[ChaserAffectedToDck[the_fader_is][(dock_used_by_fader_is[param1_is])]]=35;}     
       sprintf(string_event,"PLAY Chaser %d in Fader %d Dock %d ",ChaserAffectedToDck[the_fader_is][(dock_used_by_fader_is[param1_is])], the_fader_is+1,dock_used_by_fader_is[param1_is]+1);
@@ -3113,7 +3113,7 @@ switch(bangers_action[banger_num][event_num])
       case 1:
       sprintf(string_event,"Chaser %d PLAY ON",param1_is);  
       chaser_start_time[param1_is-1]=actual_time;
-      //bug olivier marche arriere arrière ligne
+      //bug olivier marche arriere arriÃ¨re ligne
       if(chaser_step_is[param1_is-1]<0){chaser_step_is[param1_is-1]=0;}
       else if(chaser_step_is[param1_is-1]>35){chaser_step_is[param1_is-1]=35;}
       break;                 
@@ -3678,7 +3678,7 @@ if( bangers_params[banger_num][event_num][0]>0 &&  bangers_params[banger_num][ev
 {
 param1_is=bangers_params[banger_num][event_num][0]-1;
 param2_is=bangers_params[banger_num][event_num][1];
-     //bool bang_is_sended[128];//le bang est exécuté si = 0, si déjà exécuté, donc non actif =1
+     //bool bang_is_sended[128];//le bang est exÃ©cutÃ© si = 0, si dÃ©jÃ  exÃ©cutÃ©, donc non actif =1
      switch(bangers_action[banger_num][event_num])
      {
       case 0://"On/Off");
@@ -3691,7 +3691,7 @@ param2_is=bangers_params[banger_num][event_num][1];
       case 1:
       start_time_for_banger[param1_is]=actual_time;  
      end_time_for_banger[param1_is]=default_time_of_the_bang;
-     for (int o=0;o<6;o++)//reset des évènements
+     for (int o=0;o<6;o++)//reset des Ã©vÃ¨nements
      {
      event_sended[param1_is][o]=0;
      if(bangers_delay[param1_is][o]>end_time_for_banger[param1_is])
@@ -3712,7 +3712,7 @@ param2_is=bangers_params[banger_num][event_num][1];
       event_sended[param1_is][y]=1;                                                                      
       }
       }
-      bang_is_sended[param1_is]=1;//bloquage de l envoi des autres évènements  
+      bang_is_sended[param1_is]=1;//bloquage de l envoi des autres Ã©vÃ¨nements  
       }
       break;
       default:
@@ -4648,7 +4648,7 @@ if(bangers_type[banger_is][y]!=0 )
     event_sended[banger_is][y]=1;                                                                      
 }
 }
-bang_is_sended[banger_is]=1;//bloquage de l envoi des autres évènements
+bang_is_sended[banger_is]=1;//bloquage de l envoi des autres Ã©vÃ¨nements
 }
 
 return(0);   
@@ -4788,10 +4788,10 @@ mouse_released=1;
 else 
 {  
 start_time_for_banger[index_banger_selected]=actual_time;  
-//4 aout 2010 initalisation  un temps plus long par defaut pour faire partir mes évènements
+//4 aout 2010 initalisation  un temps plus long par defaut pour faire partir mes Ã©vÃ¨nements
 end_time_for_banger[index_banger_selected]=default_time_of_the_bang;
-//reset du banger concerné
-for (int o=0;o<6;o++)//reset des évènements
+//reset du banger concernÃ©
+for (int o=0;o<6;o++)//reset des Ã©vÃ¨nements
 {
 event_sended[index_banger_selected][o]=0;
 if(bangers_delay[index_banger_selected][o]>end_time_for_banger[index_banger_selected])
@@ -4927,7 +4927,7 @@ int refresh_banger_wx()
               for (int y=0;y<6;y++){event_sended[p][y]=0;} 
            }
            
-           //envoi d un coup des events concerné par le crossfade
+           //envoi d un coup des events concernÃ© par le crossfade
            for (int o=0;o<6;o++)
            {  Bang_event(Banger_Memoire[position_onstage]-1, o);}                                
            }   
@@ -4975,7 +4975,7 @@ else
 bang_is_sended[banger_overoll]=toggle(bang_is_sended[banger_overoll]);
 switch (bang_is_sended[banger_overoll])
 {
-case 0://reset des send events et on demarre à la souris le banger
+case 0://reset des send events et on demarre Ã  la souris le banger
   for (int y=0;y<6;y++){event_sended[banger_overoll][y]=0;}   
   start_time_for_banger[banger_overoll]=actual_time;  
 
@@ -5002,7 +5002,7 @@ if(bangers_type[banger_overoll][y]!=0 )
     event_sended[banger_overoll][y]=1;                                                                      
 }
 }
-bang_is_sended[banger_overoll]=1;//bloquage de l envoi des autres évènements     
+bang_is_sended[banger_overoll]=1;//bloquage de l envoi des autres Ã©vÃ¨nements     
 break;                 
 }
 }

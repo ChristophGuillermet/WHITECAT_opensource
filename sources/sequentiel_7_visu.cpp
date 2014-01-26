@@ -770,14 +770,14 @@ neuro.Print(string_time_left_is,xseq+380,yseq+30);
 neuromoyen.Print("---",xseq+430,yseq+40);
 neuro.Print(string_total_time_is,xseq+380,yseq+60);
 //colonnages
-Line(Vec2D(xseq+170,yseq+80),Vec2D(xseq+170,yseq+hauteur_seq-75)).Draw(CouleurLigne.WithAlpha(0.5));//après mem
-Line(Vec2D(xseq+180,yseq+80),Vec2D(xseq+180,yseq+hauteur_seq-75)).Draw(CouleurLigne.WithAlpha(0.5));//après exclude mem
+Line(Vec2D(xseq+170,yseq+80),Vec2D(xseq+170,yseq+hauteur_seq-75)).Draw(CouleurLigne.WithAlpha(0.5));//aprÃ¨s mem
+Line(Vec2D(xseq+180,yseq+80),Vec2D(xseq+180,yseq+hauteur_seq-75)).Draw(CouleurLigne.WithAlpha(0.5));//aprÃ¨s exclude mem
 Line(Vec2D(xseq+220,yseq+80),Vec2D(xseq+220,yseq+hauteur_seq-75)).Draw(CouleurLigne.WithAlpha(0.5));//apres link
 Line(Vec2D(xseq+270,yseq+80),Vec2D(xseq+270,yseq+hauteur_seq-75)).Draw(CouleurLigne.WithAlpha(0.5));//apres banger
 Line(Vec2D(xseq+310,yseq+80),Vec2D(xseq+310,yseq+hauteur_seq-75)).Draw(CouleurLigne.WithAlpha(0.5));//apres banger
 
 
-//Grid Player 1 enchassé
+//Grid Player 1 enchassÃ©
 if(show_gridplayer_in_seq==1)
 {
 neuromoyen.Print("GridPlayer 1 /",xseq+660,yseq+40);

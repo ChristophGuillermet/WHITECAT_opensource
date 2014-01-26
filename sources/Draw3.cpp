@@ -79,7 +79,7 @@ for(int c=-draw_preset_parameters[pr][0]/2;c<=(draw_preset_parameters[pr][0]/2) 
     {            
 
           coord=index_case[pr]+c+(l*draw_preset_parameters[pr][0]);
-          //restriction au tableau pour éviter les débordements du motif
+          //restriction au tableau pour Ã©viter les dÃ©bordements du motif
           if( coord>=0 && coord<=(draw_preset_parameters[pr][1]*draw_preset_parameters[pr][0]))
           {
           

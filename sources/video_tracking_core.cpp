@@ -28,13 +28,13 @@ int Load_Video_Conf()
 	video_file = fopen("user\\config_video.txt", "rt" );
 	if( !video_file )
 	{
-	 printf("\nPb à ouverture de config_video.txt\n");
+	 printf("\nPb Ã  ouverture de config_video.txt\n");
      return 1;
 	}	
 //premiere ligne les args
 	if( !fgets( read_buff_vid , sizeof( read_buff_vid ) ,video_file ) )
 	{
-     printf("\nErreur lors de la lecture de la première ligne de commentaires\n");
+     printf("\nErreur lors de la lecture de la premiÃ¨re ligne de commentaires\n");
      return 1;
 	}
 	fscanf( video_file , "%d %d %d\n" ,  &video_size_x , &video_size_y, &fps_video_rate);

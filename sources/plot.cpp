@@ -2165,7 +2165,7 @@ for (int y=0;y<8;y++)
 {
 Rect OverFile(Vec2D(xrep+5,(yrep+185+(y*20)-10)),Vec2D(180,20));
 OverFile.SetRoundness(rondeur_fader/2);
-//affichage qui est selectionné
+//affichage qui est selectionnÃ©
 if(strcmp( Name_of_plane_is,list_import_plans[importplan_selected])==0 && (importplan_selected==(y+line_importplan)))
 {OverFile.Draw(CouleurFond.WithAlpha(0.5));}
 
@@ -2482,7 +2482,7 @@ else if(numeric_postext==0)//drag souris
   {
    moving_plan_relativ_x=mouse_x-original_posx;
    moving_plan_relativ_y=mouse_y-original_posy; 
-   switch(editing_plan_data_type)//décalé de +1
+   switch(editing_plan_data_type)//dÃ©calÃ© de +1
    {
    case 1:
    position_relative_plan_theatre[0]=old_position_relative_plan_theatre[0]-moving_plan_relativ_y;
@@ -2784,7 +2784,7 @@ logical_plot_menu_bare(plotx+230,ploty+10);
 
 switch(index_menus_lighting_plot)
 {
-case 0://légende
+case 0://lÃ©gende
 break;
 case 1://symbols                                          
 plot_symbol_list(plotx+10, ploty+50);//selecteur symbol

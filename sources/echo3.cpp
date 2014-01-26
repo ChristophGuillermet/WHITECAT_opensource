@@ -416,7 +416,7 @@ echochanis=echo_grid_channel_position[echo_selected]+sh;
 Rect MassE(Vec2D(xe+25+(sh*30),ye+(127*(1.0-echo_levels[echo_selected][1][echochanis]))),Vec2D(30,echo_levels[echo_selected][1][echochanis]*127));
 MassE.Draw(Discrete2);
 
-//enregistrement level de départ
+//enregistrement level de dÃ©part
 ChanEcho.MoveTo(Vec2D(xe+25+(sh*30),ye+127-(snap_echo_to_recall[echo_selected][echochanis]*127)));
 ChanEcho.Draw(CouleurFond.WithAlpha(0.3));
 

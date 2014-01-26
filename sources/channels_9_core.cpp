@@ -263,7 +263,7 @@ int ypos_ch=0;
 
 for (int l=0;l<nbre_lignes+1;l++)
 {
-//if (l==nbre_lignes) {maxchan_per_ligne=(channel_number_in_View[prst_v]%13)+1;} //derniere ligne à 512
+//if (l==nbre_lignes) {maxchan_per_ligne=(channel_number_in_View[prst_v]%13)+1;} //derniere ligne Ã  512
 for (int c=1; c<=maxchan_per_ligne;c++)
 {    
 ypos_ch=ychan+(l*70);
@@ -274,7 +274,7 @@ if (index_over_A_window==0 && index_over_faderspace==0 && mouse_x>   ((xchan-10)
 &&  num_circ!=0 && num_circ<513)
 {
 
-if(index_level_attribue==1)//pour déselection lors prochain circuit piqué dominique guesdon 10aout 2010
+if(index_level_attribue==1)//pour dÃ©selection lors prochain circuit piquÃ© dominique guesdon 10aout 2010
 {
 for(int y=1;y<512;y++)
 {
@@ -349,7 +349,7 @@ int do_logical_Draw_Channel_Preset_Title(int xchan, int ychan, int prst_v)
  mouse_released=1;   
  }
  
- //do build logique sortie car plantage grave à la reconstruction. il faut garder ca dans la boucle affichage
+ //do build logique sortie car plantage grave Ã  la reconstruction. il faut garder ca dans la boucle affichage
 /* else if(mouse_x>  xchan+520 && mouse_x<xchan+520+55 )
  {
  channel_view_is=prst_v;
@@ -392,7 +392,7 @@ int do_logical_ClassicalChannelSpace( int xchan, int ychan, int scroll)//les 512
 int maxchan_per_ligne=13;
 for (int l=0;l<43;l++)
 {
-if (l==42) {maxchan_per_ligne=9;} //derniere ligne à 512
+if (l==42) {maxchan_per_ligne=9;} //derniere ligne Ã  512
 
 for (int c=1; c<maxchan_per_ligne;c++)
 {    
@@ -405,7 +405,7 @@ if ( mouse_x>   ((xchan-10) + (45*c)) && mouse_x< ((xchan+30) + (45*c))
 )
 {
 
-if(index_level_attribue==1)//pour déselection lors prochain circuit piqué dominique guesdon 10aout 2010
+if(index_level_attribue==1)//pour dÃ©selection lors prochain circuit piquÃ© dominique guesdon 10aout 2010
 {
 for(int y=1;y<512;y++)
 {

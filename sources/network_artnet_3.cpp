@@ -139,7 +139,7 @@ int ReceiveArtDmx()
  {ArtNet_16xUniverse_Receiving[p+1][incoming_universe]=artnet_message[p+HeaderLength+1];} 
   //reinit
  is_artnet=0;is_opcode_is_dmx=0; is_artnet_version_i1=0; is_artnet_version_i2=0;   
- incoming_universe=999;//reinit hors écran   
+ incoming_universe=999;//reinit hors Ã©cran   
 
  }
  
@@ -168,13 +168,13 @@ char read_buff[ 512 ] ;
 	cfg_file = fopen("user\\config_artnet.txt", "rt" );
 	if( !cfg_file )
 	{
-	 printf("\nPb à ouverture de config_artnet.txt\n");
+	 printf("\nPb Ã  ouverture de config_artnet.txt\n");
      return 1;
 	}	
 //premiere ligne les args
 	if( !fgets( read_buff , sizeof( read_buff ) , cfg_file ) )
 	{
-     printf("\nErreur lors de la lecture de la première ligne de commentaires\n");
+     printf("\nErreur lors de la lecture de la premiÃ¨re ligne de commentaires\n");
      return 1;
 	}
 	
@@ -197,7 +197,7 @@ char rep_conf_dmx[256];
 sprintf(rep_conf_dmx,"%s\\user\\config_artnet.txt",mondirectory);
 if(fp=fopen(rep_conf_dmx,"w"))
 {
-fprintf(fp,"#arguments: broadcast (1) ou unicast (0) // puis Univers Dmx surlequel envoyer ( 0 à 15)");
+fprintf(fp,"#arguments: broadcast (1) ou unicast (0) // puis Univers Dmx surlequel envoyer ( 0 Ã  15)");
 fprintf(fp,"\n%d %d",index_broadcast,Univers);
 fprintf(fp,"\n#arguments: si en broadcast: l'adresse doit etre de type X.X.X. / si en unicast X.X.X.X");
 fprintf(fp,"\n%s",ip_artnet);
@@ -268,7 +268,7 @@ int fermeture_serveur_artnet()
  return(0);	
 }
 
-//bug remonté par jacques
+//bug remontÃ© par jacques
 int detection_mise_en_place_carte_reseaux()
 {
 WSADATA wsa;
@@ -325,7 +325,7 @@ memcpy(&sinS.sin_addr.s_addr, phe->h_addr_list[network_OUT_is_selected], phe->h_
 sinS.sin_family=AF_INET;
 sinS.sin_addr.s_addr=inet_addr(ip_artnet);
 sinS.sin_port=htons( clientport_artnet);
-//préparation de l'envoi
+//prÃ©paration de l'envoi
 
 sockartnet=socket(AF_INET,SOCK_DGRAM,0); //On initialise le socket avec SOCK_DGRAM pour dire qu'on est en UDP
 
@@ -381,7 +381,7 @@ int ConstructArtPoll()
  {
  ArtPollBuffer[i]=ArtNetHead[i];
  }
- //opérateur
+ //opÃ©rateur
   //Opcode low byte first
   unsigned char OpPollHbyteSend=(unsigned  char) (OpPoll>>8);
   unsigned char OpPollLbyteSend= (unsigned char) (OpPoll);
@@ -453,7 +453,7 @@ int ConstructArtPollReply ()//size 250
  {
  ArtPollReplyBuffer[i]=ArtNetHead[i];
  }
- //opérateur
+ //opÃ©rateur
   unsigned char OpPollRHbyte=(unsigned  char) (OpPollReply>>8);
   unsigned char OpPollRLbyte= (unsigned char) (OpPollReply);
  ArtPollReplyBuffer[8]=OpPollRLbyte;
@@ -512,7 +512,7 @@ for (int it=108;it<(108+NodeReportLength-1);it++)// le node report fait 64
 {
  ArtPollReplyBuffer[it]= ArtNodeReport[(it-108)]  ;
 }
-//nombre de ports supportés
+//nombre de ports supportÃ©s
 ArtPollReplyBuffer[172]=0; //hi
 ArtPollReplyBuffer[173]=4; //low If num i/p ports is dif to output ports, return biggest
 //PortTypes ( 1 to MaxNumports) as bytes
