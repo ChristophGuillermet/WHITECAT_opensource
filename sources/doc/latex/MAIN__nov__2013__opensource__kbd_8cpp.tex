@@ -1,0 +1,291 @@
+\hypertarget{MAIN__nov__2013__opensource__kbd_8cpp}{\section{M\-A\-I\-N\-\_\-nov\-\_\-2013\-\_\-opensource\-\_\-kbd.\-cpp File Reference}
+\label{MAIN__nov__2013__opensource__kbd_8cpp}\index{M\-A\-I\-N\-\_\-nov\-\_\-2013\-\_\-opensource\-\_\-kbd.\-cpp@{M\-A\-I\-N\-\_\-nov\-\_\-2013\-\_\-opensource\-\_\-kbd.\-cpp}}
+}
+
+
+the main file  
+
+
+{\ttfamily \#include $<$allegro.\-h$>$}\\*
+{\ttfamily \#include $<$winalleg.\-h$>$}\\*
+{\ttfamily \#include $<$Open\-Layer.\-hpp$>$}\\*
+{\ttfamily \#include $<$stdio.\-h$>$}\\*
+{\ttfamily \#include $<$loadpng.\-h$>$}\\*
+{\ttfamily \#include $<$assert.\-h$>$}\\*
+{\ttfamily \#include $<$Iphlpapi.\-h$>$}\\*
+{\ttfamily \#include $<$audiere.\-h$>$}\\*
+{\ttfamily \#include $<$jpgalleg.\-h$>$}\\*
+{\ttfamily \#include $<$hpdf.\-h$>$}\\*
+{\ttfamily \#include $<$Midi\-Share.\-h$>$}\\*
+{\ttfamily \#include $<$whitecat.\-h$>$}\\*
+{\ttfamily \#include $<$my\-\_\-window\-\_\-file\-\_\-sample.\-h$>$}\\*
+{\ttfamily \#include $<$patch\-\_\-splines\-\_\-2.\-cpp$>$}\\*
+{\ttfamily \#include $<$grider\-\_\-calculs8.\-cpp$>$}\\*
+{\ttfamily \#include $<$midi\-\_\-\-C\-O\-R\-E.\-cpp$>$}\\*
+{\ttfamily \#include $<$C\-O\-R\-E\-\_\-6.\-cpp$>$}\\*
+{\ttfamily \#include $<$saves\-\_\-export\-\_\-pdf2.\-cpp$>$}\\*
+{\ttfamily \#include $<$saves\-\_\-export\-\_\-import.\-cpp$>$}\\*
+{\ttfamily \#include $<$saves\-\_\-menu\-\_\-8.\-cpp$>$}\\*
+{\ttfamily \#include $<$gestionaire\-\_\-fenetres2.\-cpp$>$}\\*
+{\ttfamily \#include $<$gui\-\_\-boutons\-\_\-rebuild1.\-cpp$>$}\\*
+{\ttfamily \#include $<$grider\-\_\-core8.\-cpp$>$}\\*
+{\ttfamily \#include $<$wizard\-\_\-operations.\-cpp$>$}\\*
+{\ttfamily \#include $<$faders\-\_\-operations.\-cpp$>$}\\*
+{\ttfamily \#include $<$chasers\-\_\-core\-\_\-5.\-cpp$>$}\\*
+{\ttfamily \#include \char`\"{}mover\-\_\-spline6.\-cpp\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}mover\-\_\-2013.\-cpp\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}plot\-\_\-core9.\-cpp\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}plot9.\-cpp\char`\"{}}\\*
+{\ttfamily \#include $<$audio\-\_\-core5.\-cpp$>$}\\*
+{\ttfamily \#include $<$save\-\_\-show\-\_\-13.\-cpp$>$}\\*
+{\ttfamily \#include $<$network\-\_\-artnet\-\_\-3.\-cpp$>$}\\*
+{\ttfamily \#include $<$logicals\-\_\-intres.\-cpp$>$}\\*
+{\ttfamily \#include $<$channels\-\_\-9\-\_\-core.\-cpp$>$}\\*
+{\ttfamily \#include $<$wizard.\-cpp$>$}\\*
+{\ttfamily \#include $<$grand\-\_\-master.\-cpp$>$}\\*
+{\ttfamily \#include $<$faders\-\_\-core\-\_\-24.\-cpp$>$}\\*
+{\ttfamily \#include $<$audio\-\_\-visu4.\-cpp$>$}\\*
+{\ttfamily \#include $<$icat\-\_\-core14.\-cpp$>$}\\*
+{\ttfamily \#include $<$arduino\-\_\-device\-\_\-core.\-cpp$>$}\\*
+{\ttfamily \#include $<$banger\-\_\-core\-\_\-8.\-cpp$>$}\\*
+{\ttfamily \#include $<$banger\-\_\-visu\-\_\-8.\-cpp$>$}\\*
+{\ttfamily \#include $<$Call\-\_\-everybody\-\_\-5.\-cpp$>$}\\*
+{\ttfamily \#include $<$patch\-\_\-core.\-cpp$>$}\\*
+{\ttfamily \#include $<$patch\-\_\-visu.\-cpp$>$}\\*
+{\ttfamily \#include $<$time\-\_\-core\-\_\-3.\-cpp$>$}\\*
+{\ttfamily \#include $<$time\-\_\-visu\-\_\-3.\-cpp$>$}\\*
+{\ttfamily \#include $<$trichro\-\_\-core2.\-cpp$>$}\\*
+{\ttfamily \#include $<$trichro\-\_\-visu2.\-cpp$>$}\\*
+{\ttfamily \#include $<$numpad\-\_\-core.\-cpp$>$}\\*
+{\ttfamily \#include $<$numpad\-\_\-visuel.\-cpp$>$}\\*
+{\ttfamily \#include $<$keyboard\-\_\-functions2.\-cpp$>$}\\*
+{\ttfamily \#include $<$keyboard\-\_\-routines2.\-cpp$>$}\\*
+{\ttfamily \#include $<$minifaders\-\_\-core.\-cpp$>$}\\*
+{\ttfamily \#include $<$minifaders\-\_\-visu.\-cpp$>$}\\*
+{\ttfamily \#include $<$faders\-\_\-visuels\-\_\-26.\-cpp$>$}\\*
+{\ttfamily \#include $<$channels\-\_\-10\-\_\-visu.\-cpp$>$}\\*
+{\ttfamily \#include $<$video\-\_\-tracking\-\_\-core.\-cpp$>$}\\*
+{\ttfamily \#include $<$video\-\_\-tracking\-\_\-visu.\-cpp$>$}\\*
+{\ttfamily \#include $<$list\-\_\-proj\-\_\-core.\-cpp$>$}\\*
+{\ttfamily \#include $<$list\-\_\-proj\-\_\-visu.\-cpp$>$}\\*
+{\ttfamily \#include $<$sequentiel\-\_\-6\-\_\-core.\-cpp$>$}\\*
+{\ttfamily \#include $<$i\-Cat14.\-cpp$>$}\\*
+{\ttfamily \#include $<$network\-\_\-\-M\-A\-C\-\_\-adress\-\_\-3.\-cpp$>$}\\*
+{\ttfamily \#include $<$midi\-\_\-launchpad.\-cpp$>$}\\*
+{\ttfamily \#include $<$grider8.\-cpp$>$}\\*
+{\ttfamily \#include $<$sequentiel\-\_\-7\-\_\-visu.\-cpp$>$}\\*
+{\ttfamily \#include $<$Draw3.\-cpp$>$}\\*
+{\ttfamily \#include $<$echo3.\-cpp$>$}\\*
+{\ttfamily \#include $<$my\-\_\-window\-\_\-file\-\_\-sample.\-cpp$>$}\\*
+{\ttfamily \#include $<$procs\-\_\-visuels\-\_\-rebuild1.\-cpp$>$}\\*
+{\ttfamily \#include $<$dmx\-\_\-functions\-\_\-13.\-cpp$>$}\\*
+{\ttfamily \#include $<$midi\-\_\-13.\-cpp$>$}\\*
+{\ttfamily \#include $<$C\-F\-G\-\_\-screen.\-cpp$>$}\\*
+{\ttfamily \#include $<$arduino\-\_\-core\-\_\-6\-\_\-\-U\-N\-O\-\_\-anton3.\-cpp$>$}\\*
+{\ttfamily \#include $<$arduino\-\_\-6\-\_\-\-U\-N\-O\-\_\-anton2.\-cpp$>$}\\*
+{\ttfamily \#include $<$C\-F\-G\-\_\-config\-\_\-panel\-\_\-8.\-cpp$>$}\\*
+{\ttfamily \#include $<$chasers\-\_\-visu.\-cpp$>$}\\*
+{\ttfamily \#include $<$graphics\-\_\-rebuild1.\-cpp$>$}\\*
+\subsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{MAIN__nov__2013__opensource__kbd_8cpp_a598a3330b3c21701223ee0ca14316eca}{\#define {\bfseries P\-I}~3.\-14116}\label{MAIN__nov__2013__opensource__kbd_8cpp_a598a3330b3c21701223ee0ca14316eca}
+
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+{\footnotesize template$<$class T $>$ }\\const T \& \hyperlink{MAIN__nov__2013__opensource__kbd_8cpp_acd49ac80e8195ee336da1503fd149313}{Tmax} (const T \&a, const T \&b)
+\begin{DoxyCompactList}\small\item\em implementation of a general \char`\"{}max\char`\"{} function \end{DoxyCompactList}\item 
+int \hyperlink{MAIN__nov__2013__opensource__kbd_8cpp_a1ef61965eb1754586c339e2c7711f15c}{time\-\_\-doing} ()
+\begin{DoxyCompactList}\small\item\em Function designed to animate some details, by side effects. \end{DoxyCompactList}\item 
+\hypertarget{MAIN__nov__2013__opensource__kbd_8cpp_a69e23eb9aeff094c5710a0299995f3d2}{void \hyperlink{MAIN__nov__2013__opensource__kbd_8cpp_a69e23eb9aeff094c5710a0299995f3d2}{ticker\-\_\-dmx\-In} ()}\label{MAIN__nov__2013__opensource__kbd_8cpp_a69e23eb9aeff094c5710a0299995f3d2}
+
+\begin{DoxyCompactList}\small\item\em Clears the tickers to check stability. \end{DoxyCompactList}\item 
+\hypertarget{MAIN__nov__2013__opensource__kbd_8cpp_a64537a89893b28c0f5304f617b9dfce1}{{\bfseries E\-N\-D\-\_\-\-O\-F\-\_\-\-F\-U\-N\-C\-T\-I\-O\-N} (\hyperlink{MAIN__nov__2013__opensource__kbd_8cpp_a69e23eb9aeff094c5710a0299995f3d2}{ticker\-\_\-dmx\-In})}\label{MAIN__nov__2013__opensource__kbd_8cpp_a64537a89893b28c0f5304f617b9dfce1}
+
+\item 
+\hypertarget{MAIN__nov__2013__opensource__kbd_8cpp_a6a015280c1363331ada8a329be6eb7c8}{void \hyperlink{MAIN__nov__2013__opensource__kbd_8cpp_a6a015280c1363331ada8a329be6eb7c8}{ticker} ()}\label{MAIN__nov__2013__opensource__kbd_8cpp_a6a015280c1363331ada8a329be6eb7c8}
+
+\begin{DoxyCompactList}\small\item\em implements a set of routines which are called during the main loop of the program. \end{DoxyCompactList}\item 
+\hypertarget{MAIN__nov__2013__opensource__kbd_8cpp_ac99b5c2f92d13d20bd2913b97564e05f}{{\bfseries E\-N\-D\-\_\-\-O\-F\-\_\-\-F\-U\-N\-C\-T\-I\-O\-N} (\hyperlink{MAIN__nov__2013__opensource__kbd_8cpp_a6a015280c1363331ada8a329be6eb7c8}{ticker})}\label{MAIN__nov__2013__opensource__kbd_8cpp_ac99b5c2f92d13d20bd2913b97564e05f}
+
+\item 
+int \hyperlink{MAIN__nov__2013__opensource__kbd_8cpp_a2e68aac9b76d597d28ad2b424580da72}{do\-\_\-mouse\-\_\-right\-\_\-click\-\_\-menu} ()
+\begin{DoxyCompactList}\small\item\em Callback function invoked when a right-\/click event occurs. \end{DoxyCompactList}\item 
+\hypertarget{MAIN__nov__2013__opensource__kbd_8cpp_a9c70719f0a352d777b5166c1e1872f13}{void \hyperlink{MAIN__nov__2013__opensource__kbd_8cpp_a9c70719f0a352d777b5166c1e1872f13}{my\-\_\-callback} (int flags)}\label{MAIN__nov__2013__opensource__kbd_8cpp_a9c70719f0a352d777b5166c1e1872f13}
+
+\begin{DoxyCompactList}\small\item\em Callback function for mouse events. \end{DoxyCompactList}\item 
+\hypertarget{MAIN__nov__2013__opensource__kbd_8cpp_a2c35041c190007399fb51e1728e15200}{{\bfseries E\-N\-D\-\_\-\-O\-F\-\_\-\-F\-U\-N\-C\-T\-I\-O\-N} (\hyperlink{MAIN__nov__2013__opensource__kbd_8cpp_a9c70719f0a352d777b5166c1e1872f13}{my\-\_\-callback})}\label{MAIN__nov__2013__opensource__kbd_8cpp_a2c35041c190007399fb51e1728e15200}
+
+\item 
+\hypertarget{MAIN__nov__2013__opensource__kbd_8cpp_ace9c8a9b37c6087c3cffef442d71d70e}{void \hyperlink{MAIN__nov__2013__opensource__kbd_8cpp_ace9c8a9b37c6087c3cffef442d71d70e}{dixiemes\-\_\-de\-\_\-secondes} ()}\label{MAIN__nov__2013__opensource__kbd_8cpp_ace9c8a9b37c6087c3cffef442d71d70e}
+
+\begin{DoxyCompactList}\small\item\em Callback function to be called ten times per second. \end{DoxyCompactList}\item 
+\hypertarget{MAIN__nov__2013__opensource__kbd_8cpp_ab3e8a31a179f5016b13f6fdef45b154c}{{\bfseries E\-N\-D\-\_\-\-O\-F\-\_\-\-F\-U\-N\-C\-T\-I\-O\-N} (\hyperlink{MAIN__nov__2013__opensource__kbd_8cpp_ace9c8a9b37c6087c3cffef442d71d70e}{dixiemes\-\_\-de\-\_\-secondes})}\label{MAIN__nov__2013__opensource__kbd_8cpp_ab3e8a31a179f5016b13f6fdef45b154c}
+
+\item 
+\hypertarget{MAIN__nov__2013__opensource__kbd_8cpp_a8e80f54ac804eddce8ed6e45adb1db44}{void \hyperlink{MAIN__nov__2013__opensource__kbd_8cpp_a8e80f54ac804eddce8ed6e45adb1db44}{ticker\-\_\-full\-\_\-loop} ()}\label{MAIN__nov__2013__opensource__kbd_8cpp_a8e80f54ac804eddce8ed6e45adb1db44}
+
+\begin{DoxyCompactList}\small\item\em Callback function linked to the fastest timer. \end{DoxyCompactList}\item 
+\hypertarget{MAIN__nov__2013__opensource__kbd_8cpp_a42c10b61710b850529595131a78744d6}{{\bfseries E\-N\-D\-\_\-\-O\-F\-\_\-\-F\-U\-N\-C\-T\-I\-O\-N} (\hyperlink{MAIN__nov__2013__opensource__kbd_8cpp_a8e80f54ac804eddce8ed6e45adb1db44}{ticker\-\_\-full\-\_\-loop})}\label{MAIN__nov__2013__opensource__kbd_8cpp_a42c10b61710b850529595131a78744d6}
+
+\item 
+\hypertarget{MAIN__nov__2013__opensource__kbd_8cpp_a2a8330265b71d2008d7c4154078aac89}{void \hyperlink{MAIN__nov__2013__opensource__kbd_8cpp_a2a8330265b71d2008d7c4154078aac89}{ticker\-\_\-artnet} ()}\label{MAIN__nov__2013__opensource__kbd_8cpp_a2a8330265b71d2008d7c4154078aac89}
+
+\begin{DoxyCompactList}\small\item\em Callback function called once by second. \end{DoxyCompactList}\item 
+\hypertarget{MAIN__nov__2013__opensource__kbd_8cpp_a22eee39636034dc1f4e00f52ddacda99}{{\bfseries E\-N\-D\-\_\-\-O\-F\-\_\-\-F\-U\-N\-C\-T\-I\-O\-N} (\hyperlink{MAIN__nov__2013__opensource__kbd_8cpp_a2a8330265b71d2008d7c4154078aac89}{ticker\-\_\-artnet})}\label{MAIN__nov__2013__opensource__kbd_8cpp_a22eee39636034dc1f4e00f52ddacda99}
+
+\item 
+\hypertarget{MAIN__nov__2013__opensource__kbd_8cpp_a5ed0e12936f7d3649de463336207b914}{void \hyperlink{MAIN__nov__2013__opensource__kbd_8cpp_a5ed0e12936f7d3649de463336207b914}{Load\-\_\-\-Fonts} ()}\label{MAIN__nov__2013__opensource__kbd_8cpp_a5ed0e12936f7d3649de463336207b914}
+
+\begin{DoxyCompactList}\small\item\em function to load miscellaneous fonts \end{DoxyCompactList}\item 
+\hypertarget{MAIN__nov__2013__opensource__kbd_8cpp_ade8d4ba65d55c94f8ee277829d722155}{int \hyperlink{MAIN__nov__2013__opensource__kbd_8cpp_ade8d4ba65d55c94f8ee277829d722155}{main\-\_\-actions\-\_\-on\-\_\-screen} ()}\label{MAIN__nov__2013__opensource__kbd_8cpp_ade8d4ba65d55c94f8ee277829d722155}
+
+\begin{DoxyCompactList}\small\item\em This function performs visible actions on the screen. \end{DoxyCompactList}\item 
+int \hyperlink{MAIN__nov__2013__opensource__kbd_8cpp_ae66f6b31b5ad750f1fe042a706a4e3d4}{main} ()
+\begin{DoxyCompactList}\small\item\em The main function \-: top level of the program. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{MAIN__nov__2013__opensource__kbd_8cpp_a4bdc38714c8b2ec9fda1c2410e21bbda}{int {\bfseries B\-P\-S\-\_\-\-R\-A\-T\-E} =50}\label{MAIN__nov__2013__opensource__kbd_8cpp_a4bdc38714c8b2ec9fda1c2410e21bbda}
+
+\item 
+\hypertarget{MAIN__nov__2013__opensource__kbd_8cpp_a1a14c8e08f74679e5db97ae284516b81}{int {\bfseries dmx\-I\-Nrate} =25}\label{MAIN__nov__2013__opensource__kbd_8cpp_a1a14c8e08f74679e5db97ae284516b81}
+
+\item 
+\hypertarget{MAIN__nov__2013__opensource__kbd_8cpp_a76c8221e0eedb0bbad95f071046f2485}{int {\bfseries A\-R\-D\-U\-I\-N\-O\-\_\-\-R\-A\-T\-E} =20}\label{MAIN__nov__2013__opensource__kbd_8cpp_a76c8221e0eedb0bbad95f071046f2485}
+
+\item 
+\hypertarget{MAIN__nov__2013__opensource__kbd_8cpp_ab97230fdf86fd49a50dbcc8e44fdf9cc}{volatile int {\bfseries ticks} = 0}\label{MAIN__nov__2013__opensource__kbd_8cpp_ab97230fdf86fd49a50dbcc8e44fdf9cc}
+
+\item 
+\hypertarget{MAIN__nov__2013__opensource__kbd_8cpp_a09eaacc772264f05551244e71614cda3}{int {\bfseries ticker\-\_\-rate} = B\-P\-S\-\_\-\-T\-O\-\_\-\-T\-I\-M\-E\-R(B\-P\-S\-\_\-\-R\-A\-T\-E)}\label{MAIN__nov__2013__opensource__kbd_8cpp_a09eaacc772264f05551244e71614cda3}
+
+\item 
+\hypertarget{MAIN__nov__2013__opensource__kbd_8cpp_a322f8e02a3a15aa6dd0c55971bf3e900}{int {\bfseries ticker\-\_\-dmx\-In\-\_\-rate} = B\-P\-S\-\_\-\-T\-O\-\_\-\-T\-I\-M\-E\-R(dmx\-I\-Nrate)}\label{MAIN__nov__2013__opensource__kbd_8cpp_a322f8e02a3a15aa6dd0c55971bf3e900}
+
+\item 
+\hypertarget{MAIN__nov__2013__opensource__kbd_8cpp_a9346d4a28d8e748352e48dedbd380d55}{int {\bfseries ticks\-\_\-passed} = 0}\label{MAIN__nov__2013__opensource__kbd_8cpp_a9346d4a28d8e748352e48dedbd380d55}
+
+\item 
+\hypertarget{MAIN__nov__2013__opensource__kbd_8cpp_a1c0a0b0ed525a2cf4b66829184fe604b}{volatile int {\bfseries mouse\-\_\-button}}\label{MAIN__nov__2013__opensource__kbd_8cpp_a1c0a0b0ed525a2cf4b66829184fe604b}
+
+\item 
+\hypertarget{MAIN__nov__2013__opensource__kbd_8cpp_a891eb6e7ec0969933184f3e6f8d8abb2}{volatile int {\bfseries mouse\-\_\-released}}\label{MAIN__nov__2013__opensource__kbd_8cpp_a891eb6e7ec0969933184f3e6f8d8abb2}
+
+\item 
+\hypertarget{MAIN__nov__2013__opensource__kbd_8cpp_ab58dc8f641267e33f268fe6e86fbc6af}{volatile int {\bfseries mouse\-\_\-maintained}}\label{MAIN__nov__2013__opensource__kbd_8cpp_ab58dc8f641267e33f268fe6e86fbc6af}
+
+\item 
+\hypertarget{MAIN__nov__2013__opensource__kbd_8cpp_a2c80ae4e541d9f9c1f964d3d03b0a65e}{volatile int {\bfseries mouse\-\_\-\-R\-\_\-button}}\label{MAIN__nov__2013__opensource__kbd_8cpp_a2c80ae4e541d9f9c1f964d3d03b0a65e}
+
+\item 
+\hypertarget{MAIN__nov__2013__opensource__kbd_8cpp_a17788d87bce7f7373a384a50e1508c27}{volatile int {\bfseries mouse\-\_\-\-R\-\_\-released}}\label{MAIN__nov__2013__opensource__kbd_8cpp_a17788d87bce7f7373a384a50e1508c27}
+
+\item 
+\hypertarget{MAIN__nov__2013__opensource__kbd_8cpp_abfd20761b0f16abcfe2abaa5e582759b}{volatile bool {\bfseries calculation\-\_\-on\-\_\-faders\-\_\-done} =0}\label{MAIN__nov__2013__opensource__kbd_8cpp_abfd20761b0f16abcfe2abaa5e582759b}
+
+\item 
+\hypertarget{MAIN__nov__2013__opensource__kbd_8cpp_a8ee36156d9cfe55bed3eac783b480cec}{int {\bfseries ticker\-\_\-dixiemes\-\_\-de\-\_\-secondes\-\_\-check} = B\-P\-S\-\_\-\-T\-O\-\_\-\-T\-I\-M\-E\-R(10)}\label{MAIN__nov__2013__opensource__kbd_8cpp_a8ee36156d9cfe55bed3eac783b480cec}
+
+\item 
+\hypertarget{MAIN__nov__2013__opensource__kbd_8cpp_a80ce9856e7af49bb3aa203962e7d90d1}{int {\bfseries ticker\-\_\-full\-\_\-loop\-\_\-rate} = B\-P\-S\-\_\-\-T\-O\-\_\-\-T\-I\-M\-E\-R(10000)}\label{MAIN__nov__2013__opensource__kbd_8cpp_a80ce9856e7af49bb3aa203962e7d90d1}
+
+\item 
+\hypertarget{MAIN__nov__2013__opensource__kbd_8cpp_aa2381657303f524e1cfdc9e16d90fbc8}{volatile int {\bfseries ticks\-\_\-for\-\_\-artnet} =0}\label{MAIN__nov__2013__opensource__kbd_8cpp_aa2381657303f524e1cfdc9e16d90fbc8}
+
+\item 
+\hypertarget{MAIN__nov__2013__opensource__kbd_8cpp_a028cdbf80274859ac4658ab51d2cd1f2}{int {\bfseries ticker\-\_\-artnet\-\_\-rate} = B\-P\-S\-\_\-\-T\-O\-\_\-\-T\-I\-M\-E\-R(1)}\label{MAIN__nov__2013__opensource__kbd_8cpp_a028cdbf80274859ac4658ab51d2cd1f2}
+
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+the main file \begin{DoxyAuthor}{Author}
+Christoph Guillermet
+\end{DoxyAuthor}
+White Cat -\/ catégorie -\/ sous catégorie -\/ sous catégorie Description détaillée 
+
+Definition in file \hyperlink{MAIN__nov__2013__opensource__kbd_8cpp_source}{M\-A\-I\-N\-\_\-nov\-\_\-2013\-\_\-opensource\-\_\-kbd.\-cpp}.
+
+
+
+\subsection{Function Documentation}
+\hypertarget{MAIN__nov__2013__opensource__kbd_8cpp_a2e68aac9b76d597d28ad2b424580da72}{\index{M\-A\-I\-N\-\_\-nov\-\_\-2013\-\_\-opensource\-\_\-kbd.\-cpp@{M\-A\-I\-N\-\_\-nov\-\_\-2013\-\_\-opensource\-\_\-kbd.\-cpp}!do\-\_\-mouse\-\_\-right\-\_\-click\-\_\-menu@{do\-\_\-mouse\-\_\-right\-\_\-click\-\_\-menu}}
+\index{do\-\_\-mouse\-\_\-right\-\_\-click\-\_\-menu@{do\-\_\-mouse\-\_\-right\-\_\-click\-\_\-menu}!MAIN_nov_2013_opensource_kbd.cpp@{M\-A\-I\-N\-\_\-nov\-\_\-2013\-\_\-opensource\-\_\-kbd.\-cpp}}
+\subsubsection[{do\-\_\-mouse\-\_\-right\-\_\-click\-\_\-menu}]{\setlength{\rightskip}{0pt plus 5cm}int do\-\_\-mouse\-\_\-right\-\_\-click\-\_\-menu (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{MAIN__nov__2013__opensource__kbd_8cpp_a2e68aac9b76d597d28ad2b424580da72}
+
+
+Callback function invoked when a right-\/click event occurs. 
+
+a window is added or removed based on the global toggle index\-\_\-show\-\_\-main\-\_\-menu global variables x\-\_\-mainmenu and y\-\_\-mainmenu are copied from the mouse's position \begin{DoxyReturn}{Returns}
+always 0 
+\end{DoxyReturn}
+
+
+Definition at line 334 of file M\-A\-I\-N\-\_\-nov\-\_\-2013\-\_\-opensource\-\_\-kbd.\-cpp.
+
+\hypertarget{MAIN__nov__2013__opensource__kbd_8cpp_ae66f6b31b5ad750f1fe042a706a4e3d4}{\index{M\-A\-I\-N\-\_\-nov\-\_\-2013\-\_\-opensource\-\_\-kbd.\-cpp@{M\-A\-I\-N\-\_\-nov\-\_\-2013\-\_\-opensource\-\_\-kbd.\-cpp}!main@{main}}
+\index{main@{main}!MAIN_nov_2013_opensource_kbd.cpp@{M\-A\-I\-N\-\_\-nov\-\_\-2013\-\_\-opensource\-\_\-kbd.\-cpp}}
+\subsubsection[{main}]{\setlength{\rightskip}{0pt plus 5cm}int main (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{MAIN__nov__2013__opensource__kbd_8cpp_ae66f6b31b5ad750f1fe042a706a4e3d4}
+
+
+The main function \-: top level of the program. 
+
+make initializations, then run the program interactively \begin{DoxyReturn}{Returns}
+the exit satus of the program. 
+\end{DoxyReturn}
+
+
+Definition at line 786 of file M\-A\-I\-N\-\_\-nov\-\_\-2013\-\_\-opensource\-\_\-kbd.\-cpp.
+
+\hypertarget{MAIN__nov__2013__opensource__kbd_8cpp_a1ef61965eb1754586c339e2c7711f15c}{\index{M\-A\-I\-N\-\_\-nov\-\_\-2013\-\_\-opensource\-\_\-kbd.\-cpp@{M\-A\-I\-N\-\_\-nov\-\_\-2013\-\_\-opensource\-\_\-kbd.\-cpp}!time\-\_\-doing@{time\-\_\-doing}}
+\index{time\-\_\-doing@{time\-\_\-doing}!MAIN_nov_2013_opensource_kbd.cpp@{M\-A\-I\-N\-\_\-nov\-\_\-2013\-\_\-opensource\-\_\-kbd.\-cpp}}
+\subsubsection[{time\-\_\-doing}]{\setlength{\rightskip}{0pt plus 5cm}int time\-\_\-doing (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{MAIN__nov__2013__opensource__kbd_8cpp_a1ef61965eb1754586c339e2c7711f15c}
+
+
+Function designed to animate some details, by side effects. 
+
+This function increments the variables ticks, actual\-\_\-time it increments also actual\-\_\-tickers\-\_\-chrono when index\-\_\-play\-\_\-chrono is true; it cycles the variable alpha\-\_\-blinker between 0.\-2 and 1 return always 0 
+
+Definition at line 201 of file M\-A\-I\-N\-\_\-nov\-\_\-2013\-\_\-opensource\-\_\-kbd.\-cpp.
+
+\hypertarget{MAIN__nov__2013__opensource__kbd_8cpp_acd49ac80e8195ee336da1503fd149313}{\index{M\-A\-I\-N\-\_\-nov\-\_\-2013\-\_\-opensource\-\_\-kbd.\-cpp@{M\-A\-I\-N\-\_\-nov\-\_\-2013\-\_\-opensource\-\_\-kbd.\-cpp}!Tmax@{Tmax}}
+\index{Tmax@{Tmax}!MAIN_nov_2013_opensource_kbd.cpp@{M\-A\-I\-N\-\_\-nov\-\_\-2013\-\_\-opensource\-\_\-kbd.\-cpp}}
+\subsubsection[{Tmax}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class T $>$ const T\& Tmax (
+\begin{DoxyParamCaption}
+\item[{const T \&}]{a, }
+\item[{const T \&}]{b}
+\end{DoxyParamCaption}
+)}}\label{MAIN__nov__2013__opensource__kbd_8cpp_acd49ac80e8195ee336da1503fd149313}
+
+
+implementation of a general \char`\"{}max\char`\"{} function 
+
+
+\begin{DoxyParams}{Parameters}
+{\em a} & an element to compare \\
+\hline
+{\em b} & another element to compare \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+the greater element, provided class T has an operator \char`\"{}$<$\char`\"{}. 
+\end{DoxyReturn}
+
+
+Definition at line 80 of file M\-A\-I\-N\-\_\-nov\-\_\-2013\-\_\-opensource\-\_\-kbd.\-cpp.
+
