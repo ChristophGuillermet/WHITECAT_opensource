@@ -1,3 +1,44 @@
+Ôªø/*-------------------------------------------------------------------------------------------------------------
+                                 |
+          CWWWWWWWW              | Copyright (C) 2009-2013  Christoph Guillermet
+       WWWWWWWWWWWWWWW           | 
+     WWWWWWWWWWWWWWWWWWW         | This file is part of White Cat.
+    WWWWWWWWWWWWWWWWWCWWWW       | 
+   WWWWWWWWWWWWWWWWW tWWWWW      | White Cat is free software: you can redistribute it and/or modify
+  WWWW   WWWWWWWWWW  tWWWWWW     | it under the terms of the GNU General Public License as published by
+ WWWWWt              tWWWWWWa    | the Free Software Foundation, either version 3 of the License, or
+ WWWWWW               WWWWWWW    | (at your option) any later version.
+WWWWWWWW              WWWWWWW    | 
+WWWWWWWW               WWWWWWW   | White Cat is distributed in the hope that it will be useful,
+WWWWWWW               WWWWWWWW   | but WITHOUT ANY WARRANTY; without even the implied warranty of
+WWWWWWW      CWWW    W WWWWWWW   | MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+WWWWWWW            aW  WWWWWWW   | GNU General Public License for more details.
+WWWWWWWW           C  WWWWWWWW   | 
+ WWWWWWWW            CWWWWWWW    | You should have received a copy of the GNU General Public License
+ WWWWWWWWW          WWWWWWWWW    | along with White Cat.  If not, see <http://www.gnu.org/licenses/>. 
+  WWWWWWWWWWC    CWWWWWWWWWW     |   
+   WWWWWWWWWWWWWWWWWWWWWWWW      | 
+    WWWWWWWWWWWWWWWWWWWWWW       |    
+      WWWWWWWWWWWWWWWWWWa        |     
+        WWWWWWWWWWWWWWW          |     
+           WWWWWWWWt             |
+                                 |
+---------------------------------------------------------------------------------------------------------------*/
+/**
+
+ \file mover_2013.cpp
+ \brief {description courte} 
+ \author Christoph Guillermet
+ \version {numero de version du fichier}
+ \date {date description}
+ 
+ White Cat {- cat√©gorie} {- sous cat√©gorie {- sous cat√©gorie}}
+ Description d√©taill√©e
+ 
+ **/
+ 
+ 
+
 //TRACKER POUR LYRES ET MIRROIRS
 
 
@@ -333,7 +374,7 @@ dock_move_actual_step[move_selected]=1;
 dock_moves_contains_steps[move_selected]=1;
 Moves_Inpoint[move_selected]=1;
 
-//remise ‡ plat de l index
+//remise √† plat de l index
 index_main_clear=0;
 return(0);   
 }
@@ -360,7 +401,7 @@ temp_asservis_list[cp][dd]=dock_asservis[move_selected][cp][dd];//iris zoom etc
 }   
 }    
 
-//insertion et dÈcalages sont intÈgrÈs dËs le dÈpart
+//insertion et d√©calages sont int√©gr√©s d√®s le d√©part
 if(dock_moves_contains_steps[move_selected]<48)
 {
 dock_moves_contains_steps[move_selected]+=1;  
@@ -414,7 +455,7 @@ return(0);
 
 int Move_DelStep(int move_selected)
 {
-//destruction et dÈcalages sont intÈgrÈs dËs le dÈpart
+//destruction et d√©calages sont int√©gr√©s d√®s le d√©part
 if(dock_moves_contains_steps[move_selected]>0)
 {
 for (int mv=dock_move_actual_step[move_selected]; mv<dock_moves_contains_steps[move_selected];mv++)
@@ -1140,7 +1181,7 @@ if( window_focus_id==W_MOVER && mouse_x>x_track+20 && mouse_x<x_track+20+60 && m
  {
  if(index_move_back==0 )
  {
- if(index_move_forward==1)//si dej‡ cross en cours, permet de recaler la position
+ if(index_move_forward==1)//si dej√† cross en cours, permet de recaler la position
  {  index_move_forward=0;
     dock_move_actual_step[dock_move_selected]++;
     if(dock_move_actual_step[dock_move_selected]>dock_moves_contains_steps[dock_move_selected])
@@ -1332,7 +1373,7 @@ param_editor(x_track+530,y_track);
 
 
 /////////////////////////////////////////////////////////////////////////////////
-//mis ici pour cause de visibilitÈ avec splines
+//mis ici pour cause de visibilit√© avec splines
 if(index_show_points==1)
 {                        
 Print_Points(dock_move_selected);
@@ -1538,7 +1579,7 @@ int Move_do_crossfade(int move_selected)//crossfades
  {
  if(index_spline==0)
  {
- //ÈgalitÈs
+ //√©galit√©s
  if(x_val_at_beg[move_selected]==x_val_at_end[move_selected])
  {
  mover_params[0][0]=(int)x_val_at_end[move_selected];                   
@@ -1582,7 +1623,7 @@ int Move_do_crossfade(int move_selected)//crossfades
  {
  if(index_spline==0)
  {
- //ÈgalitÈs
+ //√©galit√©s
  if(x_val_at_beg[move_selected]==x_val_at_end[move_selected])
  {
  mover_params[0][0]=((int)x_val_at_end[move_selected])>>8;    
@@ -1631,7 +1672,7 @@ int Move_do_crossfade(int move_selected)//crossfades
  
  
  //la suite des datas normaux
- //egalitÈs
+ //egalit√©s
   if(iris_at_beg[move_selected]==iris_at_end[move_selected])
  {
  mover_params[2][0]=(int)iris_at_end[move_selected];                   

@@ -1,7 +1,43 @@
+﻿/*-------------------------------------------------------------------------------------------------------------
+                                 |
+          CWWWWWWWW              | Copyright (C) 2009-2013  Christoph Guillermet
+       WWWWWWWWWWWWWWW           | 
+     WWWWWWWWWWWWWWWWWWW         | This file is part of White Cat.
+    WWWWWWWWWWWWWWWWWCWWWW       | 
+   WWWWWWWWWWWWWWWWW tWWWWW      | White Cat is free software: you can redistribute it and/or modify
+  WWWW   WWWWWWWWWW  tWWWWWW     | it under the terms of the GNU General Public License as published by
+ WWWWWt              tWWWWWWa    | the Free Software Foundation, either version 3 of the License, or
+ WWWWWW               WWWWWWW    | (at your option) any later version.
+WWWWWWWW              WWWWWWW    | 
+WWWWWWWW               WWWWWWW   | White Cat is distributed in the hope that it will be useful,
+WWWWWWW               WWWWWWWW   | but WITHOUT ANY WARRANTY; without even the implied warranty of
+WWWWWWW      CWWW    W WWWWWWW   | MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+WWWWWWW            aW  WWWWWWW   | GNU General Public License for more details.
+WWWWWWWW           C  WWWWWWWW   | 
+ WWWWWWWW            CWWWWWWW    | You should have received a copy of the GNU General Public License
+ WWWWWWWWW          WWWWWWWWW    | along with White Cat.  If not, see <http://www.gnu.org/licenses/>. 
+  WWWWWWWWWWC    CWWWWWWWWWW     |   
+   WWWWWWWWWWWWWWWWWWWWWWWW      | 
+    WWWWWWWWWWWWWWWWWWWWWW       |    
+      WWWWWWWWWWWWWWWWWWa        |     
+        WWWWWWWWWWWWWWW          |     
+           WWWWWWWWt             |
+                                 |
+---------------------------------------------------------------------------------------------------------------*/
+/**
 
-
-
-
+ \file minifaders_core.cpp
+ \brief {description courte} 
+ \author Christoph Guillermet
+ \version {numero de version du fichier}
+ \date {date description}
+ 
+ White Cat {- catégorie} {- sous catégorie {- sous catégorie}}
+ Description détaillée
+ 
+ **/
+ 
+ 
 int all_at_zero_panel_core(int xf, int yf)
 {
     
@@ -316,7 +352,7 @@ mouse_released=1;
 }
 }
 
-//les presets de s�lections de faders//////////////////////////////////////////////////////////
+//les presets de sélections de faders//////////////////////////////////////////////////////////
 
 for(int lg=0;lg<8;lg++)
 {
@@ -488,7 +524,7 @@ int dock_selected_is=detect_dock_used(position_minifader_selected);
 if(index_do_dock==0 && index_do_modify==0 && index_do_dock==0   && index_type==0    && index_main_clear==0 )
 {
  minifaders_selected[position_minifader_selected]=toggle(minifaders_selected[position_minifader_selected]);
- if(index_inspekt==1)//affichage qui dans dock si VIEW activ�        
+ if(index_inspekt==1)//affichage qui dans dock si VIEW activé        
  {      
  show_who_is_in_dock( position_minifader_selected,   detect_dock_used(position_minifader_selected));
  }
@@ -683,7 +719,7 @@ if( mouse_x>xmf+(cmptfader*larg) && mouse_x<xmf+(cmptfader*larg)+larg && mouse_y
 
 position_minifader_selected=cmptfader+(lfad*24);
 refresh_minifader_state_view_core(cmptfader+(lfad*24));
-if(index_inspekt==1){ //affichage qui dans dock si VIEW activ�             
+if(index_inspekt==1){ //affichage qui dans dock si VIEW activé             
 show_who_is_in_dock( cmptfader+(lfad*24),   detect_dock_used(cmptfader+(lfad*24)));
 }
 set_mouse_range(xmf+(cmptfader*larg), ymf+20+(lfad*hmfd), xmf+(cmptfader*larg)+larg, ymf+20+127+(lfad*hmfd));//pour pas deborder
@@ -692,7 +728,7 @@ if( index_main_clear==0)
 {
 //NIVEAU
 Fader[cmptfader+(lfad*24)]=((ymf+127+20+(lfad*hmfd))-mouse_y)*2; 
-midi_levels[cmptfader+(lfad*24)]=((ymf+127+20+(lfad*hmfd))-mouse_y);//desafffcet� pour trouver pb
+midi_levels[cmptfader+(lfad*24)]=((ymf+127+20+(lfad*hmfd))-mouse_y);//desafffceté pour trouver pb
 
 if(Fader[cmptfader+(lfad*24)]>=254){Fader[cmptfader+(lfad*24)]=255;midi_levels[cmptfader+(lfad*24)]=127;} 
 

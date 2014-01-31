@@ -1,4 +1,43 @@
+﻿/*-------------------------------------------------------------------------------------------------------------
+                                 |
+          CWWWWWWWW              | Copyright (C) 2009-2013  Christoph Guillermet
+       WWWWWWWWWWWWWWW           | 
+     WWWWWWWWWWWWWWWWWWW         | This file is part of White Cat.
+    WWWWWWWWWWWWWWWWWCWWWW       | 
+   WWWWWWWWWWWWWWWWW tWWWWW      | White Cat is free software: you can redistribute it and/or modify
+  WWWW   WWWWWWWWWW  tWWWWWW     | it under the terms of the GNU General Public License as published by
+ WWWWWt              tWWWWWWa    | the Free Software Foundation, either version 3 of the License, or
+ WWWWWW               WWWWWWW    | (at your option) any later version.
+WWWWWWWW              WWWWWWW    | 
+WWWWWWWW               WWWWWWW   | White Cat is distributed in the hope that it will be useful,
+WWWWWWW               WWWWWWWW   | but WITHOUT ANY WARRANTY; without even the implied warranty of
+WWWWWWW      CWWW    W WWWWWWW   | MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+WWWWWWW            aW  WWWWWWW   | GNU General Public License for more details.
+WWWWWWWW           C  WWWWWWWW   | 
+ WWWWWWWW            CWWWWWWW    | You should have received a copy of the GNU General Public License
+ WWWWWWWWW          WWWWWWWWW    | along with White Cat.  If not, see <http://www.gnu.org/licenses/>. 
+  WWWWWWWWWWC    CWWWWWWWWWW     |   
+   WWWWWWWWWWWWWWWWWWWWWWWW      | 
+    WWWWWWWWWWWWWWWWWWWWWW       |    
+      WWWWWWWWWWWWWWWWWWa        |     
+        WWWWWWWWWWWWWWW          |     
+           WWWWWWWWt             |
+                                 |
+---------------------------------------------------------------------------------------------------------------*/
+/**
 
+ \file minifaders_visu.cpp
+ \brief {description courte} 
+ \author Christoph Guillermet
+ \version {numero de version du fichier}
+ \date {date description}
+ 
+ White Cat {- catégorie} {- sous catégorie {- sous catégorie}}
+ Description détaillée
+ 
+ **/
+ 
+ 
 int draw_sign_up(int xs,int ys)
 {
 Line(Vec2D(xs+12,ys+5),Vec2D(xs+12,ys+20)).Draw(CouleurLigne);//barre milieu vert
@@ -537,7 +576,7 @@ Line(Vec2D(xmf+(24*larg)+76+(lu*25),ymf+(llu*25)+16),Vec2D(xmf+(24*larg)+86+(lu*
 }
 }
 
-//les presets de s�lections de faders//////////////////////////////////////////////////////////
+//les presets de sélections de faders//////////////////////////////////////////////////////////
 petitpetitchiffre.Print("Pst",xmf+(24*larg)+10,ymf+85);
 
 
@@ -717,7 +756,7 @@ case 16://echo
 break;
 }
 }
-else//fader lock�
+else//fader locké
 {
 FaderLittleNiveau.Draw(CouleurLock.WithAlpha(myalpha*2));//couleur en vert emeraude
 if(LockFader_is_FullLevel[cmptfader+(lfad*24)]==1 && actual_master_lock==cmptfader+(lfad*24))

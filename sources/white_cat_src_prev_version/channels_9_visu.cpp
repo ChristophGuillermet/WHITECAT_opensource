@@ -1,7 +1,43 @@
+Ôªø/*-------------------------------------------------------------------------------------------------------------
+                                 |
+          CWWWWWWWW              | Copyright (C) 2009-2013  Christoph Guillermet
+       WWWWWWWWWWWWWWW           | 
+     WWWWWWWWWWWWWWWWWWW         | This file is part of White Cat.
+    WWWWWWWWWWWWWWWWWCWWWW       | 
+   WWWWWWWWWWWWWWWWW tWWWWW      | White Cat is free software: you can redistribute it and/or modify
+  WWWW   WWWWWWWWWW  tWWWWWW     | it under the terms of the GNU General Public License as published by
+ WWWWWt              tWWWWWWa    | the Free Software Foundation, either version 3 of the License, or
+ WWWWWW               WWWWWWW    | (at your option) any later version.
+WWWWWWWW              WWWWWWW    | 
+WWWWWWWW               WWWWWWW   | White Cat is distributed in the hope that it will be useful,
+WWWWWWW               WWWWWWWW   | but WITHOUT ANY WARRANTY; without even the implied warranty of
+WWWWWWW      CWWW    W WWWWWWW   | MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+WWWWWWW            aW  WWWWWWW   | GNU General Public License for more details.
+WWWWWWWW           C  WWWWWWWW   | 
+ WWWWWWWW            CWWWWWWW    | You should have received a copy of the GNU General Public License
+ WWWWWWWWW          WWWWWWWWW    | along with White Cat.  If not, see <http://www.gnu.org/licenses/>. 
+  WWWWWWWWWWC    CWWWWWWWWWW     |   
+   WWWWWWWWWWWWWWWWWWWWWWWW      | 
+    WWWWWWWWWWWWWWWWWWWWWW       |    
+      WWWWWWWWWWWWWWWWWWa        |     
+        WWWWWWWWWWWWWWW          |     
+           WWWWWWWWt             |
+                                 |
+---------------------------------------------------------------------------------------------------------------*/
+/**
 
-
-
-
+ \file chnnels_9_visu.cpp
+ \brief {description courte} 
+ \author Christoph Guillermet
+ \version {numero de version du fichier}
+ \date {date description}
+ 
+ White Cat {- cat√©gorie} {- sous cat√©gorie {- sous cat√©gorie}}
+ Description d√©taill√©e
+ 
+ **/
+ 
+ 
 int ChannelScroller( int ScrollX, int ScrollY)
 {
 Line( Vec2D( ScrollX, ScrollY ), Vec2D( ScrollX,ScrollY+250)).Draw( CouleurLigne );
@@ -89,10 +125,10 @@ int maxchan_per_ligne=13;
      
 for (int l=0;l<43;l++)
 {
-if (l==42) {maxchan_per_ligne=9;} //derniere ligne ‡ 512
+if (l==42) {maxchan_per_ligne=9;} //derniere ligne √† 512
 
-//on affiche et actionne que si les donnÈes
-//sont dans la fenetre de l espace circuit cad si la ligne et son incrÈments sont inferieurs au y de l espace fader // AFFICHAGE ONLY SELECTION PLUS BAS
+//on affiche et actionne que si les donn√©es
+//sont dans la fenetre de l espace circuit cad si la ligne et son incr√©ments sont inferieurs au y de l espace fader // AFFICHAGE ONLY SELECTION PLUS BAS
 if
 (
 (index_show_faders==0 && ((((ychan*l)+ interligne-20 - (int)((float)(scroll)* Ch_Scroll_Factor))>0)&&(((ychan*l) + interligne - (int)((float)(scroll)* Ch_Scroll_Factor))<hauteur_ecran)))
@@ -136,14 +172,14 @@ ChannelRect.Draw(CouleurFader.WithAlpha(myalpha_channel/2));
 }
 
 //BLIND
-switch(index_blind)//differencec avec mem enregistrÈe
+switch(index_blind)//differencec avec mem enregistr√©e
 {
 case 0:
 if(bufferSaisie[num_circ]!=Memoires[position_onstage][num_circ] && index_blink_change_memories==1)
 {ChannelRect.Draw(CouleurNiveau.WithAlpha(alpha_blinker));}    
 break;
 case 1:
-//difference avec mem enregistrÈe
+//difference avec mem enregistr√©e
 if(bufferBlind[num_circ]!=Memoires[position_preset][num_circ]  && index_blink_change_memories==1)
 {ChannelRect.Draw(CouleurBlind.WithAlpha(alpha_blinker));}    
 break;
@@ -178,16 +214,16 @@ break;
 
 if(index_inspekt==1)
 {
-//Affiche du dernier dock survolÈ 
+//Affiche du dernier dock survol√© 
 if (show_who_is_in_FADER_DOCK[num_circ]==1 ) 
 {    
 ChannelRect.DrawOutline(CouleurFader);
-//affichage du niveau du dock survolÈ
+//affichage du niveau du dock survol√©
 Rect LevelOverdock(Vec2D(((xchan-5) + (xposch))+15,((ypos_l)+ interligne+32 - ypos_ch)),Vec2D(35,13));   
 LevelOverdock.Draw(CouleurFader);  
 }
 //affichage du master  qui envoie le plus haut niveau au circuit
-if(highest_level_comes_from_fader[num_circ]>0)//si le highest level exist : valeur faders de 1 ‡ 48 quand attribuÈ
+if(highest_level_comes_from_fader[num_circ]>0)//si le highest level exist : valeur faders de 1 √† 48 quand attribu√©
 {
 petitdoomInspekt.Print(ol::ToString(highest_level_comes_from_fader[num_circ]) ,((xchan + (xposch))+15),((ypos_l) + interligne+12 - ypos_ch),CENTER); 
 }
@@ -315,7 +351,7 @@ break;
 }
 
 
-//premier dimmer patchÈ
+//premier dimmer patch√©
 if(index_show_first_dim==1)
 {
 for(int llo=0;llo<4;llo++)
@@ -354,7 +390,7 @@ int Draw_Channel_Preset_Title(int xchan, int ychan, int prst_v)
  Rect Build(Vec2D(xchan+520,ychan),Vec2D(55,20));
  Build.SetRoundness(3);
  
-if(prst_v!=0)//pas la vue patchÈe
+if(prst_v!=0)//pas la vue patch√©e
 {
  Rect M(Vec2D(xchan+435,ychan),Vec2D(20,20));
  M.SetRoundness(3);
@@ -508,14 +544,14 @@ ChannelRect.Draw(CouleurFader.WithAlpha(myalpha_channel/2));
 }
 
 //BLIND
-switch(index_blind)//differencec avec mem enregistrÈe
+switch(index_blind)//differencec avec mem enregistr√©e
 {
 case 0:
 if(bufferSaisie[num_circ]!=Memoires[position_onstage][num_circ] && index_blink_change_memories==1)
 {ChannelRect.Draw(CouleurNiveau.WithAlpha(alpha_blinker));}    
 break;
 case 1:
-//difference avec mem enregistrÈe
+//difference avec mem enregistr√©e
 if(bufferBlind[num_circ]!=Memoires[position_preset][num_circ]  && index_blink_change_memories==1)
 {ChannelRect.Draw(CouleurBlind.WithAlpha(alpha_blinker));}    
 break;
@@ -550,16 +586,16 @@ break;
 
 if(index_inspekt==1)
 {
-//Affiche du dernier dock survolÈ 
+//Affiche du dernier dock survol√© 
 if (show_who_is_in_FADER_DOCK[num_circ]==1 ) 
 {    
 ChannelRect.DrawOutline(CouleurFader);
-//affichage du niveau du dock survolÈ
+//affichage du niveau du dock survol√©
 Rect LevelOverdock(Vec2D(((xchan-5) + (xposch))+15, ypos_ch+52),Vec2D(35,13));   
 LevelOverdock.Draw(CouleurFader);  
 }
 //affichage du master  qui envoie le plus haut niveau au circuit
-if(highest_level_comes_from_fader[num_circ]>0)//si le highest level exist : valeur faders de 1 ‡ 48 quand attribuÈ
+if(highest_level_comes_from_fader[num_circ]>0)//si le highest level exist : valeur faders de 1 √† 48 quand attribu√©
 {
 petitdoomInspekt.Print(ol::ToString(highest_level_comes_from_fader[num_circ]) ,((xchan + (xposch))+15),ypos_ch+32,CENTER); 
 }
@@ -687,7 +723,7 @@ break;
 }
 }
 
-//premier dimmer patchÈ
+//premier dimmer patch√©
 if(index_show_first_dim==1)
 {
 for(int llo=0;llo<4;llo++)

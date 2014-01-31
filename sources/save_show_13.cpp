@@ -1,3 +1,43 @@
+Ôªø/*-------------------------------------------------------------------------------------------------------------
+                                 |
+          CWWWWWWWW              | Copyright (C) 2009-2013  Christoph Guillermet
+       WWWWWWWWWWWWWWW           | 
+     WWWWWWWWWWWWWWWWWWW         | This file is part of White Cat.
+    WWWWWWWWWWWWWWWWWCWWWW       | 
+   WWWWWWWWWWWWWWWWW tWWWWW      | White Cat is free software: you can redistribute it and/or modify
+  WWWW   WWWWWWWWWW  tWWWWWW     | it under the terms of the GNU General Public License as published by
+ WWWWWt              tWWWWWWa    | the Free Software Foundation, either version 3 of the License, or
+ WWWWWW               WWWWWWW    | (at your option) any later version.
+WWWWWWWW              WWWWWWW    | 
+WWWWWWWW               WWWWWWW   | White Cat is distributed in the hope that it will be useful,
+WWWWWWW               WWWWWWWW   | but WITHOUT ANY WARRANTY; without even the implied warranty of
+WWWWWWW      CWWW    W WWWWWWW   | MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+WWWWWWW            aW  WWWWWWW   | GNU General Public License for more details.
+WWWWWWWW           C  WWWWWWWW   | 
+ WWWWWWWW            CWWWWWWW    | You should have received a copy of the GNU General Public License
+ WWWWWWWWW          WWWWWWWWW    | along with White Cat.  If not, see <http://www.gnu.org/licenses/>. 
+  WWWWWWWWWWC    CWWWWWWWWWW     |   
+   WWWWWWWWWWWWWWWWWWWWWWWW      | 
+    WWWWWWWWWWWWWWWWWWWWWW       |    
+      WWWWWWWWWWWWWWWWWWa        |     
+        WWWWWWWWWWWWWWW          |     
+           WWWWWWWWt             |
+                                 |
+---------------------------------------------------------------------------------------------------------------*/
+/**
+
+ \file save_show_13.cpp
+ \brief {description courte} 
+ \author Christoph Guillermet
+ \version {numero de version du fichier}
+ \date {date description}
+ 
+ White Cat {- cat√©gorie} {- sous cat√©gorie {- sous cat√©gorie}}
+ Description d√©taill√©e
+ 
+ **/
+ 
+ 
 //modes d enregistrement
 const char file_save_preset[24]={"save_personnal_cfg.whc"};
 int save_preset_size=80*4;//bool preset_specify_who_to_save_load[80][4];
@@ -13,7 +53,7 @@ int dock_selected_size=48*6;//bool DockIsSelected[48][6];
 const char file_dock_type[24]={"fader_dock_type.whc"};
 int dock_type_size=48*6;//unsigned char DockTypeIs[48][6];
 const char file_dock_net[24]={"fader_dock_net.whc"};
-int dock_net_size=48*6; //unsigned char DockNetIs[48][6]; // numero Universe artnet(0 ‡ 15)
+int dock_net_size=48*6; //unsigned char DockNetIs[48][6]; // numero Universe artnet(0 √† 15)
 const char file_dock_name[24]={"fader_dock_name.whc"};
 int dock_name_size=48*6*25;//char DockName[48][6][25];
 const char file_dock_channels[24]={"fader_dock_channels.whc"};
@@ -74,15 +114,15 @@ int fader_echo_size=48*6;//int echo_affected_to_dock[48][6];//
 const char file_dock_color_type[24]={"dockcolor_typ.whc"};
 int dock_color_type_size=8;//bool dock_color_type[8];//0 trichro 1 mode quadri
 const char file_dock_color_xy[24]={"dockcolor_xy.whc"};
-int dock_color_xy_size=8*2;//int x_y_picker_par_colordock[8][2];//stockage des coordonnes du picker par coordonnÈes
+int dock_color_xy_size=8*2;//int x_y_picker_par_colordock[8][2];//stockage des coordonnes du picker par coordonn√©es
 const char file_dock_color_angle[24]={"dockcolor_angle.whc"};
-int dock_color_angle_size=8;//float angle_hue_par_colordock[8];//picker par coordonnÈes angles
+int dock_color_angle_size=8;//float angle_hue_par_colordock[8];//picker par coordonn√©es angles
 const char file_dock_color_picker[24]={"dockcolor_picker.whc"};
 int dock_color_picker_size=8*4;//int picker_trichro[8][4];//stockage des niveaux RVB YELLOW 
 const char file_dock_color_ch[24]={"dockcolor_ch.whc"};
 int dock_color_ch_size=8*4*514;//bool dock_color_channels[8][4][514];//trichro sur curcuits
 const char file_dock_color_buffer[24]={"dockcolor_buffer.whc"};
-int dock_color_buffer_size=8*514;//unsigned char dock_color_buffer_C[8][514];//resultat dans buffers separÈs
+int dock_color_buffer_size=8*514;//unsigned char dock_color_buffer_C[8][514];//resultat dans buffers separ√©s
 /////VIDEO
 const char file_video_description[24]={"videos_description.whc"};
 int video_description_size=25*64;//char annote_my_video[25][64];
@@ -152,7 +192,7 @@ const char file_mem_exclues[24]={"memories_excluded.whc"};
 int mem_exclues_size=10000;
 
 ///REPORT DE LA CONF FENETRES ALLUMEES / DMX VIEW ETC
-const char file_divers_index[24]={"indexs.whc"};//les indexs dmx_view, fenetres allumÈes, etc...
+const char file_divers_index[24]={"indexs.whc"};//les indexs dmx_view, fenetres allum√©es, etc...
 int index_size=128;
 
 const char file_windows[24]={"windows.whc"};
@@ -208,7 +248,7 @@ int banger_name_size=128*25;//char bangers_name[128][25];//128 bangers
 const char file_bangers_types[24]={"banger_types.whc"};//
 int banger_types_size=128*6;//int bangers_type[128][6];//128 bangers // 6 events par banger 
 const char file_bangers_actions[24]={"banger_actions.whc"};//
-int banger_actions_size=128*6;//int bangers_action[128][6];//num action demandÈe
+int banger_actions_size=128*6;//int bangers_action[128][6];//num action demand√©e
 const char file_bangers_values[24]={"banger_values.whc"};//
 int banger_values_size=128*6*2;//int bangers_params[128][6][2];//0 param1 / 1 param2
 const char file_bangers_times[24]={"banger_times.whc"};//
@@ -285,7 +325,7 @@ int kbd_ascii_map_size=128;//int mapping_temporaire[128];//la table de reroutage
 const char file_audio_autoloadpause[24]={"audio_autoloadpause.whc"};//
 int audio_autoloadpause_size=2*4;// bool audio_autoload[4]; bool audio_autopause[4];//
 const char file_audio_filenumber[24]={"audio_filenumber.whc"};//
-int audio_filenumber_size=4;//int player_has_file_coming_from_pos[4];//position 1 ‡ 127
+int audio_filenumber_size=4;//int player_has_file_coming_from_pos[4];//position 1 √† 127
 const char file_audio_playerposition[24]={"audio_plposition.whc"};//
 int audio_playerposition_size=4;//player_position_on_save[4]
 
@@ -370,7 +410,7 @@ const char file_mover_params[24]={"mover_params.whc"};
 int mover_param_size=32;//int mover_params_adresses[32];
 /////////////GRID////////////////////////////////////////////////////////////////
 
-//les grilles en plusieurs fichiers, beaucoup trop lourds les datas en Ècriture chargement !
+//les grilles en plusieurs fichiers, beaucoup trop lourds les datas en √©criture chargement !
 const char file_grid_levels_1[24]={"grids_levels_1.whc"};
 const char file_grid_levels_2[24]={"grids_levels_2.whc"};
 const char file_grid_levels_3[24]={"grids_levels_3.whc"};
@@ -492,7 +532,7 @@ int draw_chrouting_size=6*500;//int draw_preset_channel_routing[6][500];
 
 //ECHO
 const char file_echo_pointing_fader[24]={"echo_take_fader.whc"};
-int echo_pointing_fader_size=24;//int echo_pointing_fader_num[24];//le fader pointÈ
+int echo_pointing_fader_size=24;//int echo_pointing_fader_num[24];//le fader point√©
 const char file_echo_echo_mode[24]={"echo_echo_mode.whc"};
 int echo_echo_mode_size=24;//bool echo_is_echo_mode[24];//0= bounce mode 1= continuous Echo mode
 const char file_echo_global_param[24]={"echo_global_specs.whc"};
@@ -1251,7 +1291,7 @@ index_report_customs[45]=config_page_is;
 index_report_customs[48]=nbre_track_visualisables;
 index_report_customs[49]=chaser_operator_is;
 index_report_customs[50]=chaser_selected;
-index_report_customs[51]=index_affichage_digit_time_unit;//affichage des unitÈs aprËs virgule
+index_report_customs[51]=index_affichage_digit_time_unit;//affichage des unit√©s apr√®s virgule
 index_report_customs[52]=launchpad_chaser_mode;
 index_report_customs[53]=index_enable_edit_chaser;
 index_report_customs[54]=chaser_midi_rows;
@@ -1743,7 +1783,7 @@ fclose(fp);
  idf++; 
 }
 
-if(specify_who_to_save_load[3]==1) ///////////MEMOIRES: nums de bangers affectÈs//////////////////////////
+if(specify_who_to_save_load[3]==1) ///////////MEMOIRES: nums de bangers affect√©s//////////////////////////
 {
 if ((fp=fopen( file_banger_call_in_mem, "wb"))==NULL)
 { sprintf(string_save_load_report[idf],"Error opening file %s", file_banger_call_in_mem); b_report_error[idf]=1;}
@@ -3691,7 +3731,7 @@ fclose(fp);
 }
 idf++; */
 
-//les grilles paquÈes en 4 fichiers
+//les grilles paqu√©es en 4 fichiers
 
 for(int iu=0;iu<32;iu++)
 {
@@ -4854,7 +4894,7 @@ if (fread(FaderDirectChan, sizeof(int), fader_direct_chan_size, fp) != fader_dir
 { sprintf(string_save_load_report[idf],"Error Loaded %s",  file_direct_channel);b_report_error[idf]=1;}
 else {sprintf(string_save_load_report[idf],"Loaded file %s", file_direct_channel);}
  fclose(fp);
-//mise ‡ plat d init si souci
+//mise √† plat d init si souci
 for(int i=0;i<48;i++)
 {
 for (int j=0;j<6;j++)
@@ -5945,7 +5985,7 @@ else  sprintf(string_save_load_report[idf],"Loaded file %s", file_dock_color_buf
 }
 idf++; 
  load_etat_picker_dans_dockcolor(0);//rafraichissement du premier dock color
-  //puis mise ‡ l afihage ok du curseur hue
+  //puis mise √† l afihage ok du curseur hue
   vx = cos(angle_snap)*125;
   vy = sin(angle_snap)*125;
   position_curseur_hue_x= xtrichro_window+vx;
@@ -7606,7 +7646,7 @@ show_calc_number[view_plot_calc_number_is]=1;
 LoadWhiteCatColorProfil();// pas de fichiers, juste raffraichissement
 rest(10);
 
-//reroll ‡ garder pour pas larguer midishare
+//reroll √† garder pour pas larguer midishare
 sprintf(rep,"%s",mondirectory); 	 
 chdir (rep);  
 

@@ -1,4 +1,43 @@
+Ôªø/*-------------------------------------------------------------------------------------------------------------
+                                 |
+          CWWWWWWWW              | Copyright (C) 2009-2013  Christoph Guillermet
+       WWWWWWWWWWWWWWW           | 
+     WWWWWWWWWWWWWWWWWWW         | This file is part of White Cat.
+    WWWWWWWWWWWWWWWWWCWWWW       | 
+   WWWWWWWWWWWWWWWWW tWWWWW      | White Cat is free software: you can redistribute it and/or modify
+  WWWW   WWWWWWWWWW  tWWWWWW     | it under the terms of the GNU General Public License as published by
+ WWWWWt              tWWWWWWa    | the Free Software Foundation, either version 3 of the License, or
+ WWWWWW               WWWWWWW    | (at your option) any later version.
+WWWWWWWW              WWWWWWW    | 
+WWWWWWWW               WWWWWWW   | White Cat is distributed in the hope that it will be useful,
+WWWWWWW               WWWWWWWW   | but WITHOUT ANY WARRANTY; without even the implied warranty of
+WWWWWWW      CWWW    W WWWWWWW   | MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+WWWWWWW            aW  WWWWWWW   | GNU General Public License for more details.
+WWWWWWWW           C  WWWWWWWW   | 
+ WWWWWWWW            CWWWWWWW    | You should have received a copy of the GNU General Public License
+ WWWWWWWWW          WWWWWWWWW    | along with White Cat.  If not, see <http://www.gnu.org/licenses/>. 
+  WWWWWWWWWWC    CWWWWWWWWWW     |   
+   WWWWWWWWWWWWWWWWWWWWWWWW      | 
+    WWWWWWWWWWWWWWWWWWWWWW       |    
+      WWWWWWWWWWWWWWWWWWa        |     
+        WWWWWWWWWWWWWWW          |     
+           WWWWWWWWt             |
+                                 |
+---------------------------------------------------------------------------------------------------------------*/
+/**
 
+ \file faders_core_24.cpp
+ \brief {description courte} 
+ \author Christoph Guillermet
+ \version {numero de version du fichier}
+ \date {date description}
+ 
+ White Cat {- cat√©gorie} {- sous cat√©gorie {- sous cat√©gorie}}
+ Description d√©taill√©e
+ 
+ **/
+ 
+ 
 int indicate_wich_fader_is_the_highest()
 {  
 for(int ig=1;ig<514;ig++)
@@ -97,7 +136,7 @@ for (int cm=0;cm<2;cm++)
  {
  for(int f=0;f<core_user_define_nb_faders;f++)
  {
- FaderLocked_Preset[calcul_lock][f]=0;        //reset des Ètats avant stockage
+ FaderLocked_Preset[calcul_lock][f]=0;        //reset des √©tats avant stockage
  StateOfFaderBeforeLock_Preset[calcul_lock][f]=0; 
  LockFader_is_FullLevel_Preset[calcul_lock][f]=0;      
  if ( FaderLocked[f]==1)
@@ -632,7 +671,7 @@ else
 {
 if(mouse_released==0)
 {
-bool index_choose_mode_dkloop=0;//0 toggle tt le monde / 1 copie l etat du dck selctionnÈ dans tt le monde
+bool index_choose_mode_dkloop=0;//0 toggle tt le monde / 1 copie l etat du dck selctionn√© dans tt le monde
 
 for (int ck=0;ck<core_user_define_nb_docks-1;ck++)
 {
@@ -648,7 +687,7 @@ for(int op=0;op<core_user_define_nb_docks;op++)
 }
 break;
 case 1:
-//tout le monde prend la valeur du dock selectionnÈ
+//tout le monde prend la valeur du dock selectionn√©
 for(int j=0;j<core_user_define_nb_docks;j++)
 {
 if(DockIsSelected[cmptfader][j]==1)
@@ -763,7 +802,7 @@ if(index_moving_fader_space==0)
 {
 for (int cmptfader=0;cmptfader<nbr_fader;cmptfader++)
 {
-//on affiche et actionne que si les donnÈes sont dans l espace de l ecran
+//on affiche et actionne que si les donn√©es sont dans l espace de l ecran
 if(((x+(cmptfader*espacement)+espacement)>0)&& ((x+(cmptfader*espacement)+largeur)< LargeurEspaceFaderSize))
 {        
 //route FX
@@ -791,7 +830,7 @@ mouse_released=1;
 //////////////AU DESSUS FADER////////////////////////////////////////////////////                                                    
 if(mouse_x>x+(cmptfader*espacement) && mouse_x<x+(cmptfader*espacement)+largeur && mouse_y>=y && mouse_y<=y+255)
 {
- //affichage qui dans dock si VIEW activÈ             
+ //affichage qui dans dock si VIEW activ√©             
 show_who_is_in_dock( cmptfader,   detect_dock_used(cmptfader));
 set_mouse_range(x+(cmptfader*espacement), y, x+(cmptfader*espacement)+largeur, y+255);//pour pas deborder
 //click niveau fader
@@ -890,7 +929,7 @@ if(mouse_x>=(x+(cmptfader*espacement)+(largeur+30)) && mouse_x<=(x+(cmptfader*es
    && mouse_y>=(y + (dd*40)) && mouse_y<=(y + (dd*40)+20)
    && index_over_function_call==0 )
  {
-// show_who_is_in_dock(cmptfader,dd);  //mise en affichage sÈlection de qui est dans le dock  
+// show_who_is_in_dock(cmptfader,dd);  //mise en affichage s√©lection de qui est dans le dock  
  
  
  //selection dock
@@ -1156,7 +1195,7 @@ if(Midi_Faders_Affectation_Type!=0)
    break; 
    case 1:
    FaderLocked[cmptfader]=0;
-   //remise ‡ plat du niveau
+   //remise √† plat du niveau
    Fader[cmptfader]=(unsigned char)((((float)(StateOfFaderBeforeLock[cmptfader]))/255)*locklevel);
    midi_levels[cmptfader]=(int)(((float)Fader[cmptfader])/2);
    sprintf(string_Last_Order,">> UNLOCKED Fader %d",cmptfader+1);
@@ -1406,7 +1445,7 @@ chaser_is_playing[the_chaser]=toggle(chaser_is_playing[the_chaser]);
 if(chaser_is_playing[the_chaser]==1)//snap du temps at beg
 {
 chaser_start_time[the_chaser]=actual_time;
-//bug olivier marche arriere arriËre ligne
+//bug olivier marche arriere arri√®re ligne
 if(chaser_step_is[chaser_selected]<0){chaser_step_is[chaser_selected]=0;}
 else if(chaser_step_is[chaser_selected]>35){chaser_step_is[chaser_selected]=35;}
 }

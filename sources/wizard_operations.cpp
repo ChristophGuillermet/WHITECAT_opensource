@@ -1,4 +1,43 @@
+﻿/*-------------------------------------------------------------------------------------------------------------
+                                 |
+          CWWWWWWWW              | Copyright (C) 2009-2013  Christoph Guillermet
+       WWWWWWWWWWWWWWW           | 
+     WWWWWWWWWWWWWWWWWWW         | This file is part of White Cat.
+    WWWWWWWWWWWWWWWWWCWWWW       | 
+   WWWWWWWWWWWWWWWWW tWWWWW      | White Cat is free software: you can redistribute it and/or modify
+  WWWW   WWWWWWWWWW  tWWWWWW     | it under the terms of the GNU General Public License as published by
+ WWWWWt              tWWWWWWa    | the Free Software Foundation, either version 3 of the License, or
+ WWWWWW               WWWWWWW    | (at your option) any later version.
+WWWWWWWW              WWWWWWW    | 
+WWWWWWWW               WWWWWWW   | White Cat is distributed in the hope that it will be useful,
+WWWWWWW               WWWWWWWW   | but WITHOUT ANY WARRANTY; without even the implied warranty of
+WWWWWWW      CWWW    W WWWWWWW   | MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+WWWWWWW            aW  WWWWWWW   | GNU General Public License for more details.
+WWWWWWWW           C  WWWWWWWW   | 
+ WWWWWWWW            CWWWWWWW    | You should have received a copy of the GNU General Public License
+ WWWWWWWWW          WWWWWWWWW    | along with White Cat.  If not, see <http://www.gnu.org/licenses/>. 
+  WWWWWWWWWWC    CWWWWWWWWWW     |   
+   WWWWWWWWWWWWWWWWWWWWWWWW      | 
+    WWWWWWWWWWWWWWWWWWWWWW       |    
+      WWWWWWWWWWWWWWWWWWa        |     
+        WWWWWWWWWWWWWWW          |     
+           WWWWWWWWt             |
+                                 |
+---------------------------------------------------------------------------------------------------------------*/
+/**
 
+ \file wizard_operations.cpp
+ \brief {description courte} 
+ \author Christoph Guillermet
+ \version {numero de version du fichier}
+ \date {date description}
+ 
+ White Cat {- catégorie} {- sous catégorie {- sous catégorie}}
+ Description détaillée
+ 
+ **/
+ 
+ 
 
 int wizard_calcul_nbre_de_mem()
 {
@@ -275,7 +314,7 @@ sprintf(annotation_memoires[pm],"");
 annotation_memoires[pm][24]='\0';    
 }
 
-//recopie des memoires � ins�rer
+//recopie des memoires à insérer
 int index_mem=0;
 int fin_des_memoires=0;
 for(int look=wizard_from_mem;look<=wizard_to_mem;look++)
@@ -296,7 +335,7 @@ fin_des_memoires=variable_wizard_mem+index_mem;
 }
 }
 //le recopiage et decalage du reste
-//arrondissage index_mem pour garder la logique du num�rotage des .
+//arrondissage index_mem pour garder la logique du numérotage des .
 index_mem/=10;
 index_mem+=1;
 index_mem*=10;
@@ -477,7 +516,7 @@ for(int co=1;co<512;co++)
 {
 if(wizard_buffer_in[co]==1)
 {
-if(Memoires[m][co]>0)//on ne rajoute pas sur un circuit � 0%
+if(Memoires[m][co]>0)//on ne rajoute pas sur un circuit à 0%
 {
 switch(dmx_view)
 {
@@ -511,7 +550,7 @@ for(int co=1;co<512;co++)
 {
 if(wizard_buffer_in[co]==1)
 {
-if(Memoires[m][co]>0)//on ne retire pas sur un circuit � 0%
+if(Memoires[m][co]>0)//on ne retire pas sur un circuit à 0%
 {
 switch(dmx_view)
 {

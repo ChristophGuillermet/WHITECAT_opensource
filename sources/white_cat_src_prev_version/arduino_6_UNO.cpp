@@ -1,7 +1,46 @@
+Ôªø/*-------------------------------------------------------------------------------------------------------------
+                                 |
+          CWWWWWWWW              | Copyright (C) 2009-2013  Christoph Guillermet
+       WWWWWWWWWWWWWWW           | 
+     WWWWWWWWWWWWWWWWWWW         | This file is part of White Cat.
+    WWWWWWWWWWWWWWWWWCWWWW       | 
+   WWWWWWWWWWWWWWWWW tWWWWW      | White Cat is free software: you can redistribute it and/or modify
+  WWWW   WWWWWWWWWW  tWWWWWW     | it under the terms of the GNU General Public License as published by
+ WWWWWt              tWWWWWWa    | the Free Software Foundation, either version 3 of the License, or
+ WWWWWW               WWWWWWW    | (at your option) any later version.
+WWWWWWWW              WWWWWWW    | 
+WWWWWWWW               WWWWWWW   | White Cat is distributed in the hope that it will be useful,
+WWWWWWW               WWWWWWWW   | but WITHOUT ANY WARRANTY; without even the implied warranty of
+WWWWWWW      CWWW    W WWWWWWW   | MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+WWWWWWW            aW  WWWWWWW   | GNU General Public License for more details.
+WWWWWWWW           C  WWWWWWWW   | 
+ WWWWWWWW            CWWWWWWW    | You should have received a copy of the GNU General Public License
+ WWWWWWWWW          WWWWWWWWW    | along with White Cat.  If not, see <http://www.gnu.org/licenses/>. 
+  WWWWWWWWWWC    CWWWWWWWWWW     |   
+   WWWWWWWWWWWWWWWWWWWWWWWW      | 
+    WWWWWWWWWWWWWWWWWWWWWW       |    
+      WWWWWWWWWWWWWWWWWWa        |     
+        WWWWWWWWWWWWWWW          |     
+           WWWWWWWWt             |
+                                 |
+---------------------------------------------------------------------------------------------------------------*/
+/**
 
+ \file {nom du fichier.extension}
+ \brief {description courte} 
+ \author Christoph Guillermet
+ \version {numero de version du fichier}
+ \date {date description}
+ 
+ White Cat {- cat√©gorie} {- sous cat√©gorie {- sous cat√©gorie}}
+ Description d√©taill√©e
+ 
+ **/
+ 
+ 
 
 /*
-int arduino_decode_keyword_method(char *tmp_ard)//pas genial pour analogiques en simultannÈ
+int arduino_decode_keyword_method(char *tmp_ard)//pas genial pour analogiques en simultann√©
 {
 if(strncmp(tmp_ard,"DG/",3)==0)//3= le code
 {
@@ -28,12 +67,11 @@ return(0);
 }*/
 
 
-
 int arduino_decode_array_method(char *tmp_ard)
 {
 if(strncmp(tmp_ard,"DG/",3)==0)//3= le code
 {
-for(int o=3;o<=3+arduino_max_digital;o++)
+for(int o=3;o<3+arduino_max_digital;o++)
 {
 
 digital_data_from_arduino[o-3]=tmp_ard[o];    
@@ -67,12 +105,12 @@ arduino_order[0]='S';arduino_order[1]='D';arduino_order[2]='/';arduino_order[3]=
 
 
 int nBytesSendtoArduino=serial0.SendData(arduino_order,4); 
-//capture de l'Ètat prÈcÈdent
-for(int y=0;y<=arduino_max_digital;y++)
+//capture de l'√©tat pr√©c√©dent
+for(int y=0;y<arduino_max_digital;y++)
 {
 previous_digital_data_from_arduino[y]=digital_data_from_arduino[y];        
 }
-nBytesReadArduino0=serial0.ReadData(tmp_str_arduino,128);
+nBytesReadArduino0=serial0.ReadData(tmp_str_arduino,127);
 arduino_decode_array_method(tmp_str_arduino);
 
 
@@ -98,7 +136,7 @@ int do_arduino_config(int cfg_X, int cfg_Y)
 //port COM
 petitchiffre.Print("DEVICE ON COM:",cfg_X+20,cfg_Y+45); 
 Rect Comport(Vec2D(cfg_X+120,cfg_Y+30),Vec2D(50,25));
-Comport.SetRoundness(7.5);
+Comport.SetRoundness(rondeur_fader/2);
 Comport.SetLineWidth(epaisseur_ligne_fader);  
 Comport.Draw(CouleurFond.WithAlpha(0.5));
 if(mouse_x>cfg_X+120 && mouse_x<cfg_X+120+50 && mouse_y>cfg_Y+30 && mouse_y<cfg_Y+30+25)
@@ -113,8 +151,7 @@ if(  new_comport>0 && new_comport<18)
 {
 if(arduino_device_0_is_ignited==1){arduino_close(0);}
 arduino_com0=new_comport;           
-arduino_init(0);
-index_send_arduino_config=1;     
+arduino_init(0);      
 mouse_released=1; 
 }                   
 }                     
@@ -124,7 +161,7 @@ petitchiffre.Print(ol::ToString(arduino_com0),cfg_X+140,cfg_Y+45);
 //BAUD RATE
 petitchiffre.Print("BAUD-RATE:",cfg_X+20,cfg_Y+75); 
 Rect BaudrateB(Vec2D(cfg_X+120,cfg_Y+60),Vec2D(50,25));
-BaudrateB.SetRoundness(7.5);
+BaudrateB.SetRoundness(rondeur_fader/2);
 BaudrateB.SetLineWidth(epaisseur_ligne_fader);  
 BaudrateB.Draw(CouleurFond.WithAlpha(0.5));
 if(mouse_x>cfg_X+120 && mouse_x<cfg_X+120+50 && mouse_y>cfg_Y+60 && mouse_y<cfg_Y+60+25)
@@ -139,38 +176,18 @@ if( new_Baudrate>0 && (new_Baudrate ==300 || new_Baudrate==1200 || new_Baudrate=
 new_Baudrate==14400 || new_Baudrate==19200 || new_Baudrate==28800 || new_Baudrate==38400 || new_Baudrate==57600 || new_Baudrate==115200))
 {
 if(arduino_device_0_is_ignited==1){arduino_close(0);}
-arduino_baud_rate0=new_Baudrate;       
-arduino_init(0); 
-index_send_arduino_config=1;      
+arduino_baud_rate0=new_Baudrate;           
+arduino_init(0);      
 mouse_released=1; 
 }                   
 }                     
 }
 petitchiffre.Print(ol::ToString(arduino_baud_rate0),cfg_X+128,cfg_Y+75);
 
-//Arduino config
-petitchiffre.Print("SEND CONFIG",cfg_X+20,cfg_Y+225); 
-Rect arduino_send(Vec2D(cfg_X+120,cfg_Y+210),Vec2D(50,25));
-arduino_send.SetRoundness(7.5);  
-arduino_send.Draw(CouleurFond.WithAlpha(0.5));
-arduino_send.Draw(CouleurBlind.WithAlpha(index_do_light_send_config));      
-if(index_do_light_send_config>0){index_do_light_send_config-=0.2;if(index_do_light_send_config<0) index_do_light_send_config=0;}
-if(window_focus_id==W_CFGMENU && arduino_device_0_is_ignited==1 && mouse_x>cfg_X+120 && mouse_x<cfg_X+120+50 && mouse_y>cfg_Y+210 && mouse_y<cfg_Y+210+25)
-{
-arduino_send.DrawOutline(CouleurLigne.WithAlpha(0.5));
-
-if(mouse_button==1 && mouse_released==0)
-{
-index_send_arduino_config=1;             
-index_do_light_send_config=1.0;          
-}                    
-}
-
-
 //REQUEST RATE
 petitchiffre.Print("REQUEST-RATE:",cfg_X+20,cfg_Y+105); 
 Rect ReqrateB(Vec2D(cfg_X+120,cfg_Y+90),Vec2D(50,25));
-ReqrateB.SetRoundness(7.5);
+ReqrateB.SetRoundness(rondeur_fader/2);
 ReqrateB.SetLineWidth(epaisseur_ligne_fader);  
 ReqrateB.Draw(CouleurFond.WithAlpha(0.5));
 if(mouse_x>cfg_X+120 && mouse_x<cfg_X+120+50 && mouse_y>cfg_Y+90 && mouse_y<cfg_Y+90+25)
@@ -194,7 +211,7 @@ petitchiffre.Print(ol::ToString(ARDUINO_RATE),cfg_X+140,cfg_Y+105);
 ////////////////LIMITATION DE CARTES ///////////////////////////////////////////
 petitchiffre.Print("LAST I/O:",cfg_X+20,cfg_Y+135); 
 Rect MaxIOB(Vec2D(cfg_X+120,cfg_Y+120),Vec2D(50,25));
-MaxIOB.SetRoundness(7.5);
+MaxIOB.SetRoundness(rondeur_fader/2);
 MaxIOB.SetLineWidth(epaisseur_ligne_fader);  
 MaxIOB.Draw(CouleurFond.WithAlpha(0.5));
 if(mouse_x>cfg_X+120 && mouse_x<cfg_X+120+50 && mouse_y>cfg_Y+120 && mouse_y<cfg_Y+120+25)
@@ -216,7 +233,7 @@ petitchiffre.Print(ol::ToString(arduino_max_digital),cfg_X+140,cfg_Y+135);
 ///////////////////////////////
 petitchiffre.Print("LAST ANALOG:",cfg_X+20,cfg_Y+165); 
 Rect MaxAnB(Vec2D(cfg_X+120,cfg_Y+150),Vec2D(50,25));
-MaxAnB.SetRoundness(7.5);
+MaxAnB.SetRoundness(rondeur_fader/2);
 MaxAnB.SetLineWidth(epaisseur_ligne_fader);  
 MaxAnB.Draw(CouleurFond.WithAlpha(0.5));
 if(mouse_x>cfg_X+120 && mouse_x<cfg_X+120+50 && mouse_y>cfg_Y+150 && mouse_y<cfg_Y+150+25)
@@ -238,7 +255,7 @@ petitchiffre.Print(ol::ToString(arduino_max_analog),cfg_X+140,cfg_Y+165);
 /////////////////////////////////
 petitchiffre.Print("OPEN:",cfg_X+20,cfg_Y+195); 
 Rect OpenB(Vec2D(cfg_X+120,cfg_Y+180),Vec2D(50,25));
-OpenB.SetRoundness(7.5);
+OpenB.SetRoundness(rondeur_fader/2);
 OpenB.SetLineWidth(epaisseur_ligne_fader);  
 OpenB.Draw(CouleurFond.WithAlpha(0.5));
 switch (arduino_device_0_is_ignited)
@@ -247,9 +264,7 @@ case 0:
 petitchiffre.Print("is OFF",cfg_X+130,cfg_Y+195);      
 break;
 case 1:
-petitchiffre.Print("is ON",cfg_X+130,cfg_Y+195); 
-
-        
+petitchiffre.Print("is ON",cfg_X+130,cfg_Y+195);      
 break;       
 }
 if(mouse_x>cfg_X+120 && mouse_x<cfg_X+120+50 && mouse_y>cfg_Y+180 && mouse_y<cfg_Y+180+25)
@@ -261,14 +276,10 @@ OpenB.Draw(CouleurBlind);
 switch (arduino_device_0_is_ignited)
 {
 case 0:
-   arduino_init(0);
-   index_send_arduino_config=1; 
+   arduino_init(0);   
 break;
 case 1:
-     
    arduino_close(0); 
-   arduino_init(0);
-   index_send_arduino_config=1; 
    arduino_device_0_is_ignited=0;    
 break;       
 }
@@ -286,28 +297,28 @@ char string_temp_familly[25];
 
 
 
-for (int y=0;y<=arduino_max_digital;y++)
+for (int y=0;y<12;y++)
 {
 ////////DIG/////////////////////////////////////////////////////////////////
 Rect OverTyp(Vec2D(cfg_X+200+5,(cfg_Y+40+(y*20)-10)),Vec2D(70,18));
-OverTyp.SetRoundness(7.5);
+OverTyp.SetRoundness(rondeur_fader/2);
 OverTyp.Draw(CouleurFond.WithAlpha(0.3));
 
 Rect OverAction(Vec2D(cfg_X+280+5,(cfg_Y+40+(y*20)-10)),Vec2D(140,18));
-OverAction.SetRoundness(7.5);
+OverAction.SetRoundness(rondeur_fader/2);
 OverAction.Draw(CouleurFond.WithAlpha(0.3));
 
 Rect OverVal(Vec2D(cfg_X+430+5,(cfg_Y+40+(y*20)-10)),Vec2D(30,18));
-OverVal.SetRoundness(7.5);
+OverVal.SetRoundness(rondeur_fader/2);
 OverVal.Draw(CouleurFond.WithAlpha(0.3));
 /////////ANA///////////////////////////////////////////////////////////////
 
 Rect OverAff(Vec2D(cfg_X+520+5,(cfg_Y+40+(y*20)-10)),Vec2D(105,18));
-OverAff.SetRoundness(7.5);
+OverAff.SetRoundness(rondeur_fader/2);
 OverAff.Draw(CouleurFond.WithAlpha(0.3));
 
 Rect OverValA(Vec2D(cfg_X+630+5,(cfg_Y+40+(y*20)-10)),Vec2D(30,18));
-OverValA.SetRoundness(7.5);
+OverValA.SetRoundness(rondeur_fader/2);
 OverValA.Draw(CouleurFond.WithAlpha(0.3));
 
 
@@ -325,7 +336,7 @@ arduino_digital_function_input[position_line_io+y][1]=0;
 arduino_digital_function_input[position_line_io+y][0]=0;
 arduino_digital_function_output[position_line_io+y][1]=0;
 arduino_digital_function_output[position_line_io+y][0]=0;
-if(arduino_digital_type[position_line_io+y]>4)
+if(arduino_digital_type[position_line_io+y]>3)
 {arduino_digital_type[position_line_io+y]=0;}
 OverTyp.Draw(CouleurFader);    
 mouse_released=1;               
@@ -342,23 +353,20 @@ if(mouse_button==1 && mouse_released==0)
 if(arduino_digital_type[position_line_io+y]==1)//input
 {
 arduino_digital_function_input[position_line_io+y][0]++;
-if(arduino_digital_function_input[position_line_io+y][0]>32)
+if(arduino_digital_function_input[position_line_io+y][0]>33)
 {arduino_digital_function_input[position_line_io+y][0]=0;}
 arduino_digital_function_input[position_line_io+y][1]=0;
 }
-if(arduino_digital_type[position_line_io+y]==2 || arduino_digital_type[position_line_io+y]==3 || arduino_digital_type[position_line_io+y]==4|| arduino_digital_type[position_line_io+y]==5)//output ON OF ET PWM
+if(arduino_digital_type[position_line_io+y]==2 || arduino_digital_type[position_line_io+y]==3)//output ON OF ET PWM
 {
 arduino_digital_function_output[position_line_io+y][0]++;
 if(arduino_digital_function_output[position_line_io+y][0]>2)
 {arduino_digital_function_output[position_line_io+y][0]=0;}
 arduino_digital_function_output[position_line_io+y][1]=0;
 }
-
 OverAction.Draw(CouleurFader);    
 mouse_released=1;               
 }
-
-
 }           
 
 
@@ -372,7 +380,7 @@ if(mouse_button==1 && mouse_released==0)
 int valois=atoi(numeric);
 
 ///INPUT/////////////////////////////////////////////////////////////////////
-//data Val1 range pour un input de type fader ( 0 ‡ 11 )
+//data Val1 range pour un input de type fader ( 0 √† 11 )
 if(
 arduino_digital_type[position_line_io+y]==1
 && arduino_digital_function_input[position_line_io+y][0]>=0 && arduino_digital_function_input[position_line_io+y][0]<=11 
@@ -381,7 +389,7 @@ arduino_digital_type[position_line_io+y]==1
 {
 arduino_digital_function_input[position_line_io+y][1]=valois;                                                            
 }
-//faire data range pour le picth: 0 ‡ 127
+//faire data range pour le picth: 0 √† 127
 if(
 arduino_digital_type[position_line_io+y]==1
 && ( arduino_digital_function_input[position_line_io+y][0]>=17 || arduino_digital_function_input[position_line_io+y][0]<=32) 
@@ -391,12 +399,12 @@ arduino_digital_type[position_line_io+y]==1
 arduino_digital_function_input[position_line_io+y][1]=valois;                                                            
 }
 ///////////OUTPUT ON OFF ET PWM///////////////////////////////////////////////////////////////
-if((arduino_digital_type[position_line_io+y]==2 || arduino_digital_type[position_line_io+y]==3|| arduino_digital_type[position_line_io+y]==4|| arduino_digital_type[position_line_io+y]==5) && arduino_digital_function_output[position_line_io+y][0]==1
+if((arduino_digital_type[position_line_io+y]==2 || arduino_digital_type[position_line_io+y]==3) && arduino_digital_function_output[position_line_io+y][0]==1
 && valois>0 && valois<513)//CHANNEL
 {
 arduino_digital_function_output[position_line_io+y][1]=valois;                                                 
 }
-if((arduino_digital_type[position_line_io+y]==2 || arduino_digital_type[position_line_io+y]==3|| arduino_digital_type[position_line_io+y]==4|| arduino_digital_type[position_line_io+y]==5) && arduino_digital_function_output[position_line_io+y][0]==2
+if((arduino_digital_type[position_line_io+y]==2 || arduino_digital_type[position_line_io+y]==3) && arduino_digital_function_output[position_line_io+y][0]==2
 && valois>0 && valois<49)//Fader
 {
 arduino_digital_function_output[position_line_io+y][1]=valois;                                                 
@@ -507,15 +515,7 @@ break;
 case 3://pwm
 sprintf(string_temp_def,"%d: PWM",position_line_io+y);
 OverTyp.Draw(CouleurYellow);  
-break;
-case 4://servo
-sprintf(string_temp_def,"%d: SERVO",position_line_io+y);
-OverTyp.Draw(CouleurBleu8);  
 break;      
-case 5://HF
-sprintf(string_temp_def,"%d: RF12",position_line_io+y);
-OverTyp.Draw(CouleurGrisClair);  
-break;            
 default:
 break;                                        
 }      
@@ -578,51 +578,54 @@ case 16:
 sprintf(string_temp_familly,"Seq: SHIFT-X");
 break;
 case 17:
-sprintf(string_temp_familly,"As Key-On CH0 Pitch:");
+sprintf(string_temp_familly,"Bang Banger num");
 break;
 case 18:
-sprintf(string_temp_familly,"As Key-On CH1 Pitch:");
+sprintf(string_temp_familly,"As Key-On CH0 Pitch:");
 break;
 case 19:
-sprintf(string_temp_familly,"As Key-On CH2 Pitch:");
+sprintf(string_temp_familly,"As Key-On CH1 Pitch:");
 break;
 case 20:
-sprintf(string_temp_familly,"As Key-On CH3 Pitch:");
+sprintf(string_temp_familly,"As Key-On CH2 Pitch:");
 break;
 case 21:
-sprintf(string_temp_familly,"As Key-On CH4 Pitch:");
+sprintf(string_temp_familly,"As Key-On CH3 Pitch:");
 break;
 case 22:
-sprintf(string_temp_familly,"As Key-On CH5 Pitch:");
+sprintf(string_temp_familly,"As Key-On CH4 Pitch:");
 break;
 case 23:
-sprintf(string_temp_familly,"As Key-On CH6 Pitch:");
+sprintf(string_temp_familly,"As Key-On CH5 Pitch:");
 break;
 case 24:
-sprintf(string_temp_familly,"As Key-On CH7 Pitch:");
+sprintf(string_temp_familly,"As Key-On CH6 Pitch:");
 break;
 case 25:
-sprintf(string_temp_familly,"As Key-On CH8 Pitch:");
+sprintf(string_temp_familly,"As Key-On CH7 Pitch:");
 break;
 case 26:
-sprintf(string_temp_familly,"As Key-On CH9 Pitch:");
+sprintf(string_temp_familly,"As Key-On CH8 Pitch:");
 break;
 case 27:
-sprintf(string_temp_familly,"As Key-On CH10 Pitch:");
+sprintf(string_temp_familly,"As Key-On CH9 Pitch:");
 break;
 case 28:
-sprintf(string_temp_familly,"As Key-On CH11 Pitch:");
+sprintf(string_temp_familly,"As Key-On CH10 Pitch:");
 break;
 case 29:
-sprintf(string_temp_familly,"As Key-On CH12 Pitch:");
+sprintf(string_temp_familly,"As Key-On CH11 Pitch:");
 break;
 case 30:
-sprintf(string_temp_familly,"As Key-On CH13 Pitch:");
+sprintf(string_temp_familly,"As Key-On CH12 Pitch:");
 break;
 case 31:
-sprintf(string_temp_familly,"As Key-On CH14 Pitch:");
+sprintf(string_temp_familly,"As Key-On CH13 Pitch:");
 break;
 case 32:
+sprintf(string_temp_familly,"As Key-On CH14 Pitch:");
+break;
+case 33:
 sprintf(string_temp_familly,"As Key-On CH15 Pitch:");
 break;
 default:
@@ -642,10 +645,10 @@ switch(arduino_digital_function_output[position_line_io+y][0])
 case 0://desafected
 sprintf(string_temp_familly,"-");
 break;
-case 1: //reliÈ ‡ un circuit  
+case 1: //reli√© √† un circuit  
 sprintf(string_temp_familly,"Channel >10");            
 break;
-case 2://reliÈ ‡ un fader
+case 2://reli√© √† un fader
 sprintf(string_temp_familly,"Fader >10");
 break;
 }
@@ -653,17 +656,17 @@ petitchiffre.Print(string_temp_familly,cfg_X+280+13,cfg_Y+43+(y*20));
 petitchiffre.Print(ol::ToString(arduino_digital_function_output[position_line_io+y][1]),cfg_X+440+3,cfg_Y+43+(y*20)); 
 
 }
-if(arduino_digital_type[position_line_io+y]==3||arduino_digital_type[position_line_io+y]==4||arduino_digital_type[position_line_io+y]==5)//si de la famille pwm
+if(arduino_digital_type[position_line_io+y]==3)//si de la famille pwm
 {
 switch(arduino_digital_function_output[position_line_io+y][0])
 {
 case 0://desafected
 sprintf(string_temp_familly,"-");
 break;
-case 1: //reliÈ ‡ un circuit  
+case 1: //reli√© √† un circuit  
 sprintf(string_temp_familly,"Channel");            
 break;
-case 2://reliÈ ‡ un fader
+case 2://reli√© √† un fader
 sprintf(string_temp_familly,"Fader");
 break;
 }

@@ -1,3 +1,43 @@
+Ôªø/*-------------------------------------------------------------------------------------------------------------
+                                 |
+          CWWWWWWWW              | Copyright (C) 2009-2013  Christoph Guillermet
+       WWWWWWWWWWWWWWW           | 
+     WWWWWWWWWWWWWWWWWWW         | This file is part of White Cat.
+    WWWWWWWWWWWWWWWWWCWWWW       | 
+   WWWWWWWWWWWWWWWWW tWWWWW      | White Cat is free software: you can redistribute it and/or modify
+  WWWW   WWWWWWWWWW  tWWWWWW     | it under the terms of the GNU General Public License as published by
+ WWWWWt              tWWWWWWa    | the Free Software Foundation, either version 3 of the License, or
+ WWWWWW               WWWWWWW    | (at your option) any later version.
+WWWWWWWW              WWWWWWW    | 
+WWWWWWWW               WWWWWWW   | White Cat is distributed in the hope that it will be useful,
+WWWWWWW               WWWWWWWW   | but WITHOUT ANY WARRANTY; without even the implied warranty of
+WWWWWWW      CWWW    W WWWWWWW   | MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+WWWWWWW            aW  WWWWWWW   | GNU General Public License for more details.
+WWWWWWWW           C  WWWWWWWW   | 
+ WWWWWWWW            CWWWWWWW    | You should have received a copy of the GNU General Public License
+ WWWWWWWWW          WWWWWWWWW    | along with White Cat.  If not, see <http://www.gnu.org/licenses/>. 
+  WWWWWWWWWWC    CWWWWWWWWWW     |   
+   WWWWWWWWWWWWWWWWWWWWWWWW      | 
+    WWWWWWWWWWWWWWWWWWWWWW       |    
+      WWWWWWWWWWWWWWWWWWa        |     
+        WWWWWWWWWWWWWWW          |     
+           WWWWWWWWt             |
+                                 |
+---------------------------------------------------------------------------------------------------------------*/
+/**
+
+ \file channels_9_core.cpp
+ \brief {description courte} 
+ \author Christoph Guillermet
+ \version {numero de version du fichier}
+ \date {date description}
+ 
+ White Cat {- cat√©gorie} {- sous cat√©gorie {- sous cat√©gorie}}
+ Description d√©taill√©e
+ 
+ **/
+ 
+ 
 #include <allegro.h>
 #include <OpenLayer.hpp>
 
@@ -263,7 +303,7 @@ int ypos_ch=0;
 
 for (int l=0;l<nbre_lignes+1;l++)
 {
-//if (l==nbre_lignes) {maxchan_per_ligne=(channel_number_in_View[prst_v]%13)+1;} //derniere ligne ‡ 512
+//if (l==nbre_lignes) {maxchan_per_ligne=(channel_number_in_View[prst_v]%13)+1;} //derniere ligne √† 512
 for (int c=1; c<=maxchan_per_ligne;c++)
 {    
 ypos_ch=ychan+(l*70);
@@ -274,7 +314,7 @@ if (index_over_A_window==0 && index_over_faderspace==0 && mouse_x>   ((xchan-10)
 &&  num_circ!=0 && num_circ<513)
 {
 
-if(index_level_attribue==1)//pour dÈselection lors prochain circuit piquÈ dominique guesdon 10aout 2010
+if(index_level_attribue==1)//pour d√©selection lors prochain circuit piqu√© dominique guesdon 10aout 2010
 {
 for(int y=1;y<512;y++)
 {
@@ -349,7 +389,7 @@ int do_logical_Draw_Channel_Preset_Title(int xchan, int ychan, int prst_v)
  mouse_released=1;   
  }
  
- //do build logique sortie car plantage grave ‡ la reconstruction. il faut garder ca dans la boucle affichage
+ //do build logique sortie car plantage grave √† la reconstruction. il faut garder ca dans la boucle affichage
 /* else if(mouse_x>  xchan+520 && mouse_x<xchan+520+55 )
  {
  channel_view_is=prst_v;
@@ -392,7 +432,7 @@ int do_logical_ClassicalChannelSpace( int xchan, int ychan, int scroll)//les 512
 int maxchan_per_ligne=13;
 for (int l=0;l<43;l++)
 {
-if (l==42) {maxchan_per_ligne=9;} //derniere ligne ‡ 512
+if (l==42) {maxchan_per_ligne=9;} //derniere ligne √† 512
 
 for (int c=1; c<maxchan_per_ligne;c++)
 {    
@@ -405,7 +445,7 @@ if ( mouse_x>   ((xchan-10) + (45*c)) && mouse_x< ((xchan+30) + (45*c))
 )
 {
 
-if(index_level_attribue==1)//pour dÈselection lors prochain circuit piquÈ dominique guesdon 10aout 2010
+if(index_level_attribue==1)//pour d√©selection lors prochain circuit piqu√© dominique guesdon 10aout 2010
 {
 for(int y=1;y<512;y++)
 {

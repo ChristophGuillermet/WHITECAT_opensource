@@ -1,4 +1,43 @@
+﻿/*-------------------------------------------------------------------------------------------------------------
+                                 |
+          CWWWWWWWW              | Copyright (C) 2009-2013  Christoph Guillermet
+       WWWWWWWWWWWWWWW           | 
+     WWWWWWWWWWWWWWWWWWW         | This file is part of White Cat.
+    WWWWWWWWWWWWWWWWWCWWWW       | 
+   WWWWWWWWWWWWWWWWW tWWWWW      | White Cat is free software: you can redistribute it and/or modify
+  WWWW   WWWWWWWWWW  tWWWWWW     | it under the terms of the GNU General Public License as published by
+ WWWWWt              tWWWWWWa    | the Free Software Foundation, either version 3 of the License, or
+ WWWWWW               WWWWWWW    | (at your option) any later version.
+WWWWWWWW              WWWWWWW    | 
+WWWWWWWW               WWWWWWW   | White Cat is distributed in the hope that it will be useful,
+WWWWWWW               WWWWWWWW   | but WITHOUT ANY WARRANTY; without even the implied warranty of
+WWWWWWW      CWWW    W WWWWWWW   | MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+WWWWWWW            aW  WWWWWWW   | GNU General Public License for more details.
+WWWWWWWW           C  WWWWWWWW   | 
+ WWWWWWWW            CWWWWWWW    | You should have received a copy of the GNU General Public License
+ WWWWWWWWW          WWWWWWWWW    | along with White Cat.  If not, see <http://www.gnu.org/licenses/>. 
+  WWWWWWWWWWC    CWWWWWWWWWW     |   
+   WWWWWWWWWWWWWWWWWWWWWWWW      | 
+    WWWWWWWWWWWWWWWWWWWWWW       |    
+      WWWWWWWWWWWWWWWWWWa        |     
+        WWWWWWWWWWWWWWW          |     
+           WWWWWWWWt             |
+                                 |
+---------------------------------------------------------------------------------------------------------------*/
+/**
 
+ \file echo3.cpp
+ \brief {description courte} 
+ \author Christoph Guillermet
+ \version {numero de version du fichier}
+ \date {date description}
+ 
+ White Cat {- catégorie} {- sous catégorie {- sous catégorie}}
+ Description détaillée
+ 
+ **/
+ 
+ 
 int do_bouncing_levels(int ech)
 {
 //echo_global_params[24][3];Gravity Mass Delta 
@@ -416,7 +455,7 @@ echochanis=echo_grid_channel_position[echo_selected]+sh;
 Rect MassE(Vec2D(xe+25+(sh*30),ye+(127*(1.0-echo_levels[echo_selected][1][echochanis]))),Vec2D(30,echo_levels[echo_selected][1][echochanis]*127));
 MassE.Draw(Discrete2);
 
-//enregistrement level de d�part
+//enregistrement level de départ
 ChanEcho.MoveTo(Vec2D(xe+25+(sh*30),ye+127-(snap_echo_to_recall[echo_selected][echochanis]*127)));
 ChanEcho.Draw(CouleurFond.WithAlpha(0.3));
 

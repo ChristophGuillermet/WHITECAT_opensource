@@ -1,3 +1,43 @@
+Ôªø/*-------------------------------------------------------------------------------------------------------------
+                                 |
+          CWWWWWWWW              | Copyright (C) 2009-2013  Christoph Guillermet
+       WWWWWWWWWWWWWWW           | 
+     WWWWWWWWWWWWWWWWWWW         | This file is part of White Cat.
+    WWWWWWWWWWWWWWWWWCWWWW       | 
+   WWWWWWWWWWWWWWWWW tWWWWW      | White Cat is free software: you can redistribute it and/or modify
+  WWWW   WWWWWWWWWW  tWWWWWW     | it under the terms of the GNU General Public License as published by
+ WWWWWt              tWWWWWWa    | the Free Software Foundation, either version 3 of the License, or
+ WWWWWW               WWWWWWW    | (at your option) any later version.
+WWWWWWWW              WWWWWWW    | 
+WWWWWWWW               WWWWWWW   | White Cat is distributed in the hope that it will be useful,
+WWWWWWW               WWWWWWWW   | but WITHOUT ANY WARRANTY; without even the implied warranty of
+WWWWWWW      CWWW    W WWWWWWW   | MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+WWWWWWW            aW  WWWWWWW   | GNU General Public License for more details.
+WWWWWWWW           C  WWWWWWWW   | 
+ WWWWWWWW            CWWWWWWW    | You should have received a copy of the GNU General Public License
+ WWWWWWWWW          WWWWWWWWW    | along with White Cat.  If not, see <http://www.gnu.org/licenses/>. 
+  WWWWWWWWWWC    CWWWWWWWWWW     |   
+   WWWWWWWWWWWWWWWWWWWWWWWW      | 
+    WWWWWWWWWWWWWWWWWWWWWW       |    
+      WWWWWWWWWWWWWWWWWWa        |     
+        WWWWWWWWWWWWWWW          |     
+           WWWWWWWWt             |
+                                 |
+---------------------------------------------------------------------------------------------------------------*/
+/**
+
+ \file chasers_core_5.cpp
+ \brief {description courte} 
+ \author Christoph Guillermet
+ \version {numero de version du fichier}
+ \date {date description}
+ 
+ White Cat {- cat√©gorie} {- sous cat√©gorie {- sous cat√©gorie}}
+ Description d√©taill√©e
+ 
+ **/
+ 
+ 
 int refresh_chaser_midi_out()
 {
 
@@ -87,7 +127,7 @@ break;
 
 //position curseur
 if((chaser_step_launchpad[chaser_selected]+pas)==chaser_step_is[chaser_selected]+correcteur)
-{launchpad_color_defined[(1048+pas)]=lch_yellow;}//curseur toujours sur premiËre ligne
+{launchpad_color_defined[(1048+pas)]=lch_yellow;}//curseur toujours sur premi√®re ligne
 
 if(previous_color_on_chaser[trk][pas]!=launchpad_color_defined[(1048+(trk*8)+pas)]) 
 {
@@ -140,7 +180,7 @@ else{break;}
 } 
 }
 break;
-case 1: // arriËre
+case 1: // arri√®re
 for(int trk=0;trk< core_user_define_nb_tracks_per_chasers;trk++)
 {
 count_steps_for_fades[numchaser][trk]=1;//reset
@@ -244,7 +284,7 @@ chaser_calcul_time_joint(nch);
 }
 index_progression_chaser_step[nch]=((chaser_time_position[nch]-chaser_start_of_step[nch])/((chaser_end_of_step[nch]-chaser_start_of_step[nch])/chaser_slaviness[nch]));
 break;
-case 1://arriËre
+case 1://arri√®re
 chaser_time_position[nch]++;
 if(chaser_time_position[nch]>=chaser_end_of_step[nch])
 {
@@ -278,15 +318,15 @@ index_progression_chaser_step[nch]=((chaser_time_position[nch]-chaser_start_of_s
 break;                     
 }
 }//fin if track is on
-//contenu reliÈ ‡ une mÈmoire
+//contenu reli√© √† une m√©moire
 
-//calcul des Ètats de circuits///////////////////////////////////////////////////////////
+//calcul des √©tats de circuits///////////////////////////////////////////////////////////
 
 
 for(int trkis=0;trkis<core_user_define_nb_tracks_per_chasers;trkis++)
 {
 //rafraichissement si memoire
-if(TrackTypeIs[nch][trkis]==1)//si une mÈmoire embarquÈe
+if(TrackTypeIs[nch][trkis]==1)//si une m√©moire embarqu√©e
 {
 for(int u=1;u<513;u++)
 {
@@ -432,7 +472,7 @@ sprintf(string_Last_Order,">> Cleared Chaser %d",numchaser+1);
 int DoDockChaserTrack(int numchaser, int numtrack)
 {
     
- if(numeric_postext==0)//si pas de chaine de caracteres tapÈs
+ if(numeric_postext==0)//si pas de chaine de caracteres tap√©s
  {
  TrackTypeIs[numchaser][numtrack]=0;//le type est 0, circuits normaux
  if(index_blind==0)
@@ -929,7 +969,7 @@ chaser_is_playing[chaser_selected]=toggle(chaser_is_playing[chaser_selected]);
 if(chaser_is_playing[chaser_selected]==1)//snap du temps at beg
 {
 chaser_start_time[chaser_selected]=actual_time;
-//bug olivier marche arriere arriËre ligne
+//bug olivier marche arriere arri√®re ligne
 if(chaser_step_is[chaser_selected]<0){chaser_step_is[chaser_selected]=0;}
 else if(chaser_step_is[chaser_selected]>35){chaser_step_is[chaser_selected]=35;}
 }
@@ -1284,7 +1324,7 @@ for(int track_num=0;track_num<nbre_track_visualisables;track_num++)
 Track_draw_logical(xcha+5,ycha+165+(track_num*40),position_affichage_track_num[chaser_selected]+track_num);
 }
 
-//asservissement ‡ la vitesse de l acceleromËtre du fader
+//asservissement √† la vitesse de l accelerom√®tre du fader
 if(mouse_x>xcha+345 && mouse_x<xcha+345+40 && mouse_y>ycha+50 && mouse_y<ycha+50+20)
 {
 index_slave_chaser_to_accelerometre[chaser_selected]=toggle(index_slave_chaser_to_accelerometre[chaser_selected]);

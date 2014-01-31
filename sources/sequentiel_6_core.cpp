@@ -1,4 +1,43 @@
+Ôªø/*-------------------------------------------------------------------------------------------------------------
+                                 |
+          CWWWWWWWW              | Copyright (C) 2009-2013  Christoph Guillermet
+       WWWWWWWWWWWWWWW           | 
+     WWWWWWWWWWWWWWWWWWW         | This file is part of White Cat.
+    WWWWWWWWWWWWWWWWWCWWWW       | 
+   WWWWWWWWWWWWWWWWW tWWWWW      | White Cat is free software: you can redistribute it and/or modify
+  WWWW   WWWWWWWWWW  tWWWWWW     | it under the terms of the GNU General Public License as published by
+ WWWWWt              tWWWWWWa    | the Free Software Foundation, either version 3 of the License, or
+ WWWWWW               WWWWWWW    | (at your option) any later version.
+WWWWWWWW              WWWWWWW    | 
+WWWWWWWW               WWWWWWW   | White Cat is distributed in the hope that it will be useful,
+WWWWWWW               WWWWWWWW   | but WITHOUT ANY WARRANTY; without even the implied warranty of
+WWWWWWW      CWWW    W WWWWWWW   | MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+WWWWWWW            aW  WWWWWWW   | GNU General Public License for more details.
+WWWWWWWW           C  WWWWWWWW   | 
+ WWWWWWWW            CWWWWWWW    | You should have received a copy of the GNU General Public License
+ WWWWWWWWW          WWWWWWWWW    | along with White Cat.  If not, see <http://www.gnu.org/licenses/>. 
+  WWWWWWWWWWC    CWWWWWWWWWW     |   
+   WWWWWWWWWWWWWWWWWWWWWWWW      | 
+    WWWWWWWWWWWWWWWWWWWWWW       |    
+      WWWWWWWWWWWWWWWWWWa        |     
+        WWWWWWWWWWWWWWW          |     
+           WWWWWWWWt             |
+                                 |
+---------------------------------------------------------------------------------------------------------------*/
+/**
 
+ \file sequentiel_6_core.cpp
+ \brief {description courte} 
+ \author Christoph Guillermet
+ \version {numero de version du fichier}
+ \date {date description}
+ 
+ White Cat {- cat√©gorie} {- sous cat√©gorie {- sous cat√©gorie}}
+ Description d√©taill√©e
+ 
+ **/
+ 
+ 
 int call_mem_onstage()
 {
 int mem_to_call=(int)(atof(numeric)*10.0001);
@@ -34,7 +73,7 @@ return(0);
 
 int affect_time_from_chrono_to_mem(int mem_to_set_time)
 { 
-//0=DIN 1=IN 2=DOUT 3=OUT    // le out concernant la mÈmoire prÈcÈdente
+//0=DIN 1=IN 2=DOUT 3=OUT    // le out concernant la m√©moire pr√©c√©dente
 for(int ty=0;ty<4;ty++)
 {
  if(index_type_of_time_to_affect[ty]==1)
@@ -637,7 +676,7 @@ if(((255.0-ratio_X1X2_together)/255)==1.0){niveauX1=(255-niveauX2);}
 else { niveauX1=255-remapX1[niveauX2];     }
 if(niveauX1<0){niveauX1=0;}
 if(niveauX1>255){niveauX1=255;}
-if (niveauX2==255){niveauX1=0;}//report ‡ zero
+if (niveauX2==255){niveauX1=0;}//report √† zero
 if(midi_send_out[491]==1){index_send_midi_out[491]=1;}
 }
 }
@@ -653,7 +692,7 @@ mouse_released=1;
 
 
 raccrochage_midi_logical_vertical_dmx ( x_seq+480, (y_seq+80), 491, 45, 255);//X1
-raccrochage_midi_logical_vertical_dmx ( x_seq+580, (y_seq+80), 492, 45, 255);//X2 sÈparÈs car inversÈs pour l'affichage etc
+raccrochage_midi_logical_vertical_dmx ( x_seq+580, (y_seq+80), 492, 45, 255);//X2 s√©par√©s car invers√©s pour l'affichage etc
 
 //TOGETHER
 
@@ -1082,7 +1121,7 @@ mouse_released=1;
 }        
 }
 
-//grid player 1 embarquÈ
+//grid player 1 embarqu√©
 if(show_gridplayer_in_seq==1)
 {
 

@@ -1,3 +1,43 @@
+ï»¿/*-------------------------------------------------------------------------------------------------------------
+                                 |
+          CWWWWWWWW              | Copyright (C) 2009-2013  Christoph Guillermet
+       WWWWWWWWWWWWWWW           | 
+     WWWWWWWWWWWWWWWWWWW         | This file is part of White Cat.
+    WWWWWWWWWWWWWWWWWCWWWW       | 
+   WWWWWWWWWWWWWWWWW tWWWWW      | White Cat is free software: you can redistribute it and/or modify
+  WWWW   WWWWWWWWWW  tWWWWWW     | it under the terms of the GNU General Public License as published by
+ WWWWWt              tWWWWWWa    | the Free Software Foundation, either version 3 of the License, or
+ WWWWWW               WWWWWWW    | (at your option) any later version.
+WWWWWWWW              WWWWWWW    | 
+WWWWWWWW               WWWWWWW   | White Cat is distributed in the hope that it will be useful,
+WWWWWWW               WWWWWWWW   | but WITHOUT ANY WARRANTY; without even the implied warranty of
+WWWWWWW      CWWW    W WWWWWWW   | MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+WWWWWWW            aW  WWWWWWW   | GNU General Public License for more details.
+WWWWWWWW           C  WWWWWWWW   | 
+ WWWWWWWW            CWWWWWWW    | You should have received a copy of the GNU General Public License
+ WWWWWWWWW          WWWWWWWWW    | along with White Cat.  If not, see <http://www.gnu.org/licenses/>. 
+  WWWWWWWWWWC    CWWWWWWWWWW     |   
+   WWWWWWWWWWWWWWWWWWWWWWWW      | 
+    WWWWWWWWWWWWWWWWWWWWWW       |    
+      WWWWWWWWWWWWWWWWWWa        |     
+        WWWWWWWWWWWWWWW          |     
+           WWWWWWWWt             |
+                                 |
+---------------------------------------------------------------------------------------------------------------*/
+/**
+
+ \file dmx_entec_pro.cpp
+ \brief {description courte} 
+ \author Christoph Guillermet
+ \version {numero de version du fichier}
+ \date {date description}
+ 
+ White Cat {- catÃ©gorie} {- sous catÃ©gorie {- sous catÃ©gorie}}
+ Description dÃ©taillÃ©e
+ 
+ **/
+ 
+ 
 //enttec pro
 //pour code enttec pro:
 #include <process.h>
@@ -127,32 +167,32 @@ int Enttec_Pro_SendData(int label, unsigned char *data, int length, LPOVERLAPPED
 	header[3] = length >> 8;
 
 	res = WriteFile(
-		com_handle_,					//Instance de votre accès au port série
-		(unsigned char *)header,		//Pointeur sur la donnée à écrire
-		4,								//Nombre de bytes à écrire
+		com_handle_,					//Instance de votre accÃ¨s au port sÃ©rie
+		(unsigned char *)header,		//Pointeur sur la donnÃ©e Ã  Ã©crire
+		4,								//Nombre de bytes Ã  Ã©crire
 		&bytes_written,					//pointeur to number of bytes written
-		lpOverlapped					//Doit être NULL pour windows CE
+		lpOverlapped					//Doit Ãªtre NULL pour windows CE
 	);
 	if (!res || (bytes_written != 4)) return -1;
 
 
 	res = WriteFile(
-		com_handle_,					//Instance de votre accès au port série
-		(unsigned char *)data,			//Pointeur sur la donnée à écrire
-		length,							//Nombre de bytes à écrire
+		com_handle_,					//Instance de votre accÃ¨s au port sÃ©rie
+		(unsigned char *)data,			//Pointeur sur la donnÃ©e Ã  Ã©crire
+		length,							//Nombre de bytes Ã  Ã©crire
 		&bytes_written,					//pointeur to number of bytes written
-		lpOverlapped			        //Doit être NULL pour windows CE
+		lpOverlapped			        //Doit Ãªtre NULL pour windows CE
 	);
 	if (!res || (bytes_written != length)) return -1;
 
 
 	unsigned char end_code = 0xE7;
 	res = WriteFile(
-		com_handle_,					//Instance de votre accès au port série
-		(unsigned char *)&end_code,		//Pointeur sur la donnée à écrire
-		1,								//Nombre de bytes à écrire
+		com_handle_,					//Instance de votre accÃ¨s au port sÃ©rie
+		(unsigned char *)&end_code,		//Pointeur sur la donnÃ©e Ã  Ã©crire
+		1,								//Nombre de bytes Ã  Ã©crire
 		&bytes_written,					//pointeur to number of bytes written
-		lpOverlapped					//Doit être NULL pour windows CE
+		lpOverlapped					//Doit Ãªtre NULL pour windows CE
 	);
 	if (!res || (bytes_written != 1)) return -1;
 
@@ -372,7 +412,7 @@ com_handle_IN = NULL;
         {
 			 sprintf(string_display_dmx_params,"Impossible to load DLL");return(0);
         }
-        idmxIN = istheresomeone_in_enttecpro+1;//depart après position enttec pro out
+        idmxIN = istheresomeone_in_enttecpro+1;//depart aprÃ¨s position enttec pro out
         while(idmxIN < 50) {
             DeviceNameLenIN = 80;
             KeyNameLenIN = 100;

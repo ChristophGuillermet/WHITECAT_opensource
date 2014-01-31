@@ -1,9 +1,48 @@
+Ôªø/*-------------------------------------------------------------------------------------------------------------
+                                 |
+          CWWWWWWWW              | Copyright (C) 2009-2013  Christoph Guillermet
+       WWWWWWWWWWWWWWW           | 
+     WWWWWWWWWWWWWWWWWWW         | This file is part of White Cat.
+    WWWWWWWWWWWWWWWWWCWWWW       | 
+   WWWWWWWWWWWWWWWWW tWWWWW      | White Cat is free software: you can redistribute it and/or modify
+  WWWW   WWWWWWWWWW  tWWWWWW     | it under the terms of the GNU General Public License as published by
+ WWWWWt              tWWWWWWa    | the Free Software Foundation, either version 3 of the License, or
+ WWWWWW               WWWWWWW    | (at your option) any later version.
+WWWWWWWW              WWWWWWW    | 
+WWWWWWWW               WWWWWWW   | White Cat is distributed in the hope that it will be useful,
+WWWWWWW               WWWWWWWW   | but WITHOUT ANY WARRANTY; without even the implied warranty of
+WWWWWWW      CWWW    W WWWWWWW   | MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+WWWWWWW            aW  WWWWWWW   | GNU General Public License for more details.
+WWWWWWWW           C  WWWWWWWW   | 
+ WWWWWWWW            CWWWWWWW    | You should have received a copy of the GNU General Public License
+ WWWWWWWWW          WWWWWWWWW    | along with White Cat.  If not, see <http://www.gnu.org/licenses/>. 
+  WWWWWWWWWWC    CWWWWWWWWWW     |   
+   WWWWWWWWWWWWWWWWWWWWWWWW      | 
+    WWWWWWWWWWWWWWWWWWWWWW       |    
+      WWWWWWWWWWWWWWWWWWa        |     
+        WWWWWWWWWWWWWWW          |     
+           WWWWWWWWt             |
+                                 |
+---------------------------------------------------------------------------------------------------------------*/
+/**
 
+ \file whitecat.h
+ \brief {description courte} 
+ \author Christoph Guillermet
+ \version {numero de version du fichier}
+ \date {date description}
+ 
+ White Cat {- cat√©gorie} {- sous cat√©gorie {- sous cat√©gorie}}
+ Description d√©taill√©e
+ 
+ **/
+ 
+ 
 ////////////////////////////////////////////////////////////////////////////////
 char versionis[72]={"Beta 0.8.4.14 - 26 dec 2013"};
 char nickname_version[48]={"OPEN VERSION"};
 
-bool init_done=0;//dÈmarrage pour Èviter envoyer data pdt procedure d initialisation
+bool init_done=0;//d√©marrage pour √©viter envoyer data pdt procedure d initialisation
 /////////////////////REPERTOIRE/////////////////////////////////////////////////
 char rep[255];//repertoire avec arborescence complete du fichier
 char mondirectory[200];//endroit de l exe
@@ -145,8 +184,8 @@ bool index_quit=0;
 bool index_main_function=1;
 
 bool index_do_dock=0;  //do dock
-bool index_do_report=0; // report de tout sur scËne dans un master a full
-bool index_do_modify=0; // des circuits selectionnÈs only. ne detruit pas le reste
+bool index_do_report=0; // report de tout sur sc√®ne dans un master a full
+bool index_do_modify=0; // des circuits selectionn√©s only. ne detruit pas le reste
 bool index_main_clear=0;
 bool index_type=0;
 bool index_inspekt=0;//voir les etiquettes et qui controle qui
@@ -199,12 +238,12 @@ int dock_used_by_fader_is[48];
 int previous_dock_used[48];//pour autolaunch sur banger, dock + - et animations
 unsigned char Fader[48];
 unsigned char Fader_before[48];//pour icat
-unsigned char Fader_previous[48];//pour chasers autolaunch. trËs certainement ‡ re organiser les backups d 'Ètats de maniËre plus gÈnÈrale
+unsigned char Fader_previous[48];//pour chasers autolaunch. tr√®s certainement √† re organiser les backups d '√©tats de mani√®re plus g√©n√©rale
 bool DockIsSelected[48][6];
-unsigned char DockTypeIs[48][6];//0: dock de niveau normal // 1: linkÈ au couleurs de la trichro
-// 2:artnet IN // 3: DMX IN //4 video // 5 memoire // 6 lecteur audio volume 7 pan 8 picth / 9 :vide et clearÈ / 10: direct chan mode
+unsigned char DockTypeIs[48][6];//0: dock de niveau normal // 1: link√© au couleurs de la trichro
+// 2:artnet IN // 3: DMX IN //4 video // 5 memoire // 6 lecteur audio volume 7 pan 8 picth / 9 :vide et clear√© / 10: direct chan mode
 // 11:FX // 12: Grid // 13: groupe de faders // 14:Mover // 15: Draw // 16: echo
-unsigned char DockNetIs[48][6]; // numero Universe artnet(0 ‡ 15) ou Config Port UDP(0 ‡ 5) to listen
+unsigned char DockNetIs[48][6]; // numero Universe artnet(0 √† 15) ou Config Port UDP(0 √† 5) to listen
 char string_docktypnet[8];//affiche du numero artnet ou udp, variable string 
 char string_docktypmem[8];
 char string_docktypaudiovol[8];
@@ -224,7 +263,7 @@ bool show_who_is_in_FADER_DOCK[514];//pour affichage de qui est dans le dock
 bool FaderLocked[48];
 unsigned char OldFaderLockProc[48];//pour lancer le midi send out, prend dernier etat fader lors du lock et compare
 int locklevel=0;
-bool lock_preset[8];//lock preset activÈ ou pas
+bool lock_preset[8];//lock preset activ√© ou pas
 int lock_preset_selected_for_record=0; // pour menu confirm
 bool FaderLocked_Preset[8][48];
 bool LockFader_is_FullLevel_Preset[8][48];
@@ -266,7 +305,7 @@ int  before_bang_FaderCurves[48]; //pour goback banger
 bool index_ask_curv_to_fader=0;
 int curve_asked_for_fader=0;
 
-bool autolaunch[48];//dÈclenchement des embarquÈ au montage de potard
+bool autolaunch[48];//d√©clenchement des embarqu√© au montage de potard
 ////////////////////////////////////////////////////////////////////////////////
 ///MODE DIRECT CHANNEL POUR LES FADERS
 int FaderDirectChan[48][6];
@@ -383,7 +422,7 @@ bool index_config_midi=0;
 bool index_config_arduino=0;
 bool index_setup_gfx=0;
 bool index_config_network=0;
-bool index_config_general=0;//main general du setup // 1 car ouverture ‡ l allumage
+bool index_config_general=0;//main general du setup // 1 car ouverture √† l allumage
 //////////////////PATCH//////////////////////////////////////////////////////////
 int xpatch_window=200;
 int ypatch_window=100;
@@ -412,7 +451,7 @@ int the_curve_spline_level[16];
 int curve_report[16][256];
 int index_curve_spline_level=0;//pixels de l editeur
 bool index_enable_curve_editing=0;
-int curves[514];//bug ?514 Ètait en 513
+int curves[514];//bug ?514 √©tait en 513
 int curve_ctrl_pt[16][8][2]; //5 pts de controls (  pour caller 1er et dernier dummy)
 int diam_curve_node=10;//diametre de la poignee pour saisie du curve_node
 typedef struct curve_node
@@ -565,12 +604,12 @@ int tempo_interm=0;//pur addition des ticks
 #define ACCURACY_DOUBLE  1.e-06
 int xtrichro_window=1128,ytrichro_window=226;
 int default_xtrichro_window=1128,default_ytrichro_window=226;//xy de la window par defaut
-//les 8 colors docks et leurs donnÈes
+//les 8 colors docks et leurs donn√©es
 bool dock_color_type[8];//0 trichro 1 mode quadri
-int x_y_picker_par_colordock[8][2];//stockage des coordonnes du picker par coordonnÈes
-float angle_hue_par_colordock[8];//picker par coordonnÈes angles
+int x_y_picker_par_colordock[8][2];//stockage des coordonnes du picker par coordonn√©es
+float angle_hue_par_colordock[8];//picker par coordonn√©es angles
 int picker_trichro[8][4];//stockage des niveaux RVB YELLOW 
-unsigned char dock_color_buffer_C[8][514];//resultat dans buffers separÈs
+unsigned char dock_color_buffer_C[8][514];//resultat dans buffers separ√©s
 bool index_quadri=0; //0 mode trichro 1 mode quadri jaune
 bool dock_color_channels[8][4][514];//trichro sur curcuits
 float position_curseur_hue_x;//=1242, 
@@ -589,7 +628,7 @@ int cref=0;
 int r_pick=255,b_pick=0,v_pick=0;
 //le choix dans le triangle
 float picker_x, picker_y, last_picker_x,last_picker_y;
-int my_red, my_blue, my_green, my_yellow; //valeurs servant ‡ l asservissement des circuits
+int my_red, my_blue, my_green, my_yellow; //valeurs servant √† l asservissement des circuits
 int colorpicker;//cref du triangle
 //Variables roue de  maison
 double xcl, ycl;
@@ -616,7 +655,7 @@ bool b_report_error[256];
 char string_save_load_report[256][64];//256 slot de report de 64 char
 int position_view_line=0; //pour defilement affichage
 char string_typeexport_view[24];
-bool index_is_saving=0;//pour eviter de planter les pointeurs en faisant deux saves simulatnnÈs
+bool index_is_saving=0;//pour eviter de planter les pointeurs en faisant deux saves simulatnn√©s
 int timer_save_tmp=0;
 int temps_sauvegarde_tmp=15*60;//secondes
 bool index_please_do_not_save=0;
@@ -625,14 +664,14 @@ bool index_please_do_not_save=0;
 int index_export_choice=0;
 char list_import_files[128][72];
 int line_import=0;
-int importfile_selected=0;//num de ligne selectionnÈ
+int importfile_selected=0;//num de ligne selectionn√©
 char importfile_name[72];
 bool enable_export=0;// pour les choix schwz / pdf / txt / ascii
 bool enable_import=0;
 ////BINARIES
 char list_save_files[128][72];
 int line_save=0;
-int savefile_selected=0;//num de ligne selectionnÈ
+int savefile_selected=0;//num de ligne selectionn√©
 char savefile_name[72];
 
 //////////////////////MIDI/:////////////////////////////////////////////////////
@@ -678,15 +717,15 @@ int   over_fader=0, over_dock=0; // survol d un fader ou d un dock pour visualis
 //[3] : 0 typ 1 Chan 2 Pitch
 //[512]: 0-48: faders / 49-96: Dock - 97-145: Dock + / 146- 194
 int midi_levels[2048];
-bool midi_send_out[2048];//atribuÈ ou pas
+bool midi_send_out[2048];//atribu√© ou pas
 bool index_send_midi_out[2048];//index booleen pour lancer l ordre depuis la boucle
-bool index_global_midi_send_on_faders=0;//enclenche l envoi global ou pas des midi out sur tous les faders donnee non sauvegardÈe, car c est un impulse
+bool index_global_midi_send_on_faders=0;//enclenche l envoi global ou pas des midi out sur tous les faders donnee non sauvegard√©e, car c est un impulse
 bool do_light_midi_send_on_faders=0;
 int midi_page=0;
 bool do_affectation_on_midi_affect_itself=0;
 int Midi_Faders_Affectation_Type=0;
 //0 ne rien faire
-//1 faders 1 ‡ 1
+//1 faders 1 √† 1
 //2 faders serie 8x
 int Midi_Faders_Affectation_Mode=0;
 //0=affectation normale
@@ -710,8 +749,8 @@ int val_raccrochage_midi[2048];//valeur recue
 
 bool refresh_midi_chasers=0;
 
-bool index_midi_auto_demute=0;//index demute quand curseur arrivÈ
-bool index_midi_mute_on_lfo=0;// au dÈclenchement d'un LFO, mute solo l'entrÈe en question
+bool index_midi_auto_demute=0;//index demute quand curseur arriv√©
+bool index_midi_mute_on_lfo=0;// au d√©clenchement d'un LFO, mute solo l'entr√©e en question
 ////////////////////////TIME////////////////////////////////////////////////////
 bool index_time=0;//affichage fenetre time 
 int xtime_window=100;
@@ -730,7 +769,7 @@ float angle_timesnap_dix=0.0;
 char string_conversion_timeis[12];//pour affichage des temps ans le sequenciel et faders
 //affichages des temps sequenciel
 char string_time_memonstage[4][52];
-//cross ‡ faire = cross_in ventilation_temps_vers_char
+//cross √† faire = cross_in ventilation_temps_vers_char
 char string_time_mem8after[35][4][52];
 //////////////////////SEQUENTIEL////////////////////////////////////////////////
 bool index_window_sequentiel=0;
@@ -753,7 +792,7 @@ bool index_text_auto_close=0;
 float Times_Memoires[10000][4];//0=DIN 1=IN 2=DOUT 3=OUT 
 bool Links_Memoires[10000];
 bool index_link_is_on=0;
-bool  index_blink_change_memories=0;// si on demande d afficher les changements entre sequenciel modifie ( sc-preset) et les mÈmoires
+bool  index_blink_change_memories=0;// si on demande d afficher les changements entre sequenciel modifie ( sc-preset) et les m√©moires
 float default_time=3.0;
 int niveauX1=255;
 int niveauX2=0;
@@ -1112,7 +1151,7 @@ bool Snaplfo_cycle_is_on[49];// SAW up down
 bool Snaplfo_cycle_steps[49];
 bool Snaplfo_do_next_step[49][2]; // 0 backward 1 forward
 int Snaplfo_speed[49];
-bool stockage_all_at_zero_state[6];//stockage de l action menÈe
+bool stockage_all_at_zero_state[6];//stockage de l action men√©e
 
 ///////////////////////////////////BANGER///////////////////////////////////////
 int X_banger=100;
@@ -1123,16 +1162,16 @@ bool index_banger_is_on=0;//on off du mode
 int index_banger_selected=0;
 bool index_enable_edit_banger=0;
 char string_event[36];
-int Banger_Memoire[10000];//le banger affectÈ ‡ une mÈmoire
+int Banger_Memoire[10000];//le banger affect√© √† une m√©moire
 char bangers_name[128][25];//128 bangers
 int bangers_type[128][6];//128 bangers // 6 events par banger 
-int bangers_action[128][6];//num action demandÈe
+int bangers_action[128][6];//num action demand√©e
 int bangers_params[128][6][2];//0 param1 / 1 param2
 float bangers_delay[128][6];//delays 
 int start_time_for_banger[128];//debut de start time 
 float end_time_for_banger[128];
-bool event_sended[128][6];// une fois que l evenement est lancÈ est mis en 1
-bool bang_is_sended[128];//le bang est exÈcutÈ si = 0, si dÈj‡ exÈcutÈ, donc non actif =1
+bool event_sended[128][6];// une fois que l evenement est lanc√© est mis en 1
+bool bang_is_sended[128];//le bang est ex√©cut√© si = 0, si d√©j√† ex√©cut√©, donc non actif =1
 
 bool  bang_in_mem_is_sended=0; //pour les envois dans les memoires, un seul index
 int remember_state_of_banged_fader[48][24];
@@ -1160,7 +1199,7 @@ int yVisuBanger=40;
 float default_time_of_the_bang=1.0;//secondes
 int last_banger_sended_manually=0;
 int bang_the_chan_is=0;//temporaire pour set_channel dans banger
-int bang_val_the_chan_is=0;//val ‡ attribuer temp banger set chan
+int bang_val_the_chan_is=0;//val √† attribuer temp banger set chan
 
 
 bool editing_banger_family=0;
@@ -1179,7 +1218,7 @@ char string_niveauGMaster[4];
 bool index_allow_grand_master=1;
 //DMX///////////////////////////////////////////////////////////////////////
 
-bool index_allow_sunlite_dmxIN=0;//pour rÈception ou pas de IN
+bool index_allow_sunlite_dmxIN=0;//pour r√©ception ou pas de IN
 bool index_is_siudi_8C=0;//pour envoi on change ou pas
 char string_sunlite_is[32];
 bool do_send_dmx_on_change=0;//pour envoi data sur nterfaces dmx si changement de data
@@ -1198,7 +1237,7 @@ OutputStreamPtr player2;
 OutputStreamPtr player3;
 OutputStreamPtr player4;
 
-bool starting_wcat=0;//dÈmarrage
+bool starting_wcat=0;//d√©marrage
 
 char audio_device_name[256];
 char list_audio_device[16][256];
@@ -1217,7 +1256,7 @@ char audio_folder[25]={"demo"};
 char temp_audio_folder[25];
 char sound_files[4][72];
 char soundfile_temp_loader[256+72];
-bool  index_preloaded_sounds=1;//pas chargÈs
+bool  index_preloaded_sounds=1;//pas charg√©s
 int length_of_file_in_player[4];
 int position_of_file_in_player[4];
 int player_loop_out_position[4];
@@ -1230,9 +1269,9 @@ int audio_number_total_in_folder=0; // nbre de fichiers audios
 bool player_ignited[4];
 bool player_is_playing[4];
 bool player_is_onloopCue[4];//cue
-bool player_is_onloop[4];//0 ‡ Length du media
+bool player_is_onloop[4];//0 √† Length du media
 
-int player_pitch[4]; //position de 0 ‡ 12
+int player_pitch[4]; //position de 0 √† 12
 float show_pitch_value[4];
 int player_pan[4];
 float show_pan_value[4];
@@ -1243,7 +1282,7 @@ float show_player_niveauson[4];
 int sample_rate[4];
 int sample_nbr_ch[4];
 bool index_edit_audio=0;
-//int hauteur_lecteur=140; enlevÈ mis en direct dans le code
+//int hauteur_lecteur=140; enlev√© mis en direct dans le code
 int audio_rate[4];//frame rate une fois eu le getformat
 bool index_loading_a_sound_file=0; //pour boucle rafraichissement 1/10eme des infos
 //envoi affichage si commande midi
@@ -1283,9 +1322,9 @@ char string_niveauson[4][16];
 char string_pitch[4][12];//affichage boucle lecteurs
 char string_pan[4][12]; //affichage boucle lecteurs
 char string_fader_stop_pos[48][4];
-bool audio_autoload[4];//faire une liste dÈfilant
+bool audio_autoload[4];//faire une liste d√©filant
 bool audio_autopause[4];//
-int player_has_file_coming_from_pos[4];//position 1 ‡ 127
+int player_has_file_coming_from_pos[4];//position 1 √† 127
 int player_position_on_save[4];//pour stockae de position_of_file_in_player[i]=player_position_on_save[i];
 ////////////////CONFIG////////////////////////////////////////
 bool index_show_config_window=0;
@@ -1296,7 +1335,7 @@ int previous_window_focus_id=0;//pour le confirm
 
 int pos_focus_window=0;
 
-bool im_moving_a_window=0;//index poru lros de dÈplacement
+bool im_moving_a_window=0;//index poru lros de d√©placement
 int last_window_founded=0;
 /////midi presets///////////////////////////////
 char list_midipreset_files[127][72];
@@ -1384,7 +1423,7 @@ int nBytesReadArduino0=0;
 char arduino_order[4];//l ordre a envoyer se compose de trois lettres, un slash, un EOL
 
 int arduino_com0=4;
-int arduino_baud_rate0=14400;//9600 ok sur 6 ana 13 io //11400 ˘ega 54 IO
+int arduino_baud_rate0=14400;//9600 ok sur 6 ana 13 io //11400 √πega 54 IO
 bool arduino_device_0_is_ignited=0;
 char tmp_str_arduino[128];//chaine input
 
@@ -1395,10 +1434,10 @@ char tmp_str_arduino[128];//chaine input
 
 bool need_send_pwm;
 
-int digital_data_from_arduino[128];//tableau des datas gardÈ tres large au cas ou grande extension
+int digital_data_from_arduino[128];//tableau des datas gard√© tres large au cas ou grande extension
 int previous_digital_data_from_arduino[128];
 int arduino_max_digital=54;
-int analog_data_from_arduino[64];//tableau des datas gardÈ tres large au cas ou grande extension
+int analog_data_from_arduino[64];//tableau des datas gard√© tres large au cas ou grande extension
 int previous_analog_data_from_arduino[64];
 int arduino_max_analog=5;
 bool digital_data_is_switch[128];//pour comportements switch
@@ -1410,7 +1449,7 @@ bool index_send_digital_data=0;//pour demander d envoyer la trame
 int digital_data_to_arduino[128];
 int previous_digital_data_to_arduino[128];
 
-int arduino_digital_type[128];//0= desaffectÈ 1= input 2= output 3= PWM
+int arduino_digital_type[128];//0= desaffect√© 1= input 2= output 3= PWM
 int arduino_digital_function_input[128][2];//Action // Val  
 int arduino_analog_function_input[64];//0-rien 1-fader 2 Seq 3 trichro 4 video 5 master
 int arduino_analog_attribution_input[64];//Val 1-48 ou sequenciel 123
@@ -1443,7 +1482,7 @@ int lch_yellow=62;
 int lch_red=15;
 int lch_ambre=31;
 int lch_orange_fonce=30;
-int facteur_cycling=0;//-1 ‡ +1
+int facteur_cycling=0;//-1 √† +1
 bool entered_main=0;
 bool launchpad_is_a_cycling_effect[2048];//faire fader les leds
 bool midi_needs_no_key_on_key_off[2048];
@@ -1453,7 +1492,7 @@ char list_midi_affect[2048][36];
 
 //////////////////////////CHASERS//////////////////////////////////////////////
 bool index_window_chasers=0;
-int index_affichage_digit_time_unit=0;//digit du nombre de chiffres aprËs virgule
+int index_affichage_digit_time_unit=0;//digit du nombre de chiffres apr√®s virgule
 
 int Xchasers=100;
 int Ychasers=300;
@@ -1492,14 +1531,14 @@ int chaser_begin_step_is[128];//debut boucle
 int chaser_end_step_is[128];//fin boucle
 bool chaser_time_mode[128];//le type de calcul du temps pour le chaser: cases jointes ou pas
 
-int chaser_time_position[128];//position du curseur sur le dÈroulÈ du chaser: TImeline
+int chaser_time_position[128];//position du curseur sur le d√©roul√© du chaser: TImeline
 int chaser_start_time[128];//ticks actual time of chaser
 float chaser_start_of_step[128];
 float chaser_end_of_step[128];
 int chaser_step_is[128];//position du step pour l affichage visuel
 int previous_chaser_step_is[128];//pour banger back
 
-int count_steps_for_fades[128][24];//compteur des cases Èquivalentes pour calcul des fades IN OUT sur plusieurs cases
+int count_steps_for_fades[128][24];//compteur des cases √©quivalentes pour calcul des fades IN OUT sur plusieurs cases
 int joint_begin_step[128][24];//report du nombre de step egaux lorsque le chaser tourne ( permet la fraction en Joint mode)
 int joint_end_step[128][24];//report du nombre de step egaux lorsque le chaser tourne ( permet la fractioon
 int joint_nbr_step[128][24];//report du nbre de step du time joint
@@ -1517,14 +1556,14 @@ bool index_do_store_chaser_preset=0;
 bool index_do_clear_chaser_preset=0;
 
 int view_chaser_affected_to_fader[128][2];//enregistrement de la derniere affectation du chaser
-bool index_slave_chaser_to_accelerometre[128];//asservissement ‡ l accÈlÈrometre du dernier fader affectÈ
+bool index_slave_chaser_to_accelerometre[128];//asservissement √† l acc√©l√©rometre du dernier fader affect√©
 
 float chaser_slaviness[128];
 float previous_chaser_slaviness[128];
 bool chaser_preset[128][4][24];
 
 bool launchpad_chaser_mode=0;
-int chaser_midi_rows=4;//nbre de lignes utilisÈes pour le lauchpad en attaque midi des tracks
+int chaser_midi_rows=4;//nbre de lignes utilis√©es pour le lauchpad en attaque midi des tracks
 int previous_color_on_chaser[8][8];
 int chaser_step_launchpad[128];//position de la grille de 8 par chaser en X
 
@@ -1662,9 +1701,9 @@ float zoom_at_beg[32];
 bool index_time_shift=0; // redistribution du temps sur un dock
 char string_time_shift[64];
 
-bool index_copy_params=0; // affectation d un iris et d un focus fixes ‡ un dock
+bool index_copy_params=0; // affectation d un iris et d un focus fixes √† un dock
 bool param_selected[48];//selection pour set to bank
-int mover_params[48][2];//16 donnÈes dont X Y iris zoom etc [0]=8 bits [1] donnee en 16 bits
+int mover_params[48][2];//16 donn√©es dont X Y iris zoom etc [0]=8 bits [1] donnee en 16 bits
 int before_mover_params[48][2];
 
 
@@ -1677,7 +1716,7 @@ bool index_window_gui_iCat=0;
 char iphone_fonts[12][25];//12 fonts possibles
 
 
-//sur meme adresse IP que sÈlectionnÈe
+//sur meme adresse IP que s√©lectionn√©e
 char fantastick_message[64];
 
 char FS_BUFFER[64];
@@ -1724,13 +1763,13 @@ int clientport_iCat=6662;
 int X_gui_iCat= 20 ;
 int Y_gui_iCat =20 ;
 
-bool index_re_init_FS_client=0;// rajoutÈ pour nouvelle mouture reseaux
+bool index_re_init_FS_client=0;// rajout√© pour nouvelle mouture reseaux
 
 bool index_click_move_iCat=0;
 
 int surface_type=0;//0 = i pod 240*160 1=ipad resolution de drawing dans la gui
 
-//rÈsolution ipod touch 3-4: 380*240
+//r√©solution ipod touch 3-4: 380*240
 //resolution ipod touch 4: 960*480
 //res Ipad 1 et 2: 1024 * 768
 //on divise par 2 pour la GUI
@@ -1756,7 +1795,7 @@ bool do_send_icat_init_page=0;//envoi des messages
 
 bool index_ask_clear_iCatpage=0;
 
-//tableau crÈÈ en 24 mais on utilise 8
+//tableau cr√©√© en 24 mais on utilise 8
 int max_sliders_icat=47;//voir avec les tableaux, mais pas au dessus de 23
 int iCat_preset_orientation[8];
 
@@ -1779,7 +1818,7 @@ int before_niveauX1=0, before_niveauX2=0, before_crossfade_speed=0;
 
 bool before_is_dock_for_lfo_selected[48];
 
-bool check_button_state[48];//test des Ètats des boutons de la page
+bool check_button_state[48];//test des √©tats des boutons de la page
 bool before_check_button_state[48];
 
 int largueur_bouton=32;
@@ -1935,7 +1974,7 @@ bool index_grid_tostep_or_not=0;
 int from_gridstep_to=0;
 bool index_do_affect_grid_to_fader=0;
 
-int gridplayer_to_affect_is=-1;//desafectÈ
+int gridplayer_to_affect_is=-1;//desafect√©
 int faders_dock_grid_affectation[48][6];//grid
 
 
@@ -1997,7 +2036,7 @@ int FaderManipulating=0;
 
 //nouvelle structure de groupe de faders
 int fader_mode_with_buffers[48];// 0 NORMAL / 1 OFF RENDERING / 2 SUBSTRACT / 3 ADDITIF / 4 SCREEN / EXCLUSION
-bool fader_fx_route[48];/// 1 Buffer sÈquenciel / 0 Buffer faders 
+bool fader_fx_route[48];/// 1 Buffer s√©quenciel / 0 Buffer faders 
 bool channel_is_touched_by_fader_fx[513];
 int channel_is_touched_by_fader_number[513];
 int channel_is_touched_by_fader_type_fx[513];
@@ -2278,7 +2317,7 @@ float index_show_button_export=0.0;//bouton affichage
 float plot_light_preset_on_click[8];
 int last_xyrelativ_preset=0;
 
-bool index_tab_on=0;//pour sÈlection groupÈe souris
+bool index_tab_on=0;//pour s√©lection group√©e souris
 ///////////AFFICHAGES DIVERS CHANNEL SPACE/////////////////////////////////////
 
 bool ClassicalChannelView=1;
@@ -2290,7 +2329,7 @@ int hauteur_preset_titre=30;
 
 bool Channel_View_MODE[nbre_de_vues_circuits];//les 16 indexes de vision
 int Channel_View_ROUTING[nbre_de_vues_circuits][514];
-int channel_view_is=0;//0 pas touchÈ car sortie du patch
+int channel_view_is=0;//0 pas touch√© car sortie du patch
 
 char channel_view_Name[nbre_de_vues_circuits][25];
 int channel_view_link_type[nbre_de_vues_circuits];//0:no link 1:memory 2: fader
@@ -2323,7 +2362,7 @@ int size_y_mainmenu=200;
 
 bool expert_mode=0;//confirmations ou pas de record etc...
 bool index_show_first_dim=0;
-int show_first_dim_array[514][4];//pour affichage du premier grada patchÈ au circuit
+int show_first_dim_array[514][4];//pour affichage du premier grada patch√© au circuit
 bool show_more_than_one_dim[514];
 
 
@@ -2362,7 +2401,7 @@ int draw_modulo_largeur_case[6];
 int draw_modulo_hauteur_case[6];
 
 float draw_preset_levels[6][500];
-bool draw_snap_preset_levels[6][500]; //superieur ‡ zero: allumÈ
+bool draw_snap_preset_levels[6][500]; //superieur √† zero: allum√©
 int draw_preset_channel_routing[6][500];
 
 int draw_preset_selected=0;
@@ -2432,13 +2471,13 @@ int core_user_define_nb_echo=23;
 int echo_selected=0;
 
 
-int echo_pointing_fader_num[24];//le fader pointÈ
+int echo_pointing_fader_num[24];//le fader point√©
 bool echo_is_echo_mode[24];//0= bounce mode 1= continuous Echo mode
 float echo_global_params[24][3];
 bool echo_channel_manipulate_mode[24];// 0 level up, 1 ground
 int echo_grid_channel_position[24];
 float echo_levels[24][2][513];
-bool do_bounce[24];//dÈclencheur
+bool do_bounce[24];//d√©clencheur
 
 
 float tmp_echo[24][513];

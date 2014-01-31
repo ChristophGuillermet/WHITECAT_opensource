@@ -1,3 +1,43 @@
+Ôªø/*-------------------------------------------------------------------------------------------------------------
+                                 |
+          CWWWWWWWW              | Copyright (C) 2009-2013  Christoph Guillermet
+       WWWWWWWWWWWWWWW           | 
+     WWWWWWWWWWWWWWWWWWW         | This file is part of White Cat.
+    WWWWWWWWWWWWWWWWWCWWWW       | 
+   WWWWWWWWWWWWWWWWW tWWWWW      | White Cat is free software: you can redistribute it and/or modify
+  WWWW   WWWWWWWWWW  tWWWWWW     | it under the terms of the GNU General Public License as published by
+ WWWWWt              tWWWWWWa    | the Free Software Foundation, either version 3 of the License, or
+ WWWWWW               WWWWWWW    | (at your option) any later version.
+WWWWWWWW              WWWWWWW    | 
+WWWWWWWW               WWWWWWW   | White Cat is distributed in the hope that it will be useful,
+WWWWWWW               WWWWWWWW   | but WITHOUT ANY WARRANTY; without even the implied warranty of
+WWWWWWW      CWWW    W WWWWWWW   | MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+WWWWWWW            aW  WWWWWWW   | GNU General Public License for more details.
+WWWWWWWW           C  WWWWWWWW   | 
+ WWWWWWWW            CWWWWWWW    | You should have received a copy of the GNU General Public License
+ WWWWWWWWW          WWWWWWWWW    | along with White Cat.  If not, see <http://www.gnu.org/licenses/>. 
+  WWWWWWWWWWC    CWWWWWWWWWW     |   
+   WWWWWWWWWWWWWWWWWWWWWWWW      | 
+    WWWWWWWWWWWWWWWWWWWWWW       |    
+      WWWWWWWWWWWWWWWWWWa        |     
+        WWWWWWWWWWWWWWW          |     
+           WWWWWWWWt             |
+                                 |
+---------------------------------------------------------------------------------------------------------------*/
+/**
+
+ \file plot_core9.cpp
+ \brief {description courte} 
+ \author Christoph Guillermet
+ \version {numero de version du fichier}
+ \date {date description}
+ 
+ White Cat {- cat√©gorie} {- sous cat√©gorie {- sous cat√©gorie}}
+ Description d√©taill√©e
+ 
+ **/
+ 
+ 
 #define drawStippleLine(x1,y1,x2,y2)  glBegin(GL_LINES);  glVertex2f ((x1),(y1)); glVertex2f ((x2),(y2)); glEnd();
 
 int do_a_screen_capture()
@@ -460,7 +500,7 @@ for(int sz=s;sz<=nbre_shapes_on_plot;sz++)
 if(snap_shape_selected[sz]==0)  
 {
 copy_shape_to_emply_slot(s,sz);     
-//break; enlevÈ pour permettre destruction sans virer un shape en dernier de la liste                              
+//break; enlev√© pour permettre destruction sans virer un shape en dernier de la liste                              
 }     
 }                                 
 }        
@@ -1212,7 +1252,7 @@ if( symbol_is_linked_to[calc][i]>0){ do_ungroup=1;break;}
 else
 {    
 int leading_symbol=0;
-int leading_channel=0;// le premier symbole trouvÈ est celui qui permet le groupe
+int leading_channel=0;// le premier symbole trouv√© est celui qui permet le groupe
 for(int i=1;i<= nbre_symbols_on_plot[calc];i++)
 {
 if(symbol_is_selected[calc][i]==1 && symbol_channel_is[calc][i]>0)
@@ -1325,7 +1365,7 @@ symbol_selected_type=symbol_type[calc][i];
 last_ch_selected=symbol_channel_is[calc][i];
 }
 
-//selection dÈselection channels
+//selection d√©selection channels
 if((symbol_channel_is[calc][i])!=0)
 {
 Selected_Channel[(symbol_channel_is[calc][i])]=symbol_is_selected[calc][i];
@@ -1333,7 +1373,7 @@ Selected_Channel[(symbol_channel_is[calc][i])]=symbol_is_selected[calc][i];
 //check group
 for(int gr=1;gr<=nbre_symbols_on_plot[calc] ;gr++)
 {
-if(symbol_channel_is[calc][gr]!=0 && symbol_channel_is[calc][gr]==symbol_channel_is[calc][is_manipulated] )//ismanipulated si dÈselection 
+if(symbol_channel_is[calc][gr]!=0 && symbol_channel_is[calc][gr]==symbol_channel_is[calc][is_manipulated] )//ismanipulated si d√©selection 
 {
 if( symbol_is_linked_to[calc][gr]==is_manipulated || symbol_is_linked_to[calc][is_manipulated ]==gr )
 {
@@ -1452,7 +1492,7 @@ pos_symbol[calc][i][1]=the_value;
 
 int plot_ventilate_x(int calc)
 {
-//si souci de ventilation parce que les symboles pas les uns aprËs les autres. il faudrait faire un tableau intermÈdiaire o˘ stocker les donnÈes et redistribuer aprËs
+//si souci de ventilation parce que les symboles pas les uns apr√®s les autres. il faudrait faire un tableau interm√©diaire o√π stocker les donn√©es et redistribuer apr√®s
 int the_highest_value=0;
 int the_lowest_value=0;
 int the_value=0;
@@ -2564,7 +2604,7 @@ for(int u=1;u<=nbre_symbols_on_plot[l];u++)
 if  (symbol_dimmer_is[l][u]== tnum && (symbol_channel_is[l][u] != symbol_channel_is[view_plot_calc_number_is][the_symb]) ) {symbol_dimmer_is[l][u]=0;}                                                                                       
 }   
 }
-//fin check des gradas affectÈs ‡ d autres
+//fin check des gradas affect√©s √† d autres
 symbol_dimmer_is[view_plot_calc_number_is][the_symb]= tnum;  
 }    
 }           
@@ -3275,7 +3315,7 @@ else if(numeric_postext==0)//drag souris
  
   
    
-   switch(editing_plan_data_type)//dÈcalÈ de +1
+   switch(editing_plan_data_type)//d√©cal√© de +1
    {
    case 1:
    position_relative_plan_theatre[0]=old_position_relative_plan_theatre[0]-moving_plan_relativ_y;
@@ -3481,7 +3521,7 @@ logical_plot_symbol_list(plotx+10, ploty+50);
 logical_plot_symbol_edition(plotx+10, ploty+200);//editeur de symbol
 logical_symbol_edition_options(plotx+10, ploty+275);
 break;
-case 3://lÈgende
+case 3://l√©gende
 break;
 case 4://plan seul
 break;

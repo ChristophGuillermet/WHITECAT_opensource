@@ -1,4 +1,43 @@
+Ôªø/*-------------------------------------------------------------------------------------------------------------
+                                 |
+          CWWWWWWWW              | Copyright (C) 2009-2013  Christoph Guillermet
+       WWWWWWWWWWWWWWW           | 
+     WWWWWWWWWWWWWWWWWWW         | This file is part of White Cat.
+    WWWWWWWWWWWWWWWWWCWWWW       | 
+   WWWWWWWWWWWWWWWWW tWWWWW      | White Cat is free software: you can redistribute it and/or modify
+  WWWW   WWWWWWWWWW  tWWWWWW     | it under the terms of the GNU General Public License as published by
+ WWWWWt              tWWWWWWa    | the Free Software Foundation, either version 3 of the License, or
+ WWWWWW               WWWWWWW    | (at your option) any later version.
+WWWWWWWW              WWWWWWW    | 
+WWWWWWWW               WWWWWWW   | White Cat is distributed in the hope that it will be useful,
+WWWWWWW               WWWWWWWW   | but WITHOUT ANY WARRANTY; without even the implied warranty of
+WWWWWWW      CWWW    W WWWWWWW   | MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+WWWWWWW            aW  WWWWWWW   | GNU General Public License for more details.
+WWWWWWWW           C  WWWWWWWW   | 
+ WWWWWWWW            CWWWWWWW    | You should have received a copy of the GNU General Public License
+ WWWWWWWWW          WWWWWWWWW    | along with White Cat.  If not, see <http://www.gnu.org/licenses/>. 
+  WWWWWWWWWWC    CWWWWWWWWWW     |   
+   WWWWWWWWWWWWWWWWWWWWWWWW      | 
+    WWWWWWWWWWWWWWWWWWWWWW       |    
+      WWWWWWWWWWWWWWWWWWa        |     
+        WWWWWWWWWWWWWWW          |     
+           WWWWWWWWt             |
+                                 |
+---------------------------------------------------------------------------------------------------------------*/
+/**
 
+ \file Call_everybody_5.cpp
+ \brief {description courte} 
+ \author Christoph Guillermet
+ \version {numero de version du fichier}
+ \date {date description}
+ 
+ White Cat {- cat√©gorie} {- sous cat√©gorie {- sous cat√©gorie}}
+ Description d√©taill√©e
+ 
+ **/
+ 
+ 
 int reset_other_index_cfg()
 {
 index_config_dmx=0;
@@ -206,7 +245,7 @@ break;
 
 
 
-//2Ëme colonne Circuit relatif
+//2√®me colonne Circuit relatif
 for(int cl=0;cl<6;cl++)
 {
 switch(cl)
@@ -247,7 +286,7 @@ sprintf(raccourci_commande,"");
 stae=index_do_exclude;
 break;
 case 5://my window
-IDmidi=2047; // c est la derniere commande midi, a changer et  dÈfinir voir tableau affectations midi
+IDmidi=2047; // c est la derniere commande midi, a changer et  d√©finir voir tableau affectations midi
 IDcommand=cl+10;
 sprintf(nom_commande,"MY WINDOW");
 sprintf(raccourci_commande,"");
@@ -260,7 +299,7 @@ command_button_logical(xmenu+80,ymenu+50+(cl*25),stae,nom_commande,raccourci_com
 }     
 
 
-//3Ëme colonne grands blocs
+//3√®me colonne grands blocs
 for(int cl=0;cl<5;cl++)
 {
 switch(cl)
@@ -309,7 +348,7 @@ command_button_logical(xmenu+150,ymenu+50+(cl*25),stae,nom_commande,raccourci_co
 
 
 
-//4Ëme colonne grands blocs
+//4√®me colonne grands blocs
 for(int cl=0;cl<6;cl++)
 {
 switch(cl)
@@ -363,7 +402,7 @@ command_button_logical(xmenu+220,ymenu+50+(cl*25),stae,nom_commande,raccourci_co
 
 
 
-//5Ëme colonne grands blocs
+//5√®me colonne grands blocs
 for(int cl=0;cl<5;cl++)
 {
 switch(cl)
@@ -494,7 +533,7 @@ break;
 command_button_view(xmenu+10,ymenu+50+(cl*25),stae,nom_commande,raccourci_commande,IDmidi);// int x, inty ,bool state, char *textedesc, int midiaffectation
 } 
 
-//2Ëme colonne Circuit relatif
+//2√®me colonne Circuit relatif
 for(int cl=0;cl<6;cl++)
 {
 switch(cl)
@@ -535,7 +574,7 @@ sprintf(raccourci_commande,"");
 stae=index_do_exclude;
 break;
 case 5://my window
-IDmidi=2047; //a re dÈfinir voir tableau affectations midi
+IDmidi=2047; //a re d√©finir voir tableau affectations midi
 IDcommand=cl+10;
 sprintf(nom_commande,"MY WINDOW");
 sprintf(raccourci_commande,"");
@@ -548,7 +587,7 @@ command_button_view(xmenu+80,ymenu+50+(cl*25),stae,nom_commande,raccourci_comman
 } 
 
 
-//3Ëme colonne grands blocs
+//3√®me colonne grands blocs
 for(int cl=0;cl<5;cl++)
 {
 switch(cl)
@@ -596,7 +635,7 @@ command_button_view(xmenu+150,ymenu+50+(cl*25),stae,nom_commande,raccourci_comma
 } 
 
 
-//4Ëme colonne grands blocs
+//4√®me colonne grands blocs
 for(int cl=0;cl<6;cl++)
 {
 switch(cl)
@@ -649,7 +688,7 @@ break;
 command_button_view(xmenu+220,ymenu+50+(cl*25),stae,nom_commande,raccourci_commande,IDmidi);// int x, inty ,bool state, char *textedesc, int midiaffectation
 } 
 
-//5Ëme colonne grands blocs
+//5√®me colonne grands blocs
 for(int cl=0;cl<5;cl++)
 {
 switch(cl)

@@ -1,9 +1,48 @@
+Ôªø/*-------------------------------------------------------------------------------------------------------------
+                                 |
+          CWWWWWWWW              | Copyright (C) 2009-2013  Christoph Guillermet
+       WWWWWWWWWWWWWWW           | 
+     WWWWWWWWWWWWWWWWWWW         | This file is part of White Cat.
+    WWWWWWWWWWWWWWWWWCWWWW       | 
+   WWWWWWWWWWWWWWWWW tWWWWW      | White Cat is free software: you can redistribute it and/or modify
+  WWWW   WWWWWWWWWW  tWWWWWW     | it under the terms of the GNU General Public License as published by
+ WWWWWt              tWWWWWWa    | the Free Software Foundation, either version 3 of the License, or
+ WWWWWW               WWWWWWW    | (at your option) any later version.
+WWWWWWWW              WWWWWWW    | 
+WWWWWWWW               WWWWWWW   | White Cat is distributed in the hope that it will be useful,
+WWWWWWW               WWWWWWWW   | but WITHOUT ANY WARRANTY; without even the implied warranty of
+WWWWWWW      CWWW    W WWWWWWW   | MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+WWWWWWW            aW  WWWWWWW   | GNU General Public License for more details.
+WWWWWWWW           C  WWWWWWWW   | 
+ WWWWWWWW            CWWWWWWW    | You should have received a copy of the GNU General Public License
+ WWWWWWWWW          WWWWWWWWW    | along with White Cat.  If not, see <http://www.gnu.org/licenses/>. 
+  WWWWWWWWWWC    CWWWWWWWWWW     |   
+   WWWWWWWWWWWWWWWWWWWWWWWW      | 
+    WWWWWWWWWWWWWWWWWWWWWW       |    
+      WWWWWWWWWWWWWWWWWWa        |     
+        WWWWWWWWWWWWWWW          |     
+           WWWWWWWWt             |
+                                 |
+---------------------------------------------------------------------------------------------------------------*/
+/**
+
+ \file {nom du fichier.extension}
+ \brief {description courte} 
+ \author Christoph Guillermet
+ \version {numero de version du fichier}
+ \date {date description}
+ 
+ White Cat {- cat√©gorie} {- sous cat√©gorie {- sous cat√©gorie}}
+ Description d√©taill√©e
+ 
+ **/
+ 
+ 
 
 
 
 
-
-///le volatile int dans arduino car possibilitÈ de changer le rate d appel de la fonction read
+///le volatile int dans arduino car possibilit√© de changer le rate d appel de la fonction read
 volatile int ticks_arduino=0;
 int old_ticks_arduino=0;
 void ticker_arduino()
@@ -28,7 +67,7 @@ if(analog_data_from_arduino[p]!=previous_analog_data_from_arduino[p])
 {
 switch(arduino_analog_function_input[p])
 {
-case 1://affectation ‡ un fader
+case 1://affectation √† un fader
 
 vfader=arduino_analog_attribution_input[p];
 Fader[vfader]=analog_data_from_arduino[p];  
@@ -87,7 +126,7 @@ if(midi_send_out[492]==1){index_send_midi_out[492]=1;}
 }
 }
 
-//remise ‡ jour du crossfade
+//remise √† jour du crossfade
 if(temp_ardniveauX1==0 && temp_ardniveauX2==255)
 {
 index_go=0; index_go_back=0; index_pause=0;
@@ -198,8 +237,8 @@ int vfader=0;
 for(int p=0;p<=arduino_max_digital;p++)
 {
         
-if(arduino_digital_type[p]==1  && digital_data_from_arduino[p]!= previous_digital_data_from_arduino[p] )//si l'affectation est type INPUT
-//et qu il y a une diffÈrence d'Ètat      
+if(arduino_digital_type[p]==1||arduino_digital_type[p]==2||arduino_digital_type[p]==7  && digital_data_from_arduino[p]!= previous_digital_data_from_arduino[p] )//si l'affectation est type INPUT
+//et qu il y a une diff√©rence d'√©tat      
 {
 switch(arduino_digital_function_input[p][0]) 
 {
@@ -285,7 +324,7 @@ previous_digital_data_from_arduino[p]=toggle(previous_digital_data_from_arduino[
 }
 break;
 case 7://Fader: LOCK
-if(digital_data_from_arduino[p]==1) //si appuyÈ
+if(digital_data_from_arduino[p]==1) //si appuy√©
 {
 vfader=(arduino_digital_function_input[p][1]-1);  
  switch(FaderLocked[vfader])
@@ -304,7 +343,7 @@ vfader=(arduino_digital_function_input[p][1]-1);
    break; 
    case 1:
    FaderLocked[vfader]=0;
-   //remise ‡ plat du niveau
+   //remise √† plat du niveau
    Fader[vfader]=(unsigned char)((((float)(StateOfFaderBeforeLock[vfader]))/255)*locklevel);
    midi_levels[vfader]=(int)(((float)Fader[vfader])/2);
    sprintf(string_Last_Order,">> UNLOCKED Fader %d",vfader+1);
@@ -318,7 +357,7 @@ vfader=(arduino_digital_function_input[p][1]-1);
 FaderIsFlash[vfader]=digital_data_from_arduino[p];
 break;
 case 9://Fader: All at 0
-if(digital_data_from_arduino[p]==1) //si appuyÈ
+if(digital_data_from_arduino[p]==1) //si appuy√©
 {
 vfader=(arduino_digital_function_input[p][1]-1);  
            Fader[vfader]=0;
@@ -341,7 +380,7 @@ previous_digital_data_from_arduino[p]=toggle(previous_digital_data_from_arduino[
 }
 break;
 case 10://Fader: L/Unloop dock
-if(digital_data_from_arduino[p]==1) //si appuyÈ
+if(digital_data_from_arduino[p]==1) //si appuy√©
 {
 vfader=(arduino_digital_function_input[p][1]-1);
 is_dock_for_lfo_selected[vfader][(dock_used_by_fader_is[vfader])]=toggle(is_dock_for_lfo_selected[vfader][(dock_used_by_fader_is[vfader])]);
@@ -349,7 +388,7 @@ is_dock_for_lfo_selected[vfader][(dock_used_by_fader_is[vfader])]=toggle(is_dock
 digital_data_from_arduino[p]=toggle(digital_data_from_arduino[p]);
 break;
 case 11://Fader: L/Unloop all
-if(digital_data_from_arduino[p]==1) //si appuyÈ
+if(digital_data_from_arduino[p]==1) //si appuy√©
 {
 vfader=(arduino_digital_function_input[p][1]-1); 
 for(int d=0;d<6;d++)
@@ -360,7 +399,7 @@ previous_digital_data_from_arduino[p]=toggle(previous_digital_data_from_arduino[
 }
 break;
 case 12://Seq: GO
-if(digital_data_from_arduino[p]==1) //si appuyÈ
+if(digital_data_from_arduino[p]==1) //si appuy√©
 {
 do_go_function();
 do_send_bang();
@@ -368,7 +407,7 @@ previous_digital_data_from_arduino[p]=toggle(previous_digital_data_from_arduino[
 }
 break;
 case 13://Seq: GO BACK
-if(digital_data_from_arduino[p]==1) //si appuyÈ
+if(digital_data_from_arduino[p]==1) //si appuy√©
 {
 do_go_back_function();
 int banger_back_is=Banger_Memoire[position_preset]-1;
@@ -377,7 +416,7 @@ previous_digital_data_from_arduino[p]=toggle(previous_digital_data_from_arduino[
 }
 break;
 case 14://Seq: JUMP
-if(digital_data_from_arduino[p]==1) //si appuyÈ
+if(digital_data_from_arduino[p]==1) //si appuy√©
 {
 do_double_go_function();
 do_send_bang();  
@@ -385,7 +424,7 @@ previous_digital_data_from_arduino[p]=toggle(previous_digital_data_from_arduino[
 }
 break;
 case 15://Seq: SHIFT-W
-if(digital_data_from_arduino[p]==1) //si appuyÈ
+if(digital_data_from_arduino[p]==1) //si appuy√©
 {
 index_go=0;index_pause=0; index_go_back=0; 
 detect_mem_preset_previous();
@@ -396,7 +435,7 @@ someone_changed_in_sequences=1;//icat
 }
 break;
 case 16://Seq: SHIFT-X
-if(digital_data_from_arduino[p]==1) //si appuyÈ
+if(digital_data_from_arduino[p]==1) //si appuy√©
 {
 index_go=0;index_pause=0; index_go_back=0;  
 detect_next_preset();
@@ -407,7 +446,7 @@ someone_changed_in_sequences=1;//icat
 }
 break;
 case 17:////As Key-On CH0 P:
-if(digital_data_from_arduino[p]==1) //si appuyÈ
+if(digital_data_from_arduino[p]==1) //si appuy√©
 {
 simulate_midi(1,0,arduino_digital_function_input[p][1],127);
 sprintf (my_midi_string, "Arduino Chan:%-2d Pitch:%-2d Vel:%-2d Typ: %s",	ischan,ispitch,isvel, "Key-On");
@@ -415,7 +454,7 @@ simulate_midi(2,0,arduino_digital_function_input[p][1],0);
 }
 break;
 case 18:////As Key-On CH1 P:
-if(digital_data_from_arduino[p]==1) //si appuyÈ
+if(digital_data_from_arduino[p]==1) //si appuy√©
 {
 simulate_midi(1,1,arduino_digital_function_input[p][1],127);
 sprintf (my_midi_string, "Arduino Chan:%-2d Pitch:%-2d Vel:%-2d Typ: %s",	ischan,ispitch,isvel, "Key-On");
@@ -423,7 +462,7 @@ simulate_midi(2,1,arduino_digital_function_input[p][1],0);
 }
 break;
 case 19:////As Key-On CH2 P:
-if(digital_data_from_arduino[p]==1) //si appuyÈ
+if(digital_data_from_arduino[p]==1) //si appuy√©
 {
 simulate_midi(1,2,arduino_digital_function_input[p][1],127);
 sprintf (my_midi_string, "Arduino Chan:%-2d Pitch:%-2d Vel:%-2d Typ: %s",	ischan,ispitch,isvel, "Key-On");  
@@ -431,7 +470,7 @@ simulate_midi(2,3,arduino_digital_function_input[p][1],0);
 }
 break;
 case 20:////As Key-On CH3 P:
-if(digital_data_from_arduino[p]==1) //si appuyÈ
+if(digital_data_from_arduino[p]==1) //si appuy√©
 {
 simulate_midi(1,3,arduino_digital_function_input[p][1],127);
 sprintf (my_midi_string, "Arduino Chan:%-2d Pitch:%-2d Vel:%-2d Typ: %s",	ischan,ispitch,isvel, "Key-On"); 
@@ -439,7 +478,7 @@ simulate_midi(2,4,arduino_digital_function_input[p][1],0);
 }
 break;
 case 21:////As Key-On CH4 P:
-if(digital_data_from_arduino[p]==1) //si appuyÈ
+if(digital_data_from_arduino[p]==1) //si appuy√©
 {
 simulate_midi(1,4,arduino_digital_function_input[p][1],127);
 sprintf (my_midi_string, "Arduino Chan:%-2d Pitch:%-2d Vel:%-2d Typ: %s",	ischan,ispitch,isvel, "Key-On"); 
@@ -447,7 +486,7 @@ simulate_midi(2,4,arduino_digital_function_input[p][1],0);
 }
 break;
 case 22:////As Key-On CH5 P:
-if(digital_data_from_arduino[p]==1) //si appuyÈ
+if(digital_data_from_arduino[p]==1) //si appuy√©
 {
 simulate_midi(1,5,arduino_digital_function_input[p][1],127);
 sprintf (my_midi_string, "Arduino Chan:%-2d Pitch:%-2d Vel:%-2d Typ: %s",	ischan,ispitch,isvel, "Key-On"); 
@@ -455,7 +494,7 @@ simulate_midi(2,5,arduino_digital_function_input[p][1],0);
 }
 break;
 case 23:////As Key-On CH6 P:
-if(digital_data_from_arduino[p]==1) //si appuyÈ
+if(digital_data_from_arduino[p]==1) //si appuy√©
 {
 simulate_midi(1,6,arduino_digital_function_input[p][1],127);
 sprintf (my_midi_string, "Arduino Chan:%-2d Pitch:%-2d Vel:%-2d Typ: %s",	ischan,ispitch,isvel, "Key-On");
@@ -463,7 +502,7 @@ simulate_midi(2,6,arduino_digital_function_input[p][1],0);
 }
 break;
 case 24:////As Key-On CH7 P:
-if(digital_data_from_arduino[p]==1) //si appuyÈ
+if(digital_data_from_arduino[p]==1) //si appuy√©
 {
 simulate_midi(1,7,arduino_digital_function_input[p][1],127);
 sprintf (my_midi_string, "Arduino Chan:%-2d Pitch:%-2d Vel:%-2d Typ: %s",	ischan,ispitch,isvel, "Key-On");
@@ -471,7 +510,7 @@ simulate_midi(2,7,arduino_digital_function_input[p][1],0);
 }
 break;
 case 25:////As Key-On CH8 P:
-if(digital_data_from_arduino[p]==1) //si appuyÈ
+if(digital_data_from_arduino[p]==1) //si appuy√©
 {
 simulate_midi(1,8,arduino_digital_function_input[p][1],127);
 sprintf (my_midi_string, "Arduino Chan:%-2d Pitch:%-2d Vel:%-2d Typ: %s",	ischan,ispitch,isvel, "Key-On"); 
@@ -479,7 +518,7 @@ simulate_midi(2,8,arduino_digital_function_input[p][1],0);
 }
 break;
 case 26:////As Key-On CH9 P:
-if(digital_data_from_arduino[p]==1) //si appuyÈ
+if(digital_data_from_arduino[p]==1) //si appuy√©
 {
 simulate_midi(1,9,arduino_digital_function_input[p][1],127);
 sprintf (my_midi_string, "Arduino Chan:%-2d Pitch:%-2d Vel:%-2d Typ: %s",	ischan,ispitch,isvel, "Key-On");
@@ -487,7 +526,7 @@ simulate_midi(2,9,arduino_digital_function_input[p][1],0);
 }
 break;
 case 27:////As Key-On CH10 P:
-if(digital_data_from_arduino[p]==1) //si appuyÈ
+if(digital_data_from_arduino[p]==1) //si appuy√©
 {
 simulate_midi(1,10,arduino_digital_function_input[p][1],127);
 sprintf (my_midi_string, "Arduino Chan:%-2d Pitch:%-2d Vel:%-2d Typ: %s",	ischan,ispitch,isvel, "Key-On");  
@@ -495,7 +534,7 @@ simulate_midi(2,10,arduino_digital_function_input[p][1],0);
 }
 break;
 case 28:////As Key-On CH11 P:
-if(digital_data_from_arduino[p]==1) //si appuyÈ
+if(digital_data_from_arduino[p]==1) //si appuy√©
 {
 simulate_midi(1,11,arduino_digital_function_input[p][1],127);
 sprintf (my_midi_string, "Arduino Chan:%-2d Pitch:%-2d Vel:%-2d Typ: %s",	ischan,ispitch,isvel, "Key-On");
@@ -503,7 +542,7 @@ simulate_midi(2,11,arduino_digital_function_input[p][1],0);
 }
 break;
 case 29:////As Key-On CH12 P:
-if(digital_data_from_arduino[p]==1) //si appuyÈ
+if(digital_data_from_arduino[p]==1) //si appuy√©
 {
 simulate_midi(1,12,arduino_digital_function_input[p][1],127);
 sprintf (my_midi_string, "Arduino Chan:%-2d Pitch:%-2d Vel:%-2d Typ: %s",	ischan,ispitch,isvel, "Key-On");
@@ -511,7 +550,7 @@ simulate_midi(2,12,arduino_digital_function_input[p][1],0);
 }
 break;
 case 30:////As Key-On CH13 P:
-if(digital_data_from_arduino[p]==1) //si appuyÈ
+if(digital_data_from_arduino[p]==1) //si appuy√©
 {
 simulate_midi(1,13,arduino_digital_function_input[p][1],127);
 sprintf (my_midi_string, "Arduino Chan:%-2d Pitch:%-2d Vel:%-2d Typ: %s",	ischan,ispitch,isvel, "Key-On"); 
@@ -519,7 +558,7 @@ simulate_midi(2,13,arduino_digital_function_input[p][1],0);
 }
 break;
 case 31:////As Key-On CH14 P:
-if(digital_data_from_arduino[p]==1) //si appuyÈ
+if(digital_data_from_arduino[p]==1) //si appuy√©
 {
 simulate_midi(1,14,arduino_digital_function_input[p][1],127);
 sprintf (my_midi_string, "Arduino Chan:%-2d Pitch:%-2d Vel:%-2d Typ: %s",	ischan,ispitch,isvel, "Key-On");
@@ -527,7 +566,7 @@ simulate_midi(2,14,arduino_digital_function_input[p][1],0);
 }
 break;
 case 32:////As Key-On CH15 P:
-if(digital_data_from_arduino[p]==1) //si appuyÈ
+if(digital_data_from_arduino[p]==1) //si appuy√©
 {
 simulate_midi(1,15,arduino_digital_function_input[p][1],127);
 sprintf (my_midi_string, "Arduino Chan:%-2d Pitch:%-2d Vel:%-2d Typ: %s",	ischan,ispitch,isvel, "Key-On");
@@ -543,6 +582,77 @@ break;
 }                                  
 }
 
+ return(0);   
+}
+
+int arduino_do_pwm_out_whitecat()
+{
+index_send_pwm_data=0;
+
+char temp_send_pwm[(3+arduino_max_digital+3+1)];    //header/tableau/headerfin/return
+
+if(need_send_pwm==1)
+{
+if(ticks_arduino_passe!=ticks_arduino+1&&ticks_arduino<ticks_arduino_passe+2)
+{
+need_send_pwm=1;
+index_send_pwm_data=0;
+} 
+if(ticks_arduino>ticks_arduino_passe+2)
+{
+need_send_pwm=0;
+index_send_pwm_data=1;
+} 
+}
+
+for(int p=0;p<=arduino_max_digital;p++)
+{
+
+
+if(arduino_digital_type[p]==6 || arduino_digital_type[p]==4|| arduino_digital_type[p]==5)//si l'affectation est type OUTPUT   PWM
+{
+//CHANNEL 
+if(arduino_digital_function_output[p][0]==1 && arduino_digital_function_output[p][1]>0 && arduino_digital_function_output[p][1]<513) 
+{    
+pwm_data_to_arduino[p]=MergerArray[(arduino_digital_function_output[p][1])];
+}  
+//FADER
+else if(arduino_digital_function_output[p][0]==2 && arduino_digital_function_output[p][1]>0 && arduino_digital_function_output[p][1]<49) 
+{   
+pwm_data_to_arduino[p]=(int)Fader[(arduino_digital_function_output[p][1])-1];
+}  
+
+//if(index_send_pwm_data==0){index_send_pwm_data=1;}
+if(pwm_data_to_arduino[p]!=previous_pwm_data_to_arduino[p]||need_send_pwm==1){
+                                                       index_send_pwm_data=1;}
+                                                       
+if(need_send_pwm==0)
+{previous_pwm_data_to_arduino[p]=pwm_data_to_arduino[p];} 
+
+}
+}
+
+if(index_send_pwm_data==1 && need_send_pwm==0)
+{
+sprintf(temp_send_pwm,"");
+temp_send_pwm[0]='P';temp_send_pwm[1]='W';temp_send_pwm[2]='/';
+
+for(int k=0;k<=arduino_max_digital;k++)
+{
+if(pwm_data_to_arduino[k]<255)
+{
+temp_send_pwm[3+k]=pwm_data_to_arduino[k]+1;//+1 pour √©viter caractere 0
+}
+else {temp_send_pwm[3+k]=255;}
+}
+temp_send_pwm[(3+arduino_max_digital+1)]='E';
+temp_send_pwm[(3+arduino_max_digital+2)]='D';
+temp_send_pwm[(3+arduino_max_digital+3)]='/';
+temp_send_pwm[(3+arduino_max_digital+4)]='\0';
+
+int nBytesSendtoArduino=serial0.SendData(temp_send_pwm,sizeof(temp_send_pwm));
+} 
+                     
  return(0);   
 }
 
@@ -565,35 +675,42 @@ break;
 
 for(int p=0;p<=arduino_max_digital;p++)
 {
-
-if(arduino_digital_type[p]==2 )//si l'affectation est type OUTPUT   
+previous_digital_data_to_arduino[p]=digital_data_to_arduino[p]; 
+if(arduino_digital_type[p]==3 )//si l'affectation est type OUTPUT   
 {
 if(arduino_digital_function_output[p][0]==1) //CHANNEL >10
 {
-previous_digital_data_to_arduino[p]=digital_data_to_arduino[p];      
- 
 if(MergerArray[(arduino_digital_function_output[p][1])]>value_dm)
 
 {digital_data_to_arduino[p]=1;}
 else {digital_data_to_arduino[p]=0;}
 
-if(digital_data_to_arduino[p]!=previous_digital_data_to_arduino[p]){index_send_digital_data=1;}
-}  
+if(digital_data_to_arduino[p]!=previous_digital_data_to_arduino[p])
+{need_send_pwm=1;index_send_digital_data=1;ticks_arduino_passe=ticks_arduino;
+previous_digital_data_to_arduino[p]=digital_data_to_arduino[p]; }
+
+} 
+ 
 else if(arduino_digital_function_output[p][0]==2 && arduino_digital_function_output[p][1]>0 && arduino_digital_function_output[p][1]<49) //Fader >10
 {
-previous_digital_data_to_arduino[p]=digital_data_to_arduino[p];      
+//previous_digital_data_to_arduino[p]=digital_data_to_arduino[p];      
  
 if(Fader[(arduino_digital_function_output[p][1]-1)]>value_dm)
 {digital_data_to_arduino[p]=1;}
 else {digital_data_to_arduino[p]=0;}
-index_send_digital_data=1;
+
+if(digital_data_to_arduino[p]!=previous_digital_data_to_arduino[p])
+{need_send_pwm=1;index_send_digital_data=1;ticks_arduino_passe=ticks_arduino;
+previous_digital_data_to_arduino[p]=digital_data_to_arduino[p]; }
+ 
+//index_send_digital_data=1;
 //if(digital_data_to_arduino[p]!=previous_digital_data_to_arduino[p]){index_send_digital_data=1;}
 }  
  
 }
 }
 
-if(index_send_digital_data==1 )
+if(index_send_digital_data)
 {
 sprintf(arduino_order,"");
 temp_send[0]='D';temp_send[1]='O';temp_send[2]='/';
@@ -604,13 +721,10 @@ switch(digital_data_to_arduino[k])
 {
 case 0:
 temp_send[3+k]=32; 
-pwm_data_to_arduino[k]=0;
-previous_pwm_data_to_arduino[k]=0;
 break;
+
 case 1:
 temp_send[3+k]=127;
-pwm_data_to_arduino[k]=0;
-previous_pwm_data_to_arduino[k]=0;
 break ;
 }
 }
@@ -618,65 +732,22 @@ temp_send[(3+arduino_max_digital+1)]='E';
 temp_send[(3+arduino_max_digital+2)]='D';
 temp_send[(3+arduino_max_digital+3)]='/';
 temp_send[(3+arduino_max_digital+4)]='\0';
-int nBytesSendtoArduino=serial0.SendData(temp_send,sizeof(temp_send)); 
+
+if(need_send_pwm==1)
+{int nBytesSendtoArduino=serial0.SendData(temp_send,sizeof(temp_send));} 
 
 }                       
 
  return(0);   
 }
 
-int arduino_do_pwm_out_whitecat()
-{
-index_send_pwm_data=0;
-char temp_send_pwm[(3+arduino_max_digital+3+1)];    //header/tableau/headerfin/return
-
-for(int p=0;p<=arduino_max_digital;p++)
-{
-previous_pwm_data_to_arduino[p]=pwm_data_to_arduino[p];  
-if(arduino_digital_type[p]==3 || arduino_digital_type[p]==4|| arduino_digital_type[p]==5)//si l'affectation est type OUTPUT   PWM
-{
-//CHANNEL 
-if(arduino_digital_function_output[p][0]==1 && arduino_digital_function_output[p][1]>0 && arduino_digital_function_output[p][1]<513) 
-{    
-pwm_data_to_arduino[p]=MergerArray[(arduino_digital_function_output[p][1])];
-}  
-//FADER
-else if(arduino_digital_function_output[p][0]==2 && arduino_digital_function_output[p][1]>0 && arduino_digital_function_output[p][1]<49) 
-{   
-pwm_data_to_arduino[p]=(int)Fader[(arduino_digital_function_output[p][1])-1];
-}  
-if(pwm_data_to_arduino[p]!=previous_pwm_data_to_arduino[p]){index_send_pwm_data=1;}
-}
-}
-
-if(index_send_pwm_data==1 )
-{
-sprintf(temp_send_pwm,"");
-temp_send_pwm[0]='P';temp_send_pwm[1]='W';temp_send_pwm[2]='/';
-
-for(int k=0;k<=arduino_max_digital;k++)
-{
-if(pwm_data_to_arduino[k]<255)
-{
-temp_send_pwm[3+k]=pwm_data_to_arduino[k]+1;//+1 pour Èviter caractere 0
-}
-else {temp_send_pwm[3+k]=255;}
-}
-temp_send_pwm[(3+arduino_max_digital+1)]='E';
-temp_send_pwm[(3+arduino_max_digital+2)]='D';
-temp_send_pwm[(3+arduino_max_digital+3)]='/';
-temp_send_pwm[(3+arduino_max_digital+4)]='\0';
-int nBytesSendtoArduino=serial0.SendData(temp_send_pwm,sizeof(temp_send_pwm)); 
-
-}                       
 
 
- return(0);   
-}
 
 int arduino__send_config()
 {
-  
+index_send_digital_data=0; 
+index_send_pwm_data=0;  
 if(arduino_device_0_is_ignited==1 && index_send_arduino_config==1)
 {
 int type_pin[arduino_max_digital];
@@ -694,31 +765,40 @@ temp_send_config[0]='C';temp_send_config[1]='O';temp_send_config[2]='/';
 
 for(int k=0;k<=arduino_max_digital;k++)
 { 
-     
-if(type_pin[k]==0 )//si l'affectation est type None   
-{
-temp_send_config[3+k]=30;   
-}
-if(type_pin[k]==1 )//si l'affectation est type INPUT   
-{
-temp_send_config[3+k]=31;   
-}
-if(type_pin[k]==2 )//si l'affectation est type OUTPUT   
-{
-temp_send_config[3+k]=33; 
-}
-if(type_pin[k]==3 )//si l'affectation est type PWM   
-{
-temp_send_config[3+k]=34;   
 
-}
-if(type_pin[k]==4 )//si l'affectation est type servo   
-{
+switch ( type_pin[k])
+{   
+case 0://si l'affectation est type None   
+temp_send_config[3+k]=30;   
+break;
+
+case 1: ////si l'affectation est type INPUT   
+temp_send_config[3+k]=31;   
+break;
+
+case 2 ://si l'affectation est type PULL UP   
+temp_send_config[3+k]=33; 
+break;
+
+case 3 ://si l'affectation est type OUTPUT   
+temp_send_config[3+k]=34;   
+break;
+
+case 4 ://si l'affectation est type PWM   
 temp_send_config[3+k]=35;   
-}
-if(type_pin[k]==5 )//si l'affectation est type RF12   
-{
+break;
+
+case 5 ://si l'affectation est type SERVO   
 temp_send_config[3+k]=36;   
+break;
+
+case 6 ://si l'affectation est type RF12  OUT  
+temp_send_config[3+k]=37;   
+break;
+
+case 7 ://si l'affectation est type RF12  IN
+temp_send_config[3+k]=38; 
+break;  
 }
 }
 
@@ -730,6 +810,8 @@ temp_send_config[(3+arduino_max_digital+4)]='\0';
 int nBytesSendtoArduino=serial0.SendData(temp_send_config,sizeof(temp_send_config)); 
 }
 index_send_arduino_config=0;
+index_send_pwm_data=1;
+index_send_digital_data=1; 
  return(0);   
 }
 

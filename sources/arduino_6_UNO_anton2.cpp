@@ -1,4 +1,43 @@
+Ôªø/*-------------------------------------------------------------------------------------------------------------
+                                 |
+          CWWWWWWWW              | Copyright (C) 2009-2013  Christoph Guillermet
+       WWWWWWWWWWWWWWW           | 
+     WWWWWWWWWWWWWWWWWWW         | This file is part of White Cat.
+    WWWWWWWWWWWWWWWWWCWWWW       | 
+   WWWWWWWWWWWWWWWWW tWWWWW      | White Cat is free software: you can redistribute it and/or modify
+  WWWW   WWWWWWWWWW  tWWWWWW     | it under the terms of the GNU General Public License as published by
+ WWWWWt              tWWWWWWa    | the Free Software Foundation, either version 3 of the License, or
+ WWWWWW               WWWWWWW    | (at your option) any later version.
+WWWWWWWW              WWWWWWW    | 
+WWWWWWWW               WWWWWWW   | White Cat is distributed in the hope that it will be useful,
+WWWWWWW               WWWWWWWW   | but WITHOUT ANY WARRANTY; without even the implied warranty of
+WWWWWWW      CWWW    W WWWWWWW   | MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+WWWWWWW            aW  WWWWWWW   | GNU General Public License for more details.
+WWWWWWWW           C  WWWWWWWW   | 
+ WWWWWWWW            CWWWWWWW    | You should have received a copy of the GNU General Public License
+ WWWWWWWWW          WWWWWWWWW    | along with White Cat.  If not, see <http://www.gnu.org/licenses/>. 
+  WWWWWWWWWWC    CWWWWWWWWWW     |   
+   WWWWWWWWWWWWWWWWWWWWWWWW      | 
+    WWWWWWWWWWWWWWWWWWWWWW       |    
+      WWWWWWWWWWWWWWWWWWa        |     
+        WWWWWWWWWWWWWWW          |     
+           WWWWWWWWt             |
+                                 |
+---------------------------------------------------------------------------------------------------------------*/
+/**
 
+ \file arduino_6_UNO_anto2.cpp
+ \brief {description courte} 
+ \author Christoph Guillermet, Anton Langhoff
+ \version {numero de version du fichier}
+ \date {date description}
+ 
+ White Cat {- cat√©gorie} {- sous cat√©gorie {- sous cat√©gorie}}
+ Description d√©taill√©e
+ 
+ **/
+ 
+ 
 
 int arduino_decode_array_method(char *tmp_ard)
 {
@@ -35,7 +74,7 @@ sprintf(arduino_order,"");
 arduino_order[0]='S';arduino_order[1]='D';arduino_order[2]='/';arduino_order[3]='\0';
 //arduino_order[3]='\0';//pour UNO [3]='\0' pour 2009 =0
 int nBytesSendtoArduino=serial0.SendData(arduino_order,4); 
-//capture de l'Ètat prÈcÈdent
+//capture de l'√©tat pr√©c√©dent
 for(int y=0;y<=arduino_max_digital;y++)
 {
 previous_digital_data_from_arduino[y]=digital_data_from_arduino[y];        
@@ -385,7 +424,7 @@ if(mouse_button==1 && mouse_released==0)
 int valois=atoi(numeric);
 
 ///INPUT/////////////////////////////////////////////////////////////////////
-//data Val1 range pour un input de type fader ( 0 ‡ 11 )
+//data Val1 range pour un input de type fader ( 0 √† 11 )
 if(
 (arduino_digital_type[position_line_io+y]==1|| arduino_digital_type[position_line_io+y]==2|| arduino_digital_type[position_line_io+y]==7)
 && arduino_digital_function_input[position_line_io+y][0]>=0 && arduino_digital_function_input[position_line_io+y][0]<=11 
@@ -394,7 +433,7 @@ if(
 {
 arduino_digital_function_input[position_line_io+y][1]=valois;                                                            
 }
-//faire data range pour le picth: 0 ‡ 127
+//faire data range pour le picth: 0 √† 127
 if(
 (arduino_digital_type[position_line_io+y]==1|| arduino_digital_type[position_line_io+y]==2|| arduino_digital_type[position_line_io+y]==7)
 && ( arduino_digital_function_input[position_line_io+y][0]>=17 || arduino_digital_function_input[position_line_io+y][0]<=32) 
@@ -670,10 +709,10 @@ switch(arduino_digital_function_output[position_line_io+y][0])
 case 0://desafected
 sprintf(string_temp_familly,"-");
 break;
-case 1: //reliÈ ‡ un circuit  
+case 1: //reli√© √† un circuit  
 sprintf(string_temp_familly,"Channel >10");            
 break;
-case 2://reliÈ ‡ un fader
+case 2://reli√© √† un fader
 sprintf(string_temp_familly,"Fader >10");
 break;
 }
@@ -690,10 +729,10 @@ switch(arduino_digital_function_output[position_line_io+y][0])
 case 0://desafected
 sprintf(string_temp_familly,"-");
 break;
-case 1: //reliÈ ‡ un circuit  
+case 1: //reli√© √† un circuit  
 sprintf(string_temp_familly,"Channel");            
 break;
-case 2://reliÈ ‡ un fader
+case 2://reli√© √† un fader
 sprintf(string_temp_familly,"Fader");
 break;
 }

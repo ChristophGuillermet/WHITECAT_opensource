@@ -1,4 +1,43 @@
+﻿/*-------------------------------------------------------------------------------------------------------------
+                                 |
+          CWWWWWWWW              | Copyright (C) 2009-2013  Christoph Guillermet
+       WWWWWWWWWWWWWWW           | 
+     WWWWWWWWWWWWWWWWWWW         | This file is part of White Cat.
+    WWWWWWWWWWWWWWWWWCWWWW       | 
+   WWWWWWWWWWWWWWWWW tWWWWW      | White Cat is free software: you can redistribute it and/or modify
+  WWWW   WWWWWWWWWW  tWWWWWW     | it under the terms of the GNU General Public License as published by
+ WWWWWt              tWWWWWWa    | the Free Software Foundation, either version 3 of the License, or
+ WWWWWW               WWWWWWW    | (at your option) any later version.
+WWWWWWWW              WWWWWWW    | 
+WWWWWWWW               WWWWWWW   | White Cat is distributed in the hope that it will be useful,
+WWWWWWW               WWWWWWWW   | but WITHOUT ANY WARRANTY; without even the implied warranty of
+WWWWWWW      CWWW    W WWWWWWW   | MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+WWWWWWW            aW  WWWWWWW   | GNU General Public License for more details.
+WWWWWWWW           C  WWWWWWWW   | 
+ WWWWWWWW            CWWWWWWW    | You should have received a copy of the GNU General Public License
+ WWWWWWWWW          WWWWWWWWW    | along with White Cat.  If not, see <http://www.gnu.org/licenses/>. 
+  WWWWWWWWWWC    CWWWWWWWWWW     |   
+   WWWWWWWWWWWWWWWWWWWWWWWW      | 
+    WWWWWWWWWWWWWWWWWWWWWW       |    
+      WWWWWWWWWWWWWWWWWWa        |     
+        WWWWWWWWWWWWWWW          |     
+           WWWWWWWWt             |
+                                 |
+---------------------------------------------------------------------------------------------------------------*/
+/**
 
+ \file patch_core.cpp
+ \brief {description courte} 
+ \author Christoph Guillermet
+ \version {numero de version du fichier}
+ \date {date description}
+ 
+ White Cat {- catégorie} {- sous catégorie {- sous catégorie}}
+ Description détaillée
+ 
+ **/
+ 
+ 
 
 int do_curve_affectation()
 {
@@ -12,7 +51,7 @@ return(0);
 
 int load_curve_in_temp_curve()
 {
-index_curve_spline_level=the_curve_spline_level[curve_selected];   //pixels de l editeur    le float est recalcul� dans la boucle
+index_curve_spline_level=the_curve_spline_level[curve_selected];   //pixels de l editeur    le float est recalculé dans la boucle
 return(0);   
 }
 
@@ -228,7 +267,7 @@ int maxchan_per_ligne=7;
 int grad=0;
 for (int l=0;l<86;l++)
 {
-if(l==85){maxchan_per_ligne=3;} //derniere ligne � 512
+if(l==85){maxchan_per_ligne=3;} //derniere ligne à 512
 
 for (int c=1; c<maxchan_per_ligne;c++)
 {    
@@ -244,7 +283,7 @@ else if(Dimmers_selected[grad]==1)
 {
 Dimmers_selected[grad]=0;
 } 
-if(index_affect_patch==1)//affectation manuelle � la souris
+if(index_affect_patch==1)//affectation manuelle à la souris
 {
 Patch[grad]=last_ch_selected;
 sprintf(string_Last_Order,">> Dimmer %d affected to Channel %d",grad, last_ch_selected);

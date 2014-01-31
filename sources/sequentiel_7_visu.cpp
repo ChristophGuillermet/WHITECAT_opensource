@@ -1,4 +1,43 @@
+﻿/*-------------------------------------------------------------------------------------------------------------
+                                 |
+          CWWWWWWWW              | Copyright (C) 2009-2013  Christoph Guillermet
+       WWWWWWWWWWWWWWW           | 
+     WWWWWWWWWWWWWWWWWWW         | This file is part of White Cat.
+    WWWWWWWWWWWWWWWWWCWWWW       | 
+   WWWWWWWWWWWWWWWWW tWWWWW      | White Cat is free software: you can redistribute it and/or modify
+  WWWW   WWWWWWWWWW  tWWWWWW     | it under the terms of the GNU General Public License as published by
+ WWWWWt              tWWWWWWa    | the Free Software Foundation, either version 3 of the License, or
+ WWWWWW               WWWWWWW    | (at your option) any later version.
+WWWWWWWW              WWWWWWW    | 
+WWWWWWWW               WWWWWWW   | White Cat is distributed in the hope that it will be useful,
+WWWWWWW               WWWWWWWW   | but WITHOUT ANY WARRANTY; without even the implied warranty of
+WWWWWWW      CWWW    W WWWWWWW   | MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+WWWWWWW            aW  WWWWWWW   | GNU General Public License for more details.
+WWWWWWWW           C  WWWWWWWW   | 
+ WWWWWWWW            CWWWWWWW    | You should have received a copy of the GNU General Public License
+ WWWWWWWWW          WWWWWWWWW    | along with White Cat.  If not, see <http://www.gnu.org/licenses/>. 
+  WWWWWWWWWWC    CWWWWWWWWWW     |   
+   WWWWWWWWWWWWWWWWWWWWWWWW      | 
+    WWWWWWWWWWWWWWWWWWWWWW       |    
+      WWWWWWWWWWWWWWWWWWa        |     
+        WWWWWWWWWWWWWWW          |     
+           WWWWWWWWt             |
+                                 |
+---------------------------------------------------------------------------------------------------------------*/
+/**
 
+ \file sequentiel_7_visu.cpp
+ \brief {description courte} 
+ \author Christoph Guillermet
+ \version {numero de version du fichier}
+ \date {date description}
+ 
+ White Cat {- catégorie} {- sous catégorie {- sous catégorie}}
+ Description détaillée
+ 
+ **/
+ 
+ 
 int refresh_vision_memories( int x_seq, int y_seq)
 {
 
@@ -770,14 +809,14 @@ neuro.Print(string_time_left_is,xseq+380,yseq+30);
 neuromoyen.Print("---",xseq+430,yseq+40);
 neuro.Print(string_total_time_is,xseq+380,yseq+60);
 //colonnages
-Line(Vec2D(xseq+170,yseq+80),Vec2D(xseq+170,yseq+hauteur_seq-75)).Draw(CouleurLigne.WithAlpha(0.5));//apr�s mem
-Line(Vec2D(xseq+180,yseq+80),Vec2D(xseq+180,yseq+hauteur_seq-75)).Draw(CouleurLigne.WithAlpha(0.5));//apr�s exclude mem
+Line(Vec2D(xseq+170,yseq+80),Vec2D(xseq+170,yseq+hauteur_seq-75)).Draw(CouleurLigne.WithAlpha(0.5));//après mem
+Line(Vec2D(xseq+180,yseq+80),Vec2D(xseq+180,yseq+hauteur_seq-75)).Draw(CouleurLigne.WithAlpha(0.5));//après exclude mem
 Line(Vec2D(xseq+220,yseq+80),Vec2D(xseq+220,yseq+hauteur_seq-75)).Draw(CouleurLigne.WithAlpha(0.5));//apres link
 Line(Vec2D(xseq+270,yseq+80),Vec2D(xseq+270,yseq+hauteur_seq-75)).Draw(CouleurLigne.WithAlpha(0.5));//apres banger
 Line(Vec2D(xseq+310,yseq+80),Vec2D(xseq+310,yseq+hauteur_seq-75)).Draw(CouleurLigne.WithAlpha(0.5));//apres banger
 
 
-//Grid Player 1 enchass�
+//Grid Player 1 enchassé
 if(show_gridplayer_in_seq==1)
 {
 neuromoyen.Print("GridPlayer 1 /",xseq+660,yseq+40);

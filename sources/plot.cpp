@@ -1,4 +1,43 @@
+﻿/*-------------------------------------------------------------------------------------------------------------
+                                 |
+          CWWWWWWWW              | Copyright (C) 2009-2013  Christoph Guillermet
+       WWWWWWWWWWWWWWW           | 
+     WWWWWWWWWWWWWWWWWWW         | This file is part of White Cat.
+    WWWWWWWWWWWWWWWWWCWWWW       | 
+   WWWWWWWWWWWWWWWWW tWWWWW      | White Cat is free software: you can redistribute it and/or modify
+  WWWW   WWWWWWWWWW  tWWWWWW     | it under the terms of the GNU General Public License as published by
+ WWWWWt              tWWWWWWa    | the Free Software Foundation, either version 3 of the License, or
+ WWWWWW               WWWWWWW    | (at your option) any later version.
+WWWWWWWW              WWWWWWW    | 
+WWWWWWWW               WWWWWWW   | White Cat is distributed in the hope that it will be useful,
+WWWWWWW               WWWWWWWW   | but WITHOUT ANY WARRANTY; without even the implied warranty of
+WWWWWWW      CWWW    W WWWWWWW   | MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+WWWWWWW            aW  WWWWWWW   | GNU General Public License for more details.
+WWWWWWWW           C  WWWWWWWW   | 
+ WWWWWWWW            CWWWWWWW    | You should have received a copy of the GNU General Public License
+ WWWWWWWWW          WWWWWWWWW    | along with White Cat.  If not, see <http://www.gnu.org/licenses/>. 
+  WWWWWWWWWWC    CWWWWWWWWWW     |   
+   WWWWWWWWWWWWWWWWWWWWWWWW      | 
+    WWWWWWWWWWWWWWWWWWWWWW       |    
+      WWWWWWWWWWWWWWWWWWa        |     
+        WWWWWWWWWWWWWWW          |     
+           WWWWWWWWt             |
+                                 |
+---------------------------------------------------------------------------------------------------------------*/
+/**
 
+ \file plot.cpp
+ \brief {description courte} 
+ \author Christoph Guillermet
+ \version {numero de version du fichier}
+ \date {date description}
+ 
+ White Cat {- catégorie} {- sous catégorie {- sous catégorie}}
+ Description détaillée
+ 
+ **/
+ 
+ 
 int scan_planfolder()//plot
 {
     struct al_ffblk f;
@@ -2165,7 +2204,7 @@ for (int y=0;y<8;y++)
 {
 Rect OverFile(Vec2D(xrep+5,(yrep+185+(y*20)-10)),Vec2D(180,20));
 OverFile.SetRoundness(rondeur_fader/2);
-//affichage qui est selectionn�
+//affichage qui est selectionné
 if(strcmp( Name_of_plane_is,list_import_plans[importplan_selected])==0 && (importplan_selected==(y+line_importplan)))
 {OverFile.Draw(CouleurFond.WithAlpha(0.5));}
 
@@ -2482,7 +2521,7 @@ else if(numeric_postext==0)//drag souris
   {
    moving_plan_relativ_x=mouse_x-original_posx;
    moving_plan_relativ_y=mouse_y-original_posy; 
-   switch(editing_plan_data_type)//d�cal� de +1
+   switch(editing_plan_data_type)//décalé de +1
    {
    case 1:
    position_relative_plan_theatre[0]=old_position_relative_plan_theatre[0]-moving_plan_relativ_y;
@@ -2784,7 +2823,7 @@ logical_plot_menu_bare(plotx+230,ploty+10);
 
 switch(index_menus_lighting_plot)
 {
-case 0://l�gende
+case 0://légende
 break;
 case 1://symbols                                          
 plot_symbol_list(plotx+10, ploty+50);//selecteur symbol

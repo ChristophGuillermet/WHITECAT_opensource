@@ -1,4 +1,43 @@
+﻿/*-------------------------------------------------------------------------------------------------------------
+                                 |
+          CWWWWWWWW              | Copyright (C) 2009-2013  Christoph Guillermet
+       WWWWWWWWWWWWWWW           | 
+     WWWWWWWWWWWWWWWWWWW         | This file is part of White Cat.
+    WWWWWWWWWWWWWWWWWCWWWW       | 
+   WWWWWWWWWWWWWWWWW tWWWWW      | White Cat is free software: you can redistribute it and/or modify
+  WWWW   WWWWWWWWWW  tWWWWWW     | it under the terms of the GNU General Public License as published by
+ WWWWWt              tWWWWWWa    | the Free Software Foundation, either version 3 of the License, or
+ WWWWWW               WWWWWWW    | (at your option) any later version.
+WWWWWWWW              WWWWWWW    | 
+WWWWWWWW               WWWWWWW   | White Cat is distributed in the hope that it will be useful,
+WWWWWWW               WWWWWWWW   | but WITHOUT ANY WARRANTY; without even the implied warranty of
+WWWWWWW      CWWW    W WWWWWWW   | MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+WWWWWWW            aW  WWWWWWW   | GNU General Public License for more details.
+WWWWWWWW           C  WWWWWWWW   | 
+ WWWWWWWW            CWWWWWWW    | You should have received a copy of the GNU General Public License
+ WWWWWWWWW          WWWWWWWWW    | along with White Cat.  If not, see <http://www.gnu.org/licenses/>. 
+  WWWWWWWWWWC    CWWWWWWWWWW     |   
+   WWWWWWWWWWWWWWWWWWWWWWWW      | 
+    WWWWWWWWWWWWWWWWWWWWWW       |    
+      WWWWWWWWWWWWWWWWWWa        |     
+        WWWWWWWWWWWWWWW          |     
+           WWWWWWWWt             |
+                                 |
+---------------------------------------------------------------------------------------------------------------*/
+/**
 
+ \file patch_visu.cpp
+ \brief {description courte} 
+ \author Christoph Guillermet
+ \version {numero de version du fichier}
+ \date {date description}
+ 
+ White Cat {- catégorie} {- sous catégorie {- sous catégorie}}
+ Description détaillée
+ 
+ **/
+ 
+ 
 int menu_curve(int XCurv, int YCurv)
 {
 Rect CurveSpace( Vec2D((XCurv),(YCurv)),Vec2D(315,600)); 
@@ -242,7 +281,7 @@ int maxchan_per_ligne=7;
 int grad=0;
 for (int l=0;l<86;l++)
 {
-if(l==85){maxchan_per_ligne=3;} //derniere ligne � 512
+if(l==85){maxchan_per_ligne=3;} //derniere ligne à 512
 
 lignefond.MoveTo( Vec2D(XChan+30,YChan+85+(l*60) - (int)(scroller_patch* scroll_chan)) );
 lignefond.SetRoundness(5);  
@@ -254,7 +293,7 @@ lignefond.Draw(CouleurSurvol);
 for (int c=1; c<maxchan_per_ligne;c++)
 {    
 
-//on affiche et actionne que si les donn�es sont dans la fenetre
+//on affiche et actionne que si les données sont dans la fenetre
 if(((YChan+100+(l*60) - (int)(scroller_patch* scroll_chan))>YChan+30)&&((YChan+90+(l*60) - (int)(scroller_patch* scroll_chan))<YChan+570))
 {
 grad=c+(l*6);

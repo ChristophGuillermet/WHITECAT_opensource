@@ -1,4 +1,43 @@
+Ôªø/*-------------------------------------------------------------------------------------------------------------
+                                 |
+          CWWWWWWWW              | Copyright (C) 2009-2013  Christoph Guillermet
+       WWWWWWWWWWWWWWW           | 
+     WWWWWWWWWWWWWWWWWWW         | This file is part of White Cat.
+    WWWWWWWWWWWWWWWWWCWWWW       | 
+   WWWWWWWWWWWWWWWWW tWWWWW      | White Cat is free software: you can redistribute it and/or modify
+  WWWW   WWWWWWWWWW  tWWWWWW     | it under the terms of the GNU General Public License as published by
+ WWWWWt              tWWWWWWa    | the Free Software Foundation, either version 3 of the License, or
+ WWWWWW               WWWWWWW    | (at your option) any later version.
+WWWWWWWW              WWWWWWW    | 
+WWWWWWWW               WWWWWWW   | White Cat is distributed in the hope that it will be useful,
+WWWWWWW               WWWWWWWW   | but WITHOUT ANY WARRANTY; without even the implied warranty of
+WWWWWWW      CWWW    W WWWWWWW   | MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+WWWWWWW            aW  WWWWWWW   | GNU General Public License for more details.
+WWWWWWWW           C  WWWWWWWW   | 
+ WWWWWWWW            CWWWWWWW    | You should have received a copy of the GNU General Public License
+ WWWWWWWWW          WWWWWWWWW    | along with White Cat.  If not, see <http://www.gnu.org/licenses/>. 
+  WWWWWWWWWWC    CWWWWWWWWWW     |   
+   WWWWWWWWWWWWWWWWWWWWWWWW      | 
+    WWWWWWWWWWWWWWWWWWWWWW       |    
+      WWWWWWWWWWWWWWWWWWa        |     
+        WWWWWWWWWWWWWWW          |     
+           WWWWWWWWt             |
+                                 |
+---------------------------------------------------------------------------------------------------------------*/
+/**
 
+ \file icat_core14.cpp
+ \brief {description courte} 
+ \author Christoph Guillermet
+ \version {numero de version du fichier}
+ \date {date description}
+ 
+ White Cat {- cat√©gorie} {- sous cat√©gorie {- sous cat√©gorie}}
+ Description d√©taill√©e
+ 
+ **/
+ 
+ 
 
 
 int recalculate_iCatBuilder_window_size()
@@ -112,7 +151,7 @@ int numfad=0;
 int aire=0;
 int x1=0;
 int y1=0;
-//envois des donnÈes
+//envois des donn√©es
 char string_mf_id[16];    
 for(int i=1;i<iCat_nbre_de_tracking_zone[iCatPageis]+1;i++)
 {       
@@ -145,7 +184,7 @@ case 2://draw"Draw Activ");
 
 if(previous_pos_iCat_tracker[iCatPageis][i][0]!=pos_iCat_tracker[iCatPageis][i][0] || previous_pos_iCat_tracker[iCatPageis][i][1]!=pos_iCat_tracker[iCatPageis][i][1])
 {
-//chaque aire dÈclarÈe
+//chaque aire d√©clar√©e
 for(int lign=0;lign<draw_preset_parameters[draw_preset_selected][1];lign++)
 {
 for(int col=0;col<draw_preset_parameters[draw_preset_selected][0];col++)
@@ -183,7 +222,7 @@ aire=iCat_trackzone_affectation_is[iCatPageis][i]-1;
 
 if(previous_pos_iCat_tracker[iCatPageis][i][0]!=pos_iCat_tracker[iCatPageis][i][0] || previous_pos_iCat_tracker[iCatPageis][i][1]!=pos_iCat_tracker[iCatPageis][i][1])
 {
-//chaque aire dÈclarÈe
+//chaque aire d√©clar√©e
 for(int lign=0;lign<draw_preset_parameters[aire][1];lign++)
 {
 for(int col=0;col<draw_preset_parameters[aire][0];col++)
@@ -324,7 +363,7 @@ case 1://Fader
               }
            
            if(FaderLocked[numfad]==1)
-           //lockÈ
+           //lock√©
            { col_fader_r=0.0, col_fader_g=0.4, col_fader_b=0.2; }                                                   
            sprintf(StrOrderToiCat,"model level%d color %.1f %.1f %.1f",i, col_fader_r, col_fader_g, col_fader_b);
            
@@ -907,7 +946,7 @@ case 2://minifaders
 int num_mf;               
      switch(iCat_affectation_bouton_action_is[iCatPageis][ck])
      {
-//rien a checker dans les Ètats, sauf la sÈlection dÈselection de minifaders
+//rien a checker dans les √©tats, sauf la s√©lection d√©selection de minifaders
        case 16:
        num_mf=iCat_affectation_bouton_value_is[iCatPageis][ck]-1;
        if(num_mf>=0 && num_mf<48)
@@ -1251,7 +1290,7 @@ case 7://draw
       else {sprintf(StrOrderToiCat,"model button%d image http://www.le-chat-noir-numerique.fr/iCat/draw_preset_vide.png",ck);}
       nbrbytessendediCat=sendto(sockiCat,  StrOrderToiCat,strlen(StrOrderToiCat)+1,0,(SOCKADDR*)&siniCat,sinsizeiCat); 
 
-      //rafraichissement de la page icat des dÈclarations car les tailles de colonnes les circuits  etc changent !
+      //rafraichissement de la page icat des d√©clarations car les tailles de colonnes les circuits  etc changent !
       refresh_icatpage_please=1;;                            
       }
       
@@ -1374,7 +1413,7 @@ if(FaderLocked[valeur_sl-1]==0)
   }
 }
 else 
-{//lockÈ
+{//lock√©
   col_fader_r=0.0, col_fader_g=0.4, col_fader_b=0.2;
 }
 
@@ -1939,7 +1978,7 @@ default:
 break;                   
 }
 
-//affichages connexes: dÈplcement des affichages, si horizontal
+//affichages connexes: d√©plcement des affichages, si horizontal
 if( iCat_orientation_slider[iCatPageis][id]==1)
 {
   sprintf(StrOrderToiCat, "model t%d position %d %d 0",id,(x1*2)+10+(iCatSlidersizeY*ratio_iCat_slider[iCatPageis][id]), (y1*2)+(5*ratio_iCat_slider[iCatPageis][id]));
@@ -2600,7 +2639,7 @@ nbrbytessendediCat=sendto(sockiCat,  StrOrderToiCat,strlen(StrOrderToiCat)+1,0,(
 
 
 
-//chaque aire dÈclarÈe
+//chaque aire d√©clar√©e
 for(int lign=0;lign<draw_preset_parameters[draw_preset_selected][1];lign++)
 {
 for(int col=0;col<draw_preset_parameters[draw_preset_selected][0];col++)
@@ -2769,7 +2808,7 @@ break;
 } 
 
 
-//carrÈ pourtour
+//carr√© pourtour
 sprintf(StrOrderToiCat,"model trackzoneA%d xyz %d %d 0 %d %d 0",id,
 (x1*2), (y1*2),
 (x1*2)+(largeur_trackzone*ratio_iCat_trackzone[iCatPageis][id]),(y1*2));
@@ -3248,7 +3287,7 @@ return(0);
 int do_refresh_iCat(int iCatPage)
 {
 finished_to_send_orders_to_iCat=0;
-index_false_shift=0; index_false_control=0;//pour Èviter les pbs lors des changements de pages avec une commande shift toujours active
+index_false_shift=0; index_false_control=0;//pour √©viter les pbs lors des changements de pages avec une commande shift toujours active
 
 //clear models sortis de refresh
 

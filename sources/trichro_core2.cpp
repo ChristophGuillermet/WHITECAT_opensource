@@ -1,3 +1,43 @@
+﻿/*-------------------------------------------------------------------------------------------------------------
+                                 |
+          CWWWWWWWW              | Copyright (C) 2009-2013  Christoph Guillermet
+       WWWWWWWWWWWWWWW           | 
+     WWWWWWWWWWWWWWWWWWW         | This file is part of White Cat.
+    WWWWWWWWWWWWWWWWWCWWWW       | 
+   WWWWWWWWWWWWWWWWW tWWWWW      | White Cat is free software: you can redistribute it and/or modify
+  WWWW   WWWWWWWWWW  tWWWWWW     | it under the terms of the GNU General Public License as published by
+ WWWWWt              tWWWWWWa    | the Free Software Foundation, either version 3 of the License, or
+ WWWWWW               WWWWWWW    | (at your option) any later version.
+WWWWWWWW              WWWWWWW    | 
+WWWWWWWW               WWWWWWW   | White Cat is distributed in the hope that it will be useful,
+WWWWWWW               WWWWWWWW   | but WITHOUT ANY WARRANTY; without even the implied warranty of
+WWWWWWW      CWWW    W WWWWWWW   | MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+WWWWWWW            aW  WWWWWWW   | GNU General Public License for more details.
+WWWWWWWW           C  WWWWWWWW   | 
+ WWWWWWWW            CWWWWWWW    | You should have received a copy of the GNU General Public License
+ WWWWWWWWW          WWWWWWWWW    | along with White Cat.  If not, see <http://www.gnu.org/licenses/>. 
+  WWWWWWWWWWC    CWWWWWWWWWW     |   
+   WWWWWWWWWWWWWWWWWWWWWWWW      | 
+    WWWWWWWWWWWWWWWWWWWWWW       |    
+      WWWWWWWWWWWWWWWWWWa        |     
+        WWWWWWWWWWWWWWW          |     
+           WWWWWWWWt             |
+                                 |
+---------------------------------------------------------------------------------------------------------------*/
+/**
+
+ \file trichro_core2.cpp
+ \brief {description courte} 
+ \author Christoph Guillermet
+ \version {numero de version du fichier}
+ \date {date description}
+ 
+ White Cat {- catégorie} {- sous catégorie {- sous catégorie}}
+ Description détaillée
+ 
+ **/
+ 
+ 
 /*BITMAP *bmp_buffer_trichro= create_bitmap(320, 200);
 clear_bitmap(bmp_buffer_trichro);
 destroy_bitmap(bmp_buffer_trichro);      
@@ -27,7 +67,7 @@ int CounterClockWise ( double Pt0_X, double Pt0_Y, double Pt1_X, double Pt1_Y, d
  dy1 = Pt1_Y - Pt0_Y ;
  dx2 = Pt2_X - Pt0_X ;
  dy2 = Pt2_Y - Pt0_Y ; 
- /* Verifie si les chiffres sont des z�ros */
+ /* Verifie si les chiffres sont des zéros */
  if ( fabs(dx1) < ACCURACY_DOUBLE )
     dx1 = 0.0 ;
  if ( fabs(dx2) < ACCURACY_DOUBLE )
@@ -144,7 +184,7 @@ angle1=CounterClockWise(mouse_x,mouse_y,xtrichro_window+vxd, ytrichro_window+vyd
 angle2=CounterClockWise(mouse_x,mouse_y,xtrichro_window+vxh, ytrichro_window+vyh,xtrichro_window+vxw, ytrichro_window+vyw);//Pa2 - Pa3
 angle3=CounterClockWise(mouse_x,mouse_y,xtrichro_window+vxw, ytrichro_window+vyw, xtrichro_window+vxd, ytrichro_window+vyd);//Pa3-Pa1
 
-if((angle1*angle2*angle3) <=0 ) //dans le triangle form� par la souris et les 3 points du triangle
+if((angle1*angle2*angle3) <=0 ) //dans le triangle formé par la souris et les 3 points du triangle
 {                 
 
 
@@ -455,7 +495,7 @@ if(mouse_x> xchroma+140-10 && mouse_x< xchroma+140+10 && mouse_y>ychroma+110-10 
 
 raccrochage_midi_logical_circulaire (xchroma-6, ychroma, 497, 125, 125);
 
-do_colors();//ventilation des niveaux pick�s ainsi que distrib dans faders et docks
+do_colors();//ventilation des niveaux pickés ainsi que distrib dans faders et docks
 
 //premiere rangee de dock colors
 
@@ -478,7 +518,7 @@ mouse_released=1;
 }
 }
 }
-//deuxi�me rangee de dockcolors
+//deuxième rangee de dockcolors
 for (int dock_colortwo=0;dock_colortwo<4;dock_colortwo++)
 {
 if(mouse_x>xchroma-130+(65*dock_colortwo) && mouse_x<xchroma-80+(65*dock_colortwo) && mouse_y>ychroma+255 && mouse_y<ychroma+275)

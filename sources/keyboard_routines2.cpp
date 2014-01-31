@@ -1,3 +1,43 @@
+﻿/*-------------------------------------------------------------------------------------------------------------
+                                 |
+          CWWWWWWWW              | Copyright (C) 2009-2013  Christoph Guillermet
+       WWWWWWWWWWWWWWW           | 
+     WWWWWWWWWWWWWWWWWWW         | This file is part of White Cat.
+    WWWWWWWWWWWWWWWWWCWWWW       | 
+   WWWWWWWWWWWWWWWWW tWWWWW      | White Cat is free software: you can redistribute it and/or modify
+  WWWW   WWWWWWWWWW  tWWWWWW     | it under the terms of the GNU General Public License as published by
+ WWWWWt              tWWWWWWa    | the Free Software Foundation, either version 3 of the License, or
+ WWWWWW               WWWWWWW    | (at your option) any later version.
+WWWWWWWW              WWWWWWW    | 
+WWWWWWWW               WWWWWWW   | White Cat is distributed in the hope that it will be useful,
+WWWWWWW               WWWWWWWW   | but WITHOUT ANY WARRANTY; without even the implied warranty of
+WWWWWWW      CWWW    W WWWWWWW   | MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+WWWWWWW            aW  WWWWWWW   | GNU General Public License for more details.
+WWWWWWWW           C  WWWWWWWW   | 
+ WWWWWWWW            CWWWWWWW    | You should have received a copy of the GNU General Public License
+ WWWWWWWWW          WWWWWWWWW    | along with White Cat.  If not, see <http://www.gnu.org/licenses/>. 
+  WWWWWWWWWWC    CWWWWWWWWWW     |   
+   WWWWWWWWWWWWWWWWWWWWWWWW      | 
+    WWWWWWWWWWWWWWWWWWWWWW       |    
+      WWWWWWWWWWWWWWWWWWa        |     
+        WWWWWWWWWWWWWWW          |     
+           WWWWWWWWt             |
+                                 |
+---------------------------------------------------------------------------------------------------------------*/
+/**
+
+ \file keyboard_routines2.cpp
+ \brief {description courte} 
+ \author Christoph Guillermet
+ \version {numero de version du fichier}
+ \date {date description}
+ 
+ White Cat {- catégorie} {- sous catégorie {- sous catégorie}}
+ Description détaillée
+ 
+ **/
+ 
+ 
 #include <allegro.h>
 
 
@@ -39,7 +79,7 @@ if ( keypressed())
 
 int chi = readkey(); 
 scan_ascii_is=(chi & 0xff);//prend pas en compte touches fonctions
-scan_allegro_key_is=(chi >> 8);//prend en compte tout le monde mais � redistribuer fr et anglais
+scan_allegro_key_is=(chi >> 8);//prend en compte tout le monde mais à redistribuer fr et anglais
 
 
 switch (chi >> 8)  
@@ -78,7 +118,7 @@ sprintf(string_key_id,list_keyname[0]);
 key_switch_window_down();
 break; 
 //////////////////SPECIAL KEYS ////////////////////////////////////////////////
-case  KEY_TILDE://carr�
+case  KEY_TILDE://carré
 if(window_focus_id==W_PLOT) {index_move_plot_view_port=toggle(index_move_plot_view_port);}
 break;
 
@@ -172,7 +212,7 @@ reset_indexs_confirmation();
 index_ask_confirm=1; 
 index_do_overecord_mem_plus_faders=1;               
 }     
-else if (key_shifts & KB_SHIFT_FLAG || index_false_shift==1) //creation m�moires en mode merge Faders / seq
+else if (key_shifts & KB_SHIFT_FLAG || index_false_shift==1) //creation mémoires en mode merge Faders / seq
 {
 index_do_dock=0;
 index_do_modify=0; 
@@ -703,7 +743,7 @@ case KEY_SPACE:
             {
             channel_paste();
             }
-            else//si chiffre de mem tap�e
+            else//si chiffre de mem tapée
             {
             index_copy_mem_in=1; 
             index_ask_confirm=1;

@@ -1,3 +1,43 @@
+Ôªø/*-------------------------------------------------------------------------------------------------------------
+                                 |
+          CWWWWWWWW              | Copyright (C) 2009-2013  Christoph Guillermet
+       WWWWWWWWWWWWWWW           | 
+     WWWWWWWWWWWWWWWWWWW         | This file is part of White Cat.
+    WWWWWWWWWWWWWWWWWCWWWW       | 
+   WWWWWWWWWWWWWWWWW tWWWWW      | White Cat is free software: you can redistribute it and/or modify
+  WWWW   WWWWWWWWWW  tWWWWWW     | it under the terms of the GNU General Public License as published by
+ WWWWWt              tWWWWWWa    | the Free Software Foundation, either version 3 of the License, or
+ WWWWWW               WWWWWWW    | (at your option) any later version.
+WWWWWWWW              WWWWWWW    | 
+WWWWWWWW               WWWWWWW   | White Cat is distributed in the hope that it will be useful,
+WWWWWWW               WWWWWWWW   | but WITHOUT ANY WARRANTY; without even the implied warranty of
+WWWWWWW      CWWW    W WWWWWWW   | MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+WWWWWWW            aW  WWWWWWW   | GNU General Public License for more details.
+WWWWWWWW           C  WWWWWWWW   | 
+ WWWWWWWW            CWWWWWWW    | You should have received a copy of the GNU General Public License
+ WWWWWWWWW          WWWWWWWWW    | along with White Cat.  If not, see <http://www.gnu.org/licenses/>. 
+  WWWWWWWWWWC    CWWWWWWWWWW     |   
+   WWWWWWWWWWWWWWWWWWWWWWWW      | 
+    WWWWWWWWWWWWWWWWWWWWWW       |    
+      WWWWWWWWWWWWWWWWWWa        |     
+        WWWWWWWWWWWWWWW          |     
+           WWWWWWWWt             |
+                                 |
+---------------------------------------------------------------------------------------------------------------*/
+/**
+
+ \file dmx_functions_13.cpp
+ \brief {description courte} 
+ \author Christoph Guillermet
+ \version {numero de version du fichier}
+ \date {date description}
+ 
+ White Cat {- cat√©gorie} {- sous cat√©gorie {- sous cat√©gorie}}
+ Description d√©taill√©e
+ 
+ **/
+ 
+ 
 #include <odmxusb.cpp>
 #include <odmxusb.h>
 Open_USB_DMX *pUsbDmx = NULL;
@@ -527,7 +567,7 @@ int do_lfos()
  }
  
  
- if(faders_in_float[cmptfader]==0.0)//renvoi next dock quand ‡ 0 pos
+ if(faders_in_float[cmptfader]==0.0)//renvoi next dock quand √† 0 pos
  {
  if(lfo_do_next_step[cmptfader][1]==1)//down dock
  {
@@ -701,7 +741,7 @@ if (is_dock_for_lfo_selected[cmptfader][ dockis]==1 )
  }
  }
 }
-//si pas bouclÈ, juste une sequence
+//si pas boucl√©, juste une sequence
 else if(is_dock_for_lfo_selected[cmptfader][ dockis]==0)
 {
  lfo_cycle_is_on[cmptfader]=0;
@@ -716,7 +756,7 @@ else if(is_dock_for_lfo_selected[cmptfader][ dockis]==0)
   if(FaderLocked[cmptfader]==1 && LockFader_is_FullLevel[cmptfader]==1)//masterisation au lock des autres faders
  {
  DoLock(cmptfader,Fader[cmptfader]);//remasterisation des niveaux
- //changement du niveau de lock, si on l augmente au dessus de son niveau de lock stockÈ
+ //changement du niveau de lock, si on l augmente au dessus de son niveau de lock stock√©
  if(Fader[cmptfader]>StateOfFaderBeforeLock[cmptfader] && FaderIsFlash[cmptfader]==0){StateOfFaderBeforeLock[cmptfader]=Fader[cmptfader];}
  }                    
  }
@@ -773,7 +813,7 @@ int Merger_Faders()
  }
  break;
  case 1://Exclude rendering 
- // rien ne se passe, ne sont pas reportÈs dans le buffer fader
+ // rien ne se passe, ne sont pas report√©s dans le buffer fader
  break;
  case 2://substract
   switch(fader_fx_route[cif])
@@ -1016,9 +1056,9 @@ index_fader_is_manipulated[f]=1;
            {
              if(ppin<grider_begin_channel_is-1)
              {
-              FaderDockContains[f][d][ppin]=0;//nettoyage ‡ cause de l adressage   si chgt adresse faut nettoyer le buffer                                  
+              FaderDockContains[f][d][ppin]=0;//nettoyage √† cause de l adressage   si chgt adresse faut nettoyer le buffer                                  
               }  
-             if(ppin+grider_begin_channel_is-1<513)//eviter dÈbordement hors des 513 circuits
+             if(ppin+grider_begin_channel_is-1<513)//eviter d√©bordement hors des 513 circuits
              {
              FaderDockContains[f][d][ppin+grider_begin_channel_is-1]=buffer_gridder[(faders_dock_grid_affectation[f][d])][ppin-1];
              }
@@ -1120,7 +1160,7 @@ return(0);
 ////////////////////////////////////////////////////////////////////////////////
 int Merger()
 {
- //rafraichissement visuel, pour pb de synchro entre calculs et rapiditÈ affichage mis en amont d une frame
+ //rafraichissement visuel, pour pb de synchro entre calculs et rapidit√© affichage mis en amont d une frame
  for (int i=1;i<514;i++)
  { 
  buffer_affichage_valeurs_sequenciel[i]=bufferSequenciel[i];    
@@ -1213,7 +1253,7 @@ char read_buff[ 512 ] ;
 	cfg_file = fopen("user\\config_dmx.txt", "rt" );
 	if( !cfg_file )
 	{
-	 printf("\nPb ‡ ouverture de config_dmx.txt\n");
+	 printf("\nPb √† ouverture de config_dmx.txt\n");
      return 1;
 	}	
 	

@@ -1,4 +1,44 @@
-////////////////////SUNLITE///////////////////////////
+﻿/*-------------------------------------------------------------------------------------------------------------
+                                 |
+          CWWWWWWWW              | Copyright (C) 2009-2013  Christoph Guillermet
+       WWWWWWWWWWWWWWW           | 
+     WWWWWWWWWWWWWWWWWWW         | This file is part of White Cat.
+    WWWWWWWWWWWWWWWWWCWWWW       | 
+   WWWWWWWWWWWWWWWWW tWWWWW      | White Cat is free software: you can redistribute it and/or modify
+  WWWW   WWWWWWWWWW  tWWWWWW     | it under the terms of the GNU General Public License as published by
+ WWWWWt              tWWWWWWa    | the Free Software Foundation, either version 3 of the License, or
+ WWWWWW               WWWWWWW    | (at your option) any later version.
+WWWWWWWW              WWWWWWW    | 
+WWWWWWWW               WWWWWWW   | White Cat is distributed in the hope that it will be useful,
+WWWWWWW               WWWWWWWW   | but WITHOUT ANY WARRANTY; without even the implied warranty of
+WWWWWWW      CWWW    W WWWWWWW   | MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+WWWWWWW            aW  WWWWWWW   | GNU General Public License for more details.
+WWWWWWWW           C  WWWWWWWW   | 
+ WWWWWWWW            CWWWWWWW    | You should have received a copy of the GNU General Public License
+ WWWWWWWWW          WWWWWWWWW    | along with White Cat.  If not, see <http://www.gnu.org/licenses/>. 
+  WWWWWWWWWWC    CWWWWWWWWWW     |   
+   WWWWWWWWWWWWWWWWWWWWWWWW      | 
+    WWWWWWWWWWWWWWWWWWWWWW       |    
+      WWWWWWWWWWWWWWWWWWa        |     
+        WWWWWWWWWWWWWWW          |     
+           WWWWWWWWt             |
+                                 |
+---------------------------------------------------------------------------------------------------------------*/
+/**
+
+ \file dmx_sunlite.cpp
+ \brief {description courte} 
+ \author Christoph Guillermet
+ \version {numero de version du fichier}
+ \date {date description}
+ 
+ White Cat {- catégorie} {- sous catégorie {- sous catégorie}}
+ Description détaillée
+ 
+ **/
+ 
+ 
+ ////////////////////SUNLITE///////////////////////////
 #include <_DasHard.h>
 
 extern "C"
@@ -86,7 +126,7 @@ int close_sunlite()
               sprintf(string_display_dmx_params,"Sunlite close dll access=Ok"); 
          }    
          
- //d�chargement dll       
+ //déchargement dll       
  if (hLibSunlite != NULL)
      {     FreeLibrary(hLibSunlite);
         hLibSunlite = NULL;
@@ -143,7 +183,7 @@ if(dasusbcommand >0 && index_quit==0 && index_allow_sunlite_dmxIN==1)
 int Reto=dasusbcommand(DHC_DMX2IN,512,dmxINsunlite);   
 for (int p=0;p<512;p++)
 {
- dmxIN[p+2]=dmxINsunlite[p];   //ok +2 fonctionne tres bien de 1 � 512 compris
+ dmxIN[p+2]=dmxINsunlite[p];   //ok +2 fonctionne tres bien de 1 à 512 compris
 }
 }
 return(0);

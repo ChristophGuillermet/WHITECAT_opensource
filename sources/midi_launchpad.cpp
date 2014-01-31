@@ -1,3 +1,44 @@
+﻿/*-------------------------------------------------------------------------------------------------------------
+                                 |
+          CWWWWWWWW              | Copyright (C) 2009-2013  Christoph Guillermet
+       WWWWWWWWWWWWWWW           | 
+     WWWWWWWWWWWWWWWWWWW         | This file is part of White Cat.
+    WWWWWWWWWWWWWWWWWCWWWW       | 
+   WWWWWWWWWWWWWWWWW tWWWWW      | White Cat is free software: you can redistribute it and/or modify
+  WWWW   WWWWWWWWWW  tWWWWWW     | it under the terms of the GNU General Public License as published by
+ WWWWWt              tWWWWWWa    | the Free Software Foundation, either version 3 of the License, or
+ WWWWWW               WWWWWWW    | (at your option) any later version.
+WWWWWWWW              WWWWWWW    | 
+WWWWWWWW               WWWWWWW   | White Cat is distributed in the hope that it will be useful,
+WWWWWWW               WWWWWWWW   | but WITHOUT ANY WARRANTY; without even the implied warranty of
+WWWWWWW      CWWW    W WWWWWWW   | MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+WWWWWWW            aW  WWWWWWW   | GNU General Public License for more details.
+WWWWWWWW           C  WWWWWWWW   | 
+ WWWWWWWW            CWWWWWWW    | You should have received a copy of the GNU General Public License
+ WWWWWWWWW          WWWWWWWWW    | along with White Cat.  If not, see <http://www.gnu.org/licenses/>. 
+  WWWWWWWWWWC    CWWWWWWWWWW     |   
+   WWWWWWWWWWWWWWWWWWWWWWWW      | 
+    WWWWWWWWWWWWWWWWWWWWWW       |    
+      WWWWWWWWWWWWWWWWWWa        |     
+        WWWWWWWWWWWWWWW          |     
+           WWWWWWWWt             |
+                                 |
+---------------------------------------------------------------------------------------------------------------*/
+/**
+
+ \file midi_lauchpad.cpp
+ \brief {description courte} 
+ \author Christoph Guillermet
+ \version {numero de version du fichier}
+ \date {date description}
+ 
+ White Cat {- catégorie} {- sous catégorie {- sous catégorie}}
+ Description détaillée
+ 
+ **/
+ 
+ 
+
 int define_colors()
 {
 for(int g=0;g<2048;g++)
@@ -97,7 +138,7 @@ launchpad_color_defined[1267+yo]=lch_orange_fonce;    //on iCat preset
 
 launchpad_color_defined[1277]=lch_red;    //midi mute general
 
-//appels de fenetres en midi nouveau systeme menu interface g�n�rale
+//appels de fenetres en midi nouveau systeme menu interface générale
 for(int io=0;io<25;io++)
 {
 launchpad_color_defined[io+1329]=lch_orange;
@@ -129,7 +170,7 @@ launchpad_color_defined[1591]=lch_red;//on off reset accelerometre on crossfade 
 
 int launchpad_set_led(int control, int color)
 {
-if(miditable[0][control]<5 && miditable[1][control]<128 && miditable[2][control]<128)//pour �viter d'envoyer une note inexistante et de planter midishare
+if(miditable[0][control]<5 && miditable[1][control]<128 && miditable[2][control]<128)//pour éviter d'envoyer une note inexistante et de planter midishare
 {
 send_my_midi_note(miditable[0][control],miditable[1][control],miditable[2][control],color, 25);  
 }
@@ -413,7 +454,7 @@ define_colors();
 send_my_midi_note(4,0,0,0,10);  
 //maping xy
 send_my_midi_note_delayed(4,0,0,1,10,10);
-//rafraichissement des �tats des leds � l ouverture    
+//rafraichissement des états des leds à l ouverture    
 launchpad_refresh_buffer_led();  
 //mise en palce buffer 1
 //launchpad_buffer=0;

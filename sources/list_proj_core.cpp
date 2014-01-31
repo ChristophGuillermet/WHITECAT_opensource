@@ -1,3 +1,43 @@
+﻿/*-------------------------------------------------------------------------------------------------------------
+                                 |
+          CWWWWWWWW              | Copyright (C) 2009-2013  Christoph Guillermet
+       WWWWWWWWWWWWWWW           | 
+     WWWWWWWWWWWWWWWWWWW         | This file is part of White Cat.
+    WWWWWWWWWWWWWWWWWCWWWW       | 
+   WWWWWWWWWWWWWWWWW tWWWWW      | White Cat is free software: you can redistribute it and/or modify
+  WWWW   WWWWWWWWWW  tWWWWWW     | it under the terms of the GNU General Public License as published by
+ WWWWWt              tWWWWWWa    | the Free Software Foundation, either version 3 of the License, or
+ WWWWWW               WWWWWWW    | (at your option) any later version.
+WWWWWWWW              WWWWWWW    | 
+WWWWWWWW               WWWWWWW   | White Cat is distributed in the hope that it will be useful,
+WWWWWWW               WWWWWWWW   | but WITHOUT ANY WARRANTY; without even the implied warranty of
+WWWWWWW      CWWW    W WWWWWWW   | MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+WWWWWWW            aW  WWWWWWW   | GNU General Public License for more details.
+WWWWWWWW           C  WWWWWWWW   | 
+ WWWWWWWW            CWWWWWWW    | You should have received a copy of the GNU General Public License
+ WWWWWWWWW          WWWWWWWWW    | along with White Cat.  If not, see <http://www.gnu.org/licenses/>. 
+  WWWWWWWWWWC    CWWWWWWWWWW     |   
+   WWWWWWWWWWWWWWWWWWWWWWWW      | 
+    WWWWWWWWWWWWWWWWWWWWWW       |    
+      WWWWWWWWWWWWWWWWWWa        |     
+        WWWWWWWWWWWWWWW          |     
+           WWWWWWWWt             |
+                                 |
+---------------------------------------------------------------------------------------------------------------*/
+/**
+
+ \file list_proj_core.cpp
+ \brief {description courte} 
+ \author Christoph Guillermet
+ \version {numero de version du fichier}
+ \date {date description}
+ 
+ White Cat {- catégorie} {- sous catégorie {- sous catégorie}}
+ Description détaillée
+ 
+ **/
+ 
+ 
 int do_the_macro_of_the_channel(int the_chan, int num_macro)
 {
 int the_Abanger_num=0;
@@ -9,10 +49,10 @@ break;
 case 1://Bang Banger
 the_Abanger_num=channel_macro_val[the_chan][num_macro][1]-1;
 start_time_for_banger[the_Abanger_num]=actual_time;  
-//4 aout 2010 initalisation  un temps plus long par defaut pour faire partir mes �v�nements
+//4 aout 2010 initalisation  un temps plus long par defaut pour faire partir mes évènements
 end_time_for_banger[the_Abanger_num]=default_time_of_the_bang;
-//reset du banger concern�
-for (int o=0;o<6;o++)//reset des �v�nements
+//reset du banger concerné
+for (int o=0;o<6;o++)//reset des évènements
 {
 event_sended[the_Abanger_num][o]=0;
 if(bangers_delay[the_Abanger_num][o]>end_time_for_banger[the_Abanger_num])
@@ -645,7 +685,7 @@ mouse_released=1;
 }                     
 else
 {
-if(index_level_attribue==1)//pour d�selection auto
+if(index_level_attribue==1)//pour déselection auto
 {
 for(int y=1;y<512;y++)
 {

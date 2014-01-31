@@ -1,5 +1,44 @@
+ï»¿
+/*-------------------------------------------------------------------------------------------------------------
+                                 |
+          CWWWWWWWW              | Copyright (C) 2009-2013  Christoph Guillermet
+       WWWWWWWWWWWWWWW           | 
+     WWWWWWWWWWWWWWWWWWW         | This file is part of White Cat.
+    WWWWWWWWWWWWWWWWWCWWWW       | 
+   WWWWWWWWWWWWWWWWW tWWWWW      | White Cat is free software: you can redistribute it and/or modify
+  WWWW   WWWWWWWWWW  tWWWWWW     | it under the terms of the GNU General Public License as published by
+ WWWWWt              tWWWWWWa    | the Free Software Foundation, either version 3 of the License, or
+ WWWWWW               WWWWWWW    | (at your option) any later version.
+WWWWWWWW              WWWWWWW    | 
+WWWWWWWW               WWWWWWW   | White Cat is distributed in the hope that it will be useful,
+WWWWWWW               WWWWWWWW   | but WITHOUT ANY WARRANTY; without even the implied warranty of
+WWWWWWW      CWWW    W WWWWWWW   | MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+WWWWWWW            aW  WWWWWWW   | GNU General Public License for more details.
+WWWWWWWW           C  WWWWWWWW   | 
+ WWWWWWWW            CWWWWWWW    | You should have received a copy of the GNU General Public License
+ WWWWWWWWW          WWWWWWWWW    | along with White Cat.  If not, see <http://www.gnu.org/licenses/>. 
+  WWWWWWWWWWC    CWWWWWWWWWW     |   
+   WWWWWWWWWWWWWWWWWWWWWWWW      | 
+    WWWWWWWWWWWWWWWWWWWWWW       |    
+      WWWWWWWWWWWWWWWWWWa        |     
+        WWWWWWWWWWWWWWW          |     
+           WWWWWWWWt             |
+                                 |
+---------------------------------------------------------------------------------------------------------------*/
+/**
 
-
+ \file keyboard_functions2.cpp
+ \brief {description courte} 
+ \author Christoph Guillermet
+ \version {numero de version du fichier}
+ \date {date description}
+ 
+ White Cat {- catÃ©gorie} {- sous catÃ©gorie {- sous catÃ©gorie}}
+ Description dÃ©taillÃ©e
+ 
+ **/
+ 
+ 
 int generation_Tableau_noms_clavier_FR() 
 {
 sprintf(list_keyname[0],"PGDN");
@@ -428,7 +467,7 @@ break;
 return(0);              
 }
 
-////////////////////////////////////Fonctions clavier déplacées en fonction indépendantes pour mapping/////////////////////////
+////////////////////////////////////Fonctions clavier dÃ©placÃ©es en fonction indÃ©pendantes pour mapping/////////////////////////
 int key_switch_window_up()
 {
 //solo des fenetres
@@ -443,7 +482,7 @@ if(pos_focus_window>max_window_identity_is){pos_focus_window=900;}
 add_a_window(pos_focus_window);         
 }
 
-else//passage dune fenetre à l autre
+else//passage dune fenetre Ã  l autre
 {
 index_to_navigate_between_window++;
 nbre_fenetre_actives=check_nbre_opened_windows();
@@ -470,7 +509,7 @@ if(pos_focus_window>max_window_identity_is){pos_focus_window=900;}
 add_a_window(pos_focus_window);         
 }
 
-else//passage dune fenetre à l autre
+else//passage dune fenetre Ã  l autre
 {
 index_to_navigate_between_window--;
 nbre_fenetre_actives=check_nbre_opened_windows();
@@ -586,7 +625,7 @@ if(chlevelis<0){chlevelis=0;}
  if(Selected_Channel[ci]==1)
  {
   FaderManipulating=highest_level_comes_from_fader[ci]-1;
-  if(DockTypeIs[FaderManipulating][dock_used_by_fader_is[FaderManipulating]]==0)//pas les contenus dynamiques, juste les circuits enregistrés on the fly                          
+  if(DockTypeIs[FaderManipulating][dock_used_by_fader_is[FaderManipulating]]==0)//pas les contenus dynamiques, juste les circuits enregistrÃ©s on the fly                          
   {
    FaderDockContains[FaderManipulating][dock_used_by_fader_is[FaderManipulating]][ci]  =chlevelis;                                                                                   
   }
@@ -844,7 +883,7 @@ for (int i=1;i<513;i++)
  {
 
   FaderManipulating=highest_level_comes_from_fader[i]-1;
-  if(DockTypeIs[FaderManipulating][dock_used_by_fader_is[FaderManipulating]]==0)//pas les contenus dynamiques, juste les circuits enregistrés on the fly                          
+  if(DockTypeIs[FaderManipulating][dock_used_by_fader_is[FaderManipulating]]==0)//pas les contenus dynamiques, juste les circuits enregistrÃ©s on the fly                          
   {
   if(dmx_view==0)
   {
@@ -867,7 +906,7 @@ for (int i=1;i<513;i++)
 
 break;
 }
-index_level_attribue=1;//pour déselection lors prochain circuit piqué
+index_level_attribue=1;//pour dÃ©selection lors prochain circuit piquÃ©
 
  return(0);   
 }
@@ -941,7 +980,7 @@ for (int i=1;i<513;i++)
  if(Selected_Channel[i]==1)
  {
   FaderManipulating=highest_level_comes_from_fader[i]-1;
-  if(DockTypeIs[FaderManipulating][dock_used_by_fader_is[FaderManipulating]]==0)//pas les contenus dynamiques, juste les circuits enregistrés on the fly                          
+  if(DockTypeIs[FaderManipulating][dock_used_by_fader_is[FaderManipulating]]==0)//pas les contenus dynamiques, juste les circuits enregistrÃ©s on the fly                          
   {
   if(dmx_view==0)
   {
@@ -964,7 +1003,7 @@ for (int i=1;i<513;i++)
 break;
 }
 
-index_level_attribue=1;//pour déselection lors prochain circuit piqué dominique guesdon 10 aout 2010
+index_level_attribue=1;//pour dÃ©selection lors prochain circuit piquÃ© dominique guesdon 10 aout 2010
 return(0);   
 }
 
@@ -1162,7 +1201,7 @@ else
            else if(Selected_Channel[ci]==1  && index_blind==1)    {bufferBlind[ci]=255;}
            }  
 sprintf(string_Last_Order,">> Selection AT FULL");
-index_level_attribue=1;//pour déselection lors prochain circuit piqué
+index_level_attribue=1;//pour dÃ©selection lors prochain circuit piquÃ©
 }
  return(0);   
 }
@@ -1273,7 +1312,7 @@ int key_at_zero()
            else if(Selected_Channel[ci]==1  && index_blind==1)    {bufferBlind[ci]=0;}
            }  
            sprintf(string_Last_Order,">> Selection AT ZERO");
-           index_level_attribue=1;//pour déselection lors prochain circuit piqué
+           index_level_attribue=1;//pour dÃ©selection lors prochain circuit piquÃ©
  }
  return(0);
 }

@@ -1,4 +1,43 @@
+Ôªø/*-------------------------------------------------------------------------------------------------------------
+                                 |
+          CWWWWWWWW              | Copyright (C) 2009-2013  Christoph Guillermet
+       WWWWWWWWWWWWWWW           | 
+     WWWWWWWWWWWWWWWWWWW         | This file is part of White Cat.
+    WWWWWWWWWWWWWWWWWCWWWW       | 
+   WWWWWWWWWWWWWWWWW tWWWWW      | White Cat is free software: you can redistribute it and/or modify
+  WWWW   WWWWWWWWWW  tWWWWWW     | it under the terms of the GNU General Public License as published by
+ WWWWWt              tWWWWWWa    | the Free Software Foundation, either version 3 of the License, or
+ WWWWWW               WWWWWWW    | (at your option) any later version.
+WWWWWWWW              WWWWWWW    | 
+WWWWWWWW               WWWWWWW   | White Cat is distributed in the hope that it will be useful,
+WWWWWWW               WWWWWWWW   | but WITHOUT ANY WARRANTY; without even the implied warranty of
+WWWWWWW      CWWW    W WWWWWWW   | MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+WWWWWWW            aW  WWWWWWW   | GNU General Public License for more details.
+WWWWWWWW           C  WWWWWWWW   | 
+ WWWWWWWW            CWWWWWWW    | You should have received a copy of the GNU General Public License
+ WWWWWWWWW          WWWWWWWWW    | along with White Cat.  If not, see <http://www.gnu.org/licenses/>. 
+  WWWWWWWWWWC    CWWWWWWWWWW     |   
+   WWWWWWWWWWWWWWWWWWWWWWWW      | 
+    WWWWWWWWWWWWWWWWWWWWWW       |    
+      WWWWWWWWWWWWWWWWWWa        |     
+        WWWWWWWWWWWWWWW          |     
+           WWWWWWWWt             |
+                                 |
+---------------------------------------------------------------------------------------------------------------*/
+/**
 
+ \file iCat14.cpp
+ \brief {description courte} 
+ \author Christoph Guillermet
+ \version {numero de version du fichier}
+ \date {date description}
+ 
+ White Cat {- cat√©gorie} {- sous cat√©gorie {- sous cat√©gorie}}
+ Description d√©taill√©e
+ 
+ **/
+ 
+ 
 
 
 
@@ -91,7 +130,7 @@ iCat_serveur_is_initialized=1;
 siniCat.sin_family=AF_INET;
 siniCat.sin_addr.s_addr=inet_addr(specified_fs_ip);
 siniCat.sin_port=htons( clientport_iCat);
-//prÈparation de l'envoi
+//pr√©paration de l'envoi
 sockiCat=socket(AF_INET,SOCK_DGRAM,0); //On initialise le socket avec SOCK_DGRAM pour dire qu'on est en UDP
 bind(sockiCat,(SOCKADDR*)&siniCat,sizeof(siniCat)); //Liaison entre la structure et la socket
 
@@ -215,7 +254,7 @@ petitpetitchiffre.Print(str_type_iCat,xed-10,yed+47);
 switch(ratio_iCat_slider[iCatPageis][iCat_select_editing_slider])
 {
 case 1:
-sprintf(str_type_iCat,"small");//abandonnÈ
+sprintf(str_type_iCat,"small");//abandonn√©
 break;
 case 2:
 sprintf(str_type_iCat,"med.");
@@ -1339,7 +1378,7 @@ return(0);
 int Tablier_GUI_editor( int gx, int gy)
 {
    Point_Viewing(gx+10,gy+10);
- //tablier d'Èdition
+ //tablier d'√©dition
    Rect InterFS(Vec2D(gx,gy),Vec2D(L_tablier_iCat,H_tablier_iCat));
    InterFS.SetRoundness(5);
    InterFS.SetLineWidth(demi_epaisseur_ligne_fader);
@@ -1386,7 +1425,7 @@ if(iCat_pos_slider[iCatPageis][sl][0]<L_tablier_iCat &&  iCat_pos_slider[iCatPag
 
             Rect Bouton_Big(
             Vec2D( gx+iCat_pos_bouton[iCatPageis][sl][0],gy+iCat_pos_bouton[iCatPageis][sl][1]),
-            Vec2D((largueur_bouton*ratio_iCat_button[iCatPageis][sl])/2,(largueur_bouton*ratio_iCat_button[iCatPageis][sl])/2));//boutons carrÈs
+            Vec2D((largueur_bouton*ratio_iCat_button[iCatPageis][sl])/2,(largueur_bouton*ratio_iCat_button[iCatPageis][sl])/2));//boutons carr√©s
           if(button_is_touched[iCatPageis][sl]==1){Bouton_Big.Draw(CouleurFader); }
           Bouton_Big.DrawOutline(CouleurLigne); 
           petitpetitchiffre.Print(ol::ToString(sl),gx+iCat_pos_bouton[iCatPageis][sl][0],gy+iCat_pos_bouton[iCatPageis][sl][1]);
@@ -1409,7 +1448,7 @@ if(iCat_pos_slider[iCatPageis][sl][0]<L_tablier_iCat &&  iCat_pos_slider[iCatPag
 
             Rect String_Big(
             Vec2D( gx+iCat_pos_string[iCatPageis][sl][0],gy+iCat_pos_string[iCatPageis][sl][1]),
-            Vec2D((largeur_string*ratio_iCat_string[iCatPageis][sl])/2,(hauteur_string*ratio_iCat_string[iCatPageis][sl])/2));//boutons carrÈs
+            Vec2D((largeur_string*ratio_iCat_string[iCatPageis][sl])/2,(hauteur_string*ratio_iCat_string[iCatPageis][sl])/2));//boutons carr√©s
           
           String_Big.DrawOutline(CouleurLigne); 
           petitpetitchiffre.Print(ol::ToString(sl),gx+iCat_pos_string[iCatPageis][sl][0],gy+iCat_pos_string[iCatPageis][sl][1]);
@@ -1434,7 +1473,7 @@ if(iCat_pos_slider[iCatPageis][sl][0]<L_tablier_iCat &&  iCat_pos_slider[iCatPag
 
             Rect Trck_Big(
             Vec2D( gx+iCat_pos_trackzone[iCatPageis][sl][0],gy+iCat_pos_trackzone[iCatPageis][sl][1]),
-            Vec2D((largeur_trackzone*ratio_iCat_trackzone[iCatPageis][sl])/2,(largeur_trackzone*ratio_iCat_trackzone[iCatPageis][sl])/2));//boutons carrÈs
+            Vec2D((largeur_trackzone*ratio_iCat_trackzone[iCatPageis][sl])/2,(largeur_trackzone*ratio_iCat_trackzone[iCatPageis][sl])/2));//boutons carr√©s
           
           Trck_Big.DrawOutline(CouleurLigne); 
           petitpetitchiffre.Print(ol::ToString(sl),gx+iCat_pos_trackzone[iCatPageis][sl][0],gy+iCat_pos_trackzone[iCatPageis][sl][1]);
@@ -2231,7 +2270,7 @@ button_is_controlled_by_point[iCatPageis][bt]=tp;
 if(button_is_touched[iCatPageis][bt]==1 && button_is_controlled_by_point[iCatPageis][bt]==tp  )
 {
 int fis=0;
-bool index_choose_mode_dkloop=0;//0 toggle tt le monde / 1 copie l etat du dck selctionnÈ dans tt le monde
+bool index_choose_mode_dkloop=0;//0 toggle tt le monde / 1 copie l etat du dck selctionn√© dans tt le monde
 int the_chaser=0;
 int the_audio_player=0;
 int the_grid_player=0;
@@ -2333,7 +2372,7 @@ else if ( DockTypeIs[fis][dock_used_by_fader_is[fis]]==8 ) the_audio_player=Dock
       break; 
       case 1:
       FaderLocked[fis]=0;
-      //remise ‡ plat du niveau
+      //remise √† plat du niveau
       Fader[fis]=(unsigned char)((((float)(StateOfFaderBeforeLock[fis]))/255)*locklevel);
       midi_levels[fis]=(int)(((float)Fader[fis])/2);
       break;     
@@ -2365,7 +2404,7 @@ else if ( DockTypeIs[fis][dock_used_by_fader_is[fis]]==8 ) the_audio_player=Dock
       }
       break;
       case 1:
-      //tout le monde prend la valeur du dock selectionnÈ
+      //tout le monde prend la valeur du dock selectionn√©
       for(int j=0;j<6;j++)
       {
       if(DockIsSelected[fis][j]==1)
@@ -2575,7 +2614,7 @@ chaser_is_playing[the_chaser]=toggle(chaser_is_playing[the_chaser]);
 if(chaser_is_playing[the_chaser]==1)//snap du temps at beg
 {
 chaser_start_time[the_chaser]=actual_time;
-//bug olivier marche arriere arriËre ligne
+//bug olivier marche arriere arri√®re ligne
 if(chaser_step_is[chaser_selected]<0){chaser_step_is[chaser_selected]=0;}
 else if(chaser_step_is[chaser_selected]>35){chaser_step_is[chaser_selected]=35;}
 }
@@ -3103,7 +3142,7 @@ do_action_on_selected_minifaders(action_minif);
 break;       
 //////////////////////////////////////////////////////////////////////////////      
 case 3://sequenciel
-reset_button(iCatPageis,bt, tp);  //reset pour eviter la frappe rÈpÈtitive
+reset_button(iCatPageis,bt, tp);  //reset pour eviter la frappe r√©p√©titive
 if(before_check_button_state[bt]==0)
 {    
 before_check_button_state[bt]=1;
@@ -3203,7 +3242,7 @@ break;
 case 4:
 //emulate
 clear_keybuf();
-reset_button(iCatPageis,bt, tp);  //reset pour eviter la frappe rÈpÈtitive
+reset_button(iCatPageis,bt, tp);  //reset pour eviter la frappe r√©p√©titive
 if(before_check_button_state[bt]==0)
 {    
 before_check_button_state[bt]=1;
@@ -3331,7 +3370,7 @@ if( bangeriCat>=0 && bangeriCat<127  )
 bang_is_sended[bangeriCat]=toggle(bang_is_sended[bangeriCat]);
 switch (bang_is_sended[bangeriCat])
 {
-case 0://reset des send events et on demarre ‡ la souris le banger
+case 0://reset des send events et on demarre √† la souris le banger
   for (int y=0;y<6;y++){event_sended[bangeriCat][y]=0;}   
   start_time_for_banger[bangeriCat]=actual_time;  
 //calcul bang time de fin
@@ -3356,7 +3395,7 @@ if(bangers_type[bangeriCat][y]!=0 )
     event_sended[bangeriCat][y]=1;                                                                      
 }
 }
-bang_is_sended[bangeriCat]=1;//bloquage de l envoi des autres ÈvËnements   
+bang_is_sended[bangeriCat]=1;//bloquage de l envoi des autres √©v√®nements   
 reset_button(iCatPageis,bt, tp);   
 break;  
 default:
@@ -3372,7 +3411,7 @@ if(finished_to_send_orders_to_iCat==1)
       switch(iCat_affectation_bouton_action_is[iCatPageis][bt])
      {
       case 1://page --
-      reset_button(iCatPageis,bt, tp); //avant car on reset la donnÈe du bouton par icatpageis !
+      reset_button(iCatPageis,bt, tp); //avant car on reset la donn√©e du bouton par icatpageis !
       iCatPageis--;
       if(iCatPageis<0)
       {
@@ -3714,7 +3753,7 @@ break;
 }
 
 
-//verif du crossfade done aprËs les checks de touchs, important ‡ garder hors de sswitch cases
+//verif du crossfade done apr√®s les checks de touchs, important √† garder hors de sswitch cases
 if(niveauX1==0 && niveauX2==255 
    && slider_is_touched[iCatPageis][iCat_slider_doing_X1_is]==0 &&  slider_is_touched[iCatPageis][iCat_slider_doing_X2_is]==0)
 {
@@ -3951,9 +3990,9 @@ return(0);
 int DoJobFantastickTouch()
 {
 
-for(int tp=0;tp<fs_max_points+1;tp++)//nbre detectes virÈs, car si on lache un potard en cours on est plus au nombre de points limitÈs en pos
+for(int tp=0;tp<fs_max_points+1;tp++)//nbre detectes vir√©s, car si on lache un potard en cours on est plus au nombre de points limit√©s en pos
 {
-check_button(tp);     //d'abord les boutons pou Èviter d avoir des blocages avec les sliders
+check_button(tp);     //d'abord les boutons pou √©viter d avoir des blocages avec les sliders
 check_slider(tp);
 check_tracker_zone(tp);
 }   
