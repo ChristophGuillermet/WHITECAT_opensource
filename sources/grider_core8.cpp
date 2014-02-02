@@ -32,8 +32,8 @@ WWWWWWWW           C  WWWWWWWW   |
  \version {numero de version du fichier}
  \date {date description}
  
- White Cat {- catégorie} {- sous catégorie {- sous catégorie}}
- Description détaillée
+ White Cat {- catÃ©gorie} {- sous catÃ©gorie {- sous catÃ©gorie}}
+ Description dÃ©taillÃ©e
  
  **/
  
@@ -261,7 +261,7 @@ if( mouse_released==0)
 int do_logical_TheGrid_commands ( int xb, int yb, int num_grid_player)
 {
 
-//accélérometer du player
+//accÃ©lÃ©rometer du player
 if(mouse_x>xb-5 && mouse_x<xb+127+5 && mouse_y>=yb+30 && mouse_y<=yb+30+10 )
 {
 if(Midi_Faders_Affectation_Type!=0)//config midi
@@ -349,7 +349,7 @@ if( index_enable_edit_Grider==1  && mouse_x>xb+105 && mouse_x<xb+105+30 && mouse
  {
  grid_goto[index_grider_selected[num_grid_player]][index_grider_step_is[num_grid_player]][0]=atoi(numeric)-1;
  if(grid_goto[index_grider_selected[num_grid_player]][index_grider_step_is[num_grid_player]][0]<0)
- {grid_goto[index_grider_selected[num_grid_player]][index_grider_step_is[num_grid_player]][0]=-1;}//désaffectation   
+ {grid_goto[index_grider_selected[num_grid_player]][index_grider_step_is[num_grid_player]][0]=-1;}//dÃ©saffectation   
  if(grid_goto[index_grider_selected[num_grid_player]][index_grider_step_is[num_grid_player]][0]>127)
  {grid_goto[index_grider_selected[num_grid_player]][index_grider_step_is[num_grid_player]][0]=127;}     
  reset_numeric_entry();          
@@ -363,7 +363,7 @@ if( mouse_released==0)
  {
   grid_goto[index_grider_selected[num_grid_player]][index_grider_step_is[num_grid_player]][1]=atoi(numeric)-1;
  if(grid_goto[index_grider_selected[num_grid_player]][index_grider_step_is[num_grid_player]][1]<0)
- {grid_goto[index_grider_selected[num_grid_player]][index_grider_step_is[num_grid_player]][1]=-1;}//désaffectation   
+ {grid_goto[index_grider_selected[num_grid_player]][index_grider_step_is[num_grid_player]][1]=-1;}//dÃ©saffectation   
  if(grid_goto[index_grider_selected[num_grid_player]][index_grider_step_is[num_grid_player]][1]>1023)
  {grid_goto[index_grider_selected[num_grid_player]][index_grider_step_is[num_grid_player]][1]=1023;}   
  reset_numeric_entry();          
@@ -394,7 +394,7 @@ if( mouse_released==0)
  {
   grid_seekpos[index_grider_selected[num_grid_player]][index_grider_step_is[num_grid_player]]=atoi(numeric)-1;
  if(grid_seekpos[index_grider_selected[num_grid_player]][index_grider_step_is[num_grid_player]]<0)
- {grid_seekpos[index_grider_selected[num_grid_player]][index_grider_step_is[num_grid_player]]=-1;}//désaffectation   
+ {grid_seekpos[index_grider_selected[num_grid_player]][index_grider_step_is[num_grid_player]]=-1;}//dÃ©saffectation   
  if(grid_seekpos[index_grider_selected[num_grid_player]][index_grider_step_is[num_grid_player]]>1023)
  {grid_seekpos[index_grider_selected[num_grid_player]][index_grider_step_is[num_grid_player]]=1023;}     
  reset_numeric_entry();        
@@ -515,8 +515,8 @@ index_do_dock=index_affect_color_to_dock;
   from_gridstep_to=index_StepTo[num_grid_player];
   destination_grid_for_copy= index_Grid_copyto[num_grid_player][0];
   destination_step_for_copy= index_Grid_copyto[num_grid_player][1];
-  grid_to_clear=index_grider_selected[num_grid_player];       //utilisé pour menus confirm
-  step_grid_to_clear=index_grider_step_is[num_grid_player]; //utilisé pour les menus confirm 
+  grid_to_clear=index_grider_selected[num_grid_player];       //utilisÃ© pour menus confirm
+  step_grid_to_clear=index_grider_step_is[num_grid_player]; //utilisÃ© pour les menus confirm 
   index_ask_confirm=1;
   mouse_released=1;                       
  } 
@@ -525,9 +525,9 @@ index_do_dock=index_affect_color_to_dock;
  if( index_enable_edit_Grider==1 &&  mouse_x>xb+55 && mouse_x<xb+55+50 && mouse_y>yb+75 && mouse_y<yb+75+15 )
  {
   index_for_insert_grid=1; 
-  destination_step_for_copy= index_Grid_copyto[num_grid_player][1];//le nombre de steps à insérer après la position actuelle
-  grid_to_clear=index_grider_selected[num_grid_player];       //utilisé pour menus confirm
-  step_grid_to_clear=index_grider_step_is[num_grid_player]; //utilisé pour les menus confirm 
+  destination_step_for_copy= index_Grid_copyto[num_grid_player][1];//le nombre de steps Ã  insÃ©rer aprÃ¨s la position actuelle
+  grid_to_clear=index_grider_selected[num_grid_player];       //utilisÃ© pour menus confirm
+  step_grid_to_clear=index_grider_step_is[num_grid_player]; //utilisÃ© pour les menus confirm 
   index_ask_confirm=1;
   mouse_released=1;                 
  } 
@@ -577,7 +577,7 @@ index_do_dock=index_affect_color_to_dock;
              
 
 
-if(num_grid_player==0 )//asservissement speed au séquenciel
+if(num_grid_player==0 )//asservissement speed au sÃ©quenciel
 {
 if(mouse_x>xb && mouse_x<xb+105 && mouse_y>yb+115 && mouse_y<yb+115+15 && mouse_released==0)
 {
@@ -690,7 +690,7 @@ index_grider_selected[num_grider]=temp_num_grid-1;//avant modif du 5 nov que cet
 
 //rajout
 index_grider_step_is[num_grider]=0;
-//chargement à la volée rafraichissement grid
+//chargement Ã  la volÃ©e rafraichissement grid
 gridder_prepare_cross(num_grider, index_grider_selected[num_grider], index_grider_step_is[num_grider]);
 
                                    
@@ -828,7 +828,7 @@ mouse_released=1;
 }
 }
 
-//déplacement dans les pas
+//dÃ©placement dans les pas
 
 if(mouse_x>xb+220 && mouse_x<xb+220+20 && mouse_y>yb+10 && mouse_y<yb+10+20)
 {
@@ -880,7 +880,7 @@ mouse_released=1;
 }
 }
 }
-//paramètres de grid
+//paramÃ¨tres de grid
 if( mouse_y>yb+15 && mouse_y<yb+15+20 )
 {
 //////def chan begin

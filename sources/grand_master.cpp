@@ -32,8 +32,8 @@ WWWWWWWW           C  WWWWWWWW   |
  \version {numero de version du fichier}
  \date {date description}
  
- White Cat {- catégorie} {- sous catégorie {- sous catégorie}}
- Description détaillée
+ White Cat {- catÃ©gorie} {- sous catÃ©gorie {- sous catÃ©gorie}}
+ Description dÃ©taillÃ©e
  
  **/
  
@@ -127,7 +127,7 @@ Gma.DrawOutline(CouleurLigne);
 neuro.Print(string_niveauGMaster,GMX, GMY-5); //niveau du fader
 //bouton midi out
 
-//midi out enclenché ou pas du Grand Master
+//midi out enclenchÃ© ou pas du Grand Master
 Circle BMMidiOut( (GMX+70),(GMY+250), 10);//box du fader
 BMMidiOut.SetLineWidth(epaisseur_ligne_fader);
 if(midi_send_out[615]==1)
@@ -140,7 +140,7 @@ Line (Vec2D( GMX+55,GMY+240),Vec2D( GMX+65,GMY+245)).Draw(CouleurLigne);
 neuromoyen.Print("Grand Master",GMX-25, GMY+280);
 if(mouse_x>GMX && mouse_x<GMX+40 && mouse_y>=GMY-5 && mouse_y<=GMY+255 && Midi_Faders_Affectation_Type!=0)
 {
-//affichage rouge config mùidi
+//affichage rouge config mÃ¹idi
 Gma.DrawOutline(CouleurBlind);                        
 }
 

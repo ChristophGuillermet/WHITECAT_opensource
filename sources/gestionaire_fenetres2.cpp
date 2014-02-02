@@ -32,8 +32,8 @@ WWWWWWWW           C  WWWWWWWW   |
  \version {numero de version du fichier}
  \date {date description}
  
- White Cat {- catÈgorie} {- sous catÈgorie {- sous catÈgorie}}
- Description dÈtaillÈe
+ White Cat {- cat√©gorie} {- sous cat√©gorie {- sous cat√©gorie}}
+ Description d√©taill√©e
  
  **/
  
@@ -56,7 +56,7 @@ int clear_non_desired_values_in_window_list()
     
 for(int i=0;i<63;i++)
 {
-if(window_opened[i] >max_window_identity_is+1){window_opened[i]=0;} //+1 rËgle bug de rwanoux et jaques alpha 0.8.3
+if(window_opened[i] >max_window_identity_is+1){window_opened[i]=0;} //+1 r√®gle bug de rwanoux et jaques alpha 0.8.3
 if(window_opened[i] <900){window_opened[i]=0;}          
 }
  return(0);   
@@ -89,8 +89,8 @@ nbre_windows++;
 int add_a_window(int id)
 {
 
-//nettoyage pour Èviter doublons perdus
- for(int i=1;i<63;i++)//0 pas concernÈ pour ne pas cuter la fenetre sur scËne bug christoph banger, jacques, batgg // 1er dec 2012
+//nettoyage pour √©viter doublons perdus
+ for(int i=1;i<63;i++)//0 pas concern√© pour ne pas cuter la fenetre sur sc√®ne bug christoph banger, jacques, batgg // 1er dec 2012
  {
  if(window_opened[i]==id){window_opened[i]=0;}
  }

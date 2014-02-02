@@ -32,8 +32,8 @@ WWWWWWWW           C  WWWWWWWW   |
  \version {numero de version du fichier}
  \date {date description}
  
- White Cat {- catégorie} {- sous catégorie {- sous catégorie}}
- Description détaillée
+ White Cat {- catÃ©gorie} {- sous catÃ©gorie {- sous catÃ©gorie}}
+ Description dÃ©taillÃ©e
  
  **/
  
@@ -93,7 +93,7 @@ ChannelScroller(ChScrollX, ChScrollY);
 if(ClassicalChannelView ==1)
 {   
 Canvas::SetClipping(0,ChannelYMenu+hauteur_ChannelMenu,largeur_ecran,hauteur_ecran); 
-ClassicalChannelSpace(XChannels, YChannels,  scroll_channelspace);// x y espacement latéral // espacement vertical // scrolling down
+ClassicalChannelSpace(XChannels, YChannels,  scroll_channelspace);// x y espacement latÃ©ral // espacement vertical // scrolling down
 Canvas::DisableClipping();
 }
 

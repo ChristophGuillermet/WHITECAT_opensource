@@ -32,8 +32,8 @@ WWWWWWWW           C  WWWWWWWW   |
  \version {numero de version du fichier}
  \date {date description}
  
- White Cat {- catégorie} {- sous catégorie {- sous catégorie}}
- Description détaillée
+ White Cat {- catÃ©gorie} {- sous catÃ©gorie {- sous catÃ©gorie}}
+ Description dÃ©taillÃ©e
  
  **/
  
@@ -217,7 +217,7 @@ grid_count[dest_grid_number][st+dest_nbr_step+1]=tmp_grid_count[st];
 }
 }
 
-//Effacement de la plage décalée// ok
+//Effacement de la plage dÃ©calÃ©e// ok
 clear_part_of_a_grid(dest_grid_number, from_num_step+1,  from_num_step+dest_nbr_step+1);
 
  return(0);   
@@ -237,7 +237,7 @@ clear_part_of_a_grid(dest_grid_number, from_num_step+1,  from_num_step+dest_nbr_
 int gridder_prepare_cross(int grid_pl, int gr_actual_grid, int gr_actual_step)
 {
 
-//prepa qui est le step d après
+//prepa qui est le step d aprÃ¨s
 switch(grider_goto_mode[grid_pl])
 {
 case 0:
@@ -255,7 +255,7 @@ grid_in_preset[grid_pl][1]=gr_actual_step+1;
 break;       
 case 1:
 if(grid_goto[(index_grider_selected[grid_pl])][(index_grider_step_is[grid_pl])][0]>=0 
-&& grid_goto[(index_grider_selected[grid_pl])][(index_grider_step_is[grid_pl])][1]>=0)//0 = step 1. désafecté val=-1
+&& grid_goto[(index_grider_selected[grid_pl])][(index_grider_step_is[grid_pl])][1]>=0)//0 = step 1. dÃ©safectÃ© val=-1
 {
 
 if( grider_count_mode[grid_pl]==1 &&  grid_count[gr_actual_grid][gr_actual_step]>0 
@@ -488,7 +488,7 @@ grid_niveauX2[grid_pl]=0;
 grid_floatX1[grid_pl]=grid_niveauX1[grid_pl];
 grid_floatX2[grid_pl]=grid_niveauX2[grid_pl];  
 
-//stop mode on, step en tant que stop ou //stopplay enclenché
+//stop mode on, step en tant que stop ou //stopplay enclenchÃ©
 if((grider_stoplay_mode[grid_pl]==1 && grid_stoplay[index_grider_selected[grid_pl]][index_grider_step_is[grid_pl]]==1)
 ||grider_autostopmode[grid_pl]==1)
 {grider_is_playing[grid_pl]=0;}

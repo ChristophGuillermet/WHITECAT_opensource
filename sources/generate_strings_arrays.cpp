@@ -32,8 +32,8 @@ WWWWWWWW           C  WWWWWWWW   |
  \version {numero de version du fichier}
  \date {date description}
  
- White Cat {- catégorie} {- sous catégorie {- sous catégorie}}
- Description détaillée
+ White Cat {- catÃ©gorie} {- sous catÃ©gorie {- sous catÃ©gorie}}
+ Description dÃ©taillÃ©e
  
  **/
  
@@ -571,7 +571,7 @@ sprintf(TblHelp[post][2],"Enregistrer les circuits allumes");
 post++;
 sprintf(TblHelp[post][0],"Modify");
 sprintf(TblHelp[post][1],"[F2]");
-sprintf(TblHelp[post][2],"Modifier les circuits sélectionnes");
+sprintf(TblHelp[post][2],"Modifier les circuits sÃ©lectionnes");
 post++;
 sprintf(TblHelp[post][0],"Report");
 sprintf(TblHelp[post][1],"[F3]");
@@ -607,11 +607,11 @@ sprintf(TblHelp[post][2],"la barre des 48 faders");
 post++;
 sprintf(TblHelp[post][0],"Banger");
 sprintf(TblHelp[post][1],"[F11]");
-sprintf(TblHelp[post][2],"le gestionnaire d'évènements");
+sprintf(TblHelp[post][2],"le gestionnaire d'Ã©vÃ¨nements");
 post++;
 sprintf(TblHelp[post][0],"Blind");
 sprintf(TblHelp[post][1],"[Ctrl-F11]");
-sprintf(TblHelp[post][2],"Aveugle: le preset à venir dans le sequentiel");
+sprintf(TblHelp[post][2],"Aveugle: le preset Ã  venir dans le sequentiel");
 post++;
 sprintf(TblHelp[post][0],"Inhiber le midi IN");
 sprintf(TblHelp[post][1],"[Shift-F11]");
@@ -871,7 +871,7 @@ sprintf(TblHelp[post][0],"Voir le contenu d'un dock");
 post++;
 sprintf(TblHelp[post][2],"Clicker [VIEW]");
 post++;
-sprintf(TblHelp[post][2],"Passer à la souris au dessus du dock");
+sprintf(TblHelp[post][2],"Passer Ã  la souris au dessus du dock");
 post++;
 sprintf(TblHelp[post][0],"LOCKer des faders ( grouper en une seule commande)");
 post++;
@@ -924,7 +924,7 @@ sprintf(TblHelp[post][2],"Selectionner les circuits");
 post++;
 sprintf(TblHelp[post][2],"Taper [F1] ou clicker [STORE]");
 post++;
-sprintf(TblHelp[post][2],"Clicker la ROI à laquelle les affecter");
+sprintf(TblHelp[post][2],"Clicker la ROI Ã  laquelle les affecter");
 post++;
 sprintf(TblHelp[post][0],"Voir le contenu d'une ROI");
 post++;
