@@ -1,26 +1,26 @@
 /*-------------------------------------------------------------------------------------------------------------
                                  |
           CWWWWWWWW              | Copyright (C) 2009-2013  Christoph Guillermet
-       WWWWWWWWWWWWWWW           | 
+       WWWWWWWWWWWWWWW           |
      WWWWWWWWWWWWWWWWWWW         | This file is part of White Cat.
-    WWWWWWWWWWWWWWWWWCWWWW       | 
+    WWWWWWWWWWWWWWWWWCWWWW       |
    WWWWWWWWWWWWWWWWW tWWWWW      | White Cat is free software: you can redistribute it and/or modify
   WWWW   WWWWWWWWWW  tWWWWWW     | it under the terms of the GNU General Public License as published by
  WWWWWt              tWWWWWWa    | the Free Software Foundation, either version 3 of the License, or
  WWWWWW               WWWWWWW    | (at your option) any later version.
-WWWWWWWW              WWWWWWW    | 
+WWWWWWWW              WWWWWWW    |
 WWWWWWWW               WWWWWWW   | White Cat is distributed in the hope that it will be useful,
 WWWWWWW               WWWWWWWW   | but WITHOUT ANY WARRANTY; without even the implied warranty of
 WWWWWWW      CWWW    W WWWWWWW   | MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 WWWWWWW            aW  WWWWWWW   | GNU General Public License for more details.
-WWWWWWWW           C  WWWWWWWW   | 
+WWWWWWWW           C  WWWWWWWW   |
  WWWWWWWW            CWWWWWWW    | You should have received a copy of the GNU General Public License
- WWWWWWWWW          WWWWWWWWW    | along with White Cat.  If not, see <http://www.gnu.org/licenses/>. 
-  WWWWWWWWWWC    CWWWWWWWWWW     |   
-   WWWWWWWWWWWWWWWWWWWWWWWW      | 
-    WWWWWWWWWWWWWWWWWWWWWW       |    
-      WWWWWWWWWWWWWWWWWWa        |     
-        WWWWWWWWWWWWWWW          |     
+ WWWWWWWWW          WWWWWWWWW    | along with White Cat.  If not, see <http://www.gnu.org/licenses/>.
+  WWWWWWWWWWC    CWWWWWWWWWW     |
+   WWWWWWWWWWWWWWWWWWWWWWWW      |
+    WWWWWWWWWWWWWWWWWWWWWW       |
+      WWWWWWWWWWWWWWWWWWa        |
+        WWWWWWWWWWWWWWW          |
            WWWWWWWWt             |
                                  |
 ---------------------------------------------------------------------------------------------------------------*/
@@ -28,24 +28,24 @@ WWWWWWWW           C  WWWWWWWW   |
 /**
 
  \file CORE_6.cpp
- \brief {description courte} 
+ \brief {description courte}
  \author Christoph Guillermet
  \version {numero de version du fichier}
  \date {date description}
- 
+
  White Cat {- catégorie} {- sous catégorie {- sous catégorie}}
  Description détaillée
- 
+
  **/
- 
- 
+
+
 
 int reset_numeric_entry()
 {
 sprintf(numeric,"                        ");
 numeric_postext=0;
 numeric[numeric_postext]='\0';
-return(0);   
+return(0);
 }
 ///////////////////////////////////////////////////////////////////////////////
 
@@ -54,16 +54,16 @@ int switch_values(int data1, int data2)
 int data1_prev=data1;
 int data2_prev=data2;
 data2=data1_prev;
-data1=data2_prev;    
-    
-return(0);   
+data1=data2_prev;
+
+return(0);
 }
 
 int constrain_data_to_dmx_range(int valeur)
 {
 if(valeur<0){valeur=0;}
 if(valeur>255){valeur=255;}
-return(valeur);   
+return(valeur);
 }
 
 
@@ -71,27 +71,27 @@ int constrain_data_to_midi_range(int valeur)
 {
 if(valeur<0){valeur=0;}
 if(valeur>127){valeur=127;}
-return(valeur);   
+return(valeur);
 }
 
 bool check_channel_is_patched(int ch)
 {
 bool the_ch_is_patched=0;
 for (int cpatch=1; cpatch<513; cpatch++)
-    { 
+    {
     if(Patch[cpatch]==ch)
     {
-    the_ch_is_patched=1;                       
+    the_ch_is_patched=1;
     }
     }
-return(the_ch_is_patched);   
+return(the_ch_is_patched);
 }
 
 int constrain_int_data_to_this_range(int data, int min, int max)
 {
 if(data<min){data=min;}
-if(data>max){data=max;}    
-return(data);    
+if(data>max){data=max;}
+return(data);
 }
 
 
@@ -101,10 +101,10 @@ int check_echo_bounce_done(int ech)
 bool someone_bouncing=0;
 for(int i=0;i<512;i++)
 {
- if(echo_levels[ech][0][i]!=echo_levels[ech][1][i] ) {someone_bouncing=1; break; }      
+ if(echo_levels[ech][0][i]!=echo_levels[ech][1][i] ) {someone_bouncing=1; break; }
 }
 if(someone_bouncing==0){do_bounce[ech]=0;}
-return(0);    
+return(0);
 }
 
 
@@ -115,10 +115,10 @@ for(int i=0;i<512;i++)
 {
 tmp_echo[ech][i]=0.0;
 tmp_falling_from_level[ech][i]=echo_levels[ech][0][i];
-echo_way[ech][i]=0;   
+echo_way[ech][i]=0;
 }
 bounce_is_prepared[ech]=1;
- return(0);   
+ return(0);
 }
 
 
@@ -128,11 +128,11 @@ int recall_channel_state_in_an_echo(int ech)
 
 for(int i=0;i<512;i++)
 {
-        echo_levels[ech][0][i]=snap_echo_to_recall[ech][i]; 
+        echo_levels[ech][0][i]=snap_echo_to_recall[ech][i];
 }
 prepare_bounce(ech);
 sprintf(string_Last_Order,"Reloaded channel state in Echo %d",ech+1);
-return(0);   
+return(0);
 }
 
 
@@ -144,15 +144,15 @@ for(int i=1;i<513;i++)
 {
 if(((float)(FaderDoDmx[f][i]))/255>=echo_levels[echo][1][i-1])//si plancher
 {
-echo_levels[echo][0][i-1]=((float)(FaderDoDmx[f][i]))/255;//((float)(FaderDockContains[f][dock_used_by_fader_is[f]][i]))/255;    
-snap_echo_to_recall[echo][i-1]=echo_levels[echo][0][i-1];   
+echo_levels[echo][0][i-1]=((float)(FaderDoDmx[f][i]))/255;//((float)(FaderDockContains[f][dock_used_by_fader_is[f]][i]))/255;
+snap_echo_to_recall[echo][i-1]=echo_levels[echo][0][i-1];
 }
 }
 if(Fader[f]!=0){fader_before_bounce[f]=Fader[f];}
 recall_channel_state_in_an_echo(echo);
-prepare_bounce(echo); 
-}      
- return(0);    
+prepare_bounce(echo);
+}
+ return(0);
 }
 
 
@@ -160,34 +160,34 @@ int snap_kill_and_bounce(int echo, int f)
 {
 if(f>0 && f<=48 )
 {
-snap_fader_state(echo, f) ;     
-Fader[f]=0;       
+snap_fader_state(echo, f) ;
+Fader[f]=0;
 do_bounce[echo]=0;
 bounce_is_prepared[echo]=0;
 prepare_bounce(echo);
 do_bounce[echo]=1;
-}    
-return(0);   
+}
+return(0);
 }
 
 
 int record_channel_ch_state_in_an_echo(int ech, int cha)//par circuit
 {
 
-        snap_echo_to_recall[ech][cha]=echo_levels[ech][0][cha]; 
+        snap_echo_to_recall[ech][cha]=echo_levels[ech][0][cha];
 
 sprintf(string_Last_Order,"Snaped and stored channel %d state in Echo %d",cha+1,ech+1);
-return(0);   
+return(0);
 }
 
 int record_channel_state_in_an_echo(int ech)
 {
 for(int i=0;i<512;i++)
 {
-        snap_echo_to_recall[ech][i]=echo_levels[ech][0][i]; 
+        snap_echo_to_recall[ech][i]=echo_levels[ech][0][i];
 }
 sprintf(string_Last_Order,"Snaped and stored channel state in Echo %d",ech+1);
-return(0);   
+return(0);
 }
 
 int clear_banger(int bg)
@@ -198,14 +198,14 @@ bangers_name[bg][24]='\n';
 sprintf(string_alarm[bg],"");
 for(int dd=0;dd<6;dd++)
 {
-bangers_type[bg][dd]=0;//127 bangers // 6 events par banger 
+bangers_type[bg][dd]=0;//127 bangers // 6 events par banger
 bangers_action[bg][dd]=0;//num action demandée
 bangers_params[bg][dd][0]=0;//0 param1 / 1 param2
 bangers_params[bg][dd][1]=0;
-bangers_delay[bg][dd]=0.0;//delays 
+bangers_delay[bg][dd]=0.0;//delays
 }
 
- return(0);   
+ return(0);
 }
 
 
@@ -213,29 +213,29 @@ bangers_delay[bg][dd]=0.0;//delays
 int recall_fader_state_echo(int f)
 {
 Fader[f]=fader_before_bounce[f];
-return(0);   
+return(0);
 }
 
 int clear_echo_levels(int ech)
 {
-    
+
 for(int i=0;i<512;i++)
 {
-echo_levels[ech][0][i]=0.0;        
+echo_levels[ech][0][i]=0.0;
 }
 
-return(0);   
+return(0);
 }
 
 int clear_ground_levels(int ech)
 {
 for(int i=0;i<512;i++)
 {
-echo_levels[ech][1][i]=0.0;        
-}    
+echo_levels[ech][1][i]=0.0;
+}
 
 
-return(0);   
+return(0);
 }
 
 int clear_echo_preset(int ech)
@@ -263,14 +263,14 @@ do_bounce[ech]=0;//déclencheur
 
 for (int f=0;f<48;f++)
 {
- fader_before_bounce[f]=Fader[f];   
+ fader_before_bounce[f]=Fader[f];
 }
 
 
-    
- 
-return(0);   
-}    
+
+
+return(0);
+}
 
 
 
@@ -286,7 +286,7 @@ index_case[pr]=(draw_centre_x[pr]) + (draw_centre_y[pr]*draw_preset_parameters[p
 
 if(index_do_dock==0 && index_main_clear==0 )
 {
-dragging_draw=1;              
+dragging_draw=1;
 }
 
 //affectaction des circuits
@@ -295,7 +295,7 @@ else if(index_do_dock==1 && index_main_clear==0 )
 if(index_enable_edit_Draw==1 && mouse_released==0)
 {
 draw_preset_channel_routing[pr][index_case[pr]]=atoi(numeric);
-if(draw_preset_channel_routing[pr][index_case[pr]]>512){draw_preset_channel_routing[pr][index_case[pr]]=512;}      
+if(draw_preset_channel_routing[pr][index_case[pr]]>512){draw_preset_channel_routing[pr][index_case[pr]]=512;}
 else if(draw_preset_channel_routing[pr][index_case[pr]]<0){draw_preset_channel_routing[pr][index_case[pr]]=0;}
 int idpos=0;
 
@@ -305,33 +305,33 @@ case 1://end of line
 for(int pos=index_case[pr];pos<draw_preset_parameters[pr][0]+ ((position_y/draw_hauteur_case[pr])*draw_preset_parameters[pr][0]) ;pos++)
 {
 draw_preset_channel_routing[pr][pos]=draw_preset_channel_routing[pr][index_case[pr]]+idpos;
-if(draw_preset_channel_routing[pr][pos]>512){draw_preset_channel_routing[pr][pos]=512;}     
-idpos++;        
-}     
+if(draw_preset_channel_routing[pr][pos]>512){draw_preset_channel_routing[pr][pos]=512;}
+idpos++;
+}
 break;
 case 2://end of col
 for(int pos=draw_centre_y[pr];pos<draw_preset_parameters[draw_preset_selected][1] ;pos++)
 {
 draw_preset_channel_routing[pr][index_case[pr]+(pos*draw_preset_parameters[pr][0])]=draw_preset_channel_routing[pr][index_case[pr]]+idpos;
-if(draw_preset_channel_routing[pr][pos]>512){draw_preset_channel_routing[pr][pos]=512;}     
-idpos++;       
-}      
+if(draw_preset_channel_routing[pr][pos]>512){draw_preset_channel_routing[pr][pos]=512;}
+idpos++;
+}
 break;
 case 3://all grid from position
 for(int pos=index_case[pr];pos<(draw_preset_parameters[pr][0]*draw_preset_parameters[pr][1]) ;pos++)
 {
 draw_preset_channel_routing[pr][pos]=draw_preset_channel_routing[pr][index_case[pr]]+idpos;
-if(draw_preset_channel_routing[pr][pos]>512){draw_preset_channel_routing[pr][pos]=512;}     
-idpos++;        
-}       
+if(draw_preset_channel_routing[pr][pos]>512){draw_preset_channel_routing[pr][pos]=512;}
+idpos++;
+}
 break;
 default:
 break;
 }
-reset_numeric_entry();         
+reset_numeric_entry();
 index_do_dock=0;
-mouse_released=1;                    
-}                    
+mouse_released=1;
+}
 }
 //désaffectation des circuits
 else if(index_do_dock==0 && index_main_clear==1 )
@@ -346,62 +346,62 @@ switch(draw_channel_recording_mode) //4 modes: 0 solo - 1 until end of line - 2 
 case 1://end of line
 for(int pos=index_case[pr];pos<draw_preset_parameters[pr][0]+ ((position_y/draw_hauteur_case[pr])*draw_preset_parameters[pr][0]) ;pos++)
 {
-draw_preset_channel_routing[pr][pos]=0;      
-}     
+draw_preset_channel_routing[pr][pos]=0;
+}
 break;
 case 2://end of col
 for(int pos=draw_centre_y[pr];pos<draw_preset_parameters[pr][1] ;pos++)
 {
-draw_preset_channel_routing[pr][index_case[pr]+(pos*draw_preset_parameters[pr][0])]=0;     
-}      
+draw_preset_channel_routing[pr][index_case[pr]+(pos*draw_preset_parameters[pr][0])]=0;
+}
 break;
 case 3://all grid from position
 for(int pos=index_case[pr];pos<(draw_preset_parameters[pr][0]*draw_preset_parameters[pr][1]) ;pos++)
 {
 draw_preset_channel_routing[pr][pos]=0;
-}       
+}
 break;
 default:
 break;
-}                 
-index_main_clear=0;
-mouse_released=1;                          
-}      
 }
- 
+index_main_clear=0;
+mouse_released=1;
+}
+}
 
-return(0);   
+
+return(0);
 }
 
 int recalculate_draw_sizes(int  preset)
 {
- draw_largeur_case[preset]=555/draw_preset_parameters[preset][0];   
- draw_hauteur_case[preset]=430/draw_preset_parameters[preset][1];   
+ draw_largeur_case[preset]=555/draw_preset_parameters[preset][0];
+ draw_hauteur_case[preset]=430/draw_preset_parameters[preset][1];
  draw_modulo_largeur_case[preset]=draw_tracking_aera_size_x%draw_preset_parameters[preset][0];
- draw_modulo_hauteur_case[preset]=draw_tracking_aera_size_y%draw_preset_parameters[preset][1]; 
+ draw_modulo_hauteur_case[preset]=draw_tracking_aera_size_y%draw_preset_parameters[preset][1];
  draw_tracking_aera_size_x=(draw_largeur_case[preset]*draw_preset_parameters[preset][0])+ draw_modulo_largeur_case[preset];
  draw_tracking_aera_size_y=(draw_hauteur_case[preset]*draw_preset_parameters[preset][1])+ draw_modulo_hauteur_case[preset];
- return(0);   
+ return(0);
 }
 
 
 
 int draw_erase_drawing(int p)
 {
-//clear_bitmap(Draw0); 
+//clear_bitmap(Draw0);
 for(int ch=0;ch<500;ch++)
 {
 draw_preset_levels[p][ch]=0.0;
 }
 sprintf(string_Last_Order,"Erased Drawing %d",p+1);
-return(0);   
+return(0);
 }
 
 int clear_draw_preset(int p)
 {
 draw_preset_parameters[p][0]=6;
-draw_preset_parameters[p][1]=4; 
-recalculate_draw_sizes(p);       
+draw_preset_parameters[p][1]=4;
+recalculate_draw_sizes(p);
 draw_level_to_do[p]=0.1;
 draw_tilt_to_do[p]=0.1;
 draw_ghost_to_do[p]=0.01;
@@ -413,8 +413,8 @@ for(int ch=0;ch<500;ch++)
 draw_preset_levels[p][ch]=0.0;
 draw_preset_channel_routing[p][ch]=0;
 }
-    
-    
+
+
 index_case[p]=0;
 draw_centre_x[p]=0;
 draw_centre_y[p]=0;
@@ -425,7 +425,7 @@ draw_offset_gpl[p]=1;
 
 
 sprintf(string_Last_Order,"Cleared DRAW Preset %d",p+1);
- return(0);   
+ return(0);
 }
 
 
@@ -445,17 +445,17 @@ bangers_delay[dest][i]=bangers_delay[source][i];
 
 }
 sprintf(string_Last_Order,"Copyed Banger %d in Banger %d", source+1, dest+1);
-index_banger_to_copy_in=-999;          
+index_banger_to_copy_in=-999;
 index_copy_banger=0;
 }
- return(0);   
-}          
+ return(0);
+}
 
 int reset_index_actions()
 {
 index_do_dock=0;
 index_do_report=0;
-index_do_modify=0; 
+index_do_modify=0;
 index_main_clear=0;
 
 index_affect_chaser_to_dock=0;
@@ -473,16 +473,16 @@ index_direct_chan=0;
 multiple_direct_chan=0;
 index_affect_draw_to_dock=0;
 index_affect_echo_to_dock=0;
-return(0);   
+return(0);
 }
 
 
 
 int reset_indexs_confirmation()
 {
- index_do_dock=0; 
- index_do_modify=0; 
- index_do_report=0; 
+ index_do_dock=0;
+ index_do_modify=0;
+ index_do_report=0;
  index_do_delete_mem=0;
  index_do_create_mem=0;
  index_do_create_mem_plus_faders=0;
@@ -499,16 +499,16 @@ int reset_indexs_confirmation()
  index_do_artnet_to_dock=0;
  index_do_video_to_dock=0;
  //boutons d affect dans les fenetres
- index_do_affect_net_to_dock=0;   
- //index_config_affect_artnet=0;//artnet  
- 
- index_affect_video_tracking_to_dock=0;   
- index_affect_dmxin=0;   
+ index_do_affect_net_to_dock=0;
+ //index_config_affect_artnet=0;//artnet
+
+ index_affect_video_tracking_to_dock=0;
+ index_affect_dmxin=0;
  index_affect_color_to_dock=0;
- 
+
    index_record_minifader_preset=0;
   index_clear_minifader_preset=0;
-  index_record_minifader_lockpreset=0;    
+  index_record_minifader_lockpreset=0;
  //couleurs de la trichro
  index_do_affect_color_trichro=0;
  //channels des roi
@@ -570,10 +570,10 @@ int reset_indexs_confirmation()
   index_ask_curv_to_fader=0;
   index_re_init_client_artnet=0;
   index_re_init_serveur_artnet=0;
-  
+
   //affect FX a dock
   index_do_affect_fx=0;
-  
+
   //chasers
   index_do_dock_track=0;
   index_do_clear_track=0;
@@ -582,18 +582,18 @@ int reset_indexs_confirmation()
   index_do_clear_chaser=0;
   index_do_store_chaser_preset=0;
   index_do_clear_chaser_preset=0;
-  
+
   //icat
   index_ask_clear_iCatpage=0;
   index_ask_icat_copyPage=0;
   index_ask_clear_img_icat=0;
   index_ask_iCat_selectiv_clear=0;
-  index_false_shift=0;index_false_control=0;      
-  
+  index_false_shift=0;index_false_control=0;
+
   //grider
   index_clear_a_grid_step=0;
   index_clear_a_grid=0;
-  grid_to_clear=0;step_grid_to_clear=0; 
+  grid_to_clear=0;step_grid_to_clear=0;
   index_clear_a_grid_serie_step=0;
   index_for_grid_stepto=0;
   index_for_copy_grid=0;
@@ -604,32 +604,32 @@ int reset_indexs_confirmation()
   from_gridstep_to=0;
   gridplayer_to_affect_is=-1;
   index_do_affect_grid_to_fader=0;
-  
-  index_do_affect_step_gridplayer_to_mem=0;  
+
+  index_do_affect_step_gridplayer_to_mem=0;
   index_mem_to_be_affected_by_gpl=0;
- 
+
   index_do_exclude=0;
   index_do_affect_fgroup=0;
-  
+
   index_do_clear_all_the_patch=0;
-  
+
   index_ask_build_view=0;
   index_do_build_view=0;
   channel_view_is=0;
-  
-  
+
+
   index_ask_clear_selection_of_view=0;
   index_ask_record_selection_of_view=0;
   index_ask_modify_selection_of_view=0;
   channel_view_is=0;
   index_ask_report_selection_of_view=0;
-  
+
   index_ask_clear_a_move=0;
   index_ask_reinit_FS_client=0;
 
   ask_clear_draw_preset=0;
   index_do_draw_affect_to_dock=0;
-  
+
   //echo
   index_ask_clear_echo_preset=0;
   index_do_affect_echo_to_dock=0;
@@ -638,7 +638,7 @@ int reset_indexs_confirmation()
    index_ask_clear_banger=0;
 
   sprintf(string_confirmation,"");
- return(0);   
+ return(0);
 }
 
 int reset_channel_first_dimmer_list()
@@ -647,20 +647,20 @@ for (int ch=1;ch<513;ch++)
 {
 for(int d=0;d<4;d++)
 {
- show_first_dim_array[ch][d]=0; 
+ show_first_dim_array[ch][d]=0;
 }
- show_more_than_one_dim[ch]=0;   
+ show_more_than_one_dim[ch]=0;
 }
- return(0);   
+ return(0);
 }
 
-int generate_channel_preview_patch_list()//affichage du premier grada 
+int generate_channel_preview_patch_list()//affichage du premier grada
 {
 reset_channel_first_dimmer_list();
 
 for (int ch=1;ch<513;ch++)
 {
-int index=0;   
+int index=0;
 for(int d=1;d<513;d++)
 {
    if(Patch[d]==ch  )
@@ -670,19 +670,19 @@ for(int d=1;d<513;d++)
    switch(tem)
    {
     case 0:
-    show_first_dim_array[ch][index]=d; 
+    show_first_dim_array[ch][index]=d;
     index++;
     break;
     case 1:
-    show_more_than_one_dim[ch]=1; 
+    show_more_than_one_dim[ch]=1;
     break;
    }
-   } 
-    
+   }
+
 
 }
 }
- return(0);   
+ return(0);
 }
 
 
@@ -694,11 +694,11 @@ bool reponse=0;
  if(Channel_View_MODE[v]==1)
  {
  for(int c=0;c<channel_number_in_View[v];c++)
- {if(Channel_View_ROUTING[v][c]==idch){reponse=1;break;}}  
- } 
- if(reponse==1){break;}     
- } 
-return(reponse);  
+ {if(Channel_View_ROUTING[v][c]==idch){reponse=1;break;}}
+ }
+ if(reponse==1){break;}
+ }
+return(reponse);
 }
 
 int check_wich_channel_is_in_view(int idch)//pour srcoll bar
@@ -710,10 +710,10 @@ int prs=0;
  if(Channel_View_MODE[v]==1)
  {
  for(int c=0;c<channel_number_in_View[v];c++)
- {if(Channel_View_ROUTING[v][c]==idch){reponse=1; prs=v;break;}}  
- } 
- if(reponse==1){break;}     
- } 
+ {if(Channel_View_ROUTING[v][c]==idch){reponse=1; prs=v;break;}}
+ }
+ if(reponse==1){break;}
+ }
 return(prs);
 
 }
@@ -725,9 +725,9 @@ bool reponse=0;
  if(Channel_View_MODE[v]==1)
  {
  for(int c=0;c<channel_number_in_View[v];c++)
- {if(Selected_Channel[(Channel_View_ROUTING[v][c])]==1){reponse=1;break;}} 
- } 
-return(reponse);  
+ {if(Selected_Channel[(Channel_View_ROUTING[v][c])]==1){reponse=1;break;}}
+ }
+return(reponse);
 }
 
 
@@ -736,16 +736,16 @@ int check_presence_of_A_channel_in_A_view(int v, int ch)
 bool reponse=0;
 
  for(int c=0;c<channel_number_in_View[v];c++)
- { if(Channel_View_ROUTING[v][c]==ch){reponse=1;break;}  } 
- 
-return(reponse);  
+ { if(Channel_View_ROUTING[v][c]==ch){reponse=1;break;}  }
+
+return(reponse);
 }
 
 int detect_last_activ_channel_in_activ_view(int v)
 {
  int id=Channel_View_ROUTING[v][(channel_number_in_View[v]-1)];
 
-return(id);   
+return(id);
 }
 
 
@@ -755,20 +755,20 @@ switch(index_to_toggle)
 {
  case 0: index_to_toggle=1; break;
  case 1: index_to_toggle=0; break;
- default: index_to_toggle=0; break;        
+ default: index_to_toggle=0; break;
 }
-return(index_to_toggle);     
+return(index_to_toggle);
 }
 
 
 
 int bounce(int b)
 {
- 
+
  recall_channel_state_in_an_echo(b);
- do_bounce[b]=1;   
- 
- return(0);   
+ do_bounce[b]=1;
+
+ return(0);
 }
 
 
@@ -779,12 +779,12 @@ int indexCH=0;
 for(int i=0;i<513;i++)
 {
 if(Channel_View_ROUTING[view_is][i]>0 )
-{indexCH++;}                           
-}  
+{indexCH++;}
+}
 channel_number_in_View[view_is]=indexCH;
 channel_number_of_lines[view_is]=(int)(((float)indexCH)/12);
 if(indexCH%12>0) {channel_number_of_lines[view_is]+=1;}
-return(0);   
+return(0);
 }
 
 int refresh_positions_preset_view_poignee()
@@ -804,7 +804,7 @@ scroll_pos_preset[i]= total_pixel_vision;
 }
 
 ratioview=270.0/total_pixel_vision;
- return(0);   
+ return(0);
 }
 
 
@@ -813,17 +813,17 @@ int clear_selection_in(int view_is)//groupes de vues
 {
 for(int i=0;i<513;i++)
 {
-Channel_View_ROUTING[view_is][i]=0;   
+Channel_View_ROUTING[view_is][i]=0;
 }
 count_number_of_channels_in_view(view_is);
- return(0);   
+ return(0);
 }
 
 int  build_preset_view_from_mem( int me, int view_is)
 {
 if(MemoiresExistantes[me]==1)
 {
-clear_selection_in( view_is) ;    
+clear_selection_in( view_is) ;
 int pos=0;
 for (int l=1;l<512;l++)
 {
@@ -831,30 +831,30 @@ if(Memoires[me][l]>0)
 {
 Channel_View_ROUTING[view_is][pos]=l;
 pos++;
-}    
-}   
+}
+}
 count_number_of_channels_in_view(view_is);
 sprintf(channel_view_Name[view_is],"Mem %d.%d", me/10,me%10);
 }
-return(0);     
+return(0);
 }
 
-int build_preset_view_from_fader( int f, int view_is)   
-{  
-clear_selection_in( view_is) ; 
+int build_preset_view_from_fader( int f, int view_is)
+{
+clear_selection_in( view_is) ;
 int pos=0;
 for (int l=1;l<512;l++)
-{  
+{
 if((int)(FaderDockContains[f-1][(dock_used_by_fader_is[f-1])][l])>0)
 {
 Channel_View_ROUTING[view_is][pos]=l;
 pos++;
-}    
-}   
+}
+}
 
 count_number_of_channels_in_view(view_is);
 sprintf(channel_view_Name[view_is],"Fader %d", f);
-return(0);     
+return(0);
 }
 
 int reorder_channel_view_list_of_channels(int view_is)
@@ -864,14 +864,14 @@ bool presence_of_channel[513];
 for (int l=0;l<=channel_number_in_View[view_is];l++)
 {
 if(Channel_View_ROUTING[view_is][l]>0){presence_of_channel[(Channel_View_ROUTING[view_is][l])]=1;}
-}      
+}
 
 int pos=0;
 for (int l=0;l<=channel_number_in_View[view_is];l++)
 {
 if(presence_of_channel[l]==1)
 {Channel_View_ROUTING[view_is][pos]=l;pos++;}
-}  
+}
 
 return(0);
 }
@@ -881,12 +881,12 @@ int build_preset_view_from_all_existing_mems(int view_is)
 
 
 bool selectio_on[513];
-  
+
  for (int l=0;l<512;l++)
 {
  selectio_on[l]=0;
-} 
-  
+}
+
 for(int me=0;me<9999;me++)
 {
 if(MemoiresExistantes[me]==1)
@@ -897,12 +897,12 @@ for (int l=1;l<512;l++)
 if((int)(Memoires[me][l])!=0)
 {
 selectio_on[l]=1;
-}    
-}   
+}
+}
 }
 }
 clear_selection_in( view_is) ;
-int pos=0; 
+int pos=0;
 for (int l=1;l<512;l++)
 {
 if(selectio_on[l]==1)
@@ -912,48 +912,48 @@ pos++;
 }
 }
 count_number_of_channels_in_view(view_is);
-reorder_channel_view_list_of_channels(view_is);  
-sprintf(channel_view_Name[view_is],"All Mems"); 
- return(0);       
+reorder_channel_view_list_of_channels(view_is);
+sprintf(channel_view_Name[view_is],"All Mems");
+ return(0);
 }
 
 int build_preset_view_from_all_faders(int view_is)
 {
-clear_selection_in( view_is) ; 
+clear_selection_in( view_is) ;
 int pos=0;
 for(int f=0;f<48;f++)
 {
 for (int l=1;l<512;l++)
-{  
+{
 for(int dd=0;dd<6;dd++)
 {
 if((int)(FaderDockContains[f][dd][l])>0)
 {
 Channel_View_ROUTING[view_is][pos]=l;
 pos++;
-}    
 }
-}   
+}
+}
 }
 
 count_number_of_channels_in_view(view_is);
 reorder_channel_view_list_of_channels(view_is);
 sprintf(channel_view_Name[view_is],"All Faders");
- return(0);   
+ return(0);
 }
 
 
 int build_preset_view_from_all_existing_mems_and_faders(int view_is)
 {
-clear_selection_in( view_is) ;    
+clear_selection_in( view_is) ;
 
 bool selectio_on[513];
-  
+
  for (int l=0;l<512;l++)
 {
  selectio_on[l]=0;
-} 
-//memoires  
+}
+//memoires
 for(int me=0;me<9999;me++)
 {
 if(MemoiresExistantes[me]==1)
@@ -964,26 +964,26 @@ for (int l=1;l<512;l++)
 if((int)(Memoires[me][l])!=0)
 {
 selectio_on[l]=1;
-}    
-}   
+}
+}
 }
 }
 //faders
 for(int f=0;f<48;f++)
 {
 for (int l=1;l<512;l++)
-{  
+{
 for(int dd=0;dd<6;dd++)
 {
 if((int)(FaderDockContains[f][dd][l])>0)
 {
 selectio_on[l]=1;
-}    
 }
-}   
+}
+}
 }
 
-int pos=0; 
+int pos=0;
 for (int l=1;l<512;l++)
 {
 if(selectio_on[l]==1)
@@ -993,9 +993,9 @@ pos++;
 }
 }
 count_number_of_channels_in_view(view_is);
-reorder_channel_view_list_of_channels(view_is);  
-sprintf(channel_view_Name[view_is],"All Mems and Faders"); 
- return(0);   
+reorder_channel_view_list_of_channels(view_is);
+sprintf(channel_view_Name[view_is],"All Mems and Faders");
+ return(0);
 }
 
 int report_selection_in(int view_is)
@@ -1005,15 +1005,15 @@ for (int v=1;v<nbre_de_vues_circuits;v++)
 {
 for(int ch=0;ch<512;ch++)
 {
-if( Selected_Channel[(Channel_View_ROUTING[v][ch])]==1){Channel_View_ROUTING[v][ch]=0;}      
-}    
+if( Selected_Channel[(Channel_View_ROUTING[v][ch])]==1){Channel_View_ROUTING[v][ch]=0;}
+}
 }
 
 
 
 
-clear_selection_in( view_is) ;    
-int pos=0; 
+clear_selection_in( view_is) ;
+int pos=0;
 for (int l=1;l<514;l++)
 {
 if(Selected_Channel[l]==1)
@@ -1021,15 +1021,15 @@ if(Selected_Channel[l]==1)
 Channel_View_ROUTING[view_is][pos]=l;
 pos++;
 }
-}  
-sprintf(channel_view_Name[view_is],"Reported View"); 
+}
+sprintf(channel_view_Name[view_is],"Reported View");
 
 for (int vf=1;vf<nbre_de_vues_circuits;vf++)
 {
 count_number_of_channels_in_view(vf);
-reorder_channel_view_list_of_channels(vf); 
+reorder_channel_view_list_of_channels(vf);
 }
- return(0);   
+ return(0);
 }
 
 int generate_channel_view_list_from_patched_circuits()
@@ -1045,21 +1045,21 @@ for (int i=1;i<513;i++)
  {
  for(int u=0;u<513;u++)
  {
-  if(Channel_View_ROUTING[0][u]==ch){nopatchit=1;break;}       
- } 
+  if(Channel_View_ROUTING[0][u]==ch){nopatchit=1;break;}
+ }
  if(nopatchit==0)
  {
  Channel_View_ROUTING[0][index]=ch;
  index++;
  }
- }   
+ }
 }
-nopatchit=0;    
+nopatchit=0;
 }
 count_number_of_channels_in_view(0);
 
 generate_channel_preview_patch_list();
-return(0);   
+return(0);
 }
 
 
@@ -1074,12 +1074,12 @@ for(int i=1;i<514;i++)
 if(Selected_Channel[i]==1)
 {
 Channel_View_ROUTING[view_is][index]=i;
-index++;        
-Selected_Channel[i]=0;                   
-}        
+index++;
+Selected_Channel[i]=0;
+}
 }
 count_number_of_channels_in_view(view_is);
-return(0);   
+return(0);
 }
 
 
@@ -1090,25 +1090,25 @@ bool temp_selv[514];
 
 for(int i=0;i<514;i++)
 {
-temp_selv[i]=0;        
+temp_selv[i]=0;
 }
 
 for(int i=0;i<514;i++)
 {
 if(Channel_View_ROUTING[view_is][i]>0)
-{temp_selv[(Channel_View_ROUTING[view_is][i])]=1;}       
+{temp_selv[(Channel_View_ROUTING[view_is][i])]=1;}
 }
 
 for(int i=1;i<514;i++)
 {
 if(Selected_Channel[i]==1)
 {
-temp_selv[i]=toggle(temp_selv[i]);                          
-}        
+temp_selv[i]=toggle(temp_selv[i]);
+}
 }
 
-clear_selection_in(view_is);   
-    
+clear_selection_in(view_is);
+
 int index_ch=0;
 //clear d'un circuit existant sélectionné
 for(int i=1;i<514;i++)
@@ -1119,12 +1119,12 @@ Channel_View_ROUTING[view_is][index_ch]=i;
 index_ch++;
 }
 }
-        
-   
+
+
 count_number_of_channels_in_view(view_is);
 
 
- return(0);   
+ return(0);
 }
 
 
@@ -1141,11 +1141,11 @@ sprintf(plot_renseignements[19],"1 CARRE 1 METRE");
 sprintf(plot_renseignements[20],"LightPlan generated by");
 sprintf(plot_renseignements[21],"WhiteCat LightingBoard");
 
- return(0);   
+ return(0);
 }
 
 
-int affect_mover_to_fader(int thefader, int thedock)      
+int affect_mover_to_fader(int thefader, int thedock)
 {
 DockTypeIs[thefader][thedock]=14;
 return(0);
@@ -1155,27 +1155,27 @@ int reset_error_on_save_load()
 {
 for (int f=0;f<256;f++)
 {
- b_report_error[f]=0;  
-}    
+ b_report_error[f]=0;
+}
 there_is_an_error_on_save_load=0;
-return(0);   
+return(0);
 }
 
 int detect_error_on_save_load()
 {
 for (int f=0;f<256;f++)
 {
-if( b_report_error[f]==1) {there_is_an_error_on_save_load=1;break;}  
-}    
-return(0);    
+if( b_report_error[f]==1) {there_is_an_error_on_save_load=1;break;}
+}
+return(0);
 }
 
 int clear_report_string()
 {
  for(int i=0;i<256 ;i++)
  {
- sprintf(string_save_load_report[i],"-");        
- }   
+ sprintf(string_save_load_report[i],"-");
+ }
  reset_error_on_save_load();
  return(0);
 }
@@ -1187,7 +1187,7 @@ for(int i=0;i<5;i++)
  plot_relativxy_preset[pr][i][0]=0;
  plot_relativxy_preset[pr][i][1]=0;
 }
-return(0);   
+return(0);
 }
 
 int affect_preset_xy_to_symbols(int pr)
@@ -1200,11 +1200,11 @@ for(int j=0;j<5;j++)
 {
  relatif_plot_xy[view_plot_calc_number_is][i][j][0]=plot_relativxy_preset[pr][j][0];
  relatif_plot_xy[view_plot_calc_number_is][i][j][1]=plot_relativxy_preset[pr][j][1];
-}  
+}
 }
 }
 
- return(0);   
+ return(0);
 }
 int record_preset_xy_from_symbol(int pr)
 {
@@ -1212,8 +1212,8 @@ for(int i=0;i<5;i++)
 {
  plot_relativxy_preset[pr][i][0]=relatif_plot_xy[view_plot_calc_number_is][last_selected_symbol_is][i][0];
  plot_relativxy_preset[pr][i][1]=relatif_plot_xy[view_plot_calc_number_is][last_selected_symbol_is][i][1];
-}  
- return(0);   
+}
+ return(0);
 }
 
 
@@ -1243,7 +1243,7 @@ neuro.Print("http://www.le-chat-noir-numerique.fr", (largeur_ecran/2)-160,(haute
 petitchiffre.Print("(c)christoph guillermet", (largeur_ecran/2)-55,(hauteur_ecran/2)-150);
 petitpetitchiffre.Print(versionis, (largeur_ecran/2)-70,(hauteur_ecran/2)-120);
 
-return(0);    
+return(0);
 }
 
 
@@ -1254,7 +1254,7 @@ char temp_namePlot[272];
 
 sprintf(temp_namePlot,"plans\\%s",name_of_plan);
 
-LightPlanBitmapMain.Load(temp_namePlot);  
+LightPlanBitmapMain.Load(temp_namePlot);
 
 
 if(rescan_width_eight==1)
@@ -1264,14 +1264,14 @@ taille_relative_plan_theatre[1]= LightPlanBitmapMain.Height();
 }
 ratio_lock_plot_scale=(float)(taille_relative_plan_theatre[0])/(float)(taille_relative_plan_theatre[1]);
 
- return(0);   
+ return(0);
 }
 
 
 int set_plot_background_to_default()
 {
 sprintf(Name_of_plane_is,"defaultplot.jpg");
-load_plan_of_theatre(Name_of_plane_is, 1);  
+load_plan_of_theatre(Name_of_plane_is, 1);
 position_relative_plan_theatre[0]=taille_relative_plan_theatre[0]/2;
 position_relative_plan_theatre[1]=taille_relative_plan_theatre[1]/2;
 orientation_plan_theatre=0.0;
@@ -1284,7 +1284,7 @@ for(int i=0;i<127;i++)//pour rafraichissement au chargement dans la liste des pl
 if(strcmp( Name_of_plane_is,list_import_plans[i])==0)
 {importplan_selected=i;}
 }
-return(0);   
+return(0);
 }
 
 int  refresh_shape_factors(int shapetype)
@@ -1296,22 +1296,22 @@ switch(shapetype)
 case 0:    //curtain
 general_shape_size_to_apply=50.0;
 break;
-case 1:     //ligne  plain                    
+case 1:     //ligne  plain
 general_shape_size_to_apply=12.0;
 break;
-case 2:     //stripline 1                 
+case 2:     //stripline 1
 general_shape_size_to_apply=20.0;
 break;
-case 3:     //stripline 2                 
+case 3:     //stripline 2
 general_shape_size_to_apply=20.0;
 break;
-case 4:     //stripline 3                 
+case 4:     //stripline 3
 general_shape_size_to_apply=20.0;
 break;
-case 5:     //stripline 4                 
+case 5:     //stripline 4
 general_shape_size_to_apply=20.0;
 break;
-case 6:     //stripline 5                 
+case 6:     //stripline 5
 general_shape_size_to_apply=20.0;
 break;
 case 7://plot_draw_rectangle(int plotx1, int ploty1, int shapesizex, int shapesizey, float shaperotation, float alphashape, float roundedshape, int colorpattern, bool isselected)
@@ -1333,7 +1333,7 @@ default:
 general_shape_size_to_apply=10.0;
 break;
 }
-return(0);     
+return(0);
 }
 
 
@@ -1343,16 +1343,16 @@ int set_all_faders_midi_out(bool state)
 for(int i=0;i<48;i++)//faders
 {
 midi_send_out[i]=state;
-if(state==1) {index_send_midi_out[i]=1; } 
+if(state==1) {index_send_midi_out[i]=1; }
 }
 for(int i=196;i<(196+48);i++)//LFO
 {
 midi_send_out[i]=state;
-if(state==1) {index_send_midi_out[i]=1; }   
-}  
-return(0);   
+if(state==1) {index_send_midi_out[i]=1; }
 }
-   
+return(0);
+}
+
 
 
 int reset_window_opened_indexes()
@@ -1362,7 +1362,7 @@ for(int i=0;i<63;i++)
 temp_report_window[i]=0;
 window_opened[i]=0;
 }
-return(0);   
+return(0);
 }
 
 
@@ -1380,8 +1380,8 @@ int constrain_banger_type(int lp)
 {
  //famille categorie banger
 if(bangers_type[index_banger_selected][lp]>18)
-{bangers_type[index_banger_selected][lp]=0;}  
-return(0);   
+{bangers_type[index_banger_selected][lp]=0;}
+return(0);
 }
 
 int constrain_banger_param(int lp)
@@ -1389,25 +1389,25 @@ int constrain_banger_param(int lp)
 switch (bangers_type[index_banger_selected][lp])
 {
 case 0://rien
-bangers_action[index_banger_selected][lp]=0;  
+bangers_action[index_banger_selected][lp]=0;
 break;
 case 1://faders
 if(bangers_action[index_banger_selected][lp]>33)
-{bangers_action[index_banger_selected][lp]=0;}  
+{bangers_action[index_banger_selected][lp]=0;}
 break;
 case 2://midi send
 if(bangers_action[index_banger_selected][lp]>23)
-{bangers_action[index_banger_selected][lp]=0;}  
+{bangers_action[index_banger_selected][lp]=0;}
 break;
 case 3://windows
 if(bangers_action[index_banger_selected][lp]>18)
-{bangers_action[index_banger_selected][lp]=0;}  
+{bangers_action[index_banger_selected][lp]=0;}
 break;
 case 4://alarmes
 if(index_type==1 && index_enable_edit_banger==1)
-{ 
+{
 for(int tt=0;tt<24;tt++)
- {         
+ {
  string_alarm[index_banger_selected][tt]=numeric[tt];
  }
  string_alarm[index_banger_selected][24]='\0';
@@ -1417,80 +1417,80 @@ for(int tt=0;tt<24;tt++)
 break;
 case 5://audio
 if(bangers_action[index_banger_selected][lp]>15)
-{bangers_action[index_banger_selected][lp]=0;}  
-break;  
+{bangers_action[index_banger_selected][lp]=0;}
+break;
 case 6: //sequenciel
 if(bangers_action[index_banger_selected][lp]>8)
-{bangers_action[index_banger_selected][lp]=0;}  
+{bangers_action[index_banger_selected][lp]=0;}
 break;
 case 7://chaser window
 if(bangers_action[index_banger_selected][lp]>16)
-{bangers_action[index_banger_selected][lp]=0;}  
+{bangers_action[index_banger_selected][lp]=0;}
 break;
 case 8://minifaders
 if(bangers_action[index_banger_selected][lp]>17)
-{bangers_action[index_banger_selected][lp]=0;}  
+{bangers_action[index_banger_selected][lp]=0;}
 break;
 case 9://icat
 if(bangers_action[index_banger_selected][lp]>4)
-{bangers_action[index_banger_selected][lp]=0;}  
+{bangers_action[index_banger_selected][lp]=0;}
 break;
 case 10://chrono
 if(bangers_action[index_banger_selected][lp]>2)
-{bangers_action[index_banger_selected][lp]=0;}  
+{bangers_action[index_banger_selected][lp]=0;}
 break;
 case 11://set channel
 if(bangers_action[index_banger_selected][lp]>15)
-{bangers_action[index_banger_selected][lp]=0;} 
+{bangers_action[index_banger_selected][lp]=0;}
 break;
-case 12://set banger 
+case 12://set banger
 if(bangers_action[index_banger_selected][lp]>1)
-{bangers_action[index_banger_selected][lp]=0;} 
+{bangers_action[index_banger_selected][lp]=0;}
 break;
 case 13://midi mute
 if(bangers_action[index_banger_selected][lp]>9)
-{bangers_action[index_banger_selected][lp]=0;} 
+{bangers_action[index_banger_selected][lp]=0;}
 break;
 case 14://grid
 if(bangers_action[index_banger_selected][lp]>19)
-{bangers_action[index_banger_selected][lp]=0;} 
+{bangers_action[index_banger_selected][lp]=0;}
 break;
 case 15://hardware
 if(bangers_action[index_banger_selected][lp]>1)
-{bangers_action[index_banger_selected][lp]=0;} 
+{bangers_action[index_banger_selected][lp]=0;}
 break;
 case 16://emulate kbd
 if(bangers_action[index_banger_selected][lp]>62)
-{bangers_action[index_banger_selected][lp]=0;} 
+{bangers_action[index_banger_selected][lp]=0;}
 break;
 case 17://draw
 if(bangers_action[index_banger_selected][lp]>10)
-{bangers_action[index_banger_selected][lp]=0;} 
+{bangers_action[index_banger_selected][lp]=0;}
 break;
 case 18://echo
 if(bangers_action[index_banger_selected][lp]>25)
-{bangers_action[index_banger_selected][lp]=0;} 
+{bangers_action[index_banger_selected][lp]=0;}
 break;
 default:
 break;
-} 
+}
 
- return(0);   
+ return(0);
 }
 
 int reset_banger_params( int banger_selected, int event)
 {
 //bangers_params[banger_selected][ event][0]=0;//0 param1 pas reseté pour garder le fader
 bangers_params[banger_selected][ event][1]=0;//1 param2
-bangers_delay[banger_selected][ event]=0.0;//delays 
-return(0);   
+bangers_delay[banger_selected][ event]=0.0;//delays
+return(0);
 }
 
 int reset_banger_event( int banger_selected, int event)
 {
 bangers_action[banger_selected][ event]=0;
 reset_banger_params(banger_selected,event);
-return(0);   
+return(0);
 }
 
 
@@ -1498,8 +1498,8 @@ int reset_audio_indexs_to_dock()
 {
 index_affect_audio_to_dock=0;
 player_to_affect_to_dock=999;
-audio_type_for_dock_affectation_is=999;    
-return(0);   
+audio_type_for_dock_affectation_is=999;
+return(0);
 }
 
 
@@ -1508,16 +1508,16 @@ bool set_all_saves_indexes_at(bool val)
 {
 for (int i=0;i<72;i++)
  {specify_who_to_save_load[i]=val;}
- return(0);                              
+ return(0);
 }
 
 int reset_modified_levels_in_crossfade()
 {
 for(int i=0;i<513;i++)
 {
-channel_level_mofification_while_crossfade[i]=0; 
-} 
- return(0);   
+channel_level_mofification_while_crossfade[i]=0;
+}
+ return(0);
 }
 
 int exclude_reinclude_channels_from_grand_master_action()
@@ -1526,7 +1526,7 @@ for (int i=1;i<513;i++)
  {
   if(Selected_Channel[i]==1)
   {Channels_excluded_from_grand_master[i]=toggle(Channels_excluded_from_grand_master[i]);}
- }   
+ }
  return(0);
 }
 
@@ -1544,7 +1544,7 @@ if(nbr_steps_tempo>max_temp_tempo)
 
 ticks_tap_tempo[nbr_steps_tempo]=actual_time-start_tempo_ticks;
 
-start_tempo_ticks=actual_time;//report de l'actuel temps 
+start_tempo_ticks=actual_time;//report de l'actuel temps
 
 tempo_interm+=ticks_tap_tempo[nbr_steps_tempo];
 
@@ -1554,7 +1554,7 @@ sprintf(string_tap_tempo_average,"Step: %d  Global: %.2f",nbr_steps_tempo,tap_te
 sprintf(string_actual_tap_tempo,"Last:%.2f",((float)ticks_tap_tempo[nbr_steps_tempo])/BPS_RATE);
 do_light_tap_tempo=1;
 }
-return(0);   
+return(0);
 }
 
 int refresh_hauteur_fenetre_grider()
@@ -1565,8 +1565,8 @@ for(int yo=0;yo<core_user_define_nb_gridplayers;yo++)
 if(index_show_grid_player[yo]==1)
 {
 index_nbre_griderplayers_visibles++;
-}       
-}    
+}
+}
 switch(show_global_view_grider)
 {
 case 0:
@@ -1578,8 +1578,8 @@ break;
 }
 if(grider_nb_row>=10){grider_facteur_hauteur=grider_nb_row;}
 else{grider_facteur_hauteur=10;}
-hauteurGrider=50+(index_nbre_griderplayers_visibles*(60+(grider_facteur_hauteur*size_grille)))+hauteurGlobalGridviewer;  
-return(0);   
+hauteurGrider=50+(index_nbre_griderplayers_visibles*(60+(grider_facteur_hauteur*size_grille)))+hauteurGlobalGridviewer;
+return(0);
 }
 
 int reset_window_positions()
@@ -1644,9 +1644,9 @@ case 0:
 break;
 case 1:
      bufferBlind[p]=Memoires[the_mem][p];
-break;                   
-}     
-}   
+break;
+}
+}
 }
 sprintf(numeric,"");
 numeric_postext=0;
@@ -1660,15 +1660,15 @@ int search_and_desaffect_previous_midi_signal(int typaction)
 if (typaction==1)//1/1
 {
 for (int i=0;i<2048;i++)
-{   
+{
 if (miditable[0][i]==istyp && miditable[1][i]==ischan && miditable[2][i]==ispitch) //0.8.2.2
 {
 miditable[0][i]=999;miditable[1][i]=999; miditable[2][i]=999;midi_launchpad_state[i]=0;
 
 }
-}                 
 }
-// 8 en ordre numérique    
+}
+// 8 en ordre numérique
 else if(typaction==2 )
 {
 switch(toggle_numerical_midi_way)
@@ -1677,43 +1677,43 @@ case 0:
 for(int h=0;h<8;h++)
 {
 for (int i=0;i<2048;i++)
-{   
+{
 if (miditable[0][i]==istyp && miditable[1][i]==ischan && miditable[2][i]==ispitch+h)
 {miditable[0][i]=999;miditable[1][i]=999; miditable[2][i]=999;midi_launchpad_state[i]=0;}
 }
-}    
+}
 break;
-// 8 en ordre channel 
+// 8 en ordre channel
 case 1:
 for(int h=0;h<8;h++)
 {
 for (int i=0;i<2048;i++)
-{   
+{
 if (miditable[0][i]==istyp && miditable[1][i]==ischan+h && miditable[2][i]==ispitch)
 
 {miditable[0][i]=999;miditable[1][i]=999; miditable[2][i]=999;midi_launchpad_state[i]=0;}
 }
-} 
-break;   
+}
+break;
 }
 }
 
 
- return(0);   
+ return(0);
 }
 
 
 int reset_index_affect_midi()
 {
  Midi_Faders_Affectation_Type=0;
- return(0);   
+ return(0);
 }
 
 int show_type_midi(int control, char *command)
 {
 switch(miditable[0][control])
 {
-//midi report 
+//midi report
 case 0:
 sprintf(thetypinfo,"Note");
 break;
@@ -1727,36 +1727,36 @@ case 4:
 sprintf(thetypinfo,"C.Change");
 break;
 default:
-sprintf(thetypinfo,"");        
+sprintf(thetypinfo,"");
 break;
 }
 sprintf(string_last_midi_id,"%s selected is Ch: %d Pitch: %d Typ: %s" ,command, miditable[1][control],miditable[2][control],thetypinfo);
 sprintf(string_shortview_midi,"%s %d/%d",thetypinfo ,miditable[1][control],miditable[2][control]);
-return(0);   
+return(0);
 }
 
 
 
 int attribute_midi_to_control(int faderis, int typaction, int modeaction)
 {
-    
-if(index_midi_auto_desaffect==1){search_and_desaffect_previous_midi_signal(typaction);}//bug desaffectation 
+
+if(index_midi_auto_desaffect==1){search_and_desaffect_previous_midi_signal(typaction);}//bug desaffectation
 //////////////////////////////////////
 if(modeaction==1)//reset
 {
 istyp=999;ischan=999;ispitch=999;
-modeaction=0;                    
+modeaction=0;
 }
 
 if(modeaction==2)//generated fake midi
 {
 istyp=fakemiditype;
 ischan=fakemidichan;
-ispitch=fakemidipitch;     
+ispitch=fakemidipitch;
 modeaction=0;
 }
 ////////////////////////////////////
-      
+
 if(typaction==1 )//1/1
 {
 if(ischan<16 && ispitch<128)
@@ -1800,13 +1800,13 @@ return(0);
 int attribute_midi_solo_affectation(int faderis, int modeaction)
 {
 
-if(index_midi_auto_desaffect==1){search_and_desaffect_previous_midi_signal(1);}//bug desaffectation 
-    
+if(index_midi_auto_desaffect==1){search_and_desaffect_previous_midi_signal(1);}//bug desaffectation
+
 
 if(Midi_Faders_Affectation_Mode==1)//reset
 {
 istyp=999;ischan=999;ispitch=999;
-modeaction=0;                    
+modeaction=0;
 }
 else if(Midi_Faders_Affectation_Mode==2)//generated fake midi
 {
@@ -1814,7 +1814,7 @@ if(ischan<16 && ispitch<128)
 {
 istyp=fakemiditype;
 ischan=fakemidichan;
-ispitch=fakemidipitch;     
+ispitch=fakemidipitch;
 modeaction=0;
 }
 }
@@ -1828,7 +1828,7 @@ miditable[2][faderis]=ispitch;
 }
 
 
- return(0);   
+ return(0);
 }
 
 
@@ -1845,7 +1845,7 @@ char tmp_order_call[512];
 sprintf(tmp_order_call,"%s\\utils\\Process.exe %s -a %d", mondirectory, nom_exe, coreis);
 system(tmp_order_call);//lancement system
 sprintf(string_Last_Order,">>Assigned %s to Core %d", nom_exe, coreis);
-return(0);   
+return(0);
 }
 
 
@@ -1854,15 +1854,15 @@ int reset_and_recall_iCat_images()
 {
  if (enable_iCat==1 && iCat_serveur_is_initialized==1)
  {
- 
-  nbrbytessendediCat=sendto(sockiCat, "clearmodels",sizeof("clearmodels"),0,(SOCKADDR*)&siniCat,sinsizeiCat); 
+
+  nbrbytessendediCat=sendto(sockiCat, "clearmodels",sizeof("clearmodels"),0,(SOCKADDR*)&siniCat,sinsizeiCat);
  //effacage total
- nbrbytessendediCat=sendto(sockiCat, "clearimagecache",sizeof("clearimagecache"),0,(SOCKADDR*)&siniCat,sinsizeiCat);  
+ nbrbytessendediCat=sendto(sockiCat, "clearimagecache",sizeof("clearimagecache"),0,(SOCKADDR*)&siniCat,sinsizeiCat);
 
 char name_library[128][25];
  //init tableau noms fichiers
-sprintf(name_library[0],"lfo_up_off.jpg");  
-sprintf(name_library[1],"lfo_up_on.jpg");  
+sprintf(name_library[0],"lfo_up_off.jpg");
+sprintf(name_library[1],"lfo_up_on.jpg");
 sprintf(name_library[2],"lfo_down_off.jpg");
 sprintf(name_library[3],"lfo_down_on.jpg");
 sprintf(name_library[4],"lfo_saw_off.jpg");
@@ -1893,8 +1893,8 @@ sprintf(name_library[26],"at_zero.jpg");
 sprintf(name_library[27],"mf_setpos.jpg");
 sprintf(name_library[28],"bt_carre_vide.png");
 sprintf(name_library[29],"mf_bt_carre_vide.png");
-sprintf(name_library[30],"mf_lfo_up_off.jpg");  
-sprintf(name_library[31],"mf_lfo_up_on.jpg");  
+sprintf(name_library[30],"mf_lfo_up_off.jpg");
+sprintf(name_library[31],"mf_lfo_up_on.jpg");
 sprintf(name_library[32],"mf_lfo_down_off.jpg");
 sprintf(name_library[33],"mf_lfo_down_on.jpg");
 sprintf(name_library[34],"mf_lfo_saw_off.jpg");
@@ -1963,33 +1963,33 @@ sprintf(name_library[85],"finished");
  for(int loopi=0;loopi<85;loopi++)
  {
  sprintf(StrOrderToiCat,"model button%d image http://www.le-chat-noir-numerique.fr/iCat/%s",loopi,name_library[loopi]);
- nbrbytessendediCat=sendto(sockiCat, StrOrderToiCat,strlen(StrOrderToiCat)+1,0,(SOCKADDR*)&siniCat,sinsizeiCat);          
- //rest(10);                
+ nbrbytessendediCat=sendto(sockiCat, StrOrderToiCat,strlen(StrOrderToiCat)+1,0,(SOCKADDR*)&siniCat,sinsizeiCat);
+ //rest(10);
  }
- 
+
  sprintf(StrOrderToiCat,"model slider0d image http://www.le-chat-noir-numerique.fr/iCat/slider.jpg");
- nbrbytessendediCat=sendto(sockiCat, StrOrderToiCat,strlen(StrOrderToiCat)+1,0,(SOCKADDR*)&siniCat,sinsizeiCat);      
+ nbrbytessendediCat=sendto(sockiCat, StrOrderToiCat,strlen(StrOrderToiCat)+1,0,(SOCKADDR*)&siniCat,sinsizeiCat);
   //fin confition enbabled and initiated
 
-  nbrbytessendediCat=sendto(sockiCat, "opengl 1",sizeof("opengl 0"),0,(SOCKADDR*)&siniCat,sinsizeiCat); 
-  nbrbytessendediCat=sendto(sockiCat, "opengl 1",sizeof("opengl 1"),0,(SOCKADDR*)&siniCat,sinsizeiCat);   
- 
+  nbrbytessendediCat=sendto(sockiCat, "opengl 1",sizeof("opengl 0"),0,(SOCKADDR*)&siniCat,sinsizeiCat);
+  nbrbytessendediCat=sendto(sockiCat, "opengl 1",sizeof("opengl 1"),0,(SOCKADDR*)&siniCat,sinsizeiCat);
+
  }
- return(0);   
+ return(0);
 }
 
 
 int copy_iCatPage(int pagesource, int pagedest)
 {
-iCat_preset_orientation[pagedest]=iCat_preset_orientation[pagesource];    
-    
+iCat_preset_orientation[pagedest]=iCat_preset_orientation[pagesource];
+
 //sliders
 iCat_nbre_de_sliders[pagedest]=iCat_nbre_de_sliders[pagesource];
 for(int i=0;i<24;i++)
 {
 iCat_pos_slider[pagedest][i][0]=iCat_pos_slider[pagesource][i][0];
-iCat_pos_slider[pagedest][i][1]=iCat_pos_slider[pagesource][i][1];   
-iCat_orientation_slider[pagedest][i]=iCat_orientation_slider[pagesource][i];  
+iCat_pos_slider[pagedest][i][1]=iCat_pos_slider[pagesource][i][1];
+iCat_orientation_slider[pagedest][i]=iCat_orientation_slider[pagesource][i];
 iCat_affectation_slider_type_is[pagedest][i]=iCat_affectation_slider_type_is[pagesource][i];
 iCat_affectation_slider_value_is[pagedest][i]=iCat_affectation_slider_value_is[pagesource][i];
 ratio_iCat_slider[pagedest][i]=ratio_iCat_slider[pagesource][i];
@@ -2040,8 +2040,8 @@ iCat_select_tracking_zone=0;
 sprintf(string_Last_Order,"Copied iCat page %d in page %d",pagesource+1, pagedest+1);
 index_icat_copyPage=0;
 
-return(0);    
-}   
+return(0);
+}
 
 int clear_iCat_sliders( int preset_page_iCat)
 {
@@ -2050,8 +2050,8 @@ iCat_nbre_de_sliders[preset_page_iCat]=0;
 for(int i=0;i<max_sliders_icat;i++)
 {
 iCat_pos_slider[preset_page_iCat][i][0]=0;
-iCat_pos_slider[preset_page_iCat][i][1]=0;   
-iCat_orientation_slider[preset_page_iCat][i]=0;  
+iCat_pos_slider[preset_page_iCat][i][1]=0;
+iCat_orientation_slider[preset_page_iCat][i]=0;
 iCat_affectation_slider_type_is[preset_page_iCat][i]=0;
 iCat_affectation_slider_value_is[preset_page_iCat][i]=0;
 ratio_iCat_slider[preset_page_iCat][i]=2;
@@ -2061,7 +2061,7 @@ slider_is_controlled_by_point[preset_page_iCat][i]=0;
 level_from_touch[preset_page_iCat][i]=0;
 }
 iCat_select_editing_slider=0;
- return(0);   
+ return(0);
 }
 
 int clear_iCat_buttons( int preset_page_iCat)
@@ -2071,13 +2071,13 @@ iCat_nbre_de_boutons[preset_page_iCat]=0;
 for(int nbl=0;nbl<max_buttons_icat;nbl++)
 {
 iCat_pos_bouton[preset_page_iCat][nbl][0]=0;iCat_pos_bouton[preset_page_iCat][nbl][1]=0;
-iCat_affectation_bouton_type_is[preset_page_iCat][nbl]=0;//type 1 faders, 2 sequentiel, 3 audio family 
+iCat_affectation_bouton_type_is[preset_page_iCat][nbl]=0;//type 1 faders, 2 sequentiel, 3 audio family
 iCat_affectation_bouton_action_is[preset_page_iCat][nbl]=0;//sous famille, les actions
 iCat_affectation_bouton_value_is[preset_page_iCat][nbl]=0;//valeur de la famille 1/48 stage/preset/accel
 ratio_iCat_button[preset_page_iCat][nbl]=2;//multiplicateur des proportions de s boutons. 1 / 2 / 3
 }
-iCat_select_editing_button=0;    
- return(0);   
+iCat_select_editing_button=0;
+ return(0);
 }
 
 int clear_iCat_strings( int preset_page_iCat)
@@ -2086,12 +2086,12 @@ iCat_nbre_de_strings[preset_page_iCat]=0;
 for(int nbl=0;nbl<max_string_icat;nbl++)
 {
 iCat_pos_string[preset_page_iCat][nbl][0]=0;iCat_pos_string[preset_page_iCat][nbl][1]=0;
-iCat_affectation_string_type_is[preset_page_iCat][nbl]=0;//type 1 faders, 2 sequentiel, 3 audio family 
+iCat_affectation_string_type_is[preset_page_iCat][nbl]=0;//type 1 faders, 2 sequentiel, 3 audio family
 iCat_affectation_string_action_is[preset_page_iCat][nbl]=0;//sous famille, les actions
 ratio_iCat_string[preset_page_iCat][nbl]=2;//multiplicateur des proportions de s boutons. 1 / 2 / 3
 }
 iCat_select_editing_string=0;
- return(0);   
+ return(0);
 }
 
 
@@ -2109,8 +2109,8 @@ ratio_iCat_trackzone[preset_page_iCat][nbl]=0;//multiplicateur des proportions d
 }
 
 iCat_select_tracking_zone=0;
-    
- return(0);   
+
+ return(0);
 }
 
 int clear_iCat_page ( int preset_page_iCat)
@@ -2124,7 +2124,7 @@ clear_iCat_trackingzone( preset_page_iCat);
 
 sprintf(string_Last_Order,"Cleared iCat page %d",preset_page_iCat+1);
 do_send_icat_init_page=1;
- return(0);   
+ return(0);
 }
 
 
@@ -2139,7 +2139,7 @@ actual_master_lock=u;
 break;
 }
 }
- return(0);   
+ return(0);
 }
 
 
@@ -2149,13 +2149,13 @@ int save_load_print_to_screen(char string_print_to_screen[64])
 if(index_do_quick_save==0){show_title();}
 Rect nameAera( Vec2D( ((largeur_ecran/2)-200),((hauteur_ecran/2)-100)), Vec2D ( 400,70));
 nameAera.SetRoundness(15);
-nameAera.SetLineWidth(epaisseur_ligne_fader*3); 
-nameAera.Draw(CouleurSurvol); 
-nameAera.DrawOutline(CouleurLigne); 
-neuro.Print(string_print_to_screen,((largeur_ecran/2)-150),((hauteur_ecran/2)-60));   
+nameAera.SetLineWidth(epaisseur_ligne_fader*3);
+nameAera.Draw(CouleurSurvol);
+nameAera.DrawOutline(CouleurLigne);
+neuro.Print(string_print_to_screen,((largeur_ecran/2)-150),((hauteur_ecran/2)-60));
 
 Canvas::Refresh();
-return(0);   
+return(0);
 }
 
 int minifader_selection_record(int mf_preset_is)
@@ -2163,17 +2163,17 @@ int minifader_selection_record(int mf_preset_is)
 for(int olp=0;olp<core_user_define_nb_faders;olp++)
 {minifaders_preset_selection[mf_preset_is][olp]=minifaders_selected[olp];}
 index_do_dock=0;
-sprintf(string_Last_Order,"Recorded Fader Selection in Preset %d", mf_preset_is+1);    
+sprintf(string_Last_Order,"Recorded Fader Selection in Preset %d", mf_preset_is+1);
 return(0);
 }
 
 int minifader_selection_clear(int mf_preset_is)
 {
  for(int olp=0;olp<core_user_define_nb_faders;olp++)
-{minifaders_preset_selection[mf_preset_is][olp]=0;} 
-index_main_clear=0;    
-sprintf(string_Last_Order,"Cleared Fader Selection in Preset %d", mf_preset_is+1);   
-return(0);    
+{minifaders_preset_selection[mf_preset_is][olp]=0;}
+index_main_clear=0;
+sprintf(string_Last_Order,"Cleared Fader Selection in Preset %d", mf_preset_is+1);
+return(0);
 }
 
 int minifader_lockselection_record(int mf_preset_is)
@@ -2181,8 +2181,8 @@ int minifader_lockselection_record(int mf_preset_is)
  for(int f=0;f<core_user_define_nb_faders;f++)
  {
  FaderLocked_Preset[ mf_preset_is][f]=0;        //reset des états avant stockage
- StateOfFaderBeforeLock_Preset[ mf_preset_is][f]=0; 
- LockFader_is_FullLevel_Preset[ mf_preset_is][f]=0;      
+ StateOfFaderBeforeLock_Preset[ mf_preset_is][f]=0;
+ LockFader_is_FullLevel_Preset[ mf_preset_is][f]=0;
  if ( FaderLocked[f]==1)
  {
  FaderLocked_Preset[ mf_preset_is][f]=FaderLocked[f];
@@ -2193,10 +2193,10 @@ int minifader_lockselection_record(int mf_preset_is)
  //extinction des autres
  for (int ipo=0;ipo<8;ipo++)
  {lock_preset[ipo]=0;}
- lock_preset[ mf_preset_is]=1; 
- 
+ lock_preset[ mf_preset_is]=1;
+
  index_do_dock=0;
- sprintf(string_Last_Order,">> Lock State %d recorded", mf_preset_is+1);  
+ sprintf(string_Last_Order,">> Lock State %d recorded", mf_preset_is+1);
 return(0);
 }
 
@@ -2206,9 +2206,9 @@ int refresh_stage()
 {
 for (int l=1;l<512;l++)
 {
-bufferSaisie[l]=Memoires[position_onstage][l];    
+bufferSaisie[l]=Memoires[position_onstage][l];
 }
- return(0);   
+ return(0);
 }
 
 int reset_indexes_conf()//menu setup cfg
@@ -2218,14 +2218,14 @@ index_config_dmx=0;
 index_config_midi=0;
 index_config_network=0;
 index_setup_gfx=0;
-index_config_arduino=0;  
+index_config_arduino=0;
 index_config_core=0;
 index_affect_dmxin=0;
 Midi_Faders_Affectation_Type=0;//pour ne pas affecter quoi que ce soit en midi
 Midi_Faders_Affectation_Mode=0;
 midipreset_selected=0;//vider l affectation du preset midi en mem
 do_affectation_on_midi_affect_itself=0;//pour affectation midi on itself
-return(0);   
+return(0);
 }
 
 
@@ -2235,9 +2235,9 @@ int button_midi_out_core(int xmi, int ymi, int control)
 if(mouse_x>xmi-10 && mouse_x<xmi+10  && mouse_y>ymi-10 && mouse_y<ymi+10)
 {
 midi_send_out[control]=toggle(midi_send_out[control]);
-mouse_released=1;                
-}     
-return(0);   
+mouse_released=1;
+}
+return(0);
 }
 
 int button_midi_out_visu(int xmi, int ymi, int control)
@@ -2252,22 +2252,22 @@ BMidiOut.Draw(CouleurBlind);
 }
 BMidiOut.DrawOutline(CouleurLigne);
 
-return(0);   
+return(0);
 }
 
 
 int show_who_is_in_dock (int fader, int thedokis)
-{   
+{
  //recherche juste, n' affiche pas
  for(int doloop=1;doloop<514;doloop++)
  { if( FaderDockContains[fader][thedokis][doloop]==0)
    { show_who_is_in_FADER_DOCK[doloop]=0;}
    else if( FaderDockContains[fader][thedokis][doloop]>0)
    { show_who_is_in_FADER_DOCK[doloop]=1;}
-  } 
+  }
 
- //midi report 
-  
+ //midi report
+
   switch (miditable[0][fader])
   {
   case 0:
@@ -2283,8 +2283,8 @@ int show_who_is_in_dock (int fader, int thedokis)
   sprintf(thetypinfo,"Ctrl Change");
   break;
   }
-  
-  sprintf(string_last_midi_id,"FADER is Ch: %d Pitch: %d Typ: %s" , miditable[1][fader],miditable[2][fader],thetypinfo);  
+
+  sprintf(string_last_midi_id,"FADER is Ch: %d Pitch: %d Typ: %s" , miditable[1][fader],miditable[2][fader],thetypinfo);
 
 
   if(thedokis==0 || thedokis==1) //up down button
@@ -2305,22 +2305,22 @@ int show_who_is_in_dock (int fader, int thedokis)
   sprintf(thetypinfo,"Ctrl Change");
   break;
   }
-  
-  sprintf(string_last_midi_id,"DOCK is Ch: %d Pitch: %d Type: %s", miditable[1][48+fader+(thedokis*48)],miditable[2][48+fader+(thedokis*48)],thetypinfo);  
-  }   
-  
+
+  sprintf(string_last_midi_id,"DOCK is Ch: %d Pitch: %d Type: %s", miditable[1][48+fader+(thedokis*48)],miditable[2][48+fader+(thedokis*48)],thetypinfo);
+  }
+
   sprintf(string_last_over_dock,">>Last Over Dock: Fader %d Dock %d", fader+1,thedokis+1);
   over_fader=fader;
   over_dock=thedokis;
 
- return(0);   
+ return(0);
 }
- 
+
 
 int reset_check_grada_overide_dimmers()
 {
-for (int i=0;i<513;i++){patch_overide[i]=0;}  
-return(0);   
+for (int i=0;i<513;i++){patch_overide[i]=0;}
+return(0);
 }
 
 int reset_all_bangers()//for load show and stop all running bangers
@@ -2330,10 +2330,10 @@ for (int i=0;i<127;i++)
     bang_is_sended[i]=1;//pour ne pas envoyer le banger
     for(int eventnum=0;eventnum<6;eventnum++)
     {
-    event_sended[i][eventnum]=0;//reset des envois        
+    event_sended[i][eventnum]=0;//reset des envois
     }
 }
- return(0);   
+ return(0);
 }
 
 int reset_save_load_report_string()
@@ -2342,7 +2342,7 @@ for (int o=0;o<255;o++)
 {
 sprintf(string_save_load_report[o],"-");
 b_report_error[o]=0;
-}   
+}
 return(0);
 }
 
@@ -2353,17 +2353,17 @@ int scan_audiofolder()
     //reset
     for (int o=0;o<128;o++)
     {
-     sprintf(list_audio_files[o],"");    
+     sprintf(list_audio_files[o],"");
     }
     //detection
     struct al_ffblk f;
     bool isSomeone;
     int nrbe_de_fichiers=0;
-    sprintf(rep_audio,"%s\\audio\\%s\\",mondirectory,audio_folder); 	 
+    sprintf(rep_audio,"%s\\audio\\%s\\",mondirectory,audio_folder);
     chdir(rep_audio);
-    
+
     if(!al_findfirst("*.*",&f,-1))
-    {    
+    {
             while(!al_findnext(&f))
             {
             for(int a=0;a<strlen(f.name);a++)
@@ -2371,7 +2371,7 @@ int scan_audiofolder()
                 if(f.name[a]=='.')
                 {
                     if((f.name[a+1]=='W' &&  f.name[a+2]=='A' &&  f.name[a+3]=='V')
-                    ||(f.name[a+1]=='w' &&  f.name[a+2]=='a' &&  f.name[a+3]=='v')    
+                    ||(f.name[a+1]=='w' &&  f.name[a+2]=='a' &&  f.name[a+3]=='v')
                     ||(f.name[a+1]=='M' &&  f.name[a+2]=='P' &&  f.name[a+3]=='3')
                     ||(f.name[a+1]=='m' &&  f.name[a+2]=='p' &&  f.name[a+3]=='3')
                     )
@@ -2393,14 +2393,14 @@ int scan_audiofolder()
     al_findclose(&f);
 audio_number_total_in_folder=nrbe_de_fichiers;
 //REROLL
-sprintf(rep,"%s\\",mondirectory); 	 
-chdir (rep);    
-return(0);   
+sprintf(rep,"%s\\",mondirectory);
+chdir (rep);
+return(0);
 }
 
-int snapshot_windows()             
+int snapshot_windows()
 {
-recall_windows_focus_id=window_focus_id;  
+recall_windows_focus_id=window_focus_id;
 recall_windows_onoff[1]=index_type;
 recall_windows_onoff[2]=index_list_projecteurs;
 recall_windows_onoff[3]=index_trichro_window;
@@ -2429,7 +2429,7 @@ recall_windows_onoff[23]=index_show_wizard_window;
 
 
 
-return(0);   
+return(0);
 }
 
 int close_all_windows()
@@ -2459,14 +2459,14 @@ index_show_config_window=0;
 index_show_wizard_window=0;
 index_window_gui_iCat=0;
 index_my_window=0;//sample
-return(0);   
+return(0);
 }
 
 int write_window_indexes_from_list_of_windows()
 {
 close_all_windows();
 for(int i=0;i<63;i++)
-{    
+{
 switch(window_opened[i])
 {
         case W_SAVEREPORT:
@@ -2475,7 +2475,7 @@ switch(window_opened[i])
         index_trichro_window=1;
         break;
         case W_NUMPAD:
-        index_visual_pad=1;  
+        index_visual_pad=1;
         break;
         case W_TRACKINGVIDEO:
         index_video_window=1;
@@ -2484,7 +2484,7 @@ switch(window_opened[i])
         index_show_artpoll_reply_content=1;
         break;
         case W_FADERS :
-        index_show_faders=1;        
+        index_show_faders=1;
         break;
         case W_PATCH:
         index_patch_window=1;
@@ -2502,13 +2502,13 @@ switch(window_opened[i])
         index_plot_window=1;
         break;
         case W_ECHO:
-        index_show_echo_window=1;     
+        index_show_echo_window=1;
         break;
         case W_LIST:
-        index_list_projecteurs=1;  
+        index_list_projecteurs=1;
         break;
         case W_SAVE:
-        index_menu_save=1;       
+        index_menu_save=1;
         break;
         case W_MAINMENU:
         index_show_main_menu=1;
@@ -2516,7 +2516,7 @@ switch(window_opened[i])
         case W_BANGER:
         index_show_banger_window=1;
         break;
-        case W_ALARM:  
+        case W_ALARM:
         break;
         case W_AUDIO:
         index_show_audio_window=1;
@@ -2537,7 +2537,7 @@ switch(window_opened[i])
         index_show_mover_window=1;
         break;
         case W_iCAT:
-        index_window_gui_iCat=1;  
+        index_window_gui_iCat=1;
         break;
         case W_GRID:
         index_grider_window=1;
@@ -2546,16 +2546,16 @@ switch(window_opened[i])
         index_my_window=1;
         break;
         default:
-        break;      
+        break;
 }
 }
- return(0);   
+ return(0);
 }
 
 
 int recall_windows()
 {
-window_focus_id=recall_windows_focus_id;  
+window_focus_id=recall_windows_focus_id;
 index_type=recall_windows_onoff[1];
 index_list_projecteurs=recall_windows_onoff[2];
 index_trichro_window=recall_windows_onoff[3];
@@ -2579,8 +2579,8 @@ index_show_audio_window=recall_windows_onoff[21];
 index_show_config_window=recall_windows_onoff[22];
 index_show_wizard_window=recall_windows_onoff[23];
 
-return(0);                      
-}            
+return(0);
+}
 
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -2592,7 +2592,7 @@ vtimex = cos(time_angle)*100;//timerayon
 vtimey = sin(time_angle)*100;
 position_curseur_time_x= xtime_window+150+vtimex;
 position_curseur_time_y=ytime_window+150+vtimey ;
- return(0);   
+ return(0);
 }
 
 //fenetre de Time affectation et prise de chrono
@@ -2616,20 +2616,20 @@ refresh_time_cursor();
 //pb sur les minutes et secondes, ajustage manuel
 if(time_wheel_datatype_is==0){}
 if(time_wheel_datatype_is==1){angle_timesnap_sec+=(5.980005/60/2);}
-return(0);   
-}   
+return(0);
+}
 
 int read_time_string_entry()
 {
 
 int pos_tmp=0;
 char str_tmp[24];
-sprintf(str_tmp,"                        ");  
+sprintf(str_tmp,"                        ");
 
 time_minutes=0;
 time_secondes=0;
 time_centiemes=0;
- 
+
 for (int cpt=0;cpt<numeric_postext; cpt++)
 {
 str_tmp[pos_tmp]=numeric[cpt];
@@ -2637,9 +2637,9 @@ str_tmp[pos_tmp]=numeric[cpt];
 if(numeric[cpt]=='.' && numeric[cpt+1]=='.')
 {
 time_minutes=atol(str_tmp);
-sprintf(str_tmp,"                        ");       
+sprintf(str_tmp,"                        ");
 pos_tmp=0;
-} 
+}
 //SECONDES
 else if(numeric[cpt]=='.' && numeric[cpt+1]!='.')
 {
@@ -2679,9 +2679,9 @@ angle_timesnap_dix=((float)(time_centiemes)/99)*5.980005;//=(int)((angle_timesna
 //if(time_wheel_datatype_is==0){angle_timesnap_min+=(5.980005/59/2);}
 //if(time_wheel_datatype_is==1){angle_timesnap_sec+=((PI*360) / 180);}
 
-set_time_cursor_to_time_type(time_wheel_datatype_is);  
+set_time_cursor_to_time_type(time_wheel_datatype_is);
 
-return(0);   
+return(0);
 }
 
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -2694,9 +2694,9 @@ int reset_midi_receiver_array()
 {
  istyp=0;//pour les retorus launchpad !
  ischan=999;
- ispitch=999;   
-    
- return(0);   
+ ispitch=999;
+
+ return(0);
 }
 //////////////////////////////////////////////////////////////////////////////
 int detect_master_lock(int mo)
@@ -2704,16 +2704,16 @@ int detect_master_lock(int mo)
 
 
  for(int p=0;p<core_user_define_nb_faders;p++)
- {       
+ {
  if(LockFader_is_FullLevel_Preset[mo][p]==1)
  {
- master_lock_preset[mo]=p+1;//l info d affichage est mise directement en + 1 pour permettre le 0 
+ master_lock_preset[mo]=p+1;//l info d affichage est mise directement en + 1 pour permettre le 0
  //de la desaffectation
  break;
  }
  }
- 
- return(0);   
+
+ return(0);
 }
 
 int do_lock_preset(int num_preset)
@@ -2723,7 +2723,7 @@ int do_lock_preset(int num_preset)
  {
  for (int ipo=0;ipo<8;ipo++)
  {lock_preset[ipo]=0;}
- lock_preset[num_preset]=1; 
+ lock_preset[num_preset]=1;
  for (int f=0;f<core_user_define_nb_faders;f++)
  {
  /*ancienne version: le master fader pas mis à full
@@ -2750,10 +2750,10 @@ int do_lock_preset(int num_preset)
  for (int f=0;f<core_user_define_nb_faders;f++)
  {
  FaderLocked[f]=0;
- }    
+ }
  }
  return(0);
-} 
+}
 
 int do_stock_fadersstate(bool fads, bool speeds, bool locks, bool lfos, bool loops)
 {
@@ -2775,13 +2775,13 @@ for (int pe=0;pe<core_user_define_nb_faders;pe++)
            Snaplfo_do_next_step[pe][1]=0;
            for(int d=0;d<core_user_define_nb_docks;d++)
            {
-           Snapis_dock_for_lfo_selected[pe][d]=0;        
-           }    
-           }           
-    
-//stockage    
+           Snapis_dock_for_lfo_selected[pe][d]=0;
+           }
+           }
+
+//stockage
  for (int p=0;p<core_user_define_nb_faders;p++)
- {     
+ {
      if(fads==1){SnapFader[p]=Fader[p];}
      if(speeds==1){Snaplfo_speed[p]=lfo_speed[p];}
      if(locks==1){SnapFaderLocked[p]=FaderLocked[p];}
@@ -2797,22 +2797,22 @@ for (int pe=0;pe<core_user_define_nb_faders;pe++)
      {
            for(int d=0;d<core_user_define_nb_docks;d++)
            {
-           Snapis_dock_for_lfo_selected[p][d]=is_dock_for_lfo_selected[p][d];        
-           }    
+           Snapis_dock_for_lfo_selected[p][d]=is_dock_for_lfo_selected[p][d];
+           }
      }
-  }          
+  }
 sprintf(string_Last_Order,">>All at Zero: pasted previous state");
 reset_midi_receiver_array();
-return(0);   
+return(0);
 }
 
 
 int do_recall_fadersstate(bool fads, bool speeds, bool locks, bool lfos, bool loops)
 {
  for (int p=0;p<core_user_define_nb_faders;p++)
- {   
+ {
  if(minifaders_selected[p]==1)
- {  
+ {
      if(fads==1)
      {
      Fader[p]=SnapFader[p];
@@ -2838,20 +2838,20 @@ int do_recall_fadersstate(bool fads, bool speeds, bool locks, bool lfos, bool lo
      {
            for(int d=0;d<core_user_define_nb_docks;d++)
            {
-           is_dock_for_lfo_selected[p][d]=Snapis_dock_for_lfo_selected[p][d];        
-           }    
+           is_dock_for_lfo_selected[p][d]=Snapis_dock_for_lfo_selected[p][d];
+           }
      }
   }
-}          
-sprintf(string_Last_Order,">>All at Zero: recall done");  
- 
+}
+sprintf(string_Last_Order,">>All at Zero: recall done");
+
 stockage_all_at_zero_state[0]=0;
 stockage_all_at_zero_state[1]=0;
 stockage_all_at_zero_state[2]=0;
 stockage_all_at_zero_state[3]=0;
 stockage_all_at_zero_state[4]=0;
 
- return(0);   
+ return(0);
 }
 
 
@@ -2863,24 +2863,24 @@ index_reset_curve=0;
 index_square_curve=0;
 index_fluo_curve=0;
 index_preheat_curve=0;
- return(0);   
+ return(0);
 }
 
 int reconstruct_plot_dimmer_list_from_patch()
 {
 for(int c=0;c<4;c++)
-{  
+{
 
 for(int s=1;s<=nbre_symbols_on_plot[c];s++)
 {
 for(int p=0;p<513;p++)
 {
 if(Patch[p]==symbol_channel_is[c][s])
-{symbol_dimmer_is[c][s]=p;}        
+{symbol_dimmer_is[c][s]=p;}
 }
-  
+
 }
-}    
+}
 return(0);
 }
 
@@ -2888,13 +2888,13 @@ int patch_straight()
 {
 for(int i=0;i<513;i++)
 {
-Patch[i]=i;        
+Patch[i]=i;
 }
 if(index_build_patch_from_plot==1)
 {
-reconstruct_plot_dimmer_list_from_patch();                       
+reconstruct_plot_dimmer_list_from_patch();
 }
-return(0);   
+return(0);
 }
 
 
@@ -2903,9 +2903,9 @@ int patch_select_all_dimmers()
 {
 for(int i=0;i<513;i++)
 {
-Dimmers_selected[i]=1;        
+Dimmers_selected[i]=1;
 }
- return(0);   
+ return(0);
 }
 
 int  patch_clear_selected()
@@ -2914,22 +2914,22 @@ for(int i=0;i<513;i++)
 {
 if(Dimmers_selected[i]==1)
 {
-Patch[i]=0;       
-curves[i]=0;  
+Patch[i]=0;
+curves[i]=0;
 if(index_build_patch_from_plot==1)
 {
  for(int c=0;c<4;c++)
- {  
+ {
  for(int s=1;s<=nbre_symbols_on_plot[c];s++)
  {
- if(symbol_dimmer_is[c][s]==i){symbol_dimmer_is[c][s]=0;}      
- }  
+ if(symbol_dimmer_is[c][s]==i){symbol_dimmer_is[c][s]=0;}
  }
-}                   
-}        
+ }
+}
+}
 }
 
-return(0);     
+return(0);
 }
 
 
@@ -2941,15 +2941,15 @@ for(int i=0;i<513;i++)
 {
 if(Dimmers_selected[i]==1)
 {
-Patch[i]=i; 
-curves[i]=0;                         
-}        
+Patch[i]=i;
+curves[i]=0;
+}
 }
 if(index_build_patch_from_plot==1)
 {
-reconstruct_plot_dimmer_list_from_patch();                       
+reconstruct_plot_dimmer_list_from_patch();
 }
-return(0);    
+return(0);
 }
 
 
@@ -2958,12 +2958,14 @@ int set_channel_scroll( int ch)
 {
 switch (ClassicalChannelView)
 {
-case 0:    
+case 0:
+{
 int pr=check_wich_channel_is_in_view(ch);
 scroll_channelspace=(int)(ratioview*scroll_pos_preset[pr-1]);
+}
 break;
 case 1:
-if(ch>0 && ch<49){scroll_channelspace=0;}
+{if(ch>0 && ch<49){scroll_channelspace=0;}
 else  if(ch>=48 && ch<97){scroll_channelspace=23;}
 else  if(ch>=97 && ch<145){scroll_channelspace=47;}
 else  if(ch>=145 && ch<193){scroll_channelspace=70;}
@@ -2976,7 +2978,8 @@ else  if(ch>=433 && ch<481){scroll_channelspace=210;}
 else  if(ch>=481){scroll_channelspace=236;}
 break;
 }
-return(0);   
+}
+return(0);
 }
 
 int set_patch_scroll( int dim)
@@ -2992,7 +2995,7 @@ else  if(dim>=349 && dim<397){scroller_patch=140;}
 else  if(dim>=397 && dim<445){scroller_patch=159;}
 else  if(dim>=445 && dim<493){scroller_patch=178;}
 else  if(dim>=493){scroller_patch=198;}
-return(0);   
+return(0);
 }
 
 //les faders reportes dans le tableau midi
@@ -3001,9 +3004,9 @@ int load_Fader_state_to_midi_array()
 for(int i=0;i<core_user_define_nb_faders;i++)
 {
 //faders
-midi_levels[i]=(Fader[i]/2);       
+midi_levels[i]=(Fader[i]/2);
 //lfo speed
-midi_levels[i+196]=(lfo_speed[i]);       
+midi_levels[i+196]=(lfo_speed[i]);
 }
 
 
@@ -3014,34 +3017,34 @@ return(0);
 int send_my_midi_note( int letype,  int lechannel, int lanote, int lavelocite, int laduree)
 {
  MidiEvPtr eMid;
- if (eMid = MidiNewEv(letype)) 
+ if (eMid = MidiNewEv(letype))
  		  	{
-			Port(eMid) = 0;	
+			Port(eMid) = 0;
 			Chan(eMid) = lechannel;
-			Pitch(eMid)= lanote;  
+			Pitch(eMid)= lanote;
 			Vel(eMid)  = lavelocite;
-			Dur(eMid)= laduree;     					   
-            MidiSendIm(myRefNum, eMid);     
-     
+			Dur(eMid)= laduree;
+            MidiSendIm(myRefNum, eMid);
+
 }
-return(0);	
+return(0);
 }
 
 int send_my_midi_note_delayed( int letype,  int lechannel, int lanote, int lavelocite, int laduree, int delay)
 {
  MidiEvPtr eMid;
  long  dt = MidiGetTime();
- if (eMid = MidiNewEv(letype)) 
+ if (eMid = MidiNewEv(letype))
  		  	{
-			Port(eMid) = 0;	
+			Port(eMid) = 0;
 			Chan(eMid) = lechannel;
-			Pitch(eMid)= lanote;  
+			Pitch(eMid)= lanote;
 			Vel(eMid)  = lavelocite;
-			Dur(eMid)= laduree;     					   
-            MidiSendAt(myRefNum, MidiCopyEv(eMid), dt+delay);     
-     
+			Dur(eMid)= laduree;
+            MidiSendAt(myRefNum, MidiCopyEv(eMid), dt+delay);
+
 }
-return(0);	
+return(0);
 }
 
 
@@ -3049,17 +3052,17 @@ int send_immidiateley_my_midi_cc( int letype,  int lechannel, int lanote, int la
 {
  MidiEvPtr eIMid;
 
- if (eIMid = MidiNewEv(letype)) 
+ if (eIMid = MidiNewEv(letype))
  		  	{
-			Port(eIMid) = 0;	
+			Port(eIMid) = 0;
 			Chan(eIMid) = lechannel;
-			Pitch(eIMid)= lanote;  
-			Vel(eIMid)  = lavelocite;        		
-            //Dur(eIMid)= 10;			   
-            MidiSendIm(myRefNum, eIMid);     
- }    
+			Pitch(eIMid)= lanote;
+			Vel(eIMid)  = lavelocite;
+            //Dur(eIMid)= 10;
+            MidiSendIm(myRefNum, eIMid);
+ }
 
-return(0);	
+return(0);
 }
 
 
@@ -3072,13 +3075,13 @@ if(midi_send_out[i]==1 && index_send_midi_out[i]==1 )
 {
 if(miditable[0][i]<128 && miditable[1][i]<128 && miditable[2][i]<128)
 {
-send_immidiateley_my_midi_cc(miditable[0][i],miditable[1][i],miditable[2][i],midi_levels[i]);                                   
+send_immidiateley_my_midi_cc(miditable[0][i],miditable[1][i],miditable[2][i],midi_levels[i]);
 index_send_midi_out[i]=0;
 }
 }
 }
 
- return(0);   
+ return(0);
 }
 
 int load_etat_picker_dans_dockcolor(int dcolor_selected )
@@ -3091,7 +3094,7 @@ angle_snap=angle_hue_par_colordock[dcolor_selected];
 vx = cos(angle_snap)*125;
 vy = sin(angle_snap)*125;
 position_curseur_hue_x= xtrichro_window+vx;
-position_curseur_hue_y=ytrichro_window+vy ; 
+position_curseur_hue_y=ytrichro_window+vy ;
 
 r_pick=picker_trichro[dcolor_selected][0];
 v_pick=picker_trichro[dcolor_selected][1];
@@ -3099,21 +3102,21 @@ b_pick=picker_trichro[dcolor_selected][2];
 my_yellow=picker_trichro[dcolor_selected][3];
 midi_levels[497]=(int)(angle_snap/((PI*360) / (180*127)));
 if(midi_send_out[497]==1){index_send_midi_out[497]=1;}
-return(0);   
+return(0);
 }
 
 
 int refresh_ocv_settings()
 {
 //int
-threshold_level=camera_modes_and_settings[ocv_calcul_mode][0]; 
-erode_level=camera_modes_and_settings[ocv_calcul_mode][1]; 
-div_facteur=camera_modes_and_settings[ocv_calcul_mode][2]; 
+threshold_level=camera_modes_and_settings[ocv_calcul_mode][0];
+erode_level=camera_modes_and_settings[ocv_calcul_mode][1];
+div_facteur=camera_modes_and_settings[ocv_calcul_mode][2];
 //booleens
-threshold_on=camera_modes_and_settings[ocv_calcul_mode][8]; 
-erode_mode=camera_modes_and_settings[ocv_calcul_mode][9]; 
-blur_on=camera_modes_and_settings[ocv_calcul_mode][10]; 
-return(0);   
+threshold_on=camera_modes_and_settings[ocv_calcul_mode][8];
+erode_mode=camera_modes_and_settings[ocv_calcul_mode][9];
+blur_on=camera_modes_and_settings[ocv_calcul_mode][10];
+return(0);
 }
 
 
@@ -3123,7 +3126,7 @@ int refresh_decay()
 if(index_decay_tracker<0){index_decay_tracker=0;}
 else if(index_decay_tracker>127){index_decay_tracker=127;}
 tracker_decay_constant=(float)(index_decay_tracker)/127;
- return(0);   
+ return(0);
 }
 
 
@@ -3131,7 +3134,7 @@ int LoadWhiteCatColorProfil()
 {
 if (config_color_style_is==0)//defaut
 {
-CouleurFond=CouleurFondDefaut;  
+CouleurFond=CouleurFondDefaut;
 CouleurLigne=CouleurLigneDefaut;
 CouleurFader=CouleurFaderDefaut;
 CouleurPatch=CouleurPatchDefaut;
@@ -3142,11 +3145,11 @@ CouleurNiveau=CouleurNiveauDefaut;
 CouleurConfig=CouleurConfigDefaut;
 CouleurBleuProcedure=CouleurBleuProcedureDefaut;
 CouleurBlind=CouleurBlindDefaut;
-CouleurLock=CouleurLockDefaut;       
+CouleurLock=CouleurLockDefaut;
 }
 else if(config_color_style_is==1)//gris classique
 {
-CouleurFond=CouleurGrisClair;  
+CouleurFond=CouleurGrisClair;
 CouleurLigne=CouleurNoir;
 CouleurFader=CouleurGrisAnthracite;
 CouleurPatch=CouleurNoir;
@@ -3157,17 +3160,17 @@ CouleurNiveau=CouleurNoir;
 CouleurConfig=CouleurGrisAnthracite;
 CouleurBleuProcedure=CouleurNoir;
 CouleurBlind=Rgba::RED;
-CouleurLock=CouleurBlanc;      
+CouleurLock=CouleurBlanc;
 petitchiffre.SetColor(Rgba::BLACK);
-petitpetitchiffre.SetColor(Rgba::BLACK); 
+petitpetitchiffre.SetColor(Rgba::BLACK);
 petitchiffrenoir.SetColor(Rgba::WHITE);
-circuitlevel.SetColor(Rgba::WHITE); 
+circuitlevel.SetColor(Rgba::WHITE);
 circuitfaderlevel.SetColor(CouleurGrisAnthracite);
 }
 
 else if(config_color_style_is==2)//bleuté
 {
-CouleurFond=CouleurBleu1;  
+CouleurFond=CouleurBleu1;
 CouleurLigne=CouleurBlanc;
 CouleurFader=CouleurBleu6;
 CouleurPatch=CouleurNoir;
@@ -3178,12 +3181,12 @@ CouleurNiveau=CouleurBlanc;
 CouleurConfig=CouleurBleu4;
 CouleurBleuProcedure=CouleurBleu2;
 CouleurBlind=Rgba::RED;
-CouleurLock=CouleurBleu8;       
+CouleurLock=CouleurBleu8;
 }
 
 else if(config_color_style_is==3)//dicrete
 {
-CouleurFond=Discrete1;  
+CouleurFond=Discrete1;
 CouleurLigne=Discrete2;
 CouleurFader=Discrete3;
 CouleurPatch=Discrete4;
@@ -3194,13 +3197,13 @@ CouleurNiveau=Discrete8;
 CouleurConfig=Discrete9;
 CouleurBleuProcedure=Discrete10;
 CouleurBlind=Discrete11;
-CouleurLock=Discrete12;       
+CouleurLock=Discrete12;
 }
 
 
 else if(config_color_style_is==4)//dmatrix
 {
-CouleurFond=Matrix1;  
+CouleurFond=Matrix1;
 CouleurLigne=Matrix2;
 CouleurFader=Matrix3;
 CouleurPatch=Matrix4;
@@ -3211,12 +3214,12 @@ CouleurNiveau=Matrix8;
 CouleurConfig=Matrix9;
 CouleurBleuProcedure=Matrix10;
 CouleurBlind=Matrix11;
-CouleurLock=Matrix12;       
+CouleurLock=Matrix12;
 }
 
 else if(config_color_style_is==5)//user
 {
-CouleurFond=CouleurUser1;  
+CouleurFond=CouleurUser1;
 CouleurLigne=CouleurUser2;
 CouleurFader=CouleurUser3;
 CouleurPatch=CouleurUser4;
@@ -3227,9 +3230,9 @@ CouleurNiveau=CouleurUser8;
 CouleurConfig=CouleurUser9;
 CouleurBleuProcedure=CouleurUser10;
 CouleurBlind=CouleurUser11;
-CouleurLock=CouleurUser12;       
+CouleurLock=CouleurUser12;
 }
-doom.SetColor( CouleurLigne ); 
+doom.SetColor( CouleurLigne );
 doomblanc.SetColor( CouleurLigne );
 petitdoomblanc.SetColor( CouleurLigne );
 neuro.SetColor( CouleurLigne );
@@ -3245,7 +3248,7 @@ circuitlevel.SetColor( CouleurLevel );
 petitchiffrenoir.SetColor( CouleurFond );
 petitdoomInspekt.SetColor( CouleurFader );
 circuitfaderlevel.SetColor( CouleurFader );
-return(0);   
+return(0);
 }
 
 int record_memory(int mem_is)
@@ -3263,7 +3266,7 @@ int record_memory(int mem_is)
  Selected_Channel[u]=0;
  }
  ratio_cross_manuel[mem_is]=ratio_X1X2_together;
- return(0);   
+ return(0);
 }
 
 
@@ -3272,19 +3275,25 @@ int refresh_mem_onstage(int mem_is)
  for (int u=1;u<514;u++)
  {
  bufferSaisie[u]=Memoires[mem_is][u];
- } 
- return(0);   
+ }
+ return(0);
 }
 
 
 int record_memory_plus_faders(int mem_is)
 {
 if(index_blind==0)
-{ 
- 
+{
+
  for (int u=1;u<514;u++)
  {
- Memoires[mem_is][u]=bufferSequenciel[u] >? bufferFaders[u];
+ if(bufferSequenciel[u] >bufferFaders[u])
+ {Memoires[mem_is][u]=bufferSequenciel[u];
+ }
+ if(bufferSequenciel[u] <=bufferFaders[u])
+ {
+     Memoires[mem_is][u]=bufferFaders[u];
+ }
  Selected_Channel[u]=0;
  }
 //refresh stage
@@ -3301,17 +3310,23 @@ refresh_mem_onstage(mem_is);
 
 
 
- return(0);   
+ return(0);
 }
 
 int overrecord_memory_plus_faders(int mem_is)
 {
 if(index_blind==0)
-{ 
- 
+{
+
  for (int u=1;u<514;u++)
  {
- Memoires[mem_is][u]=bufferSequenciel[u] >? bufferFaders[u];
+ if(bufferSequenciel[u] >bufferFaders[u])
+ {Memoires[mem_is][u]=bufferSequenciel[u];
+ }
+ if(bufferSequenciel[u] <=bufferFaders[u])
+ {
+     Memoires[mem_is][u]=bufferFaders[u];
+ }
  Selected_Channel[u]=0;
  }
 //refresh stage
@@ -3328,7 +3343,7 @@ refresh_mem_onstage(mem_is);
 
 
 
- return(0);   
+ return(0);
 }
 
 
@@ -3336,10 +3351,10 @@ refresh_mem_onstage(mem_is);
 
 int snap_mem_to_copy()
 {
-CTRLC_mem_to_copy=(int)(atof(numeric)*10.0001);  
+CTRLC_mem_to_copy=(int)(atof(numeric)*10.0001);
 sprintf(string_Last_Order,"Mem. To Copy: %d.%d", CTRLC_mem_to_copy/10,CTRLC_mem_to_copy%10);
-reset_numeric_entry();       
- return(0);   
+reset_numeric_entry();
+ return(0);
 }
 
 int copy_mem_in(int mem_n)//recopie d une memoire dans l autre
@@ -3347,20 +3362,20 @@ int copy_mem_in(int mem_n)//recopie d une memoire dans l autre
 MemoiresExistantes[mem_n]=1;
 for(int i=1;i<513;i++)
 {
-Memoires[mem_n][i]=Memoires[CTRLC_mem_to_copy][i];   
-}   
-sprintf(descriptif_memoires[mem_n],descriptif_memoires[CTRLC_mem_to_copy]);  
-sprintf(annotation_memoires[mem_n],annotation_memoires[CTRLC_mem_to_copy]);  
-Times_Memoires[mem_n][0]=Times_Memoires[CTRLC_mem_to_copy][0];  
-Times_Memoires[mem_n][1]=Times_Memoires[CTRLC_mem_to_copy][1];  
-Times_Memoires[mem_n][2]=Times_Memoires[CTRLC_mem_to_copy][2];  
-Times_Memoires[mem_n][3]=Times_Memoires[CTRLC_mem_to_copy][3];  
-Links_Memoires[mem_n]=Links_Memoires[CTRLC_mem_to_copy];  
-Banger_Memoire[mem_n]=Banger_Memoire[CTRLC_mem_to_copy];  
+Memoires[mem_n][i]=Memoires[CTRLC_mem_to_copy][i];
+}
+sprintf(descriptif_memoires[mem_n],descriptif_memoires[CTRLC_mem_to_copy]);
+sprintf(annotation_memoires[mem_n],annotation_memoires[CTRLC_mem_to_copy]);
+Times_Memoires[mem_n][0]=Times_Memoires[CTRLC_mem_to_copy][0];
+Times_Memoires[mem_n][1]=Times_Memoires[CTRLC_mem_to_copy][1];
+Times_Memoires[mem_n][2]=Times_Memoires[CTRLC_mem_to_copy][2];
+Times_Memoires[mem_n][3]=Times_Memoires[CTRLC_mem_to_copy][3];
+Links_Memoires[mem_n]=Links_Memoires[CTRLC_mem_to_copy];
+Banger_Memoire[mem_n]=Banger_Memoire[CTRLC_mem_to_copy];
 sprintf(string_Last_Order,"Copyed in Mem. %d.%d Mem. %d.%d", mem_n/10,mem_n%10,CTRLC_mem_to_copy/10,CTRLC_mem_to_copy%10);
 sprintf(numeric,"");
 numeric_postext=0;
-return(0);   
+return(0);
 }
 
 
@@ -3377,28 +3392,28 @@ int prepare_crossfade()
 {
 if(crossfade_speed<64)
 {
-fraction_X2_in= 255.0/ (Times_Memoires[position_preset][1]*(((float)BPS_RATE)*(64.0/crossfade_speed)));  
+fraction_X2_in= 255.0/ (Times_Memoires[position_preset][1]*(((float)BPS_RATE)*(64.0/crossfade_speed)));
 fraction_X1_out=  255.0/ (Times_Memoires[position_preset][3]*(((float)BPS_RATE)*(64.0/crossfade_speed)));
 crossfade_time_delay_in=(int)(Times_Memoires[position_preset][0]*(((float)BPS_RATE)*(64.0/crossfade_speed)));
 crossfade_time_delay_out=(int)(Times_Memoires[position_preset][2]*(((float)BPS_RATE)*(64.0/crossfade_speed)));
 }
 else if(crossfade_speed==64)
 {
-fraction_X2_in= 255.0/ (Times_Memoires[position_preset][1]*BPS_RATE);  
-fraction_X1_out= 255.0/ (Times_Memoires[position_preset][3]*BPS_RATE);     
-crossfade_time_delay_in=(int) (Times_Memoires[position_preset][0]*BPS_RATE);  
-crossfade_time_delay_out=(int)(Times_Memoires[position_preset][2]*BPS_RATE);                            
+fraction_X2_in= 255.0/ (Times_Memoires[position_preset][1]*BPS_RATE);
+fraction_X1_out= 255.0/ (Times_Memoires[position_preset][3]*BPS_RATE);
+crossfade_time_delay_in=(int) (Times_Memoires[position_preset][0]*BPS_RATE);
+crossfade_time_delay_out=(int)(Times_Memoires[position_preset][2]*BPS_RATE);
 }
 else if(crossfade_speed>64)
 {
-fraction_X2_in= 255.0/ ((Times_Memoires[position_preset][1]- ( (Times_Memoires[position_preset][1] /64) * (crossfade_speed-63)))*BPS_RATE); //-62 evite un passage de temps pas bon, cf curseur 
+fraction_X2_in= 255.0/ ((Times_Memoires[position_preset][1]- ( (Times_Memoires[position_preset][1] /64) * (crossfade_speed-63)))*BPS_RATE); //-62 evite un passage de temps pas bon, cf curseur
 fraction_X1_out=  255.0/ ((Times_Memoires[position_preset][3]- ( (Times_Memoires[position_preset][3] /64) * (crossfade_speed-63)))*BPS_RATE);
-crossfade_time_delay_in= (int) ((Times_Memoires[position_preset][0]- ( (Times_Memoires[position_preset][0] /64) * (crossfade_speed-63)))*BPS_RATE); //-62 evite un passage de temps pas bon, cf curseur 
+crossfade_time_delay_in= (int) ((Times_Memoires[position_preset][0]- ( (Times_Memoires[position_preset][0] /64) * (crossfade_speed-63)))*BPS_RATE); //-62 evite un passage de temps pas bon, cf curseur
 crossfade_time_delay_out= (int) ((Times_Memoires[position_preset][2]- ( (Times_Memoires[position_preset][2] /64) * (crossfade_speed-63)))*BPS_RATE);
 }
 
 
-return(0);   
+return(0);
 }
 
 
@@ -3409,8 +3424,8 @@ for (int k=position_onstage-1; k>=0;k--)
 {
 if(k==0  && turn==0){k=9999;turn=1;}
 if(MemoiresExistantes[k]==1 && MemoiresExclues[k]==0)
-{mem_before_one=k; break;}    
-}                   
+{mem_before_one=k; break;}
+}
 return(0);
 }
 
@@ -3422,9 +3437,9 @@ for (int k=position_onstage+1; k<10000;k++)
 {
 if(k>=9999 && turn==0){k=0;turn=1;}
 if(MemoiresExistantes[k]==1 && MemoiresExclues[k]==0)
-{position_preset=k; break;}    
-}                   
-return(0);    
+{position_preset=k; break;}
+}
+return(0);
 }
 
 int detect_mem_preset_previous()
@@ -3433,9 +3448,9 @@ bool turn=0;
 for (int p=(position_preset-1);p>=0;p--)
 {
 if(p==0 && turn==0){p=9999;turn=1;}
-if (MemoiresExistantes[p]==1){position_preset=p;break;}    
-}    
-return(0);    
+if (MemoiresExistantes[p]==1){position_preset=p;break;}
+}
+return(0);
 }
 
 int detect_next_preset()
@@ -3444,8 +3459,8 @@ bool turn=0;
 for (int p=(position_preset+1);p<10000;p++)
 {
 if(p>=9999 && turn==0){p=0;turn=1;}
-if (MemoiresExistantes[p]==1 && MemoiresExclues[p]==0){position_preset=p;break;}    
-}        
+if (MemoiresExistantes[p]==1 && MemoiresExclues[p]==0){position_preset=p;break;}
+}
 return(0);
 }
 
@@ -3455,9 +3470,9 @@ int refresh_mem_onpreset(int mem_is)
  for (int u=1;u<514;u++)
  {
  bufferBlind[u]=Memoires[mem_is][u];
- } 
+ }
  ratio_X1X2_together=ratio_cross_manuel[mem_is];
- return(0);   
+ return(0);
 }
 
 
@@ -3467,7 +3482,7 @@ int create_memory(int mem_to_create)
 if ( mem_to_create>10000)
 {sprintf(string_Last_Order,"a Mem can't be > to 1000");}
 
-else 
+else
 {
 MemoiresExistantes[mem_to_create]=1;
 sprintf(string_Last_Order,"Mem %d.%d created", mem_to_create/10, mem_to_create%10);
@@ -3498,7 +3513,7 @@ position_preset=mem_to_create;
 }
 
 ratio_X1X2_together=0;
-return(0);    
+return(0);
 }
 
 
@@ -3508,7 +3523,7 @@ int create_memory_plus_faders(int mem_to_create)
 if ( mem_to_create>10000)
 {sprintf(string_Last_Order,"a Mem can't be > to 1000");}
 
-else 
+else
 {
 MemoiresExistantes[mem_to_create]=1;
 sprintf(string_Last_Order,"Mem %d.%d created", mem_to_create/10, mem_to_create%10);
@@ -3535,7 +3550,7 @@ refresh_mem_onpreset(position_preset);
 }
 
 ratio_X1X2_together=0;
-return(0);    
+return(0);
 }
 
 int delete_memory(int mem_to_delete)
@@ -3544,7 +3559,7 @@ sprintf(string_confirmation,"Delete Mem %d.%d ?", mem_to_delete/10,mem_to_delete
 
 if (  mem_to_delete>10000)
 {sprintf(string_Last_Order,"a Mem to be deleted > to 1000");}
-else 
+else
 {
 if(MemoiresExistantes[mem_to_delete]==1)
 {
@@ -3555,23 +3570,23 @@ else if (MemoiresExistantes[mem_to_delete]==0)
 {sprintf(string_Last_Order,"Mem %d.%d do not exist", mem_to_delete/10,mem_to_delete%10);}
 }
 
-return(0);    
+return(0);
 }
 
 
 int refresh_integrated_gridplayer1()
 {
-if(show_gridplayer_in_seq==1 && set_from_seq_gridplayer1_next_step[position_onstage]!=-1 ) 
+if(show_gridplayer_in_seq==1 && set_from_seq_gridplayer1_next_step[position_onstage]!=-1 )
 {
-index_grider_step_is[0]=set_from_seq_gridplayer1_next_step[position_onstage];    
+index_grider_step_is[0]=set_from_seq_gridplayer1_next_step[position_onstage];
 grider_is_playing[0]=0;
 grid_niveauX1[0]=255;
 grid_niveauX2[0]=0;
 grid_floatX1[0]=255;
 grid_floatX2[0]=0;
-gridder_prepare_cross(0, index_grider_selected[0], index_grider_step_is[0]);                          
+gridder_prepare_cross(0, index_grider_selected[0], index_grider_step_is[0]);
 }
-return(0);   
+return(0);
 }
 
 
@@ -3584,7 +3599,7 @@ for (int op=1;op<514;op++)
 {
 bufferSaisie[op]=bufferSequenciel[op];
 }
-niveauX1=255; niveauX2=0; 
+niveauX1=255; niveauX2=0;
 crossfade_speed=64;
 position_preset=mem_is;
 refresh_mem_onpreset(mem_is);
@@ -3593,7 +3608,7 @@ floatX1=niveauX1;
 floatX2=niveauX2;
 index_go=1;
 refresh_integrated_gridplayer1();
-return(0);   
+return(0);
 }
 
 int do_double_go_function()
@@ -3605,13 +3620,13 @@ for (int op=1;op<514;op++)
 {
 bufferSaisie[op]=bufferSequenciel[op];
 }
-niveauX1=255; niveauX2=0; 
+niveauX1=255; niveauX2=0;
 crossfade_speed=64;
 reset_modified_levels_in_crossfade();
 for(int ipo=position_preset+1;ipo<10000;ipo++)
 {
 if(ipo>=9999){ipo=0;}
-if(MemoiresExistantes[ipo]==1){position_preset=ipo; break;}        
+if(MemoiresExistantes[ipo]==1){position_preset=ipo; break;}
 }
 refresh_mem_onpreset(position_preset);
 prepare_crossfade();
@@ -3627,9 +3642,9 @@ if(grider_is_playing[0]==0 && set_from_seq_gridplayer1_next_step[position_preset
 {
 gridder_prepare_cross(0,index_grider_selected[0],set_from_seq_gridplayer1_next_step[position_preset]-1);
 grider_is_playing[0]=1;grid_crossfade_start_time[0]=actual_time;
-}                              
 }
-return(0);   
+}
+return(0);
 }
 
 int do_go_back_function()
@@ -3656,7 +3671,7 @@ if(grider_is_playing[0]==0 && set_from_seq_gridplayer1_next_step[position_preset
 {
 gridder_prepare_cross(0,index_grider_selected[0],set_from_seq_gridplayer1_next_step[position_preset]-1);
 grider_is_playing[0]=1;grid_crossfade_start_time[0]=actual_time;
-}                              
+}
 }
 }
 else if(index_go_back==0 && index_go==1)
@@ -3667,19 +3682,19 @@ index_pause=0;
 }
 else if(index_go_back==1 && index_pause==0)
 {
-index_pause=1;    
+index_pause=1;
 }
 else if(index_go_back==1 && index_pause==1)
 {
-index_pause=0;    
+index_pause=0;
 }
- return(0);   
+ return(0);
 }
 
 
 int do_go_function()
 {
-         
+
 if(index_go==0)
 {
 index_go=1; index_go_back=0;
@@ -3690,18 +3705,18 @@ if(show_gridplayer_in_seq==1)
 {
 grid_in_preset[0][0]=index_grider_selected[0];
 grid_in_preset[0][1]=set_from_seq_gridplayer1_next_step[position_preset]-1;
-if(grider_is_playing[0]==0 && set_from_seq_gridplayer1_next_step[position_preset]!=-1 
+if(grider_is_playing[0]==0 && set_from_seq_gridplayer1_next_step[position_preset]!=-1
 && set_from_seq_gridplayer1_next_step[position_preset]!=index_grider_step_is[0])
 {
 gridder_prepare_cross(0,index_grider_selected[0],set_from_seq_gridplayer1_next_step[position_preset]-1);
 grider_is_playing[0]=1;grid_crossfade_start_time[0]=actual_time;
-}                              
+}
 }
 }
 
 else if(index_go==1 && index_pause==0)
 {
-index_pause=1; 
+index_pause=1;
 if(crossfade_time_delay_in>(actual_time-crossfade_start_time)){crossfade_time_delay_in-=actual_time-crossfade_start_time;};
 if(crossfade_time_delay_out>(actual_time-crossfade_start_time)){crossfade_time_delay_out-=actual_time-crossfade_start_time;};
 //integration du gridplayer 1
@@ -3714,7 +3729,7 @@ if(grider_is_playing[0]==1 )
 grider_is_playing[0]=0;
 if(grid_delay_in[0]>(actual_time-grid_crossfade_start_time[0])){grid_delay_in[0]-=actual_time-grid_crossfade_start_time[0];};
 if(grid_delay_out[0]>(actual_time-grid_crossfade_start_time[0])){grid_delay_out[0]-=actual_time-grid_crossfade_start_time[0];}
-}                              
+}
 }
 }
 else if(index_go==1 && index_pause==1)
@@ -3735,10 +3750,10 @@ grider_is_playing[0]=1;
 if(grid_delay_in[0]>(actual_time-grid_crossfade_start_time[0])){grid_delay_in[0]-=actual_time-grid_crossfade_start_time[0];}
 if(grid_delay_in[0]<0){grid_delay_in[0]=0;}
 if(grid_delay_out[0]>(actual_time-grid_crossfade_start_time[0])){grid_delay_out[0]-=actual_time-grid_crossfade_start_time[0];};
-if(grid_delay_out[0]<0){grid_delay_out[0]=0;}         
+if(grid_delay_out[0]<0){grid_delay_out[0]=0;}
 }
 }
-return(0);   
+return(0);
 }
 
 
@@ -3746,9 +3761,9 @@ int patch_unselect_all_dimmers()
 {
 for(int i=0;i<513;i++)
 {
-Dimmers_selected[i]=0;        
-}    
-return(0);    
+Dimmers_selected[i]=0;
+}
+return(0);
 }
 
 
@@ -3760,13 +3775,13 @@ int build_default_curve(int curve)
  for (int pt=1;pt<MAX_curve_nodeS-1;pt++)
  {
   curve_ctrl_pt[curve][pt][0]=(int)((((float)255)/6) *pt);
-  curve_ctrl_pt[curve][pt][1]=255-(int)((((float)255)/6) *pt); 
- }   
- curve_ctrl_pt[curve][1][0]=0; curve_ctrl_pt[curve][1][1]=255;//point 1 en 0 0 
- curve_ctrl_pt[curve][5][0]=255; curve_ctrl_pt[curve][5][1]=0;//point 5 en 255 255 
- 
-  curve_ctrl_pt[curve][6][0]=255; curve_ctrl_pt[curve][6][1]=0;//point 5 en 255 255 
- 
+  curve_ctrl_pt[curve][pt][1]=255-(int)((((float)255)/6) *pt);
+ }
+ curve_ctrl_pt[curve][1][0]=0; curve_ctrl_pt[curve][1][1]=255;//point 1 en 0 0
+ curve_ctrl_pt[curve][5][0]=255; curve_ctrl_pt[curve][5][1]=0;//point 5 en 255 255
+
+  curve_ctrl_pt[curve][6][0]=255; curve_ctrl_pt[curve][6][1]=0;//point 5 en 255 255
+
  the_curve_spline_level[curve]=168;
  index_curve_spline_level=168;
  curve_spline_level=(((float)index_curve_spline_level)/127)-1;
@@ -3774,7 +3789,7 @@ int build_default_curve(int curve)
  curve_curviness = ftofix(curve_spline_level);
  curve_calc_tangents();
  curve_draw_splines();
- 
+
 curve_spline_level=(((float)index_curve_spline_level)/127)-1;
 
 //write_curve(); //fait planter si debordement de memoire
@@ -3805,8 +3820,8 @@ tracking_coordonates[dkprpreset][dkpr][3]=25;//hauteur
 for(int affe=1;affe<513;affe++)
 {
 tracking_contents[dkprpreset][dkpr][affe]=0;
-}    
-return(0);   
+}
+return(0);
 }
 
 int set_to_default_my_trackers()
@@ -3816,7 +3831,7 @@ for (int dokTr=0;dokTr<6;dokTr++)
 set_to_default_my_roi(dokTr,dokTr);
 set_to_default_my_roi(dokTr,dokTr+6);
 }
-return(0);    
+return(0);
 }
 
 
@@ -3827,7 +3842,7 @@ for (int dokTr=0;dokTr<6;dokTr++)
 set_to_default_my_roi(Tcker,dokTr);
 set_to_default_my_roi(Tcker,dokTr+6);
 }
-return(0);    
+return(0);
 }
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -3840,7 +3855,7 @@ if(fpi=fopen("user/show_coming_from.txt","w"))//etait wb
 fprintf(fpi,"%s",my_show_is_coming_from);
 }
 fclose(fpi);
-return(0);    
+return(0);
 }
 
 
@@ -3854,28 +3869,28 @@ for (int d=0;d<core_user_define_nb_docks;d++)
 someone_inside=0;
 for(int c=0;c<513;c++)
 {
-if (FaderDockContains[f][d][c]>0){someone_inside=1;break; }    
-}    
-if(someone_inside==0){DockTypeIs[f][d]=9;} 
-else if(someone_inside==1){DockTypeIs[f][d]=0;} 
-}   
- 
+if (FaderDockContains[f][d][c]>0){someone_inside=1;break; }
 }
-return(0);   
+if(someone_inside==0){DockTypeIs[f][d]=9;}
+else if(someone_inside==1){DockTypeIs[f][d]=0;}
 }
 
+}
+return(0);
+}
 
 
 
-int detect_dock_used(int numfad) 
+
+int detect_dock_used(int numfad)
 {
 int thedockused;
 for (int tt=0;tt<core_user_define_nb_docks;tt++)
 {
- if ( DockIsSelected[numfad][tt]==1){thedockused=tt;break;}   
+ if ( DockIsSelected[numfad][tt]==1){thedockused=tt;break;}
 }
-return(thedockused);   
-} 
+return(thedockused);
+}
 
 
 int refresh_minifader_state_view_core(int cmptfader)
@@ -3884,47 +3899,47 @@ sprintf(str_minifader_feedback[0],"Fader %d:",cmptfader+1);
 int dokmin=dock_used_by_fader_is[cmptfader];
 sprintf(str_minifader_feedback[2],DockName[cmptfader][dokmin]);
 switch(DockTypeIs[cmptfader][dokmin])
-{                   
+{
  case 0:
- sprintf(str_tmp_minidock_dock,"Channels");   
+ sprintf(str_tmp_minidock_dock,"Channels");
  break;
-//types des docks 
+//types des docks
  case 1://si le doc est relié aux trichro
- sprintf(str_tmp_minidock_dock,"Color");                                    
+ sprintf(str_tmp_minidock_dock,"Color");
  break;
  case 2://si le doc est relié à un artnet
- sprintf(str_tmp_minidock_dock, "Art-%d",DockNetIs[cmptfader][dokmin]);                     
+ sprintf(str_tmp_minidock_dock, "Art-%d",DockNetIs[cmptfader][dokmin]);
  break;
  case 3://si le doc recoit le dmxIN
- sprintf(str_tmp_minidock_dock,"Dmx-In");    
+ sprintf(str_tmp_minidock_dock,"Dmx-In");
  break;
  case 4://si le doc recoit le tracking video
- sprintf(str_tmp_minidock_dock,"Video");                                 
+ sprintf(str_tmp_minidock_dock,"Video");
  break;
  case 5://si le doc contient une memoire
- sprintf(str_tmp_minidock_dock,"Mem.%.1f",(((float)(DockHasMem[cmptfader][dokmin]))/10)); 
- sprintf(str_minifader_feedback[2],descriptif_memoires[(DockHasMem[cmptfader][dokmin])]);                            
+ sprintf(str_tmp_minidock_dock,"Mem.%.1f",(((float)(DockHasMem[cmptfader][dokmin]))/10));
+ sprintf(str_minifader_feedback[2],descriptif_memoires[(DockHasMem[cmptfader][dokmin])]);
  break;
  case 6://audio Player Volume
- sprintf(str_tmp_minidock_dock,"Vol.%d",(DockHasAudioVolume[cmptfader][dokmin]));                    
+ sprintf(str_tmp_minidock_dock,"Vol.%d",(DockHasAudioVolume[cmptfader][dokmin]));
  break;
  case 7://audio Player Pan
- sprintf(str_tmp_minidock_dock,"Pan.%d",(DockHasAudioPan[cmptfader][dokmin]));                      
- break; 
+ sprintf(str_tmp_minidock_dock,"Pan.%d",(DockHasAudioPan[cmptfader][dokmin]));
+ break;
  case 8:
- sprintf(str_tmp_minidock_dock,"Pitch.%d",(DockHasAudioPitch[cmptfader][dokmin]));                         
+ sprintf(str_tmp_minidock_dock,"Pitch.%d",(DockHasAudioPitch[cmptfader][dokmin]));
  break;
  case 9://no content
- sprintf(str_tmp_minidock_dock,"-no name-");  
+ sprintf(str_tmp_minidock_dock,"-no name-");
  break;
  case 10://DC
- sprintf(str_tmp_minidock_dock,"DC.%d",(FaderDirectChan[cmptfader][dokmin]));   
+ sprintf(str_tmp_minidock_dock,"DC.%d",(FaderDirectChan[cmptfader][dokmin]));
  break;
   case 11://chaser
- sprintf(str_tmp_minidock_dock,"Chaser.%d",(ChaserAffectedToDck[cmptfader][dokmin]+1));   
+ sprintf(str_tmp_minidock_dock,"Chaser.%d",(ChaserAffectedToDck[cmptfader][dokmin]+1));
  break;
  case 12:
- sprintf(str_tmp_minidock_dock,"GridPl.%d",(faders_dock_grid_affectation[cmptfader][dokmin]+1));    
+ sprintf(str_tmp_minidock_dock,"GridPl.%d",(faders_dock_grid_affectation[cmptfader][dokmin]+1));
  break;
 }
 sprintf(str_minifader_feedback[1],"Dock %d %s",(dokmin+1),str_tmp_minidock_dock);
@@ -3937,30 +3952,30 @@ case 0:
 sprintf(report_minifader_str,"Status: No Move");
 break;
 case 1:
-sprintf(report_minifader_str,"Status: Up");     
+sprintf(report_minifader_str,"Status: Up");
 break;
 case 2:
 sprintf(report_minifader_str,"Status: Down");
-break;                   
+break;
 }
 
 if(lfo_mode_is[cmptfader]==0 && lfo_cycle_is_on[cmptfader]==1)
 {sprintf(report_minifader_str,"Status: Saw");}
 
 if(is_dock_for_lfo_selected[cmptfader][dokmin]==1){strcat(report_minifader_str," [Loop]");}
-sprintf(str_minifader_feedback[4],report_minifader_str); 
+sprintf(str_minifader_feedback[4],report_minifader_str);
 sprintf(report_minifader_str,"");//clear
 if(lfo_do_next_step[cmptfader][0]==1)
 {
-sprintf(str_minifader_feedback[5],"ToPrev. Dock");                                     
+sprintf(str_minifader_feedback[5],"ToPrev. Dock");
 }
 else if(lfo_do_next_step[cmptfader][1]==1)
 {
-sprintf(str_minifader_feedback[6],"ToNext Dock");                                     
+sprintf(str_minifader_feedback[6],"ToNext Dock");
 }
 if(lfo_cycle_steps[cmptfader]==1)
 {
-sprintf(str_minifader_feedback[7],"UpAndDown Docks");        
+sprintf(str_minifader_feedback[7],"UpAndDown Docks");
 }
 
 //affichage temps
@@ -3977,13 +3992,13 @@ niv= (int) (((float)LevelStopPos[cmptfader])/2.55);
 break;
 case 1:
 niv=LevelStopPos[cmptfader];
-break;                
+break;
 }
 sprintf(string_fader_stop_pos[cmptfader],"%d",niv);
 sprintf(str_minifader_feedback[9],"Stop Pos ON: %d",niv);
 }
 else if(StopPosOn[cmptfader]==0){sprintf(str_minifader_feedback[9],"");}
-return(0);   
+return(0);
 }
 
 
@@ -4018,14 +4033,14 @@ case 1://lock
    lfo_mode_is[cmptfader]=0;
    lfo_cycle_is_on[cmptfader]=0;
    }
-   break; 
+   break;
    case 1:
    FaderLocked[cmptfader]=0;
    //remise à plat du niveau
    Fader[cmptfader]=(unsigned char)((((float)(StateOfFaderBeforeLock[cmptfader]))/255)*locklevel);
    midi_levels[cmptfader]=(int)(((float)Fader[cmptfader])/2);
    sprintf(string_Last_Order,">> UNLOCKED Fader %d",cmptfader+1);
-   break;     
+   break;
    }
 break;
 case 2://loop on off
@@ -4049,10 +4064,10 @@ lfo_mode_is[cmptfader]=1;
 faders_in_float[cmptfader]=Fader[cmptfader];
 if(index_midi_mute_on_lfo==1){is_raccrochage_midi_remote[cmptfader]=1;}
 }
-else 
-{lfo_mode_is[cmptfader]=0;}  
+else
+{lfo_mode_is[cmptfader]=0;}
 lfo_cycle_is_on[cmptfader]=0;
-}  
+}
 break;
 case 4://DOWN
 if(FaderLocked[cmptfader]==0 || LockFader_is_FullLevel[cmptfader]==1)
@@ -4068,7 +4083,7 @@ if(index_midi_mute_on_lfo==1){is_raccrochage_midi_remote[cmptfader]=1;}
 }
 else {lfo_mode_is[cmptfader]=0;}
 lfo_cycle_is_on[cmptfader]=0;
-}        
+}
 break;
 case 5://SAW
 if(FaderLocked[cmptfader]==0 || LockFader_is_FullLevel[cmptfader]==1)
@@ -4101,7 +4116,7 @@ switch(index_choose_mode_dkloop)
 case 0:
 for(int op=0;op<core_user_define_nb_docks;op++)
 {
- is_dock_for_lfo_selected[cmptfader][op]=toggle(is_dock_for_lfo_selected[cmptfader][op]);     
+ is_dock_for_lfo_selected[cmptfader][op]=toggle(is_dock_for_lfo_selected[cmptfader][op]);
 }
 break;
 case 1:
@@ -4113,7 +4128,7 @@ if(DockIsSelected[cmptfader][j]==1)
 int tempval_dockloop=toggle(is_dock_for_lfo_selected[cmptfader][j]);
 for(int k=0;k<core_user_define_nb_docks;k++)
 {
-is_dock_for_lfo_selected[cmptfader][k]=toggle(tempval_dockloop); 
+is_dock_for_lfo_selected[cmptfader][k]=toggle(tempval_dockloop);
 }
 break;
 }
@@ -4124,7 +4139,7 @@ break;
 break;
 case 7://all at zero
          do_stock_fadersstate(1,1,1,1,1);
-           
+
            Fader[cmptfader]=0;
            midi_levels[cmptfader]=0;
            index_send_midi_out[cmptfader]=1;
@@ -4136,12 +4151,12 @@ case 7://all at zero
            lfo_cycle_is_on[cmptfader]=0;//saw
            lfo_cycle_steps[cmptfader]=0;
            lfo_do_next_step[cmptfader][0]=0;
-           lfo_do_next_step[cmptfader][1]=0; 
+           lfo_do_next_step[cmptfader][1]=0;
            for(int d=0;d<core_user_define_nb_docks;d++)
            {
-           is_dock_for_lfo_selected[cmptfader][d]=0;        
-           }   
-           
+           is_dock_for_lfo_selected[cmptfader][d]=0;
+           }
+
 break;
 case 8://Set pos job
 
@@ -4162,7 +4177,7 @@ int lStopPos=999;
     break;
     case 1:
     lStopPos=atol(numeric);
-    break;               
+    break;
     }
 reset_numeric_entry();
 if (lStopPos>=0 && lStopPos<=255)
@@ -4170,75 +4185,75 @@ if (lStopPos>=0 && lStopPos<=255)
    StopPosOn[cmptfader]=1;LevelStopPos[cmptfader]=lStopPos;
    index_do_dock=0;
    do_light_setpos[cmptfader]=1;
-   }    
+   }
 }
 else if (numeric_postext==0) //affectation stop pos depuis le cursuer fader
 {
 StopPosOn[cmptfader]=1;LevelStopPos[cmptfader]=Fader[cmptfader];
 index_do_dock=0;
 do_light_setpos[cmptfader]=1;
-}   
+}
 }
 
-else if(index_main_clear==1 && index_do_dock==0)//clear   
+else if(index_main_clear==1 && index_do_dock==0)//clear
 {
 StopPosOn[cmptfader]=0;
-LevelStopPos[cmptfader]=999; 
+LevelStopPos[cmptfader]=999;
 index_main_clear=0;
 do_light_setpos[cmptfader]=1;
-}  
+}
 break;
 case 9://PrEV DOCK MODE
-if (lfo_do_next_step[cmptfader][0]==0) {lfo_do_next_step[cmptfader][0]=1;lfo_do_next_step[cmptfader][1]=0;}   
-else if (lfo_do_next_step[cmptfader][0]==1) {lfo_do_next_step[cmptfader][0]=0; }  
+if (lfo_do_next_step[cmptfader][0]==0) {lfo_do_next_step[cmptfader][0]=1;lfo_do_next_step[cmptfader][1]=0;}
+else if (lfo_do_next_step[cmptfader][0]==1) {lfo_do_next_step[cmptfader][0]=0; }
 break;
 case 10://NEXT DOCK MODE
-if (lfo_do_next_step[cmptfader][1]==0) {lfo_do_next_step[cmptfader][1]=1;lfo_do_next_step[cmptfader][0]=0; ;}   
-else if (lfo_do_next_step[cmptfader][1]==1) {lfo_do_next_step[cmptfader][1]=0; }     
+if (lfo_do_next_step[cmptfader][1]==0) {lfo_do_next_step[cmptfader][1]=1;lfo_do_next_step[cmptfader][0]=0; ;}
+else if (lfo_do_next_step[cmptfader][1]==1) {lfo_do_next_step[cmptfader][1]=0; }
 break;
 case 11://VA ET VIENT
 lfo_cycle_steps[cmptfader]= toggle(lfo_cycle_steps[cmptfader]);
-break;  
+break;
 case 12: //dock minus
 dockused=detect_dock_used(cmptfader);
-               DockIsSelected[cmptfader][dockused]=0; 
+               DockIsSelected[cmptfader][dockused]=0;
                if (dockused>0)
                 {
                 DockIsSelected[cmptfader][dockused]=0;
                 dockused--;
-                DockIsSelected[cmptfader][dockused]=1; 
+                DockIsSelected[cmptfader][dockused]=1;
                 }
                else if (dockused==0)
                 {
                 DockIsSelected[cmptfader][dockused]=0;
                 dockused=5;//6 docks pos 5
-                DockIsSelected[cmptfader][dockused]=1; 
-                }         
-               
+                DockIsSelected[cmptfader][dockused]=1;
+                }
+
 break;
 case 13: // dock plus
 dockused=detect_dock_used(cmptfader);
-               DockIsSelected[cmptfader][dockused]=0; 
+               DockIsSelected[cmptfader][dockused]=0;
                if (dockused<5)
                 {
                 DockIsSelected[cmptfader][dockused]=0;
                 dockused++;
-                DockIsSelected[cmptfader][dockused]=1; 
+                DockIsSelected[cmptfader][dockused]=1;
                 }
                else if (dockused==5)
                 {
                 DockIsSelected[cmptfader][dockused]=0;
                 dockused=0;//6 docks pos 5
-                DockIsSelected[cmptfader][dockused]=1; 
-                }                   
-              
+                DockIsSelected[cmptfader][dockused]=1;
+                }
+
 break;
 case 14: //play embeded
 int the_chaser;
 int the_grid_player;
 int the_audio_player;
 
-if(DockTypeIs[cmptfader][dock_used_by_fader_is[cmptfader]]==11 || DockTypeIs[cmptfader][dock_used_by_fader_is[cmptfader]]==12 
+if(DockTypeIs[cmptfader][dock_used_by_fader_is[cmptfader]]==11 || DockTypeIs[cmptfader][dock_used_by_fader_is[cmptfader]]==12
 || DockTypeIs[cmptfader][dock_used_by_fader_is[cmptfader]]==6 || DockTypeIs[cmptfader][dock_used_by_fader_is[cmptfader]]==7 || DockTypeIs[cmptfader][dock_used_by_fader_is[cmptfader]]==8  )
 
 {
@@ -4256,54 +4271,54 @@ if(player_ignited[the_audio_player]==1)
 {
 switch(the_audio_player)
 {
-case 0://PLAYER 1                        
- switch(player1->isPlaying()) 
+case 0://PLAYER 1
+ switch(player1->isPlaying())
  {
  case 0:
- player1->play(); 
- break; 
+ player1->play();
+ break;
  case 1:
  player1->stop();
- break;                            
- }        
+ break;
+ }
 break;
-case 1://PLAYER 2                       
- switch(player2->isPlaying()) 
+case 1://PLAYER 2
+ switch(player2->isPlaying())
  {
  case 0:
- player2->play();   
- break; 
+ player2->play();
+ break;
  case 1:
  player2->stop();
- break;                            
- }        
+ break;
+ }
 break;
-case 2://PLAYER 3                        
- switch(player3->isPlaying()) 
+case 2://PLAYER 3
+ switch(player3->isPlaying())
  {
  case 0:
- player3->play();   
- break; 
+ player3->play();
+ break;
  case 1:
  player3->stop();
- break;                            
- }        
+ break;
+ }
 break;
-case 3://PLAYER 4                        
- switch(player4->isPlaying()) 
+case 3://PLAYER 4
+ switch(player4->isPlaying())
  {
  case 0:
- player4->play();   
- break; 
+ player4->play();
+ break;
  case 1:
  player4->stop();
- break;                            
- }        
+ break;
+ }
 break;
 }
 switch(player_is_playing[the_audio_player])//inversed by action
 {
-case 0:                                         
+case 0:
 sprintf(string_Last_Order,">> PLAY ON from Fader %d Audio %d",cmptfader+1,the_audio_player+1);
 break;
 case 1:
@@ -4317,54 +4332,54 @@ if(player_ignited[the_audio_player]==1)
 {
 switch(the_audio_player)
 {
-case 0://PLAYER 1                        
- switch(player1->isPlaying()) 
+case 0://PLAYER 1
+ switch(player1->isPlaying())
  {
  case 0:
- player1->play(); 
- break; 
+ player1->play();
+ break;
  case 1:
  player1->stop();
- break;                            
- }        
+ break;
+ }
 break;
-case 1://PLAYER 2                       
- switch(player2->isPlaying()) 
+case 1://PLAYER 2
+ switch(player2->isPlaying())
  {
  case 0:
- player2->play();   
- break; 
+ player2->play();
+ break;
  case 1:
  player2->stop();
- break;                            
- }        
+ break;
+ }
 break;
-case 2://PLAYER 3                        
- switch(player3->isPlaying()) 
+case 2://PLAYER 3
+ switch(player3->isPlaying())
  {
  case 0:
- player3->play();   
- break; 
+ player3->play();
+ break;
  case 1:
  player3->stop();
- break;                            
- }        
+ break;
+ }
 break;
-case 3://PLAYER 4                        
- switch(player4->isPlaying()) 
+case 3://PLAYER 4
+ switch(player4->isPlaying())
  {
  case 0:
- player4->play();   
- break; 
+ player4->play();
+ break;
  case 1:
  player4->stop();
- break;                            
- }        
+ break;
+ }
 break;
 }
 switch(player_is_playing[the_audio_player])//inversed by action
 {
-case 0:                                         
+case 0:
 sprintf(string_Last_Order,">> PLAY ON from Fader %d Audio %d",cmptfader+1,the_audio_player+1);
 break;
 case 1:
@@ -4378,54 +4393,54 @@ if(player_ignited[the_audio_player]==1)
 {
 switch(the_audio_player)
 {
-case 0://PLAYER 1                        
- switch(player1->isPlaying()) 
+case 0://PLAYER 1
+ switch(player1->isPlaying())
  {
  case 0:
- player1->play(); 
- break; 
+ player1->play();
+ break;
  case 1:
  player1->stop();
- break;                            
- }        
+ break;
+ }
 break;
-case 1://PLAYER 2                       
- switch(player2->isPlaying()) 
+case 1://PLAYER 2
+ switch(player2->isPlaying())
  {
  case 0:
- player2->play();   
- break; 
+ player2->play();
+ break;
  case 1:
  player2->stop();
- break;                            
- }        
+ break;
+ }
 break;
-case 2://PLAYER 3                        
- switch(player3->isPlaying()) 
+case 2://PLAYER 3
+ switch(player3->isPlaying())
  {
  case 0:
- player3->play();   
- break; 
+ player3->play();
+ break;
  case 1:
  player3->stop();
- break;                            
- }        
+ break;
+ }
 break;
-case 3://PLAYER 4                        
- switch(player4->isPlaying()) 
+case 3://PLAYER 4
+ switch(player4->isPlaying())
  {
  case 0:
- player4->play();   
- break; 
+ player4->play();
+ break;
  case 1:
  player4->stop();
- break;                            
- }        
+ break;
+ }
 break;
 }
 switch(player_is_playing[the_audio_player])//inversed by action
 {
-case 0:                                         
+case 0:
 sprintf(string_Last_Order,">> PLAY ON from Fader %d Audio %d",cmptfader+1,the_audio_player+1);
 break;
 case 1:
@@ -4445,35 +4460,35 @@ else if(chaser_step_is[chaser_selected]>35){chaser_step_is[chaser_selected]=35;}
 }
 switch(chaser_is_playing[the_chaser])
 {
-case 0:                                         
+case 0:
 sprintf(string_Last_Order,">> PLAY OFF from Fader %d Chaser %d",cmptfader+1,the_chaser+1);
 break;
 case 1:
 sprintf(string_Last_Order,">> PLAY ON from Fader %d Chaser %d",cmptfader+1,the_chaser+1);
 break;
-} 
+}
 break;
 case 12://grid
 grider_is_playing[the_grid_player]=toggle(grider_is_playing[the_grid_player]);
-if(grider_is_playing[the_grid_player]==1){grid_crossfade_start_time[the_grid_player]=actual_time;} 
+if(grider_is_playing[the_grid_player]==1){grid_crossfade_start_time[the_grid_player]=actual_time;}
 switch(player_is_playing[the_grid_player])
 {
-case 0:                                         
+case 0:
 sprintf(string_Last_Order,">> PLAY OFF from Fader %d GridPl %d",cmptfader+1,the_grid_player+1);
 break;
 case 1:
 sprintf(string_Last_Order,">> PLAY ON from Fader %d GridPl %d",cmptfader+1,the_grid_player+1);
 break;
-} 
+}
 break;
 default:
-break;                                                                 
+break;
 }
 }
 
 break;
 default:
-break;          
+break;
 }
 }
 
@@ -4492,8 +4507,8 @@ for(int cmptfader=0;cmptfader<core_user_define_nb_faders;cmptfader++)
 {
 if(minifaders_preset_selection[prt][cmptfader]==minifaders_selected[cmptfader])
 {
-index_presetmf++;                                                                               
-}       
+index_presetmf++;
+}
 if(index_presetmf==core_user_define_nb_faders){mf_preset_selected_is=prt;break;}
 }
 }
@@ -4505,13 +4520,13 @@ for(int cmptfader=0;cmptfader<core_user_define_nb_faders;cmptfader++)
 {
 if(minifaders_preset_selection[prt][cmptfader]==0)
 {
-index_presetmf++;                                                                               
-} 
-}      
+index_presetmf++;
+}
+}
 if(index_presetmf==core_user_define_nb_faders){minifader_preset_is_empty[prt]=1;}
 else {minifader_preset_is_empty[prt]=0;}
 }
- return(0);   
+ return(0);
 }
 
 
@@ -4523,14 +4538,14 @@ int affect_time_entry_to_mem(int index_t,int mem_set_to_time)
  read_time_string_entry();
  Times_Memoires[mem_set_to_time][index_t]=(time_minutes*60)+time_secondes+(0.01*time_centiemes);
  }
- 
+
  someone_changed_in_sequences=1;//icat
- return(0);   
+ return(0);
 }
 
 int do_sprintf_job()//report du calcul des affichages de temps dans la boucle des 10ème de scondes
 {
-    
+
 if (MemoiresExistantes[mem_before_one]==1)
 {sprintf(string_mem_before_one,"%d.%d",mem_before_one/10, mem_before_one%10);}
 else {sprintf(string_mem_before_one,"-");}
@@ -4538,19 +4553,19 @@ else {sprintf(string_mem_before_one,"-");}
 sprintf(string_ratio_x1x2,"%.2f",((255.0-ratio_X1X2_together)/255));
 sprintf(str_crossfade_speed_is,"%d",crossfade_speed-64);
 
-float val_accel=0.0;    
-    
+float val_accel=0.0;
+
 //position onstage
-affichage_time_format(Times_Memoires[position_onstage][0]);//dout 
+affichage_time_format(Times_Memoires[position_onstage][0]);//dout
 sprintf(string_time_memonstage[0],string_conversion_timeis);
-affichage_time_format(Times_Memoires[position_onstage][2]);//dIn 
+affichage_time_format(Times_Memoires[position_onstage][2]);//dIn
 sprintf(string_time_memonstage[2],string_conversion_timeis);
 affichage_time_format(Times_Memoires[position_onstage][3]);//in
 sprintf(string_time_memonstage[3],string_conversion_timeis);
 affichage_time_format(Times_Memoires[position_onstage][1]);//out
 sprintf(string_time_memonstage[1],string_conversion_timeis);
 //positionpreset > cross à venir
-//temps d entree( enregistré dans le préset) 
+//temps d entree( enregistré dans le préset)
 if(Times_Memoires[position_preset][0]>0.00)
 {
  if(crossfade_speed<64)
@@ -4567,7 +4582,7 @@ sprintf(cross_din,string_conversion_timeis);
 else {sprintf(cross_din,"");}
 
 
-//temps de delay sortie ( enregistré dans le préset) 
+//temps de delay sortie ( enregistré dans le préset)
 if(Times_Memoires[position_preset][2]>0.00)
 {
 if(crossfade_speed<64)
@@ -4579,7 +4594,7 @@ else if(crossfade_speed==64)
 else if(crossfade_speed>64)
 {
 val_accel=Times_Memoires[position_preset][2]- ( (Times_Memoires[position_preset][2] /64) * (crossfade_speed-63));
-affichage_time_format(val_accel);     
+affichage_time_format(val_accel);
 }
 sprintf(cross_dout,string_conversion_timeis);
 }
@@ -4618,8 +4633,8 @@ val_accel=Times_Memoires[position_preset][1]- ( (Times_Memoires[position_preset]
 affichage_time_format(val_accel);
 sprintf(cross_in,string_conversion_timeis);
 val_accel=Times_Memoires[position_preset][3]- ( (Times_Memoires[position_preset][3] /64) * (crossfade_speed-63));
-affichage_time_format(val_accel);    
-sprintf(cross_out,string_conversion_timeis); 
+affichage_time_format(val_accel);
+sprintf(cross_out,string_conversion_timeis);
 
 report_dIn=
 ((Times_Memoires[position_preset][0]- ( (Times_Memoires[position_preset][0] /64) * (crossfade_speed-63))));
@@ -4634,17 +4649,29 @@ report_Out=
 }
 
 
-totalTimeCrossfade=(report_dOut+report_Out)>?(report_dIn+ report_In)>?
-                   (report_dIn+ report_Out)>?(report_dOut+report_In);
-
-
-affichage_time_format(totalTimeCrossfade); 
+if(((report_dOut+report_Out)>=(report_dIn+ report_In))&&((report_dOut+report_Out)>=(report_dIn+ report_Out))&&((report_dOut+report_Out)>=(report_dOut+report_In)))
+{
+   totalTimeCrossfade= (report_dOut+report_Out);
+}
+if(((report_dIn+ report_In)>=(report_dOut+report_Out))&&((report_dIn+ report_In)>=(report_dIn+ report_Out))&&((report_dIn+ report_In)>=(report_dOut+report_In)))
+{
+   totalTimeCrossfade= (report_dIn+ report_In);
+}
+if(((report_dIn+ report_Out)>=(report_dIn+ report_In))&&((report_dIn+ report_Out)>=(report_dOut+report_Out))&&((report_dIn+ report_Out)>=(report_dOut+report_In)))
+{
+   totalTimeCrossfade= (report_dIn+ report_Out);
+}
+if(((report_dOut+report_In)>=(report_dIn+ report_In))&&((report_dOut+report_In)>=(report_dIn+ report_Out))&&((report_dOut+report_In)>=(report_dOut+report_Out)))
+{
+   totalTimeCrossfade= (report_dOut+report_In);
+}
+affichage_time_format(totalTimeCrossfade);
 sprintf(string_total_time_is,"%s",string_conversion_timeis);
 
 if((index_go==1 || index_go_back==1)&& index_pause==0)
 {
 time_left=((crossfade_done_time-totalTimeCrossfade)/BPS_RATE);
-affichage_time_format(time_left);  
+affichage_time_format(time_left);
 sprintf(string_time_left_is,"%s",string_conversion_timeis);
 }
 
@@ -4670,8 +4697,8 @@ if(index_nbre_mem_visues>=nbre_memoires_visualisables_en_preset){break;}
 
 
 ///////////Faders
-float in_speed,out_speed, delay_in_speed, delay_out_speed; 
-char the_del_in[12]; 
+float in_speed,out_speed, delay_in_speed, delay_out_speed;
+char the_del_in[12];
 char the_in[12];
 char the_del_out[12];
 char the_out[12];
@@ -4744,18 +4771,18 @@ for(int o=0;o<8;o++)
 for(int gr=0;gr<23;gr++)
 {
 in_speed=grid_times[grid_selected_for_view][grid_step_view+gr][1];
-affichage_time_format(in_speed);//in 
+affichage_time_format(in_speed);//in
 sprintf(the_in,string_conversion_timeis);
 out_speed= grid_times[grid_selected_for_view][grid_step_view+gr][3];
-affichage_time_format(out_speed);//out 
+affichage_time_format(out_speed);//out
 sprintf(the_out,string_conversion_timeis);
 sprintf(string_grid_view_timing_global[gr],"%s / %s",the_in,the_out);
 
 delay_in_speed=grid_times[grid_selected_for_view][grid_step_view+gr][0];
-affichage_time_format(delay_in_speed);//in 
+affichage_time_format(delay_in_speed);//in
 sprintf(the_del_in,string_conversion_timeis);
 delay_out_speed= grid_times[grid_selected_for_view][grid_step_view+gr][2];
-affichage_time_format(delay_out_speed);//out 
+affichage_time_format(delay_out_speed);//out
 sprintf(the_del_out,string_conversion_timeis);
 sprintf(string_grid_view_timing_global_delays[gr],"%s / %s",the_del_in,the_del_out);
 }
@@ -4763,7 +4790,7 @@ sprintf(string_grid_view_timing_global_delays[gr],"%s / %s",the_del_in,the_del_o
 //audio players
 for(int numero=0;numero<index_nbre_players_visibles;numero++)
 {
-sprintf(string_niveauson[numero],"%0.2f",show_player_niveauson[numero]); 
+sprintf(string_niveauson[numero],"%0.2f",show_player_niveauson[numero]);
 sprintf(string_pitch[numero],"Pitch %0.2f",show_pitch_value[numero]);
 sprintf(string_pan[numero],"Pan %0.2f",show_pan_value[numero]);
 sprintf(time_is_for_fileCueIn[numero],"In: %.1f",(((float)player_seek_position[numero])/audio_rate[numero]));
@@ -4772,7 +4799,7 @@ sprintf(time_is_for_filePos[numero],"Pos: %.1f",(((float)position_of_file_in_pla
 sprintf(time_is_for_fileTotal[numero],"Total: %.1f",(((float)length_of_file_in_player[numero])/audio_rate[numero]));
 }
 
-return(0);    
+return(0);
 }
 
 
@@ -4786,7 +4813,7 @@ else if(index_setup_gfx==1){config_page_is=4;}
 else if(index_config_arduino==1){config_page_is=5;}
 else if(index_config_general==1){config_page_is=6;}
 else if(index_config_core==1){config_page_is=7;}
- return(0);   
+ return(0);
 }
 
 
@@ -4796,8 +4823,8 @@ int id_on_top=0;
 for(int i=0;i<63;i++)
 {
 if(window_opened[i]>=900){id_on_top=i;break;}
-}      
-return(window_opened[id_on_top]); 
+}
+return(window_opened[id_on_top]);
 }
 
 
@@ -4811,15 +4838,15 @@ int substract_a_window(int id)
  for(int i=0;i<63;i++)
  {
  if(window_opened[i]==id){window_opened[i]=0;}
-  temp_report_window[i]=window_opened[i];    
+  temp_report_window[i]=window_opened[i];
  }
 
 
 
  window_focus_id=window_who_is_on_top();
- 
+
  reset_index_actions();
- 
+
  switch(id)
  {
  case W_SAVEREPORT:
@@ -4842,8 +4869,8 @@ int substract_a_window(int id)
  break;
  case W_PATCH:
       index_patch_window=0;index_enable_curve_editing=0;patch_unselect_all_dimmers();
-      index_patch_overide=0;  index_patch_affect_is_done=0; 
-     reset_check_grada_overide_dimmers();   
+      index_patch_overide=0;  index_patch_affect_is_done=0;
+     reset_check_grada_overide_dimmers();
  break;
  case W_TIME:
       reset_index_actions();index_time=0;  index_affect_time=0;
@@ -4877,22 +4904,22 @@ int substract_a_window(int id)
       index_show_banger_window=0;  over_banger_event=0;
       over_banger_action=0;
       over_family=0;
-      position_mouse_z(0);  //reset       
+      position_mouse_z(0);  //reset
       mouse_level_for_event=mouse_z;
       mouse_level_for_banger=mouse_z;
  break;
  case W_ALARM:
  break;
  case W_AUDIO:
-      index_show_audio_window=0;reset_audio_indexs_to_dock(); index_affect_audio_to_dock=0; 
+      index_show_audio_window=0;reset_audio_indexs_to_dock(); index_affect_audio_to_dock=0;
  break;
  case W_CFGMENU:
-      index_show_config_window=0;     
+      index_show_config_window=0;
       index_affect_dmxin=0;
       Midi_Faders_Affectation_Type=0;//pour ne pas affecter quoi que ce soit en midi
       Midi_Faders_Affectation_Mode=0;
       midipreset_selected=0;//vider l affectation du preset midi en mem
-      remember_config_page();   
+      remember_config_page();
       do_affectation_on_midi_affect_itself=0;
  break;
  case W_WIZARD:
@@ -4914,16 +4941,16 @@ int substract_a_window(int id)
       index_grider_window=0; index_do_affect_grid_to_fader=0;
       for(int i=0;i<4;i++)
       {grid_affect_to_dock[i]=0;}
- break;      
+ break;
  case W_MY_WINDOW:
       index_my_window=0;
- break;  
+ break;
  default:
  break;
  }
 
 
- return(0);   
+ return(0);
 }
 
 ///////////////////////////////////////////////////////////////////////////////////////////////
@@ -4932,13 +4959,13 @@ int GlobInit()
 index_menu_save=1;
 for(int i=0;i<24;i++)
 {
-core_do_calculations[i]=1;        
+core_do_calculations[i]=1;
 }
 
 //ip artnet
 for(int u=0;u<8;u++)
 {
-sprintf(IP_detected_dmxOUT[u],"-");        
+sprintf(IP_detected_dmxOUT[u],"-");
 }
 
 /////////////////////////////////////////
@@ -4958,12 +4985,12 @@ descriptif_memoires[m][24]='\n';
 annotation_memoires[m][24]='\n';
 for(int i=0;i<514;i++)
 {
-Memoires[m][i]=0;        
-}     
-}   
+Memoires[m][i]=0;
+}
+}
 position_onstage=10;
 position_preset=10;
-MemoiresExistantes[10]=1;                        
+MemoiresExistantes[10]=1;
 }
 
 if(specify_who_to_save_load[1]==1)//memoires times /////////////////////////////
@@ -5016,16 +5043,16 @@ for(int macr=0;macr<4;macr++)
 macro_channel_on[io][macr]=0;
 channel_macro_reaction[io][macr]=0;
 channel_macro_action[io][macr]=0;
-channel_macro_val[io][macr][0]=0;  
-channel_macro_val[io][macr][1]=0;    
+channel_macro_val[io][macr][0]=0;
+channel_macro_val[io][macr][1]=0;
 }
 
 for(int view_is=0;view_is<nbre_de_vues_circuits;view_is++)
 {
 Channel_View_ROUTING[view_is][io]=0;
 }
-}        
-line_list_is=0;   
+}
+line_list_is=0;
 
 
 
@@ -5050,7 +5077,7 @@ for(int fd=0;fd<48;fd++)
 {
 for(int dk=0;dk<6;dk++)
 {
- if(DockTypeIs[fd][dk]==10){DockTypeIs[fd][dk]=9;}                                           
+ if(DockTypeIs[fd][dk]==10){DockTypeIs[fd][dk]=9;}
 }
 }
 }
@@ -5063,12 +5090,12 @@ for(int io=0;io<514;io++)
 freeze_array[io]=0;
 freeze_state[io]=0;
 Channels_excluded_from_grand_master[io]=0;
-}        
+}
 }
 
 
 if(specify_who_to_save_load[8]==1)//patch  circuits/////////////////////////////
-{                                         
+{
 for(int i=0;i<514;i++)
 {
 Patch[i]=i;
@@ -5081,7 +5108,7 @@ show_first_dim_array[i][0]=i;
 }
 
 if(specify_who_to_save_load[9]==1)//patch HTP/LTP//////////////////////////////
-{                                         
+{
 for(int i=0;i<514;i++)
 {
 dimmer_type[i]=0;
@@ -5163,7 +5190,7 @@ time_per_dock[in][dd][2]=0.0;
 time_per_dock[in][dd][1]=default_time; //IN default
 time_per_dock[in][dd][3]=default_time; //OUT default
 }
-} 
+}
 }
 
 
@@ -5171,7 +5198,7 @@ if(specify_who_to_save_load[14]==1)//faders curves//////////////////////////////
 {
 for (int in=0;in<48;in++)
 {
-FaderCurves[in]=0;   
+FaderCurves[in]=0;
 }
 }
 
@@ -5214,7 +5241,7 @@ index_slave_chaser_to_accelerometre[l]=0;
 for(int tr=0;tr<nbre_tracks_par_chaser;tr++)
 {
 track_is_on[l][tr]=0;
-track_level[l][tr]=127;  
+track_level[l][tr]=127;
 TrackTypeIs[l][tr]=0;
 TrackHasMem[l][tr]=0;
 sprintf(chaser_track_name[l][tr],"");
@@ -5224,7 +5251,7 @@ for(int ste=0;ste<nbre_de_cases_par_track;ste++)
 chaser_step_operation[l][tr][ste]=0;
 }
 }
-}                                       
+}
 }
 
 
@@ -5233,14 +5260,14 @@ if(specify_who_to_save_load[17]==1)//midi affect////////////////////////////////
 {
 for(int mi=0;mi<2048;mi++)
 {
-  miditable[0][mi]=999;    
-  miditable[1][mi]=999;   
-  miditable[2][mi]=999; 
+  miditable[0][mi]=999;
+  miditable[1][mi]=999;
+  miditable[2][mi]=999;
   midi_levels[mi]=0;
   midi_send_out[mi]=0;//atribué ou pas
-  index_send_midi_out[mi]=0;       
-  is_raccrochage_midi_remote[mi]=0;    
-  val_raccrochage_midi[mi]=0;                       
+  index_send_midi_out[mi]=0;
+  is_raccrochage_midi_remote[mi]=0;
+  val_raccrochage_midi[mi]=0;
 }
 }
 
@@ -5250,9 +5277,9 @@ for (int li=0;li<16;li++)
 {
  for(int u=0;u<128;u++)
  {
- midi_change_vel_type[li][u]=0;        
+ midi_change_vel_type[li][u]=0;
  midi_recognize_on_off[li][u]=0;
- }   
+ }
 }
 }
 
@@ -5262,20 +5289,20 @@ if(specify_who_to_save_load[19]==1)//trichro////////////////////////////////////
 for(int i=0;i<8;i++)
 {
 colorpreset_linked_to_dock[i][0]=-1;
-colorpreset_linked_to_dock[i][1]=-1;  
+colorpreset_linked_to_dock[i][1]=-1;
 dock_color_type[i]=0;
 angle_hue_par_colordock[i]=0.1;
-picker_trichro[i][0]=0;    
-picker_trichro[i][1]=0; 
-picker_trichro[i][2]=0; 
-picker_trichro[i][3]=0; 
+picker_trichro[i][0]=0;
+picker_trichro[i][1]=0;
+picker_trichro[i][2]=0;
+picker_trichro[i][3]=0;
 for (int c=0;c<514;c++)
 {
-dock_color_channels[i][0][c]=0; 
-dock_color_channels[i][1][c]=0;  
-dock_color_channels[i][2][c]=0;  
-dock_color_channels[i][3][c]=0;   
-}                                 
+dock_color_channels[i][0][c]=0;
+dock_color_channels[i][1][c]=0;
+dock_color_channels[i][2][c]=0;
+dock_color_channels[i][3][c]=0;
+}
 }
 }
 
@@ -5293,15 +5320,15 @@ for (int c=0;c<6;c++)
  {
  tracker_level[c][u]=0;
  tracking_spaces_on_off[c][u]=0;
- } 
-}                                   
+ }
+}
 }
 
 
 
 
 if(specify_who_to_save_load[21]==1)//arduino/////////////////////////////////////
-{                          
+{
 
 for(int i=0;i<128;i++)
 {
@@ -5325,19 +5352,19 @@ arduino_max_out_digi=13;
 }
 
 if(specify_who_to_save_load[22]==1)//AudioConf////////////////////////////////////////
-{                                                                                  //        
+{                                                                                  //
 sprintf(audio_folder,"demo");
 for(int i=0;i<4;i++)
 {
 audio_autoload[i]=0;
 audio_autopause[i]=0;
-player_has_file_coming_from_pos[i]=0;       
+player_has_file_coming_from_pos[i]=0;
 player_position_on_save[i]=0;
 }
 }
 
 if(specify_who_to_save_load[23]==1)//iCat////////////////////////////////////////
-{ 
+{
 for(int nbp=0;nbp<8;nbp++)
 {
 clear_iCat_page(nbp);
@@ -5351,33 +5378,33 @@ index_video_window=0;
 index_video_window=0;
 index_patch_window=0;
 index_type=0;
-index_visual_pad=0;    
+index_visual_pad=0;
 index_time=0;
 index_window_sequentiel=0;
 index_config_dmx=0;
-index_config_midi=0;  
-midi_page=0;  
+index_config_midi=0;
+midi_page=0;
 index_list_projecteurs=0;
-index_menu_save=0; 
+index_menu_save=0;
 scroll_faderspace=0;
-index_show_faders=0;  
-index_config_general=0;    
-index_show_audio_window=0;  
-index_config_network=0;    
+index_show_faders=0;
+index_config_general=0;
+index_show_audio_window=0;
+index_config_network=0;
 index_show_config_window=0;
-index_show_wizard_window=0; 
+index_show_wizard_window=0;
 index_show_minifaders=0;
 index_window_chasers=0;
-config_page_is=0; 
+config_page_is=0;
 
 index_show_mover_window=0;
-index_window_gui_iCat=0;   
+index_window_gui_iCat=0;
 window_focus_id=0;
-recall_windows_focus_id=0;  
+recall_windows_focus_id=0;
 config_page_is=0;
-index_config_dmx=1; 
-index_config_arduino=0;   
-reset_window_positions();                                               
+index_config_dmx=1;
+index_config_arduino=0;
+reset_window_positions();
 reset_window_opened_indexes();
 
 }
@@ -5394,15 +5421,15 @@ if(specify_who_to_save_load[26]==1)//mapping keyboard///////////////////////////
 {
 for(int map=0;map<128;map++)
 {
-mapping_temporaire[map]=999; 
-}     
+mapping_temporaire[map]=999;
+}
 }
 
 
 if(specify_who_to_save_load[27]==1)//indexes////////////////////////////////////
 {
 //une partie des indexes mis dans les windows
-index_allow_grand_master=1; 
+index_allow_grand_master=1;
 config_color_style_is=0;
 index_link_is_on=1;
 index_decay_tracker=0;
@@ -5417,8 +5444,8 @@ allow_artnet_in=0;
 index_setup_gfx=0;
 core_to_assign=0;
 load_camera_on_start=0;
-open_arduino_on_open=0;    
-enable_launchpad=0; 
+open_arduino_on_open=0;
+enable_launchpad=0;
 nbre_track_visualisables=8;
 chaser_operator_is=0;
 chaser_selected=0;
@@ -5443,14 +5470,14 @@ if(specify_who_to_save_load[29]==1)//Grid////////////////////////////////////
 //reset des grilles
 for(int y=0;y<127;y++)
 {
-clear_a_grid(y);        
-}      
+clear_a_grid(y);
+}
 int grider_begin_channel_is=1;
 int grider_nb_col=12;
 int grider_nb_row=10;
   index_clear_a_grid_step=0;
   index_clear_a_grid=0;
-  grid_to_clear=0;step_grid_to_clear=0; 
+  grid_to_clear=0;step_grid_to_clear=0;
   index_clear_a_grid_serie_step=0;
   index_for_grid_stepto=0;
   index_for_copy_grid=0;
@@ -5458,8 +5485,8 @@ int grider_nb_row=10;
   destination_step_for_copy=0;
   index_grid_tostep_or_not=0;
   from_gridstep_to=0;
-  gridplayer_to_affect_is=-1;   
-//reset des players 
+  gridplayer_to_affect_is=-1;
+//reset des players
 for(int pl=0;pl<4;pl++)
 {
 index_grider_selected[pl]=1;
@@ -5473,22 +5500,22 @@ to_step_editing_mode[pl]=0;
 index_StepTo[pl]=0;
 index_Grid_copyto[pl][0]=0;//0 grid 1 step
 index_Grid_copyto[pl][1]=0;
-grid_player_slave[pl]=0;  
-grid_crossfade_speed[pl]=64; 
+grid_player_slave[pl]=0;
+grid_crossfade_speed[pl]=64;
 grid_niveauX1[pl]=255;
 grid_niveauX2[pl]=0;
 grid_floatX1[pl]=255.0;
 grid_floatX2[pl]=0;
 GplSnapFader[pl]=0;
-}                                                                        
+}
 }
 
 if(specify_who_to_save_load[30]==1)//Grid in mems////////////////////////////////////
 {
 for (int m=0;m<10000;m++)
 {
-set_from_seq_gridplayer1_next_step[m]=-1;   
-}                                                                             
+set_from_seq_gridplayer1_next_step[m]=-1;
+}
 }
 
 
@@ -5726,15 +5753,15 @@ for(int calc=0;calc<4;calc++)
 nbre_symbols_on_plot[calc]=0;
 for (int s=0;s<nbre_symbol_per_layer;s++)
 {
-symbol_type[calc][s]=999; 
-symbol_is_selected[calc][s]=0;  
+symbol_type[calc][s]=999;
+symbol_is_selected[calc][s]=0;
 angle_symbol[calc][s]=0.0;
 pos_symbol[calc][s][0]=0;
 pos_symbol[calc][s][1]=0;
 stored_plot_position[s][0]=0;
 stored_plot_position[s][1]=0;
-symbol_channel_is[calc][s]=0; 
-symbol_dimmer_is[calc][s]=0; 
+symbol_channel_is[calc][s]=0;
+symbol_dimmer_is[calc][s]=0;
 gelat[calc][s][0]=0;
 gelat[calc][s][1]=0;
 gelat[calc][s][2]=0;
@@ -5753,7 +5780,7 @@ for(int opt=0;opt<5;opt++)
 relatif_plot_xy[calc][s][opt][0]=0;
 relatif_plot_xy[calc][s][opt][1]=0;
 }
-}        
+}
 }
 for(int t=0;t<5;t++)
 {
@@ -5802,7 +5829,7 @@ if(specify_who_to_save_load[32]==1)//DRAW
 for(int p=0;p<6;p++)
 {
 clear_draw_preset(p);
-}                            
+}
 }
 
 if(specify_who_to_save_load[33]==1)//ECHO
@@ -5810,7 +5837,7 @@ if(specify_who_to_save_load[33]==1)//ECHO
 for(int p=0;p<24;p++)
 {
 clear_echo_preset(p);
-}                            
+}
 }
 
 ///////////////////////////////////////////////////////////////
@@ -5822,10 +5849,10 @@ for(int p=0;p<80;p++)
 for(int o=0;o<3;o++)
 {
 preset_specify_who_to_save_load[p][o]=0;
-}                
+}
 }
 for(int i=0;i<36;i++)
-{specify_who_to_save_PDF[i]=0;}                                  
+{specify_who_to_save_PDF[i]=0;}
 }
 
 
@@ -5835,7 +5862,7 @@ for(int i=0;i<36;i++)
 for(int i=0;i<514;i++)
 {
 bufferSaisie[i]=0;
-bufferFaders[i]=0;  
+bufferFaders[i]=0;
 bufferBlind[i]=0;
 Selected_Channel[i]=0;
 Dimmers_selected[i]=0;
@@ -5850,7 +5877,7 @@ bool show_is_virgin_=1;
 for(int iu=0;iu<72;iu++)
 {
 if(specify_who_to_save_load[iu]==0)
-{show_is_virgin_=0;break;}       
+{show_is_virgin_=0;break;}
 }
 
 if(show_is_virgin_==1)
@@ -5859,7 +5886,7 @@ if(show_is_virgin_==1)
 //sauvegarde chargement, en tout dernier
 set_all_saves_indexes_at(1);
 index_menu_save=0; substract_a_window(W_SAVE);
-return(0);  
+return(0);
 }
 
 int reset_show()

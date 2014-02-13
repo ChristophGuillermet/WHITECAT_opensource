@@ -1,26 +1,26 @@
 /*-------------------------------------------------------------------------------------------------------------
                                  |
           CWWWWWWWW              | Copyright (C) 2009-2013  Christoph Guillermet
-       WWWWWWWWWWWWWWW           | 
+       WWWWWWWWWWWWWWW           |
      WWWWWWWWWWWWWWWWWWW         | This file is part of White Cat.
-    WWWWWWWWWWWWWWWWWCWWWW       | 
+    WWWWWWWWWWWWWWWWWCWWWW       |
    WWWWWWWWWWWWWWWWW tWWWWW      | White Cat is free software: you can redistribute it and/or modify
   WWWW   WWWWWWWWWW  tWWWWWW     | it under the terms of the GNU General Public License as published by
  WWWWWt              tWWWWWWa    | the Free Software Foundation, either version 3 of the License, or
  WWWWWW               WWWWWWW    | (at your option) any later version.
-WWWWWWWW              WWWWWWW    | 
+WWWWWWWW              WWWWWWW    |
 WWWWWWWW               WWWWWWW   | White Cat is distributed in the hope that it will be useful,
 WWWWWWW               WWWWWWWW   | but WITHOUT ANY WARRANTY; without even the implied warranty of
 WWWWWWW      CWWW    W WWWWWWW   | MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 WWWWWWW            aW  WWWWWWW   | GNU General Public License for more details.
-WWWWWWWW           C  WWWWWWWW   | 
+WWWWWWWW           C  WWWWWWWW   |
  WWWWWWWW            CWWWWWWW    | You should have received a copy of the GNU General Public License
- WWWWWWWWW          WWWWWWWWW    | along with White Cat.  If not, see <http://www.gnu.org/licenses/>. 
-  WWWWWWWWWWC    CWWWWWWWWWW     |   
-   WWWWWWWWWWWWWWWWWWWWWWWW      | 
-    WWWWWWWWWWWWWWWWWWWWWW       |    
-      WWWWWWWWWWWWWWWWWWa        |     
-        WWWWWWWWWWWWWWW          |     
+ WWWWWWWWW          WWWWWWWWW    | along with White Cat.  If not, see <http://www.gnu.org/licenses/>.
+  WWWWWWWWWWC    CWWWWWWWWWW     |
+   WWWWWWWWWWWWWWWWWWWWWWWW      |
+    WWWWWWWWWWWWWWWWWWWWWW       |
+      WWWWWWWWWWWWWWWWWWa        |
+        WWWWWWWWWWWWWWW          |
            WWWWWWWWt             |
                                  |
 ---------------------------------------------------------------------------------------------------------------*/
@@ -28,17 +28,16 @@ WWWWWWWW           C  WWWWWWWW   |
 /**
 
  \file MAIN_nov_2013_opensource_kbd.cpp
- \brief Main 
+ \brief Main
  \author Christoph Guillermet
  \version {numero de version du fichier}
  \date {date description}
- 
+
  White Cat root
  Description détaillée
- 
+
  **/
- 
- 
+
  #include <allegro.h>
 #include <winalleg.h>
 #include <OpenLayer.hpp>
@@ -49,7 +48,7 @@ WWWWWWWW           C  WWWWWWWW   |
 #include <audiere.h>
 
 #include <jpgalleg.h>
-  
+
 
 using namespace audiere;
 using namespace ol;
@@ -93,7 +92,7 @@ bufferSaisiesnamp=0;
 
 
 #include <hpdf.h>
-#include <MidiShare.h>    
+#include <MidiShare.h>
 #include <whitecat.h>
 #include <my_window_file_sample.h>//ressources juste après whitecat.h
 #include <patch_splines_2.cpp>//spline pour curves
@@ -118,7 +117,7 @@ bufferSaisiesnamp=0;
 #include <wizard_operations.cpp>
 
 #include <faders_operations.cpp>
-#include <chasers_core_5.cpp> 
+#include <chasers_core_5.cpp>
 
 
 #include "mover_spline6.cpp"
@@ -136,7 +135,7 @@ bufferSaisiesnamp=0;
 #include <channels_9_core.cpp>
 #include <wizard.cpp>
 #include <grand_master.cpp>
-#include <faders_core_24.cpp> 
+#include <faders_core_24.cpp>
 
 #include <audio_visu4.cpp>
 #include <icat_core14.cpp>
@@ -205,15 +204,15 @@ return(0);
 /////////////////TIMER POUR DATA ET REFRESH RATE////////////////////////////////
 void ticker_dmxIn() // nettoyage des ticker pour verifier stabilité
 {
-Receive_DMX_IN();      
+Receive_DMX_IN();
 }
 END_OF_FUNCTION(ticker_dmxIn);
 
 /////////////////////////////////////////////
-  
 
 
-void ticker() 
+
+void ticker()
 {
 time_doing();
 
@@ -269,17 +268,17 @@ merge_draw_and_grid_player(pr);
 }
 
 
-//tracker  
+//tracker
 Move_do_crossfade(dock_move_selected);
 ventilation_niveaux_mover();
 ++ticks_move;
 actual_spline_tick+=spline_tick_fraction;
 move_current_time=ticks_move;
 
-            
 
 
-  
+
+
 //
 Merger();
 SendData_to_interface();
@@ -290,10 +289,10 @@ if(enable_launchpad==1 && entered_main==1 && index_quit==0 && index_is_saving==0
 
 
 if( index_re_init_clientserveur_icat==1)
-{  
+{
 if(iCat_serveur_is_initialized==1)
 {fermeture_clientserveur_iCat();}
-initialisation_clientserveur_iCat();                              
+initialisation_clientserveur_iCat();
 }
 do_autolaunch();//attention contient rafraichissement Faders
 
@@ -317,12 +316,12 @@ END_OF_FUNCTION(ticker);
 
 int do_mouse_right_click_menu()
 {
- x_mainmenu=mouse_x, y_mainmenu=mouse_y;     
- index_show_main_menu=toggle(index_show_main_menu);           
+ x_mainmenu=mouse_x, y_mainmenu=mouse_y;
+ index_show_main_menu=toggle(index_show_main_menu);
  if( index_show_main_menu==1){add_a_window(W_MAINMENU);}
- else {substract_a_window(W_MAINMENU);} 
+ else {substract_a_window(W_MAINMENU);}
  right_click_for_menu=0;
- return(0);   
+ return(0);
 }
 
 void my_callback(int flags) {
@@ -343,61 +342,61 @@ void my_callback(int flags) {
 		}
 		//sab 29/05/2013 fin ---------------------------------------------------------------
         if(window_focus_id==0 || window_focus_id==W_LIST ){snap_channels_selection_array(); }
-        mouse_released=0; 
+        mouse_released=0;
         }
 
     else if (flags & MOUSE_FLAG_LEFT_UP )//relevage bouton
-        { 
-        mouse_button=0; mouse_released=1;   //liberation du curseur souris 
-        index_click_move_faderspace=0; im_moving_a_window=0; index_mouse_is_tracking=0;  
+        {
+        mouse_button=0; mouse_released=1;   //liberation du curseur souris
+        index_click_move_faderspace=0; im_moving_a_window=0; index_mouse_is_tracking=0;
         index_moving_fader_space=0;index_moving_x_slide=0;index_moving_y_slide=0;
-        index_click_inside_plot=0; plot_facteur_move_x=0;plot_facteur_move_y=0;  
+        index_click_inside_plot=0; plot_facteur_move_x=0;plot_facteur_move_y=0;
         index_click_inside_relativ_xy=0; rlativ_xm=0; rlativ_ym=0;
         index_editing_theatre_plan=0;moving_plan_relativ_x=0;moving_plan_relativ_y=0;
         editing_plan_data_type=0; editing_plot_sizey=0; editing_plot_sizex=0;  moving_size_relativ_x=0; moving_size_relativ_y=0;
-        plot_editing_color_line=0; plot_editing_color_background=0; index_adjusting_shape_x=0;index_adjusting_shape_y=0;  
+        plot_editing_color_line=0; plot_editing_color_background=0; index_adjusting_shape_x=0;index_adjusting_shape_y=0;
         handle_selected_for_line_editing=0;  editing_shape_line_number=0;
         if(dragging_draw==1)
         {draw_point_is_traced[draw_preset_selected]=0;}
         dragging_draw=0; dragging_channel_in_echo=0;
-      
-        }      
-        
+
+        }
+
        if (flags & MOUSE_FLAG_RIGHT_DOWN )
-        {  
+        {
         original_posx=mouse_x;original_posy=mouse_y;
-        mouse_R_button=1; 
-        mouse_R_released=0;  
-          
+        mouse_R_button=1;
+        mouse_R_released=0;
+
         if(window_focus_id==W_PLOT) {
                                     index_move_plot_view_port=1;
-                                    reset_symbols_selected(view_plot_calc_number_is);  
+                                    reset_symbols_selected(view_plot_calc_number_is);
                                     unselect_all_shapes();
                                     key_unselect_ch();
                                     }
         else {
              if(mouse_R_released==0)
              {
-              mouse_R_released=1;   
+              mouse_R_released=1;
               right_click_for_menu=1; //renvoi vers les procs en 10eme de secondes pour enlever le bug d extinctions fenetres
               }
-          
+
              }
         }
-        
+
        else if (flags & MOUSE_FLAG_RIGHT_UP )
-        {  
-        mouse_R_button=0; 
-        mouse_R_released=1;     
-        index_move_plot_view_port=0;    
+        {
+        mouse_R_button=0;
+        mouse_R_released=1;
+        index_move_plot_view_port=0;
         plot_facteur_move_x=0;plot_facteur_move_y=0;
         index_click_inside_plot=0;
-        set_mouse_range(0, 0, SCREEN_W-1, SCREEN_H-1);//liberation du curseur souris 
+        set_mouse_range(0, 0, SCREEN_W-1, SCREEN_H-1);//liberation du curseur souris
         }
-        
+
         if(mouse_button==0)
         {set_mouse_range(0, 0, SCREEN_W-1, SCREEN_H-1);}
-      
+
 }
 END_OF_FUNCTION(my_callback);
 
@@ -406,7 +405,7 @@ int ticker_dixiemes_de_secondes_check = BPS_TO_TIMER(10);//10eme de secondes
 
 
 
-void dixiemes_de_secondes() 
+void dixiemes_de_secondes()
 {
 ticks_dixieme_for_icat_and_draw++;
 if(index_is_saving==0 && init_done==1 && index_writing_curve==0 && index_quit==0)
@@ -414,17 +413,17 @@ if(index_is_saving==0 && init_done==1 && index_writing_curve==0 && index_quit==0
 get_current_time();
 for(int yr=0;yr<48;yr++)
 {
-dock_used_by_fader_is[yr]=detect_dock_used(yr); 
+dock_used_by_fader_is[yr]=detect_dock_used(yr);
 }
- 
-do_sprintf_job();//include time_left calculs       
+
+do_sprintf_job();//include time_left calculs
 refresh_minifader_state_view_core(position_minifader_selected);//les infos dock temps etc dans fenetre minifaders
 match_minifaders();//verif du preset en cours: correspond ou pas à un des 8 preset
-nbre_fenetre_actives=check_nbre_opened_windows(); 
-  
+nbre_fenetre_actives=check_nbre_opened_windows();
+
       if(index_do_quick_save==1)
       {
-      
+
       index_is_saving=1;
       Save_Show();
       sprintf(string_Last_Order,">> Show Saved at %s", tmp_time);
@@ -446,7 +445,7 @@ time_centiemes=(int)((float)(actual_tickers_chrono)/(((float)BPS_RATE)/100))%100
 angle_timesnap_min=((float)(time_minutes)*5.980005)/60;//=(int)((angle_timesnap_min/6.280005)*63);
 angle_timesnap_sec=((float)(time_secondes)*5.980005)/60;//=(int)((angle_timesnap_sec/((PI*360) / 180))*63);
 angle_timesnap_dix=((float)(time_centiemes)*5.980005)/100;//=(int)((angle_timesnap_dix/6.280005)*10);
-set_time_cursor_to_time_type(time_wheel_datatype_is); 
+set_time_cursor_to_time_type(time_wheel_datatype_is);
 }
 
 
@@ -473,14 +472,14 @@ if(index_ask_confirm==1 && previous_index_ask_confirm==0)
 previous_index_ask_confirm=index_ask_confirm;
 
 if (enable_iCat==1 && iCat_serveur_is_initialized==1 && index_quit==0 && index_is_saving==0)
-      {        
+      {
       if(   do_send_icat_init_page==1 && finished_to_send_orders_to_iCat==1)
-      { 
-      do_send_icat_init_page=0;do_refresh_iCat(iCatPageis); 
+      {
+      do_send_icat_init_page=0;do_refresh_iCat(iCatPageis);
       index_refresh_valeurs_continous=1;
       refresh_check_buttons();
-      } 
-      else 
+      }
+      else
       {
       refresh_continuously_iCat_sliders();
       refresh_continuously_iCat_buttons();
@@ -502,7 +501,7 @@ index_enable_edit_chaser=1;
 index_enable_edit_Grider=1;
 index_edit_light_plot=1;
 index_enable_edit_Draw=1;
-index_enable_edit_echo=1;                  
+index_enable_edit_echo=1;
 }
 if(right_click_for_menu==1)//sortie du call back pour écrire correctement fermeture fenetres
 {do_mouse_right_click_menu();}
@@ -520,9 +519,9 @@ END_OF_FUNCTION(dixiemes_de_secondes);
 
 ///////////////FULL LOOP FUNCTION/////////////////////////////////////////////
 int ticker_full_loop_rate = BPS_TO_TIMER(10000);
-void ticker_full_loop() 
+void ticker_full_loop()
 {
-     
+
 if(core_do_calculations[2]==1 && starting_wcat==0)
 {
 for (int i=0;i<core_user_define_nb_bangers;i++){do_bang(i);}
@@ -546,7 +545,7 @@ if(index_quit==0 && index_is_saving==0)
 
 
  if (enable_iCat==1 && iCat_serveur_is_initialized==1 && do_send_icat_init_page==0)
-      {       
+      {
       bytesreceivediCat=recvfrom(sockRiCat,fantastick_message,sizeof(fantastick_message),0,(SOCKADDR*)&sinServiCat,&sinsizeServiCat);
       if(bytesreceivediCat>0 && (fantastick_message[0]!='I' &&  fantastick_message[1] !='P'))//caractere d arret
       {
@@ -555,35 +554,35 @@ if(index_quit==0 && index_is_saving==0)
       ReceiveFantastick();
       DoJobFantastickTouch();
       Fantastick_check_string();
-      
+
       if(refresh_icatpage_please==1){load_iCat_page ( iCatPageis);do_send_icat_init_page=1; refresh_icatpage_please=0;      }
-      } 
-      
+      }
+
 
  if(allow_artnet_in==1 && artnet_serveur_is_initialized==1 )
-      {     
+      {
       if(bytesreceived=recvfrom(sock,artnet_message,sizeof(artnet_message),0,(SOCKADDR*)&sinServ,&sinsizeServ)>0)
-      {receiving_bytes=1;ReceiveArtDmx();}  
+      {receiving_bytes=1;ReceiveArtDmx();}
       else {receiving_bytes=0;}
-      }       
-commandes_clavier();  
-DoMouseLevel(); 
-}  
+      }
+commandes_clavier();
+DoMouseLevel();
 }
-END_OF_FUNCTION(ticker_full_loop);     
+}
+END_OF_FUNCTION(ticker_full_loop);
 
 ////////////////////////ARTNET VOLATILE ALLEGRO///////////////////////////////////////////////////////////
 //artnet envoi toutes les 3 secondes
 
 volatile int ticks_for_artnet=0;
 int ticker_artnet_rate = BPS_TO_TIMER(1);
-void ticker_artnet() 
+void ticker_artnet()
 {
  ticks_for_artnet++;
  if(ticks_for_artnet==3)
- {    
+ {
  for(int bup=0;bup<512;bup++)
- {artnet_backup[bup]=0;}   //reset du backup pour enclencher l envoi de data automatiquement  
+ {artnet_backup[bup]=0;}   //reset du backup pour enclencher l envoi de data automatiquement
  ticks_for_artnet=0;
  index_art_polling=0;
  /*if (myDMXinterfaceis!=1 && client_artnet_is_closed==0 && index_artnet_doubledmx==0)
@@ -597,133 +596,133 @@ END_OF_FUNCTION(ticker_artnet);
 
 void Load_Fonts()
 {
-   doom.Load( "Fonts/doom.ttf",25,25, CouleurLigne );  
-   if( !doom ) 
+   doom.Load( "Fonts/doom.ttf",25,25, CouleurLigne );
+   if( !doom )
    {  allegro_message( "Couldn't load Fonts/doom.ttf!" );
       exit( -1 );
-   }  
-   doomblanc.Load( "Fonts/doom.ttf",20,20, CouleurLigne);  
-   if( !doomblanc ) 
+   }
+   doomblanc.Load( "Fonts/doom.ttf",20,20, CouleurLigne);
+   if( !doomblanc )
    {  allegro_message( "Couldn't load Fonts/doom.ttf!" );
       exit( -1 );
-   }  
-   doomrouge.Load( "Fonts/doom.ttf",25,25, CouleurBlind);  
-   if( !doomrouge ) 
+   }
+   doomrouge.Load( "Fonts/doom.ttf",25,25, CouleurBlind);
+   if( !doomrouge )
    {  allegro_message( "Couldn't load Fonts/doom.ttf!" );
       exit( -1 );
-   }  
-   petitdoomblanc.Load( "Fonts/doom.ttf",18,18, CouleurLigne);  
-   if( !doomrouge ) 
+   }
+   petitdoomblanc.Load( "Fonts/doom.ttf",18,18, CouleurLigne);
+   if( !doomrouge )
    {  allegro_message( "Couldn't load Fonts/doom.ttf!" );
       exit( -1 );
-   }  
-   petitdoomInspekt.Load( "Fonts/doom.ttf",10,10, CouleurFader );  
-   if( !petitdoomInspekt ) 
+   }
+   petitdoomInspekt.Load( "Fonts/doom.ttf",10,10, CouleurFader );
+   if( !petitdoomInspekt )
    {  allegro_message( "Couldn't load Fonts/doom.ttf!" );
       exit( -1 );
-   }  
-   
-   petitdoomrouge.Load( "Fonts/doom.ttf",10,10, CouleurBlind );  
-   if( !petitdoomrouge ) 
+   }
+
+   petitdoomrouge.Load( "Fonts/doom.ttf",10,10, CouleurBlind );
+   if( !petitdoomrouge )
    {  allegro_message( "Couldn't load Fonts/doom.ttf!" );
       exit( -1 );
-   }  
-   
-   minidoomblanc.Load( "Fonts/doom.ttf",8,8, CouleurLigne );  
-   if( !minidoomblanc ) 
+   }
+
+   minidoomblanc.Load( "Fonts/doom.ttf",8,8, CouleurLigne );
+   if( !minidoomblanc )
    {  allegro_message( "Couldn't load Fonts/doom.ttf!" );
       exit( -1 );
-   }  
-   
-   axaxax12.Load( "Fonts/axaxax.ttf",12,12, CouleurLigne );  
-   if( !axaxax12 ) 
+   }
+
+   axaxax12.Load( "Fonts/axaxax.ttf",12,12, CouleurLigne );
+   if( !axaxax12 )
    {  allegro_message( "Couldn't load Fonts/doom.ttf!" );
       exit( -1 );
-   }  
-   
-   
-   neuro.Load( "Fonts/prototype.ttf",20,20, CouleurLigne );  
-   if( !neuro ) 
+   }
+
+
+   neuro.Load( "Fonts/prototype.ttf",20,20, CouleurLigne );
+   if( !neuro )
    {  allegro_message( "Couldn't load Fonts/prototype.ttf!" );
       exit( -1 );
-   }  
-    neuromoyen.Load( "Fonts/prototype.ttf",14,14, CouleurLigne );  
-   if( !neuromoyen ) 
+   }
+    neuromoyen.Load( "Fonts/prototype.ttf",14,14, CouleurLigne );
+   if( !neuromoyen )
    {  allegro_message( "Couldn't load Fonts/prototype.ttf!" );
       exit( -1 );
-   }  
-   petitchiffre.Load( "Fonts/prototype.ttf",12,12, CouleurLigne );  
-   if( !petitchiffre ) 
+   }
+   petitchiffre.Load( "Fonts/prototype.ttf",12,12, CouleurLigne );
+   if( !petitchiffre )
    {  allegro_message( "Couldn't load Fonts/prototype.ttf!" );
       exit( -1 );
-   }  
-   petitpetitchiffre.Load( "Fonts/prototype.ttf",10,10, CouleurLigne );  
-   if( !petitpetitchiffre ) 
+   }
+   petitpetitchiffre.Load( "Fonts/prototype.ttf",10,10, CouleurLigne );
+   if( !petitpetitchiffre )
    {  allegro_message( "Couldn't load Fonts/prototype.ttf!" );
       exit( -1 );
-   }  
-   minichiffre.Load( "Fonts/prototype.ttf",8,8, CouleurLigne );  
-   if( !minichiffre ) 
+   }
+   minichiffre.Load( "Fonts/prototype.ttf",8,8, CouleurLigne );
+   if( !minichiffre )
    {  allegro_message( "Couldn't load Fonts/prototype.ttf!" );
       exit( -1 );
-   }  
-    petitpetitchiffregris.Load( "Fonts/prototype.ttf",9,9, CouleurLigne.WithAlpha(0.7) );  
-   if( !petitpetitchiffre ) 
+   }
+    petitpetitchiffregris.Load( "Fonts/prototype.ttf",9,9, CouleurLigne.WithAlpha(0.7) );
+   if( !petitpetitchiffre )
    {  allegro_message( "Couldn't load Fonts/prototype.ttf!" );
       exit( -1 );
-   }  
-   minichiffregris.Load( "Fonts/prototype.ttf",8,8, CouleurLigne.WithAlpha(0.7) );  
-   if( !minichiffre ) 
+   }
+   minichiffregris.Load( "Fonts/prototype.ttf",8,8, CouleurLigne.WithAlpha(0.7) );
+   if( !minichiffre )
    {  allegro_message( "Couldn't load Fonts/prototype.ttf!" );
       exit( -1 );
-   }  
-    minichiffrenoir.Load( "Fonts/prototype.ttf",8,8, CouleurNoir );  
-   if( !minichiffrenoir ) 
+   }
+    minichiffrenoir.Load( "Fonts/prototype.ttf",8,8, CouleurNoir );
+   if( !minichiffrenoir )
    {  allegro_message( "Couldn't load Fonts/prototype.ttf!" );
       exit( -1 );
-   }  
-    petitpetitchiffrerouge.Load( "Fonts/prototype.ttf",10,10, CouleurBlind );  
-   if( !petitpetitchiffrerouge ) 
+   }
+    petitpetitchiffrerouge.Load( "Fonts/prototype.ttf",10,10, CouleurBlind );
+   if( !petitpetitchiffrerouge )
    {  allegro_message( "Couldn't load Fonts/prototype.ttf!" );
       exit( -1 );
-   }  
-   petitchiffrerouge.Load( "Fonts/prototype.ttf",12,12, CouleurBlind );  
-   if( !petitchiffrerouge) 
+   }
+   petitchiffrerouge.Load( "Fonts/prototype.ttf",12,12, CouleurBlind );
+   if( !petitchiffrerouge)
    {  allegro_message( "Couldn't load Fonts/prototype.ttf!" );
       exit( -1 );
-   }  
-    minichiffrerouge.Load( "Fonts/prototype.ttf",8,8, CouleurBlind );  
-   if( !minichiffrerouge ) 
+   }
+    minichiffrerouge.Load( "Fonts/prototype.ttf",8,8, CouleurBlind );
+   if( !minichiffrerouge )
    {  allegro_message( "Couldn't load Fonts/prototype.ttf!" );
       exit( -1 );
-   }  
-   petitchiffrenoir.Load( "Fonts/prototype.ttf",12,12, CouleurFond );  
-   if( !petitchiffrenoir ) 
+   }
+   petitchiffrenoir.Load( "Fonts/prototype.ttf",12,12, CouleurFond );
+   if( !petitchiffrenoir )
    {  allegro_message( "Couldn't load Fonts/prototype.ttf!" );
       exit( -1 );
-   }  
-   circuitlevel.Load( "Fonts/prototype.ttf",10,10, CouleurLevel);  
-   if( !circuitlevel ) 
+   }
+   circuitlevel.Load( "Fonts/prototype.ttf",10,10, CouleurLevel);
+   if( !circuitlevel )
    {  allegro_message( "Couldn't load Fonts/prototype.ttf!" );
       exit( -1 );
-   }  
-   circuitfaderlevel.Load( "Fonts/prototype.ttf",10,10, CouleurFader);  
-   if( !circuitfaderlevel ) 
+   }
+   circuitfaderlevel.Load( "Fonts/prototype.ttf",10,10, CouleurFader);
+   if( !circuitfaderlevel )
    {  allegro_message( "Couldn't load Fonts/prototype.ttf!" );
       exit( -1 );
-   }  
-   circuitblindlevel.Load( "Fonts/prototype.ttf",10,10, CouleurBlind);  
-   if( !circuitblindlevel ) 
+   }
+   circuitblindlevel.Load( "Fonts/prototype.ttf",10,10, CouleurBlind);
+   if( !circuitblindlevel )
    {  allegro_message( "Couldn't load Fonts/prototype.ttf!" );
       exit( -1 );
-   }  
-   neuroTitle.Load( "Fonts/neuropol.ttf",70,70, CouleurLigne);  
-   if( !neuroTitle ) 
+   }
+   neuroTitle.Load( "Fonts/neuropol.ttf",70,70, CouleurLigne);
+   if( !neuroTitle )
    {  allegro_message( "Couldn't load Fonts/neuropol.ttf!" );
       exit( -1 );
-   }  
-   
-  
+   }
+
+
 }
 
 
@@ -731,7 +730,7 @@ void Load_Fonts()
 ////////////////////////////////////////////////////////////////////////////////
 int main_actions_on_screen()
 {
-      Canvas::Fill(CouleurFond);       
+      Canvas::Fill(CouleurFond);
       if(index_writing_curve==0){Boxes();}
       if(core_do_calculations[3]==1)
       {
@@ -739,26 +738,26 @@ int main_actions_on_screen()
       do_colors();//ventilation des niveaux pickés ainsi que distrib dans faders et docks
       }
       DoMouse();
-      previous_ch_selected=last_ch_selected;  
- return(0);   
+      previous_ch_selected=last_ch_selected;
+ return(0);
 }
 
 
 int main() {
-   
-load_screen_config();  
+
+load_screen_config();
 if(index_multiplescreen==1)
   {
     largeur_ecran= GetSystemMetrics(SM_CXVIRTUALSCREEN);
     hauteur_ecran = GetSystemMetrics(SM_CYVIRTUALSCREEN);
   }
-  
-if(index_borderwindow==0)
-{Settings::SetWindowBorder(false);}
-else
-{Settings::SetWindowBorder(true);}
 
-Setup::SetupProgram(KEYBOARD | MOUSE);   
+//if(index_borderwindow==0)
+//{Settings::SetWindowBorder(false);}
+//else
+//{Settings::SetWindowBorder(true);}
+
+Setup::SetupProgram(KEYBOARD | MOUSE);
 
 if(index_fullscreen==0)
 {Setup::SetupScreen( largeur_ecran, hauteur_ecran,WINDOWED, desktop_color_depth() );}
@@ -768,7 +767,7 @@ else {Setup::SetupScreen( largeur_ecran, hauteur_ecran,FULLSCREEN, desktop_color
     if (hwnd != NULL)
         MoveWindow(hwnd, posX_mainwindow, posY_mainwindow, SCREEN_W, SCREEN_H, true);
 
-  
+
    install_joystick(JOY_TYPE_AUTODETECT);
    calibrate_joystick_name(0);
 
@@ -780,26 +779,26 @@ else {Setup::SetupScreen( largeur_ecran, hauteur_ecran,FULLSCREEN, desktop_color
    LOCK_FUNCTION(ticker_dmxIn);
    install_int_ex(ticker_dmxIn , ticker_dmxIn_rate);
 
-  
+
    LOCK_FUNCTION(ticker_artnet);
    LOCK_VARIABLE(ticks_for_artnet);
    install_int_ex(ticker_artnet , ticker_artnet_rate);
-   
+
    rest(100);
-   
+
    LOCK_VARIABLE(ticks);
    LOCK_FUNCTION(ticker);
    install_int_ex(ticker , ticker_rate);
-   
+
    LOCK_VARIABLE(ticks_arduino);
    LOCK_FUNCTION(ticker_arduino);
    install_int_ex(ticker_arduino ,BPS_TO_TIMER(ARDUINO_RATE));
-   
+
 
     LOCK_FUNCTION(my_callback);
     mouse_callback = my_callback;
 
-   
+
    LOCK_FUNCTION(dixiemes_de_secondes);
    install_int_ex(dixiemes_de_secondes , ticker_dixiemes_de_secondes_check);
 
@@ -808,34 +807,34 @@ else {Setup::SetupScreen( largeur_ecran, hauteur_ecran,FULLSCREEN, desktop_color
    install_int_ex(ticker_full_loop,ticker_full_loop_rate );
 
 
-   
+
 
    load_indexes();
    LoadWhiteCatColorProfil();
 
-   Canvas::Fill(CouleurFond);  
+   Canvas::Fill(CouleurFond);
    Canvas::Refresh();
 
 
 
-   Load_Fonts();    
-   save_load_print_to_screen("Loaded Fonts"); 
-        
-   
+   Load_Fonts();
+   save_load_print_to_screen("Loaded Fonts");
+
+
    logo.Load( "gfx/logo.png" );//ne s'affiche que en 32 bits !!!
-  
-   if( logo.Load( "gfx/logo.png" ) != true ) 
+
+   if( logo.Load( "gfx/logo.png" ) != true )
       {
       allegro_message( "Couldn't load gfx/logo.png" );
       exit( -1 );
-      }    
-    
-    
- 
-    Canvas::Fill(CouleurFond); 
+      }
+
+
+
+    Canvas::Fill(CouleurFond);
     Canvas::Refresh();
-      
-   save_load_print_to_screen("Loaded Gfx");   
+
+   save_load_print_to_screen("Loaded Gfx");
 
 
    sprintf(string_last_ch,"Last Ch. selected: %d", last_ch_selected);
@@ -845,19 +844,19 @@ else {Setup::SetupScreen( largeur_ecran, hauteur_ecran,FULLSCREEN, desktop_color
   save_load_print_to_screen("Loading setup conf");
  Load_setup_conf(); //avant tout sinon, le cfg ecrit ailleurs et ca fout la zone
  save_load_print_to_screen("Init Arrays");
- 
+
 //sauvegarde chargement, en tout dernier
  for (int r=0;r<72;r++)
  {
- specify_who_to_save_load[r]=1;    
- }  
+ specify_who_to_save_load[r]=1;
+ }
  GlobInit();//rajout version 0.8.2.3
 //reset des bangs
 reset_all_bangers();
  generation_Tableau_noms_clavier_FR() ;
 // generation_Tableau_noms_fonctions() ;
  save_load_print_to_screen("Init Midi");
- InitMidi();//init avant les appels de fichiers	
+ InitMidi();//init avant les appels de fichiers
  midi_init_sepecial_case_key_on();//pour régler pb de cle flashs et key on key off
  ////////////////////////////////////////////////////////////
 
@@ -868,7 +867,7 @@ reset_all_bangers();
  load_dmx_conf();
  save_load_print_to_screen("Loading Art-net conf");
  load_artnet_conf();
- 
+
  detection_mise_en_place_carte_reseaux();
  //opening double dmx conf
  if(index_artnet_doubledmx==1)
@@ -878,31 +877,31 @@ reset_all_bangers();
          ConstructArtPollReply();
          nbrbytessended=sendto(sockartnet, ArtPollBuffer,sizeof( ArtPollBuffer),0,(SOCKADDR*)&sinS,sinsize);
          //ArtNet
-         ArtDmx();  
- save_load_print_to_screen("Double DMX Art-net ON");                           
+         ArtDmx();
+ save_load_print_to_screen("Double DMX Art-net ON");
  }
  load_network_conf();//icat
  save_load_print_to_screen("Loading Art-netnetwork conf");
 
-  
+
  save_load_print_to_screen("Loading Video conf");
- Load_Video_Conf();  
+ Load_Video_Conf();
  sprintf(tmp_ip_artnet,ip_artnet);
 
  load_show_coming_from();
  idf++;
 
- On_Open_name_of_directory(); 
- Canvas::Fill(CouleurFond); 
+ On_Open_name_of_directory();
+ Canvas::Fill(CouleurFond);
  Canvas::Refresh();
  save_load_print_to_screen("Init Sound");
  InitSound();
  Load_Show();
- 
+
  init_kbd_custom();
  save_load_print_to_screen("Init Keyboard");
  Show_report_save_load();
- 
+
  save_load_print_to_screen("Init Dmx");
  Init_dmx_interface();
 
@@ -911,9 +910,9 @@ reset_all_bangers();
  save_load_print_to_screen("Init Camera");
  InitVideo();
  }
- 
 
-  
+
+
 
 
 scan_importfolder("");
@@ -929,8 +928,8 @@ index_send_pwm_data=1;
 read_arduino_data(0);
 }
 
- 
-prepare_move_values(dock_move_selected);//prepa  
+
+prepare_move_values(dock_move_selected);//prepa
 Prepare_Cross_Spline(dock_move_selected);
 
 save_load_print_to_screen("Init Backamnesia");
@@ -946,27 +945,27 @@ if(there_is_an_error_on_save_load==1){index_show_save_load_report=1;there_is_cha
 //launchpad séparé
 if(enable_launchpad==1)
 {reset_launchpad();}
- 
+
  init_artnet_variables();
-   
+
 //serveur
     if(allow_artnet_in==1 && artnet_serveur_is_initialized==0)
-      { 
+      {
 	initialisation_serveur_artnet();
      }
 
  init_iphone_fonts();
  if (enable_iCat==1)
  {
- initialisation_clientserveur_iCat();  
- 
+ initialisation_clientserveur_iCat();
+
  nbrbytessendediCat=sendto(sockiCat, "opengl 1",sizeof("opengl 1"),0,(SOCKADDR*)&siniCat,sinsizeiCat);
  init_iCat_data();//varibales de stockage
  someone_changed_in_sequences=1;//icat
  do_send_icat_init_page=1;
  do_refresh_iCat(iCatPageis);
- 
- }     
+
+ }
 
 
 bmp_buffer_trichro= create_bitmap(315,550);
@@ -975,24 +974,24 @@ clear_bitmap(bmp_buffer_trichro);
 
 rafraichissement_padwheel();
 
-recalculate_draw_sizes(draw_preset_selected);  
+recalculate_draw_sizes(draw_preset_selected);
 
 //init du flash de bang en cours
 //bang_is_sended[index_banger_selected]=1;
 
 
 
-    
+
    rest(100);
 
 starting_wcat=1;
 for(int i=0;i<4;i++)
 {
- audiofile_selected=player_has_file_coming_from_pos[i]; 
- sprintf(audiofile_name,list_audio_files[audiofile_selected]); 
+ audiofile_selected=player_has_file_coming_from_pos[i];
+ sprintf(audiofile_name,list_audio_files[audiofile_selected]);
  if(strcmp (audiofile_name,"")==1)
- {     
- AffectSoundFile(i); 
+ {
+ AffectSoundFile(i);
  }
 rest(10);
 }
@@ -1008,22 +1007,22 @@ for(int i=0;i<4;i++)
   switch(i)
   {
   case 0:
-  player1->setPosition(player_position_on_save[i]);  
-  break; 
+  player1->setPosition(player_position_on_save[i]);
+  break;
   case 1:
-  player2->setPosition(player_position_on_save[i]);  
-  break; 
+  player2->setPosition(player_position_on_save[i]);
+  break;
   case 2:
-  player3->setPosition(player_position_on_save[i]);  
-  break; 
+  player3->setPosition(player_position_on_save[i]);
+  break;
   case 3:
-  player4->setPosition(player_position_on_save[i]);  
-  break;    
+  player4->setPosition(player_position_on_save[i]);
+  break;
   default:
-  break;                                                         
+  break;
   }
  position_of_file_in_player[i]=player_position_on_save[i];
-}        
+}
 }
 }
 
@@ -1034,9 +1033,9 @@ starting_wcat=0;
 
 
 while(index_quit!=1)
-{   
-   
-    
+{
+
+
 MemoiresExistantes[0]=1;
 show_im_recording_a_time=0;// met à zéro l'affichage du stock visuel du time
 //remis dans boucle pour bug freeze V8.3 et 8.4
@@ -1050,12 +1049,12 @@ if(old_ticks_arduino!=ticks_arduino && index_is_saving==0 && init_done==1 && ind
 
  switch(index_art_polling)
  {
-    case 0:                     
+    case 0:
     main_actions_on_screen();
     break;
     case 1:
       if(bytesreceived=recvfrom(sock,artpollreply_message,sizeof(artpollreply_message),0,(SOCKADDR*)&sinS,&sinsize)!=0)
-      {      AnalyseArtPollReply();      }      
+      {      AnalyseArtPollReply();      }
       Procedure("Art-Net Polling","Please wait 3 seconds, polling network ...");
     break;
    }
@@ -1065,7 +1064,7 @@ sprintf(string_debug,"%d",channel_macro_val[23][0][0]);
 if(there_is_change_on_show_save_state==1)
 {
 check_save_load_report_window();
-there_is_change_on_show_save_state=0;                                         
+there_is_change_on_show_save_state=0;
 }
 
 Canvas::Refresh();
@@ -1082,7 +1081,7 @@ init_done=0;//evite envois data pendant save de fermeture
 
 
 Canvas::Refresh();
-Canvas::Fill(CouleurFond); 
+Canvas::Fill(CouleurFond);
 
 
 save_load_print_to_screen("Quitting");
@@ -1091,7 +1090,7 @@ save_load_print_to_screen("Closing dmx");
 Close_dmx_interface();
 save_load_print_to_screen("Closing Arduino");
 arduino_close(0);
- 
+
 save_load_print_to_screen("Closing video");
 CloseVideo();
 save_load_print_to_screen("Closing midi");
@@ -1101,7 +1100,7 @@ save_load_print_to_screen("Closing midi");
  fermeture_clientserveur_iCat();
  //if(client_icat_is_closed==1)  fermeture_client_iCat();
  }
- 
+
 
 QuitMidi() ;
 save_load_print_to_screen("Saving Show");
@@ -1116,8 +1115,8 @@ save_load_print_to_screen("Saving Setup Conf");
 Save_setup_conf();
 
 }
-destroy_bitmap(bmp_buffer_trichro);  
-//destroy_bitmap(Draw0); 
+destroy_bitmap(bmp_buffer_trichro);
+//destroy_bitmap(Draw0);
 remove_timer();
 WSACleanup ();//liberation librairie socket
 return 0;

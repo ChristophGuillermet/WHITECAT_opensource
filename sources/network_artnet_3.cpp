@@ -1,26 +1,26 @@
 /*-------------------------------------------------------------------------------------------------------------
                                  |
           CWWWWWWWW              | Copyright (C) 2009-2013  Christoph Guillermet
-       WWWWWWWWWWWWWWW           | 
+       WWWWWWWWWWWWWWW           |
      WWWWWWWWWWWWWWWWWWW         | This file is part of White Cat.
-    WWWWWWWWWWWWWWWWWCWWWW       | 
+    WWWWWWWWWWWWWWWWWCWWWW       |
    WWWWWWWWWWWWWWWWW tWWWWW      | White Cat is free software: you can redistribute it and/or modify
   WWWW   WWWWWWWWWW  tWWWWWW     | it under the terms of the GNU General Public License as published by
  WWWWWt              tWWWWWWa    | the Free Software Foundation, either version 3 of the License, or
  WWWWWW               WWWWWWW    | (at your option) any later version.
-WWWWWWWW              WWWWWWW    | 
+WWWWWWWW              WWWWWWW    |
 WWWWWWWW               WWWWWWW   | White Cat is distributed in the hope that it will be useful,
 WWWWWWW               WWWWWWWW   | but WITHOUT ANY WARRANTY; without even the implied warranty of
 WWWWWWW      CWWW    W WWWWWWW   | MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 WWWWWWW            aW  WWWWWWW   | GNU General Public License for more details.
-WWWWWWWW           C  WWWWWWWW   | 
+WWWWWWWW           C  WWWWWWWW   |
  WWWWWWWW            CWWWWWWW    | You should have received a copy of the GNU General Public License
- WWWWWWWWW          WWWWWWWWW    | along with White Cat.  If not, see <http://www.gnu.org/licenses/>. 
-  WWWWWWWWWWC    CWWWWWWWWWW     |   
-   WWWWWWWWWWWWWWWWWWWWWWWW      | 
-    WWWWWWWWWWWWWWWWWWWWWW       |    
-      WWWWWWWWWWWWWWWWWWa        |     
-        WWWWWWWWWWWWWWW          |     
+ WWWWWWWWW          WWWWWWWWW    | along with White Cat.  If not, see <http://www.gnu.org/licenses/>.
+  WWWWWWWWWWC    CWWWWWWWWWW     |
+   WWWWWWWWWWWWWWWWWWWWWWWW      |
+    WWWWWWWWWWWWWWWWWWWWWW       |
+      WWWWWWWWWWWWWWWWWWa        |
+        WWWWWWWWWWWWWWW          |
            WWWWWWWWt             |
                                  |
 ---------------------------------------------------------------------------------------------------------------*/
@@ -28,17 +28,17 @@ WWWWWWWW           C  WWWWWWWW   |
 /**
 
  \file network_arnet_3.cpp
- \brief {description courte} 
+ \brief {description courte}
  \author Christoph Guillermet
  \version {numero de version du fichier}
  \date {date description}
- 
+
  White Cat {- catégorie} {- sous catégorie {- sous catégorie}}
  Description détaillée
- 
+
  **/
- 
- 
+
+
 #include<winsock2.h>
 #pragma comment(lib,"ws2_32.lib")
 
@@ -79,28 +79,28 @@ unsigned char OpPollLbyte=0;
 //afficheur artnet IN
 
 int diodes_artnet(int x_diods, int y_diods)
-{ 
+{
 petitchiffre.Print("Art-Net:" ,x_diods, y_diods);
 for(int dd=0;dd<16;dd++)
 {
 Circle myartnet_diode_vide( x_diods+10+(dd*20), y_diods+10, 5.0, 5.0 );
-myartnet_diode_vide.DrawOutline(CouleurLigne.WithAlpha(0.2));      
+myartnet_diode_vide.DrawOutline(CouleurLigne.WithAlpha(0.2));
 }
-return(0);  
+return(0);
 }
 
-int light_temoin_universe(int incoming_artnet, int x_diods, int y_diods) 
+int light_temoin_universe(int incoming_artnet, int x_diods, int y_diods)
 {
 Circle myartnet_temoin(x_diods+10+(incoming_artnet*20), y_diods+10, 5.0, 5.0 );
 myartnet_temoin.Draw( CouleurFader.WithAlpha(alpha_blinker) );
-return(0);   
+return(0);
 }
 
-int light_temoin_emission(int outgoing_artnet, int x_diods, int y_diods) 
+int light_temoin_emission(int outgoing_artnet, int x_diods, int y_diods)
 {
 Circle myartnet_temoin(x_diods+10+(outgoing_artnet*20), y_diods+10, 5.0, 5.0 );
 myartnet_temoin.Draw( CouleurGreen.WithAlpha(alpha_blinker) );
-return(0);   
+return(0);
 }
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //box artpollreply received
@@ -109,7 +109,7 @@ int reset_poll_list()
 for(int rt=0;rt<17;rt++)
 {sprintf(PollReplyIs[rt],"");}
 count_artopoll_received=0;
-return(0);    
+return(0);
 }
 
 
@@ -118,8 +118,8 @@ int show_artpoll_reply(int apr_X, int apr_Y)
 
 Rect ArtPollReplyPanel(Vec2D(apr_X,  apr_Y), Vec2D( 500,250));
 ArtPollReplyPanel.SetRoundness(15);
-ArtPollReplyPanel.Draw(CouleurFond.WithAlpha(0.9)); 
-ArtPollReplyPanel.DrawOutline(CouleurLigne);     
+ArtPollReplyPanel.Draw(CouleurFond.WithAlpha(0.9));
+ArtPollReplyPanel.DrawOutline(CouleurLigne);
 petitchiffre.Print( "ARTPOLLREPLY from ( up to 16 devices ):",(apr_X+10), (apr_Y+20));
 
 for(int co=0;co<17;co++)
@@ -144,11 +144,11 @@ int init_artnet_variables()
 
 
  int  DoArtPollReply()
-{  
-   nbrbytessended=sendto(sockartnet, ArtPollReplyBuffer,sizeof( ArtPollReplyBuffer),0,(SOCKADDR*)&sinS,sinsize);   
-   sprintf(string_Last_Order,">>Polled !");  
+{
+   nbrbytessended=sendto(sockartnet, ArtPollReplyBuffer,sizeof( ArtPollReplyBuffer),0,(SOCKADDR*)&sinS,sinsize);
+   sprintf(string_Last_Order,">>Polled !");
 
-   return(0);  
+   return(0);
 }
 
 
@@ -156,8 +156,8 @@ int ReceiveArtDmx()
 {
  if( artnet_message[0]==ArtNetHead[0] && artnet_message[1]==ArtNetHead[1] && artnet_message[2]==ArtNetHead[2] && artnet_message[3]==ArtNetHead[3]
  && artnet_message[4]==ArtNetHead[4]  && artnet_message[5]==ArtNetHead[5]  && artnet_message[6]==ArtNetHead[6]  && artnet_message[7]==ArtNetHead[7] )
- {is_artnet=1;}     
- 
+ {is_artnet=1;}
+
  if( OpLbyteReceive==artnet_message[8] && OpHbyteReceive==artnet_message[9]  )
   {
    is_opcode_is_dmx=1;
@@ -165,32 +165,32 @@ int ReceiveArtDmx()
    is_artnet_version_i1=artnet_message[10]; is_artnet_version_i2=artnet_message[11];
    seq_artnet=artnet_message[12];//0
    artnet_physical=artnet_message[13];//0
-   }   
+   }
  else if( artnet_message[8]==OpPollLbyte && artnet_message[9]==OpPollHbyte  )
   {
-   is_opcode_is_polling=1;   
-  } 
+   is_opcode_is_polling=1;
+  }
 
  if(is_artnet==1 && is_opcode_is_dmx==1 )
  {
  incoming_universe= bytes_to_short(artnet_message[15],artnet_message[14]);//extraction de l'univers
  index_do_light_diode_artnet=1;
 
- for (int    p=0;p<512;p++)            
- {ArtNet_16xUniverse_Receiving[p+1][incoming_universe]=artnet_message[p+HeaderLength+1];} 
+ for (int    p=0;p<512;p++)
+ {ArtNet_16xUniverse_Receiving[p+1][incoming_universe]=artnet_message[p+HeaderLength+1];}
   //reinit
- is_artnet=0;is_opcode_is_dmx=0; is_artnet_version_i1=0; is_artnet_version_i2=0;   
- incoming_universe=999;//reinit hors écran   
+ is_artnet=0;is_opcode_is_dmx=0; is_artnet_version_i1=0; is_artnet_version_i2=0;
+ incoming_universe=999;//reinit hors écran
 
  }
- 
+
  else if (is_artnet==1 && is_opcode_is_polling==1 )
  {
   DoArtPollReply();
   is_opcode_is_polling=0;is_artnet=0;
  }
-   
- return(0);   
+
+ return(0);
 }
 
 
@@ -211,14 +211,14 @@ char read_buff[ 512 ] ;
 	{
 	 printf("\nPb à ouverture de config_artnet.txt\n");
      return 1;
-	}	
+	}
 //premiere ligne les args
 	if( !fgets( read_buff , sizeof( read_buff ) , cfg_file ) )
 	{
      printf("\nErreur lors de la lecture de la première ligne de commentaires\n");
      return 1;
 	}
-	
+
 
 fscanf( cfg_file , "%d %d \n" ,  &index_broadcast , &Univers  );
 /* on saute la ligne de commentaire */
@@ -226,8 +226,8 @@ fgets( read_buff , sizeof( read_buff ) , cfg_file );
 //deuxieme ligne des args
 fscanf( cfg_file  , "%s\n" , &ip_artnet );
 
-fclose( cfg_file );	
-return(0);  
+fclose( cfg_file );
+return(0);
 }
 
 
@@ -243,8 +243,8 @@ fprintf(fp,"\n%d %d",index_broadcast,Univers);
 fprintf(fp,"\n#arguments: si en broadcast: l'adresse doit etre de type X.X.X. / si en unicast X.X.X.X");
 fprintf(fp,"\n%s",ip_artnet);
 }
-fclose(fp); 
-return(0);   
+fclose(fp);
+return(0);
 }
 //////////////////CLIENT////////////////////////////////////////////////////////
 
@@ -253,18 +253,18 @@ int detection_reseaux()
 //ip artnet
 for(int u=0;u<8;u++)
 {
-sprintf(IP_detected_dmxOUT[u],"-");        
+sprintf(IP_detected_dmxOUT[u],"-");
 }
-  
+
 struct in_addr **addr_list;
 addr_list = (struct in_addr **)phe->h_addr_list;
 
 
 for(int p=0;addr_list[p]!=NULL;p++)
 {
-sprintf(IP_detected_dmxOUT[p] ,inet_ntoa(*addr_list[p]));      
+sprintf(IP_detected_dmxOUT[p] ,inet_ntoa(*addr_list[p]));
 }
- 
+
 //sprintf(IP_detected_dmxOUT[7],"..1.");
 
 return(0);
@@ -274,30 +274,30 @@ int initialisation_serveur_artnet()
 {
     WSADATA wsa;
 	WSAStartup(MAKEWORD(2,0),&wsa);
-	
+
 	sinServ.sin_family=AF_INET;
     sinServ.sin_addr.s_addr=inet_addr(IP_artnet_IN);
     sinServ.sin_port=htons(serveurport_artnet);
 	sock=socket(AF_INET,SOCK_DGRAM,0);
 	bind(sock,(SOCKADDR*)&sinServ,sizeof(sinServ));
 	u_long imode = 1;
-	ioctlsocket(sock, FIONBIO, &imode);    
+	ioctlsocket(sock, FIONBIO, &imode);
 	 sinsizeServ=sizeof(sinServ);
 	 sprintf(string_Last_Order,"Art-Net Server initialized");
 	 memset(artnet_message,0,sizeof(artnet_message));
 	 gethostname(hostnamebuffer, sizeof(hostnamebuffer));
-	 phe = gethostbyname(hostnamebuffer);	
+	 phe = gethostbyname(hostnamebuffer);
 	  int Ipsearch = 0;
      while((phe->h_addr_list[Ipsearch+1])!=NULL)
-     {                                        
-     Ipsearch++; 
+     {
+     Ipsearch++;
       }
      detection_reseaux();
 
 memcpy(&sinServ.sin_addr.s_addr, phe->h_addr_list[network_OUT_is_selected], phe->h_length);
 
-artnet_serveur_is_initialized=1; 
-return(0);   
+artnet_serveur_is_initialized=1;
+return(0);
 }
 
 int fermeture_serveur_artnet()
@@ -305,8 +305,8 @@ int fermeture_serveur_artnet()
  	shutdown(sock,2);
     closesocket(sock);
     sprintf(string_Last_Order,">>Closed Art-Net serveur");
-    artnet_serveur_is_initialized=0; 
- return(0);	
+    artnet_serveur_is_initialized=0;
+ return(0);
 }
 
 //bug remonté par jacques
@@ -320,8 +320,8 @@ WSAStartup(MAKEWORD(2,0),&wsa);
 
  int Ipsearch = 0;
  while((phe->h_addr_list[Ipsearch+1])!=NULL)
- {                                        
- Ipsearch++; 
+ {
+ Ipsearch++;
  }
  detection_reseaux();
 return(0);
@@ -342,8 +342,8 @@ WSAStartup(MAKEWORD(2,0),&wsa);
 
  int Ipsearch = 0;
  while((phe->h_addr_list[Ipsearch+1])!=NULL)
- {                                        
- Ipsearch++; 
+ {
+ Ipsearch++;
  }
  detection_reseaux();
 */
@@ -353,15 +353,15 @@ memcpy(&sinS.sin_addr.s_addr, phe->h_addr_list[network_OUT_is_selected], phe->h_
  sprintf(string_ip,inet_ntoa(sinS.sin_addr));
 
  //extraction en tableau de 4 char
- 
+
  sscanf (string_ip, "%d.%d.%d.%d", my_ip_is, my_ip_is + 1,
                        my_ip_is + 2, my_ip_is + 3);
- 
-//               printf ("\nI am: %d.%d.%d.%d\n", (unsigned char)my_ip_is[0], (unsigned char)my_ip_is[1], 
+
+//               printf ("\nI am: %d.%d.%d.%d\n", (unsigned char)my_ip_is[0], (unsigned char)my_ip_is[1],
 //                      (unsigned char)my_ip_is[2],(unsigned char)my_ip_is[3]);
 
 */
-  
+
 //On informe la structure
 sinS.sin_family=AF_INET;
 sinS.sin_addr.s_addr=inet_addr(ip_artnet);
@@ -384,7 +384,7 @@ bind(sockartnet,(SOCKADDR*)&sinS,sizeof(sinS)); //Liaison entre la structure et 
 
  //non-blocking mode setting avec ioctlsocket
 u_long imode = 1;
-ioctlsocket( sockartnet, FIONBIO, &imode);  
+ioctlsocket( sockartnet, FIONBIO, &imode);
 
 sinsize=sizeof(sinS);
 
@@ -398,9 +398,9 @@ if (index_broadcast==1)
 else if (index_broadcast==0)
 	{
 	sprintf(string_display_dmx_params,"ART-NET: Unicast to %s Univ. %d",ip_artnet, Univers);
-    }    
+    }
 client_artnet_is_closed=0;
-return(0);	
+return(0);
 }
 
 int fermeture_client_artnet()
@@ -409,7 +409,7 @@ int fermeture_client_artnet()
     closesocket(sockartnet);
     sprintf(string_Last_Order,">>Closed Art-Net Client");
     client_artnet_is_closed=1;
- return(0);	
+ return(0);
 }
 
 
@@ -417,7 +417,7 @@ int fermeture_client_artnet()
 
 
 int ConstructArtPoll()
-{  
+{
  for (int i=0;i<7;i++)
  {
  ArtPollBuffer[i]=ArtNetHead[i];
@@ -442,10 +442,10 @@ int ConstructArtPoll()
   // tech support calls
   // bit 1 = 0 then Node only replies when polled
   // bit 1 = 1 then Node sends reply when it needs to
-  
+
   //filler ending packet
   ArtPollBuffer[13]=0;
-  return(0);   
+  return(0);
 }
 
 int ArtDmx()
@@ -454,18 +454,18 @@ int ArtDmx()
     for (int i=0;i<7;i++)
     {
     ArtDmxBuffer[i]=ArtNetHead[i];
-    }    
+    }
     //Opcode low byte first
      unsigned char OpHbyteSend=(unsigned  char) (OpOutput>>8);
      unsigned char OpLbyteSend= (unsigned char) (OpOutput);
      ArtDmxBuffer[8]=OpLbyteSend;
-     ArtDmxBuffer[9]=OpHbyteSend; 
+     ArtDmxBuffer[9]=OpHbyteSend;
      //protocole
      ArtDmxBuffer[10]=0;
      ArtDmxBuffer[11]=14;
      //pas de sequence
      ArtDmxBuffer[12]=0;
-     //physical 
+     //physical
      ArtDmxBuffer[13] = 0;
      // universe (two bytes)
      unsigned char UHbyte=(unsigned  char) (Univers>>8);
@@ -474,22 +474,22 @@ int ArtDmx()
      ArtDmxBuffer[15]=UHbyte;
      //data length
      unsigned char DHbyte=(unsigned  char) (DataLength>>8);
-     unsigned char DLbyte= (unsigned char) (DataLength);     
+     unsigned char DLbyte= (unsigned char) (DataLength);
      ArtDmxBuffer[16] = DHbyte;
      ArtDmxBuffer[17] = DLbyte;
-   
+
      for (int t=HeaderLength+1;t<Dim;t++)
      {
      ArtDmxBuffer[t]=DmxBlock[t-HeaderLength];
      }
-    
+
     return(0);
 }
 
 
 int ConstructArtPollReply ()//size 250
 {
-      
+
  for (int i=0;i<7;i++)
  {
  ArtPollReplyBuffer[i]=ArtNetHead[i];
@@ -507,7 +507,7 @@ int ConstructArtPollReply ()//size 250
  //2 bytes pour le port artnet
  ArtPollReplyBuffer[14]= (unsigned char)(clientport_artnet);
  ArtPollReplyBuffer[15]= (unsigned char)(clientport_artnet>>8);
- 
+
 //version
 ArtPollReplyBuffer[16]=0;
 ArtPollReplyBuffer[17]=14;
@@ -660,7 +660,7 @@ for (int fill=207;fill<(207+32);fill++)
 {ArtPollReplyBuffer[fill]=0;}
 //END OF SIGNAL
 ArtPollReplyBuffer[239]=255;
-       
+
 return(0);
 }
 //////////////////////////////////////////////////////////////////////////
@@ -671,16 +671,16 @@ index_show_artpoll_reply_content=1;
 bool index_is_artnet=0;
 bool index_is_artpollRep=0;
 
- 
+
 if( artpollreply_message[0]==ArtNetHead[0] && artpollreply_message[1]==ArtNetHead[1] && artpollreply_message[2]==ArtNetHead[2] && artpollreply_message[3]==ArtNetHead[3]
  && artpollreply_message[4]==ArtNetHead[4]  && artpollreply_message[5]==ArtNetHead[5]  && artpollreply_message[6]==ArtNetHead[6]  && artpollreply_message[7]==ArtNetHead[7] )
- {index_is_artnet=1;}   
+ {index_is_artnet=1;}
 
 
 
 if(artpollreply_message[8]==OpPollRLbyte && artpollreply_message[9]==OpPollRHbyte)//L 8 H 9
 {index_is_artpollRep=1;}
-   
+
 
 if(index_is_artnet==1 && index_is_artpollRep==1)
 {
