@@ -1,0 +1,1420 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<CodeBlocks_project_file>
+	<FileVersion major="1" minor="6" />
+	<Project>
+		<Option title="WHITECAT_opensource" />
+		<Option pch_mode="2" />
+		<Option compiler="gcc" />
+		<Build>
+			<Target title="default">
+				<Option output="../../release/WhiteCat" prefix_auto="1" extension_auto="1" />
+				<Option object_output="../../obj" />
+				<Option type="0" />
+				<Option compiler="gcc" />
+				<Compiler>
+					<Add directory="include" />
+					<Add directory="src" />
+					<Add directory="src/include/gui" />
+					<Add directory="src/gui" />
+				</Compiler>
+			</Target>
+		</Build>
+		<Compiler>
+			<Add option="-Iinclude/borderless -Llib/borderless" />
+			<Add directory="../sources" />
+			<Add directory="../sources/allegro-4.4.2-mingw-3.4.5/include" />
+			<Add directory="../sources/arduino/Cserial" />
+			<Add directory="../sources/audiere-1.9.4-win32/include" />
+			<Add directory="../sources/borderless06/include/borderless" />
+			<Add directory="../sources/dashard" />
+			<Add directory="../sources/enttec_pro" />
+			<Add directory="../sources/midishare/include" />
+			<Add directory="../sources/odmxusb_terry" />
+			<Add directory="../sources/openCV-1.0/include/opencv" />
+			<Add directory="C:/MinGW/include" />
+			<Add directory="C:/MinGW/include/haru" />
+		</Compiler>
+		<Linker>
+			<Add option="C:/MinGW/lib/libwsock32.a" />
+			<Add option="../sources/odmxusb_terry/FTD2XX.lib" />
+			<Add option="../sources/enttec_pro/ftd2xx.lib" />
+			<Add option="../sources/midishare/libraries/mshare32.lib" />
+			<Add option="C:/MinGW/lib/libiphlpapi.a" />
+			<Add option="C:/MinGW/lib/libhpdf.a" />
+			<Add option="C:/MinGW/lib/libz.a" />
+			<Add option="../sources/openCV-1.0/lib/libcv.a" />
+			<Add option="../sources/openCV-1.0/lib/libcxcore.a" />
+			<Add option="../sources/openCV-1.0/lib/libhighgui.a" />
+			<Add option="../sources/audiere-1.9.4-win32\lib\audiere.lib" />
+			<Add option="C:/MinGW/lib/libjpgal.a" />
+			<Add library="openlayer" />
+			<Add library="glyph-agl" />
+			<Add library="freetype.dll" />
+			<Add library="png" />
+			<Add library="zdll" />
+			<Add library="agl" />
+			<Add library="jpgal" />
+			<Add library="alleg" />
+			<Add library="user32" />
+			<Add library="gdi32" />
+			<Add library="glu32" />
+			<Add library="opengl32" />
+			<Add directory="C:/MinGW/lib" />
+			<Add directory="../sources" />
+			<Add directory="../sources/borderless06/lib/borderless" />
+			<Add directory="../sources/openCV-1.0/lib" />
+		</Linker>
+		<Unit filename="../WHITECAT_opensource to do.txt">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
+		<Unit filename="MAIN_nov_2013_opensource_kbd.cpp" />
+		<Unit filename="WhiteCat_OpenVersion.ico">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
+		<Unit filename="WhiteCat_private.h">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
+		<Unit filename="allegro-4.4.2-mingw-3.4.5/alleggl.h">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
+		<Unit filename="allegro-4.4.2-mingw-3.4.5/allegro.h">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
+		<Unit filename="allegro-4.4.2-mingw-3.4.5/allegro/3d.h">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
+		<Unit filename="allegro-4.4.2-mingw-3.4.5/allegro/3dmaths.h">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
+		<Unit filename="allegro-4.4.2-mingw-3.4.5/allegro/alcompat.h">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
+		<Unit filename="allegro-4.4.2-mingw-3.4.5/allegro/alinline.h">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
+		<Unit filename="allegro-4.4.2-mingw-3.4.5/allegro/base.h">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
+		<Unit filename="allegro-4.4.2-mingw-3.4.5/allegro/color.h">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
+		<Unit filename="allegro-4.4.2-mingw-3.4.5/allegro/compiled.h">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
+		<Unit filename="allegro-4.4.2-mingw-3.4.5/allegro/config.h">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
+		<Unit filename="allegro-4.4.2-mingw-3.4.5/allegro/datafile.h">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
+		<Unit filename="allegro-4.4.2-mingw-3.4.5/allegro/debug.h">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
+		<Unit filename="allegro-4.4.2-mingw-3.4.5/allegro/digi.h">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
+		<Unit filename="allegro-4.4.2-mingw-3.4.5/allegro/draw.h">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
+		<Unit filename="allegro-4.4.2-mingw-3.4.5/allegro/file.h">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
+		<Unit filename="allegro-4.4.2-mingw-3.4.5/allegro/fix.h">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
+		<Unit filename="allegro-4.4.2-mingw-3.4.5/allegro/fixed.h">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
+		<Unit filename="allegro-4.4.2-mingw-3.4.5/allegro/fli.h">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
+		<Unit filename="allegro-4.4.2-mingw-3.4.5/allegro/fmaths.h">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
+		<Unit filename="allegro-4.4.2-mingw-3.4.5/allegro/font.h">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
+		<Unit filename="allegro-4.4.2-mingw-3.4.5/allegro/gfx.h">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
+		<Unit filename="allegro-4.4.2-mingw-3.4.5/allegro/graphics.h">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
+		<Unit filename="allegro-4.4.2-mingw-3.4.5/allegro/gui.h">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
+		<Unit filename="allegro-4.4.2-mingw-3.4.5/allegro/inline/3dmaths.inl">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
+		<Unit filename="allegro-4.4.2-mingw-3.4.5/allegro/inline/asm.inl">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
+		<Unit filename="allegro-4.4.2-mingw-3.4.5/allegro/inline/color.inl">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
+		<Unit filename="allegro-4.4.2-mingw-3.4.5/allegro/inline/draw.inl">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
+		<Unit filename="allegro-4.4.2-mingw-3.4.5/allegro/inline/fix.inl">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
+		<Unit filename="allegro-4.4.2-mingw-3.4.5/allegro/inline/fmaths.inl">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
+		<Unit filename="allegro-4.4.2-mingw-3.4.5/allegro/inline/gfx.inl">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
+		<Unit filename="allegro-4.4.2-mingw-3.4.5/allegro/inline/matrix.inl">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
+		<Unit filename="allegro-4.4.2-mingw-3.4.5/allegro/inline/rle.inl">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
+		<Unit filename="allegro-4.4.2-mingw-3.4.5/allegro/inline/system.inl">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
+		<Unit filename="allegro-4.4.2-mingw-3.4.5/allegro/internal/aintern.h">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
+		<Unit filename="allegro-4.4.2-mingw-3.4.5/allegro/internal/aintvga.h">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
+		<Unit filename="allegro-4.4.2-mingw-3.4.5/allegro/internal/alconfig.h">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
+		<Unit filename="allegro-4.4.2-mingw-3.4.5/allegro/joystick.h">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
+		<Unit filename="allegro-4.4.2-mingw-3.4.5/allegro/keyboard.h">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
+		<Unit filename="allegro-4.4.2-mingw-3.4.5/allegro/lzss.h">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
+		<Unit filename="allegro-4.4.2-mingw-3.4.5/allegro/matrix.h">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
+		<Unit filename="allegro-4.4.2-mingw-3.4.5/allegro/midi.h">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
+		<Unit filename="allegro-4.4.2-mingw-3.4.5/allegro/mouse.h">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
+		<Unit filename="allegro-4.4.2-mingw-3.4.5/allegro/palette.h">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
+		<Unit filename="allegro-4.4.2-mingw-3.4.5/allegro/platform/aintbeos.h">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
+		<Unit filename="allegro-4.4.2-mingw-3.4.5/allegro/platform/aintdos.h">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
+		<Unit filename="allegro-4.4.2-mingw-3.4.5/allegro/platform/aintlnx.h">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
+		<Unit filename="allegro-4.4.2-mingw-3.4.5/allegro/platform/aintmac.h">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
+		<Unit filename="allegro-4.4.2-mingw-3.4.5/allegro/platform/aintosx.h">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
+		<Unit filename="allegro-4.4.2-mingw-3.4.5/allegro/platform/aintpsp.h">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
+		<Unit filename="allegro-4.4.2-mingw-3.4.5/allegro/platform/aintqnx.h">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
+		<Unit filename="allegro-4.4.2-mingw-3.4.5/allegro/platform/aintunix.h">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
+		<Unit filename="allegro-4.4.2-mingw-3.4.5/allegro/platform/aintwin.h">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
+		<Unit filename="allegro-4.4.2-mingw-3.4.5/allegro/platform/al386gcc.h">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
+		<Unit filename="allegro-4.4.2-mingw-3.4.5/allegro/platform/al386vc.h">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
+		<Unit filename="allegro-4.4.2-mingw-3.4.5/allegro/platform/al386wat.h">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
+		<Unit filename="allegro-4.4.2-mingw-3.4.5/allegro/platform/albcc32.h">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
+		<Unit filename="allegro-4.4.2-mingw-3.4.5/allegro/platform/albecfg.h">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
+		<Unit filename="allegro-4.4.2-mingw-3.4.5/allegro/platform/albeos.h">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
+		<Unit filename="allegro-4.4.2-mingw-3.4.5/allegro/platform/aldjgpp.h">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
+		<Unit filename="allegro-4.4.2-mingw-3.4.5/allegro/platform/aldmc.h">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
+		<Unit filename="allegro-4.4.2-mingw-3.4.5/allegro/platform/aldos.h">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
+		<Unit filename="allegro-4.4.2-mingw-3.4.5/allegro/platform/almac.h">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
+		<Unit filename="allegro-4.4.2-mingw-3.4.5/allegro/platform/almaccfg.h">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
+		<Unit filename="allegro-4.4.2-mingw-3.4.5/allegro/platform/almngw32.h">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
+		<Unit filename="allegro-4.4.2-mingw-3.4.5/allegro/platform/almsvc.h">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
+		<Unit filename="allegro-4.4.2-mingw-3.4.5/allegro/platform/alosx.h">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
+		<Unit filename="allegro-4.4.2-mingw-3.4.5/allegro/platform/alosxcfg.h">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
+		<Unit filename="allegro-4.4.2-mingw-3.4.5/allegro/platform/alplatf.h">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
+		<Unit filename="allegro-4.4.2-mingw-3.4.5/allegro/platform/alpsp.h">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
+		<Unit filename="allegro-4.4.2-mingw-3.4.5/allegro/platform/alpspcfg.h">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
+		<Unit filename="allegro-4.4.2-mingw-3.4.5/allegro/platform/alqnx.h">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
+		<Unit filename="allegro-4.4.2-mingw-3.4.5/allegro/platform/alqnxcfg.h">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
+		<Unit filename="allegro-4.4.2-mingw-3.4.5/allegro/platform/alucfg.h">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
+		<Unit filename="allegro-4.4.2-mingw-3.4.5/allegro/platform/alunix.h">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
+		<Unit filename="allegro-4.4.2-mingw-3.4.5/allegro/platform/alwatcom.h">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
+		<Unit filename="allegro-4.4.2-mingw-3.4.5/allegro/platform/alwin.h">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
+		<Unit filename="allegro-4.4.2-mingw-3.4.5/allegro/platform/astdint.h">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
+		<Unit filename="allegro-4.4.2-mingw-3.4.5/allegro/platform/macdef.h">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
+		<Unit filename="allegro-4.4.2-mingw-3.4.5/allegro/quat.h">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
+		<Unit filename="allegro-4.4.2-mingw-3.4.5/allegro/rle.h">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
+		<Unit filename="allegro-4.4.2-mingw-3.4.5/allegro/sound.h">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
+		<Unit filename="allegro-4.4.2-mingw-3.4.5/allegro/stream.h">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
+		<Unit filename="allegro-4.4.2-mingw-3.4.5/allegro/system.h">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
+		<Unit filename="allegro-4.4.2-mingw-3.4.5/allegro/text.h">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
+		<Unit filename="allegro-4.4.2-mingw-3.4.5/allegro/timer.h">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
+		<Unit filename="allegro-4.4.2-mingw-3.4.5/allegro/unicode.h">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
+		<Unit filename="allegro-4.4.2-mingw-3.4.5/allegrogl/GLext/gl_ext_alias.h">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
+		<Unit filename="allegro-4.4.2-mingw-3.4.5/allegrogl/GLext/gl_ext_api.h">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
+		<Unit filename="allegro-4.4.2-mingw-3.4.5/allegrogl/GLext/gl_ext_defs.h">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
+		<Unit filename="allegro-4.4.2-mingw-3.4.5/allegrogl/GLext/gl_ext_list.h">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
+		<Unit filename="allegro-4.4.2-mingw-3.4.5/allegrogl/GLext/wgl_ext_alias.h">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
+		<Unit filename="allegro-4.4.2-mingw-3.4.5/allegrogl/GLext/wgl_ext_api.h">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
+		<Unit filename="allegro-4.4.2-mingw-3.4.5/allegrogl/GLext/wgl_ext_defs.h">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
+		<Unit filename="allegro-4.4.2-mingw-3.4.5/allegrogl/GLext/wgl_ext_list.h">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
+		<Unit filename="allegro-4.4.2-mingw-3.4.5/allegrogl/gl_ext.h">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
+		<Unit filename="allegro-4.4.2-mingw-3.4.5/allegrogl/gl_header_detect.h">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
+		<Unit filename="allegro-4.4.2-mingw-3.4.5/jpgalleg.h">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
+		<Unit filename="allegro-4.4.2-mingw-3.4.5/loadpng.h">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
+		<Unit filename="allegro-4.4.2-mingw-3.4.5/logg.h">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
+		<Unit filename="allegro-4.4.2-mingw-3.4.5/winalleg.h">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
+		<Unit filename="arduino/Cserial/Serial.cpp">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
+		<Unit filename="arduino/Cserial/Serial.h">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
+		<Unit filename="audiere-1.9.4/audiere.h">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
+		<Unit filename="borderless/GL/amesa.h">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
+		<Unit filename="borderless/GL/glut.h">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
+		<Unit filename="borderless/OpenLayer.hpp">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
+		<Unit filename="borderless/OpenLayer/Animation.hpp">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
+		<Unit filename="borderless/OpenLayer/Bitmap.hpp">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
+		<Unit filename="borderless/OpenLayer/Blenders.hpp">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
+		<Unit filename="borderless/OpenLayer/Canvas.hpp">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
+		<Unit filename="borderless/OpenLayer/Circle.hpp">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
+		<Unit filename="borderless/OpenLayer/Collisions.hpp">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
+		<Unit filename="borderless/OpenLayer/Declspec.hpp">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
+		<Unit filename="borderless/OpenLayer/Effects.hpp">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
+		<Unit filename="borderless/OpenLayer/FpsCounter.hpp">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
+		<Unit filename="borderless/OpenLayer/Framebuffer.hpp">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
+		<Unit filename="borderless/OpenLayer/GarbageCollector.hpp">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
+		<Unit filename="borderless/OpenLayer/General.hpp">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
+		<Unit filename="borderless/OpenLayer/GfxRend.hpp">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
+		<Unit filename="borderless/OpenLayer/GlDriver.hpp">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
+		<Unit filename="borderless/OpenLayer/Glyph.hpp">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
+		<Unit filename="borderless/OpenLayer/Includes.hpp">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
+		<Unit filename="borderless/OpenLayer/Internal.hpp">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
+		<Unit filename="borderless/OpenLayer/Line.hpp">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
+		<Unit filename="borderless/OpenLayer/LineStrip.hpp">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
+		<Unit filename="borderless/OpenLayer/LineStripRender.hpp">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
+		<Unit filename="borderless/OpenLayer/Matrix.hpp">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
+		<Unit filename="borderless/OpenLayer/Mouse.hpp">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
+		<Unit filename="borderless/OpenLayer/OlRectangle.hpp">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
+		<Unit filename="borderless/OpenLayer/PendingLoad.hpp">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
+		<Unit filename="borderless/OpenLayer/Placement.hpp">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
+		<Unit filename="borderless/OpenLayer/Point.hpp">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
+		<Unit filename="borderless/OpenLayer/Polygon.hpp">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
+		<Unit filename="borderless/OpenLayer/RawLineStrip.hpp">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
+		<Unit filename="borderless/OpenLayer/Rectangle.hpp">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
+		<Unit filename="borderless/OpenLayer/RenderModes.hpp">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
+		<Unit filename="borderless/OpenLayer/Rgba.hpp">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
+		<Unit filename="borderless/OpenLayer/Settings.hpp">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
+		<Unit filename="borderless/OpenLayer/Setup.hpp">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
+		<Unit filename="borderless/OpenLayer/Shape.hpp">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
+		<Unit filename="borderless/OpenLayer/Templates.hpp">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
+		<Unit filename="borderless/OpenLayer/TextRenderer.hpp">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
+		<Unit filename="borderless/OpenLayer/TextureInfo.hpp">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
+		<Unit filename="borderless/OpenLayer/TexturedPoly.hpp">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
+		<Unit filename="borderless/OpenLayer/TransformMatrix.hpp">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
+		<Unit filename="borderless/OpenLayer/Transforms.hpp">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
+		<Unit filename="borderless/OpenLayer/Vec2D.hpp">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
+		<Unit filename="borderless/OpenLayer/VertexListCollision.hpp">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
+		<Unit filename="borderless/OpenLayer/loadpng.h">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
+		<Unit filename="borderless/alleggl.h">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
+		<Unit filename="borderless/alleggl_config.hin">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
+		<Unit filename="borderless/allegrogl/GLext/gl_ext_alias.h">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
+		<Unit filename="borderless/allegrogl/GLext/gl_ext_api.h">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
+		<Unit filename="borderless/allegrogl/GLext/gl_ext_defs.h">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
+		<Unit filename="borderless/allegrogl/GLext/gl_ext_list.h">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
+		<Unit filename="borderless/allegrogl/GLext/glx_ext_alias.h">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
+		<Unit filename="borderless/allegrogl/GLext/glx_ext_api.h">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
+		<Unit filename="borderless/allegrogl/GLext/glx_ext_defs.h">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
+		<Unit filename="borderless/allegrogl/GLext/glx_ext_list.h">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
+		<Unit filename="borderless/allegrogl/GLext/wgl_ext_alias.h">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
+		<Unit filename="borderless/allegrogl/GLext/wgl_ext_api.h">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
+		<Unit filename="borderless/allegrogl/GLext/wgl_ext_defs.h">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
+		<Unit filename="borderless/allegrogl/GLext/wgl_ext_list.h">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
+		<Unit filename="borderless/allegrogl/gl_ext.h">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
+		<Unit filename="borderless/allegrogl/gl_header_detect.h">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
+		<Unit filename="borderless/allglint.h">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
+		<Unit filename="borderless/freetype/config/ftconfig.h">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
+		<Unit filename="borderless/freetype/config/ftheader.h">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
+		<Unit filename="borderless/freetype/config/ftmodule.h">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
+		<Unit filename="borderless/freetype/config/ftoption.h">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
+		<Unit filename="borderless/freetype/config/ftstdlib.h">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
+		<Unit filename="borderless/freetype/freetype.h">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
+		<Unit filename="borderless/freetype/ftbbox.h">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
+		<Unit filename="borderless/freetype/ftbdf.h">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
+		<Unit filename="borderless/freetype/ftbitmap.h">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
+		<Unit filename="borderless/freetype/ftcache.h">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
+		<Unit filename="borderless/freetype/ftchapters.h">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
+		<Unit filename="borderless/freetype/fterrdef.h">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
+		<Unit filename="borderless/freetype/fterrors.h">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
+		<Unit filename="borderless/freetype/ftgasp.h">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
+		<Unit filename="borderless/freetype/ftglyph.h">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
+		<Unit filename="borderless/freetype/ftgxval.h">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
+		<Unit filename="borderless/freetype/ftgzip.h">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
+		<Unit filename="borderless/freetype/ftimage.h">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
+		<Unit filename="borderless/freetype/ftincrem.h">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
+		<Unit filename="borderless/freetype/ftlcdfil.h">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
+		<Unit filename="borderless/freetype/ftlist.h">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
+		<Unit filename="borderless/freetype/ftlzw.h">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
+		<Unit filename="borderless/freetype/ftmac.h">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
+		<Unit filename="borderless/freetype/ftmm.h">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
+		<Unit filename="borderless/freetype/ftmodapi.h">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
+		<Unit filename="borderless/freetype/ftmoderr.h">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
+		<Unit filename="borderless/freetype/ftotval.h">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
+		<Unit filename="borderless/freetype/ftoutln.h">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
+		<Unit filename="borderless/freetype/ftpfr.h">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
+		<Unit filename="borderless/freetype/ftrender.h">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
+		<Unit filename="borderless/freetype/ftsizes.h">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
+		<Unit filename="borderless/freetype/ftsnames.h">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
+		<Unit filename="borderless/freetype/ftstroke.h">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
+		<Unit filename="borderless/freetype/ftsynth.h">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
+		<Unit filename="borderless/freetype/ftsystem.h">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
+		<Unit filename="borderless/freetype/fttrigon.h">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
+		<Unit filename="borderless/freetype/fttypes.h">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
+		<Unit filename="borderless/freetype/ftwinfnt.h">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
+		<Unit filename="borderless/freetype/ftxf86.h">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
+		<Unit filename="borderless/freetype/internal/autohint.h">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
+		<Unit filename="borderless/freetype/internal/ftcalc.h">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
+		<Unit filename="borderless/freetype/internal/ftdebug.h">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
+		<Unit filename="borderless/freetype/internal/ftdriver.h">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
+		<Unit filename="borderless/freetype/internal/ftgloadr.h">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
+		<Unit filename="borderless/freetype/internal/ftmemory.h">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
+		<Unit filename="borderless/freetype/internal/ftobjs.h">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
+		<Unit filename="borderless/freetype/internal/ftrfork.h">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
+		<Unit filename="borderless/freetype/internal/ftserv.h">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
+		<Unit filename="borderless/freetype/internal/ftstream.h">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
+		<Unit filename="borderless/freetype/internal/fttrace.h">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
+		<Unit filename="borderless/freetype/internal/ftvalid.h">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
+		<Unit filename="borderless/freetype/internal/internal.h">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
+		<Unit filename="borderless/freetype/internal/pcftypes.h">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
+		<Unit filename="borderless/freetype/internal/psaux.h">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
+		<Unit filename="borderless/freetype/internal/pshints.h">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
+		<Unit filename="borderless/freetype/internal/services/svbdf.h">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
+		<Unit filename="borderless/freetype/internal/services/svgldict.h">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
+		<Unit filename="borderless/freetype/internal/services/svgxval.h">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
+		<Unit filename="borderless/freetype/internal/services/svkern.h">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
+		<Unit filename="borderless/freetype/internal/services/svmm.h">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
+		<Unit filename="borderless/freetype/internal/services/svotval.h">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
+		<Unit filename="borderless/freetype/internal/services/svpfr.h">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
+		<Unit filename="borderless/freetype/internal/services/svpostnm.h">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
+		<Unit filename="borderless/freetype/internal/services/svpscmap.h">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
+		<Unit filename="borderless/freetype/internal/services/svpsinfo.h">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
+		<Unit filename="borderless/freetype/internal/services/svsfnt.h">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
+		<Unit filename="borderless/freetype/internal/services/svttcmap.h">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
+		<Unit filename="borderless/freetype/internal/services/svtteng.h">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
+		<Unit filename="borderless/freetype/internal/services/svwinfnt.h">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
+		<Unit filename="borderless/freetype/internal/services/svxf86nm.h">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
+		<Unit filename="borderless/freetype/internal/sfnt.h">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
+		<Unit filename="borderless/freetype/internal/t1types.h">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
+		<Unit filename="borderless/freetype/internal/tttypes.h">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
+		<Unit filename="borderless/freetype/t1tables.h">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
+		<Unit filename="borderless/freetype/ttnameid.h">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
+		<Unit filename="borderless/freetype/tttables.h">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
+		<Unit filename="borderless/freetype/tttags.h">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
+		<Unit filename="borderless/freetype/ttunpat.h">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
+		<Unit filename="borderless/ft2build.h">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
+		<Unit filename="borderless/glvtable.h">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
+		<Unit filename="borderless/glyph.h">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
+		<Unit filename="borderless/png.h">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
+		<Unit filename="borderless/pngconf.h">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
+		<Unit filename="borderless/zconf.h">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
+		<Unit filename="borderless/zlib.h">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
+		<Unit filename="chat_dock_machine.ico">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
+		<Unit filename="dashard/Developper Kit.pdf">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
+		<Unit filename="dashard/_DasHard.h">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
+		<Unit filename="dep/lib_win32/allegro-4.4.2-mingw-3.4.5/liballegro-4.4.2-monolith-mt-debug.a">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
+		<Unit filename="dep/lib_win32/allegro-4.4.2-mingw-3.4.5/liballegro-4.4.2-monolith-mt.a">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
+		<Unit filename="dep/lib_win32/allegro-4.4.2-mingw-3.4.5/liballegro-4.4.2-mt-debug.a">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
+		<Unit filename="dep/lib_win32/allegro-4.4.2-mingw-3.4.5/liballegro-4.4.2-mt.a">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
+		<Unit filename="dep/lib_win32/allegro-4.4.2-mingw-3.4.5/liballegrogl-0.4.4-mt-debug.a">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
+		<Unit filename="dep/lib_win32/allegro-4.4.2-mingw-3.4.5/liballegrogl-0.4.4-mt.a">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
+		<Unit filename="dep/lib_win32/allegro-4.4.2-mingw-3.4.5/libjpgalleg-2.6-mt-debug.a">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
+		<Unit filename="dep/lib_win32/allegro-4.4.2-mingw-3.4.5/libjpgalleg-2.6-mt.a">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
+		<Unit filename="dep/lib_win32/allegro-4.4.2-mingw-3.4.5/libloadpng-1.5-mt-debug.a">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
+		<Unit filename="dep/lib_win32/allegro-4.4.2-mingw-3.4.5/libloadpng-1.5-mt.a">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
+		<Unit filename="dep/lib_win32/allegro-4.4.2-mingw-3.4.5/liblogg-1.0-mt-debug.a">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
+		<Unit filename="dep/lib_win32/allegro-4.4.2-mingw-3.4.5/liblogg-1.0-mt.a">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
+		<Unit filename="dep/lib_win32/allegro-4.4.2-mingw-3.4.5/libogg-1.2.1-static-mt-debug.a">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
+		<Unit filename="dep/lib_win32/allegro-4.4.2-mingw-3.4.5/libogg-1.2.1-static-mt.a">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
+		<Unit filename="dep/lib_win32/allegro-4.4.2-mingw-3.4.5/libpng-1.4.0-static-mt-debug.a">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
+		<Unit filename="dep/lib_win32/allegro-4.4.2-mingw-3.4.5/libpng-1.4.0-static-mt.a">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
+		<Unit filename="dep/lib_win32/allegro-4.4.2-mingw-3.4.5/libvorbis-1.3.2-static-mt-debug.a">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
+		<Unit filename="dep/lib_win32/allegro-4.4.2-mingw-3.4.5/libvorbis-1.3.2-static-mt.a">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
+		<Unit filename="dep/lib_win32/allegro-4.4.2-mingw-3.4.5/libvorbisfile-1.3.2-static-mt-debug.a">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
+		<Unit filename="dep/lib_win32/allegro-4.4.2-mingw-3.4.5/libvorbisfile-1.3.2-static-mt.a">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
+		<Unit filename="dep/lib_win32/allegro-4.4.2-mingw-3.4.5/libzlib-1.2.5-static-mt-debug.a">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
+		<Unit filename="dep/lib_win32/allegro-4.4.2-mingw-3.4.5/libzlib-1.2.5-static-mt.a">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
+		<Unit filename="dep/lib_win32/audiere_1.9.4/audiere.lib">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
+		<Unit filename="dep/lib_win32/borderless/libagl.a">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
+		<Unit filename="dep/lib_win32/borderless/libfreetype.dll.a">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
+		<Unit filename="dep/lib_win32/borderless/libglyph-agl.a">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
+		<Unit filename="dep/lib_win32/borderless/libopenlayer.a">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
+		<Unit filename="dep/lib_win32/borderless/libpng.dll.a">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
+		<Unit filename="dep/lib_win32/borderless/libzdll.a">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
+		<Unit filename="dep/lib_win32/enttec_pro/ftd2xx.lib">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
+		<Unit filename="dep/lib_win32/midishare/mshare32.lib">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
+		<Unit filename="dep/lib_win32/odmxusb_terry/FTD2XX.lib">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
+		<Unit filename="dep/lib_win32/openCV-1.0/libcv.a">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
+		<Unit filename="dep/lib_win32/openCV-1.0/libcvaux.a">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
+		<Unit filename="dep/lib_win32/openCV-1.0/libcvcam.a">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
+		<Unit filename="dep/lib_win32/openCV-1.0/libcvhaartraining.a">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
+		<Unit filename="dep/lib_win32/openCV-1.0/libcxcore.a">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
+		<Unit filename="dep/lib_win32/openCV-1.0/libcxts.a">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
+		<Unit filename="dep/lib_win32/openCV-1.0/libhighgui.a">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
+		<Unit filename="dep/lib_win32/openCV-1.0/libml.a">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
+		<Unit filename="enttec_pro/FTD2XX.H">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
+		<Unit filename="gui/CFG_config_panel_8.cpp">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
+		<Unit filename="gui/CFG_screen.cpp">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
+		<Unit filename="gui/Call_everybody_5.cpp">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
+		<Unit filename="gui/Draw3.cpp">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
+		<Unit filename="gui/audio_visu4.cpp">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
+		<Unit filename="gui/banger_visu_8.cpp">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
+		<Unit filename="gui/channels_10_visu.cpp">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
+		<Unit filename="gui/chasers_visu.cpp">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
+		<Unit filename="gui/faders_visuels_26.cpp">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
+		<Unit filename="gui/gestionaire_fenetres2.cpp">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
+		<Unit filename="gui/graphics_rebuild1.cpp">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
+		<Unit filename="gui/guiFrame.cpp">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
+		<Unit filename="gui/guiFrame.h">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
+		<Unit filename="gui/guiItem.cpp">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
+		<Unit filename="gui/guiItem.h">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
+		<Unit filename="gui/gui_boutons_rebuild1.cpp">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
+		<Unit filename="gui/list_proj_visu.cpp">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
+		<Unit filename="gui/minifaders_visu.cpp">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
+		<Unit filename="gui/my_window_file_sample.cpp">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
+		<Unit filename="gui/my_window_file_sample.h">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
+		<Unit filename="gui/numpad_visuel.cpp">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
+		<Unit filename="gui/patch_visu.cpp">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
+		<Unit filename="gui/procs_visuels_rebuild1.cpp">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
+		<Unit filename="gui/sequentiel_6_visu.cpp">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
+		<Unit filename="gui/sequentiel_7_visu.cpp">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
+		<Unit filename="gui/time_visu_3.cpp">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
+		<Unit filename="gui/trichro_visu2.cpp">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
+		<Unit filename="gui/video_tracking_visu.cpp">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
+		<Unit filename="include/gui/wc_onScreenObj.h" />
+		<Unit filename="midishare/MidiShare.h">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
+		<Unit filename="midishare/Player.h">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
+		<Unit filename="odmxusb_terry/FTD2XX.H">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
+		<Unit filename="odmxusb_terry/odmxusb.cpp">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
+		<Unit filename="odmxusb_terry/odmxusb.h">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
+		<Unit filename="openCV-1.0/_cv.h">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
+		<Unit filename="openCV-1.0/_cvaux.h">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
+		<Unit filename="openCV-1.0/_cvfacedetection.h">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
+		<Unit filename="openCV-1.0/_cvgeom.h">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
+		<Unit filename="openCV-1.0/_cvimgproc.h">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
+		<Unit filename="openCV-1.0/_cvipp.h">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
+		<Unit filename="openCV-1.0/_cvlist.h">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
+		<Unit filename="openCV-1.0/_cvmatrix.h">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
+		<Unit filename="openCV-1.0/_cvvectrack.h">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
+		<Unit filename="openCV-1.0/_cvvm.h">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
+		<Unit filename="openCV-1.0/_cxcore.h">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
+		<Unit filename="openCV-1.0/_cxipp.h">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
+		<Unit filename="openCV-1.0/_highgui.h">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
+		<Unit filename="openCV-1.0/_ml.h">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
+		<Unit filename="openCV-1.0/bitstrm.h">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
+		<Unit filename="openCV-1.0/cv.h">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
+		<Unit filename="openCV-1.0/cv.hpp">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
+		<Unit filename="openCV-1.0/cvaux.h">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
+		<Unit filename="openCV-1.0/cvaux.hpp">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
+		<Unit filename="openCV-1.0/cvcam.h">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
+		<Unit filename="openCV-1.0/cvcamavi.h">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
+		<Unit filename="openCV-1.0/cvcompat.h">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
+		<Unit filename="openCV-1.0/cvmat.hpp">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
+		<Unit filename="openCV-1.0/cvstreams.h">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
+		<Unit filename="openCV-1.0/cvtypes.h">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
+		<Unit filename="openCV-1.0/cvver.h">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
+		<Unit filename="openCV-1.0/cvvidsurv.hpp">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
+		<Unit filename="openCV-1.0/cxcore.h">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
+		<Unit filename="openCV-1.0/cxcore.hpp">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
+		<Unit filename="openCV-1.0/cxerror.h">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
+		<Unit filename="openCV-1.0/cxmisc.h">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
+		<Unit filename="openCV-1.0/cxtypes.h">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
+		<Unit filename="openCV-1.0/grfmt_base.h">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
+		<Unit filename="openCV-1.0/grfmt_bmp.h">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
+		<Unit filename="openCV-1.0/grfmt_exr.h">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
+		<Unit filename="openCV-1.0/grfmt_jpeg.h">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
+		<Unit filename="openCV-1.0/grfmt_jpeg2000.h">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
+		<Unit filename="openCV-1.0/grfmt_png.h">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
+		<Unit filename="openCV-1.0/grfmt_pxm.h">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
+		<Unit filename="openCV-1.0/grfmt_sunras.h">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
+		<Unit filename="openCV-1.0/grfmt_tiff.h">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
+		<Unit filename="openCV-1.0/grfmts.h">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
+		<Unit filename="openCV-1.0/highgui.h">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
+		<Unit filename="openCV-1.0/ml.h">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
+		<Unit filename="openCV-1.0/resource.h">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
+		<Unit filename="openCV-1.0/utils.h">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
+		<Unit filename="protocol/arduino_6_UNO_anton2.cpp">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
+		<Unit filename="protocol/arduino_core_6_UNO_anton3.cpp">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
+		<Unit filename="protocol/arduino_device_core.cpp">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
+		<Unit filename="protocol/dmx_enttec_pro.cpp">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
+		<Unit filename="protocol/dmx_enttec_pro_FTDI.cpp">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
+		<Unit filename="protocol/dmx_ftdi_IN_test_enttec_pro.cpp">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
+		<Unit filename="protocol/dmx_functions_13.cpp">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
+		<Unit filename="protocol/dmx_sunlite.cpp">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
+		<Unit filename="protocol/iCat14.cpp">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
+		<Unit filename="protocol/icat_core14.cpp">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
+		<Unit filename="protocol/midi_13.cpp">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
+		<Unit filename="protocol/midi_CORE.cpp">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
+		<Unit filename="protocol/midi_launchpad.cpp">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
+		<Unit filename="protocol/network_MAC_adress_3.cpp">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
+		<Unit filename="protocol/network_artnet_3.cpp">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
+		<Unit filename="tools/audio/audio_core5.cpp">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
+		<Unit filename="tools/light/banger_core_8.cpp">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
+		<Unit filename="tools/light/channels_9_core.cpp">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
+		<Unit filename="tools/light/chasers_core_5.cpp">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
+		<Unit filename="tools/light/echo3.cpp">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
+		<Unit filename="tools/light/faders_core_24.cpp">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
+		<Unit filename="tools/light/faders_operations.cpp">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
+		<Unit filename="tools/light/grand_master.cpp">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
+		<Unit filename="tools/light/grider8.cpp">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
+		<Unit filename="tools/light/grider_calculs8.cpp">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
+		<Unit filename="tools/light/grider_core8.cpp">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
+		<Unit filename="tools/light/list_proj_core.cpp">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
+		<Unit filename="tools/light/minifaders_core.cpp">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
+		<Unit filename="tools/light/patch_core.cpp">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
+		<Unit filename="tools/light/patch_splines_2.cpp">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
+		<Unit filename="tools/light/trichro_core2.cpp">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
+		<Unit filename="tools/robotics/mover_2013.cpp">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
+		<Unit filename="tools/robotics/mover_spline6.cpp">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
+		<Unit filename="tools/transversal/CORE_6.cpp">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
+		<Unit filename="tools/transversal/numpad_core.cpp">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
+		<Unit filename="tools/transversal/plot.cpp">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
+		<Unit filename="tools/transversal/plot9.cpp">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
+		<Unit filename="tools/transversal/plot_core9.cpp">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
+		<Unit filename="tools/transversal/sequentiel_6_core.cpp">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
+		<Unit filename="tools/video/tracker_main14nov.cpp">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
+		<Unit filename="tools/video/video_tracking_core.cpp">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
+		<Unit filename="trigger/keyboard_functions2.cpp">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
+		<Unit filename="trigger/keyboard_routines2.cpp">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
+		<Unit filename="trigger/logicals_intres.cpp">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
+		<Unit filename="trigger/time_core_3.cpp">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
+		<Unit filename="whitecat.h">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
+		<Unit filename="whitecat_opensource.ico">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
+		<Unit filename="workspace/generate_strings_arrays.cpp">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
+		<Unit filename="workspace/help_2.cpp">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
+		<Unit filename="workspace/save_show_13.cpp">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
+		<Unit filename="workspace/saves_export_import.cpp">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
+		<Unit filename="workspace/saves_export_pdf2.cpp">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
+		<Unit filename="workspace/saves_menu_8.cpp">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
+		<Unit filename="workspace/wizard.cpp">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
+		<Unit filename="workspace/wizard_operations.cpp">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
+		<Unit filename="x_deprecated/CFG_config_panel_7.cpp">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
+		<Unit filename="x_deprecated/arduino_6_UNO.cpp">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
+		<Unit filename="x_deprecated/arduino_6_UNO_anton.cpp">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
+		<Unit filename="x_deprecated/arduino_core_6_UNO.cpp">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
+		<Unit filename="x_deprecated/arduino_core_6_UNO_anton.cpp">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
+		<Unit filename="x_deprecated/arduino_core_6_UNO_anton2.cpp">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
+		<Unit filename="x_deprecated/audio_core3.cpp">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
+		<Unit filename="x_deprecated/audio_core4.cpp">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
+		<Unit filename="x_deprecated/audio_visu2.cpp">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
+		<Unit filename="x_deprecated/audio_visu3.cpp">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
+		<Unit filename="x_deprecated/channels_9_visu.cpp">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
+		<Unit filename="x_deprecated/faders_visuels_24.cpp">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
+		<Unit filename="x_deprecated/faders_visuels_25.cpp">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
+		<Extensions>
+			<code_completion />
+			<envvars />
+			<debugger />
+			<lib_finder disable_auto="1" />
+			<DoxyBlocks>
+				<comment_style block="0" line="0" />
+				<doxyfile_project />
+				<doxyfile_build />
+				<doxyfile_warnings />
+				<doxyfile_output />
+				<doxyfile_dot />
+				<general />
+			</DoxyBlocks>
+		</Extensions>
+	</Project>
+</CodeBlocks_project_file>
