@@ -53,7 +53,7 @@ WWWWWWWW           C  WWWWWWWW   |
 #include <jpgalleg.h>
 
 
-using namespace audiere;
+//using namespace audiere;
 //using namespace ol;
 
 

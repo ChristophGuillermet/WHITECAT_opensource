@@ -46,7 +46,7 @@ WWWWWWWW           C  WWWWWWWW   |
 #include <OpenLayer.hpp>
 #include "stdio.h"
 #include <loadpng.h>
-using namespace ol;
+//using namespace ol;
 
 //pour serveur
 #include <winsock2.h>
