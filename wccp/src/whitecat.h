@@ -1247,12 +1247,12 @@ bool allow_artnet_in=0;
 //////////////////////////////////////////////////////////////////////////////////
 
 ////SOUND AUDIERE//////////////////////////////////////////////////////////////////
-AudioDevicePtr device;
+audiere::AudioDevicePtr device;
 
-OutputStreamPtr player1;
-OutputStreamPtr player2;
-OutputStreamPtr player3;
-OutputStreamPtr player4;
+audiere::OutputStreamPtr player1;
+audiere::OutputStreamPtr player2;
+audiere::OutputStreamPtr player3;
+audiere::OutputStreamPtr player4;
 
 bool starting_wcat=0;//démarrage
 
