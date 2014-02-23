@@ -1,0 +1,354 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<CodeBlocks_project_file>
+	<FileVersion major="1" minor="6" />
+	<Project>
+		<Option title="Whitecat_Crossplatform" />
+		<Option platforms="Windows;" />
+		<Option pch_mode="2" />
+		<Option compiler="gcc" />
+		<Build>
+			<Target title="Debug">
+				<Option platforms="Windows;" />
+				<Option output="../../../../whitecatbuild/build/mingw_build/white_cat/Whitecat_Crossplatform" prefix_auto="1" extension_auto="1" />
+				<Option working_dir="../../../../whitecatbuild/build/mingw_build/white_cat" />
+				<Option object_output="../../../../whitecatbuild/build/mingw_build/obj" />
+				<Option type="0" />
+				<Option compiler="gcc" />
+				<Compiler>
+					<Add option="-g" />
+				</Compiler>
+			</Target>
+			<Target title="Release">
+				<Option platforms="Windows;" />
+				<Option output="../../../../whitecatbuild/build/mingw_build/white_cat/Whitecat_Crossplatform" prefix_auto="1" extension_auto="1" />
+				<Option working_dir="../../../../whitecatbuild/build/mingw_build/white_cat" />
+				<Option object_output="../../../../whitecatbuild/build/mingw_build/obj" />
+				<Option type="0" />
+				<Option compiler="gcc" />
+			</Target>
+		</Build>
+		<Compiler>
+			<Add option="-Wall" />
+			<Add directory="../../../../lib/windows/audiere-1.9.4-win32/include" />
+			<Add directory="../../../../lib/windows/Cserial" />
+			<Add directory="../../../../lib/windows/dashard" />
+			<Add directory="../../../../lib/windows/enttec_pro" />
+			<Add directory="../../../../lib/windows/midishare/include" />
+			<Add directory="../../../../lib/windows/odmxusb_terry" />
+			<Add directory="C:/MinGW/include" />
+			<Add directory="../../../../Src" />
+			<Add directory="C:/MinGW/opencv2.4.8/include" />
+			<Add directory="C:/MinGW/include/libharu" />
+		</Compiler>
+		<Linker>
+			<Add option="-lopenlayer -lglyph-agl -lfreetype -llogg -lvorbis -lalleggl -ljpgalleg -lalleg44.dll -luser32 -lgdi32 -lglu32 -lopengl32 -lpthreadGC2 -lwsock32 -liphlpapi -lpng12.dll -lz -lhpdf" />
+			<Add library="kernel32" />
+			<Add library="comctl32" />
+			<Add library="winmm" />
+			<Add library="ole32" />
+			<Add library="dxguid" />
+			<Add library="..\..\..\..\lib\windows\odmxusb_terry\FTD2XX.lib" />
+			<Add library="..\..\..\..\lib\windows\enttec_pro\ftd2xx.lib" />
+			<Add library="..\..\..\..\lib\windows\midishare\libraries\mshare32.lib" />
+			<Add library="..\..\..\..\lib\windows\audiere-1.9.4-win32\lib\audiere.lib" />
+			<Add library="C:\MinGW\opencv2.4.8\x86\mingw\staticlib\liblibjasper.a" />
+			<Add library="C:\MinGW\opencv2.4.8\x86\mingw\staticlib\liblibjpeg.a" />
+			<Add library="C:\MinGW\opencv2.4.8\x86\mingw\staticlib\liblibpng.a" />
+			<Add library="C:\MinGW\opencv2.4.8\x86\mingw\staticlib\liblibtiff.a" />
+			<Add library="C:\MinGW\opencv2.4.8\x86\mingw\lib\libopencv_calib3d248.dll.a" />
+			<Add library="C:\MinGW\opencv2.4.8\x86\mingw\lib\libopencv_contrib248.dll.a" />
+			<Add library="C:\MinGW\opencv2.4.8\x86\mingw\lib\libopencv_core248.dll.a" />
+			<Add library="C:\MinGW\opencv2.4.8\x86\mingw\lib\libopencv_features2d248.dll.a" />
+			<Add library="C:\MinGW\opencv2.4.8\x86\mingw\lib\libopencv_flann248.dll.a" />
+			<Add library="C:\MinGW\opencv2.4.8\x86\mingw\lib\libopencv_gpu248.dll.a" />
+			<Add library="C:\MinGW\opencv2.4.8\x86\mingw\lib\libopencv_highgui248.dll.a" />
+			<Add library="C:\MinGW\opencv2.4.8\x86\mingw\lib\libopencv_imgproc248.dll.a" />
+			<Add library="C:\MinGW\opencv2.4.8\x86\mingw\lib\libopencv_legacy248.dll.a" />
+			<Add library="C:\MinGW\opencv2.4.8\x86\mingw\lib\libopencv_ml248.dll.a" />
+			<Add library="C:\MinGW\opencv2.4.8\x86\mingw\lib\libopencv_nonfree248.dll.a" />
+			<Add library="C:\MinGW\opencv2.4.8\x86\mingw\lib\libopencv_objdetect248.dll.a" />
+			<Add library="C:\MinGW\opencv2.4.8\x86\mingw\lib\libopencv_ocl248.dll.a" />
+			<Add library="C:\MinGW\opencv2.4.8\x86\mingw\lib\libopencv_photo248.dll.a" />
+			<Add library="C:\MinGW\opencv2.4.8\x86\mingw\lib\libopencv_stitching248.dll.a" />
+			<Add library="C:\MinGW\opencv2.4.8\x86\mingw\lib\libopencv_superres248.dll.a" />
+			<Add library="C:\MinGW\opencv2.4.8\x86\mingw\lib\libopencv_ts248.a" />
+			<Add library="C:\MinGW\opencv2.4.8\x86\mingw\lib\libopencv_video248.dll.a" />
+			<Add library="C:\MinGW\opencv2.4.8\x86\mingw\lib\libopencv_videostab248.dll.a" />
+			<Add library="z" />
+			<Add directory="C:/MinGW/lib" />
+			<Add directory="../../../../lib/windows/audiere-1.9.4-win32/lib" />
+			<Add directory="../../../../lib/windows/enttec_pro" />
+			<Add directory="../../../../lib/windows/midishare/libraries" />
+			<Add directory="../../../../lib/windows/odmxusb_terry" />
+			<Add directory="C:/MinGW/opencv2.4.8/x86/mingw/lib" />
+			<Add directory="C:/MinGW/opencv2.4.8/x86/mingw/staticlib" />
+		</Linker>
+		<Unit filename="../../../../Src/CFG_config_panel_8.cpp">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
+		<Unit filename="../../../../Src/CFG_screen.cpp">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
+		<Unit filename="../../../../Src/CORE_6.cpp">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
+		<Unit filename="../../../../Src/Call_everybody_5.cpp">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
+		<Unit filename="../../../../Src/Draw3.cpp">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
+		<Unit filename="../../../../Src/MAIN_janv_2014_opensource_kbd.cpp" />
+		<Unit filename="../../../../Src/WhiteCat_OpenVersion.ico">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
+		<Unit filename="../../../../Src/WhiteCat_private.h" />
+		<Unit filename="../../../../Src/WhiteCat_private.rc">
+			<Option compilerVar="WINDRES" />
+		</Unit>
+		<Unit filename="../../../../Src/arduino_6_UNO.cpp">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
+		<Unit filename="../../../../Src/arduino_core_6_UNO.cpp">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
+		<Unit filename="../../../../Src/arduino_device_core.cpp">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
+		<Unit filename="../../../../Src/audio_core5.cpp">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
+		<Unit filename="../../../../Src/audio_visu4.cpp">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
+		<Unit filename="../../../../Src/banger_core_8.cpp">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
+		<Unit filename="../../../../Src/banger_visu_8.cpp">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
+		<Unit filename="../../../../Src/channels_10_visu.cpp">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
+		<Unit filename="../../../../Src/channels_9_core.cpp">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
+		<Unit filename="../../../../Src/chasers_core_5.cpp">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
+		<Unit filename="../../../../Src/chasers_visu.cpp">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
+		<Unit filename="../../../../Src/chat_dock_machine.ico">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
+		<Unit filename="../../../../Src/dmx_enttec_pro.cpp">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
+		<Unit filename="../../../../Src/dmx_enttec_pro_FTDI.cpp">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
+		<Unit filename="../../../../Src/dmx_ftdi_IN_test_enttec_pro.cpp">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
+		<Unit filename="../../../../Src/dmx_functions_13.cpp">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
+		<Unit filename="../../../../Src/dmx_sunlite.cpp">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
+		<Unit filename="../../../../Src/echo3.cpp">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
+		<Unit filename="../../../../Src/enttec_pro_dmxin.exe">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
+		<Unit filename="../../../../Src/faders_core_24.cpp">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
+		<Unit filename="../../../../Src/faders_operations.cpp">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
+		<Unit filename="../../../../Src/faders_visuels_26.cpp">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
+		<Unit filename="../../../../Src/generate_strings_arrays.cpp">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
+		<Unit filename="../../../../Src/gestionaire_fenetres2.cpp">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
+		<Unit filename="../../../../Src/grand_master.cpp">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
+		<Unit filename="../../../../Src/graphics_rebuild1.cpp">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
+		<Unit filename="../../../../Src/grider8.cpp">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
+		<Unit filename="../../../../Src/grider_calculs8.cpp">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
+		<Unit filename="../../../../Src/grider_core8.cpp">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
+		<Unit filename="../../../../Src/gui_boutons_rebuild1.cpp">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
+		<Unit filename="../../../../Src/help_2.cpp">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
+		<Unit filename="../../../../Src/iCat14.cpp">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
+		<Unit filename="../../../../Src/icat_core14.cpp">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
+		<Unit filename="../../../../Src/keyboard_functions2.cpp">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
+		<Unit filename="../../../../Src/keyboard_routines2.cpp">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
+		<Unit filename="../../../../Src/list_proj_core.cpp">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
+		<Unit filename="../../../../Src/list_proj_visu.cpp">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
+		<Unit filename="../../../../Src/logicals_intres.cpp">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
+		<Unit filename="../../../../Src/midi_13.cpp">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
+		<Unit filename="../../../../Src/midi_CORE.cpp">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
+		<Unit filename="../../../../Src/midi_launchpad.cpp">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
+		<Unit filename="../../../../Src/minifaders_core.cpp">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
+		<Unit filename="../../../../Src/minifaders_visu.cpp">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
+		<Unit filename="../../../../Src/mover_2013.cpp">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
+		<Unit filename="../../../../Src/mover_spline6.cpp">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
+		<Unit filename="../../../../Src/my_window_file_sample.cpp">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
+		<Unit filename="../../../../Src/my_window_file_sample.h">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
+		<Unit filename="../../../../Src/network_MAC_adress_3.cpp">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
+		<Unit filename="../../../../Src/network_artnet_3.cpp">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
+		<Unit filename="../../../../Src/numpad_core.cpp">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
+		<Unit filename="../../../../Src/numpad_visuel.cpp">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
+		<Unit filename="../../../../Src/patch_core.cpp">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
+		<Unit filename="../../../../Src/patch_splines_2.cpp">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
+		<Unit filename="../../../../Src/patch_visu.cpp">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
+		<Unit filename="../../../../Src/plot.cpp">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
+		<Unit filename="../../../../Src/plot9.cpp">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
+		<Unit filename="../../../../Src/plot_core9.cpp">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
+		<Unit filename="../../../../Src/procs_visuels_rebuild1.cpp">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
+		<Unit filename="../../../../Src/save_show_13.cpp">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
+		<Unit filename="../../../../Src/saves_export_import.cpp">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
+		<Unit filename="../../../../Src/saves_export_pdf2.cpp">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
+		<Unit filename="../../../../Src/saves_menu_8.cpp">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
+		<Unit filename="../../../../Src/sequentiel_6_core.cpp">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
+		<Unit filename="../../../../Src/sequentiel_7_visu.cpp">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
+		<Unit filename="../../../../Src/time_core_3.cpp">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
+		<Unit filename="../../../../Src/time_visu_3.cpp">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
+		<Unit filename="../../../../Src/tracker_main14nov.cpp">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
+		<Unit filename="../../../../Src/trichro_core2.cpp">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
+		<Unit filename="../../../../Src/trichro_visu2.cpp">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
+		<Unit filename="../../../../Src/video_tracking_core.cpp">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
+		<Unit filename="../../../../Src/video_tracking_visu.cpp">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
+		<Unit filename="../../../../Src/white_cat to do.txt">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
+		<Unit filename="../../../../Src/whitecat.h" />
+		<Unit filename="../../../../Src/whitecat_opensource.ico">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
+		<Unit filename="../../../../Src/whitecat_opensource.layout">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
+		<Unit filename="../../../../Src/wizard.cpp">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
+		<Unit filename="../../../../Src/wizard_operations.cpp">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
+		<Extensions>
+			<code_completion />
+			<envvars />
+			<debugger />
+			<lib_finder disable_auto="1" />
+			<DoxyBlocks>
+				<comment_style block="0" line="0" />
+				<doxyfile_project project_number="0.8.5.2" output_directory="docAPIwhitecat" output_language="French" />
+				<doxyfile_build extract_all="1" />
+				<doxyfile_warnings warn_if_undocumented="1" />
+				<doxyfile_output latex="1" />
+				<doxyfile_dot />
+				<general />
+			</DoxyBlocks>
+		</Extensions>
+	</Project>
+</CodeBlocks_project_file>
